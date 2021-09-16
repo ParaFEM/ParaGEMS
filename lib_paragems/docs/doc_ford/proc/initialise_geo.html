@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <meta name="description" content="Documentation for ParaGEMS">
+   
+    <meta name="author" content="Pieter Boom" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>initialise_geo &ndash; ParaGEMS</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">ParaGEMS </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li><a href='../page/index.html'>README</a></li>
+      
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            <li><a href="../lists/programs.html">Programs</a></li>
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>initialise_geo
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     <li><i class="fa fa-pencil"></i> Pieter Boom</li>
+     
+     
+    <li><i class="fa fa-calendar-o"></i> 2019/08/23</li>
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 1.1% of total for procedures.">48 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/dec_mod.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/dec_mod.f90.html'>dec_mod.f90</a></li>
+    
+     <li><a href='../module/dec_mod.html'>dec_mod</a></li>
+    
+  
+     <li class="active">initialise_geo</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/initialise_geo.html#variable-str">str</a>
+      
+      <a class="list-group-item" href="../proc/initialise_geo.html#variable-i%7E61">i</a>
+      
+      <a class="list-group-item" href="../proc/initialise_geo.html#variable-k%7E32">k</a>
+      
+      <a class="list-group-item" href="../proc/initialise_geo.html#variable-absminv">absminV</a>
+      
+      <a class="list-group-item" href="../proc/initialise_geo.html#variable-maxv">maxV</a>
+      
+      <a class="list-group-item" href="../proc/initialise_geo.html#variable-minv">minV</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+public subroutine initialise_geo()
+    
+    
+   
+</h2>
+    
+  
+
+
+    
+    <p>Initialise geometric quantities for the given mesh</p>
+    
+
+    <h3>Arguments</h3>
+    
+    <em>None</em>
+    <br>
+    
+    
+    
+    <br>
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Calls</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: proc~~initialise_geo~~CallsGraph Pages: 1 -->
+<svg id="procinitialise_geoCallsGraph" width="610pt" height="773pt"
+ viewBox="0.00 0.00 610.50 772.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~initialise_geo~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 768.6)">
+<title>proc~~initialise_geo~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-768.6 606.5,-768.6 606.5,4 -4,4"/>
+<!-- proc~initialise_geo -->
+<g id="proc~~initialise_geo~~CallsGraph_node1" class="node">
+<title>proc~initialise_geo</title>
+<polygon fill="none" stroke="black" points="72.52,-374.4 0.16,-374.4 0.16,-350.2 72.52,-350.2 72.52,-374.4"/>
+<text text-anchor="middle" x="36.34" y="-359.15" font-family="Helvetica,sans-Serif" font-size="10.50">initialise_geo</text>
+</g>
+<!-- proc~calc_hodge_star -->
+<g id="proc~~initialise_geo~~CallsGraph_node2" class="node">
+<title>proc~calc_hodge_star</title>
+<g id="a_proc~~initialise_geo~~CallsGraph_node2"><a xlink:href=".././proc/calc_hodge_star.html" xlink:title="calc_hodge_star">
+<polygon fill="#d9534f" stroke="#d9534f" points="212.88,-462.4 123.82,-462.4 123.82,-438.2 212.88,-438.2 212.88,-462.4"/>
+<text text-anchor="middle" x="168.35" y="-447.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">calc_hodge_star</text>
+</a>
+</g>
+</g>
+<!-- proc~initialise_geo&#45;&gt;proc~calc_hodge_star -->
+<g id="proc~~initialise_geo~~CallsGraph_edge15" class="edge">
+<title>proc~initialise_geo:&#45;&gt;proc~calc_hodge_star:</title>
+<path fill="none" stroke="#000000" d="M55.42,-374.54C77.63,-389.58 115.52,-415.22 140.98,-432.45"/>
+<polygon fill="#000000" stroke="#000000" points="139.18,-435.46 149.43,-438.17 143.11,-429.66 139.18,-435.46"/>
+</g>
+<!-- proc~syncwrite_log -->
+<g id="proc~~initialise_geo~~CallsGraph_node3" class="node">
+<title>proc~syncwrite_log</title>
+<g id="a_proc~~initialise_geo~~CallsGraph_node3"><a xlink:href=".././proc/syncwrite_log.html" xlink:title="syncwrite_log">
+<polygon fill="#d9534f" stroke="#d9534f" points="354.29,-147.4 279.11,-147.4 279.11,-123.2 354.29,-123.2 354.29,-147.4"/>
+<text text-anchor="middle" x="316.7" y="-132.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">syncwrite_log</text>
+</a>
+</g>
+</g>
+<!-- proc~initialise_geo&#45;&gt;proc~syncwrite_log -->
+<g id="proc~~initialise_geo~~CallsGraph_edge2" class="edge">
+<title>proc~initialise_geo:&#45;&gt;proc~syncwrite_log:</title>
+<path fill="none" stroke="#000000" d="M40.2,-350.08C47.21,-322.76 67.7,-256.17 108.68,-218.3 154.02,-176.39 223.19,-154.49 268.91,-143.93"/>
+<polygon fill="#000000" stroke="#000000" points="269.86,-147.31 278.87,-141.73 268.35,-140.47 269.86,-147.31"/>
+</g>
+<!-- proc~rootwrite_log -->
+<g id="proc~~initialise_geo~~CallsGraph_node4" class="node">
+<title>proc~rootwrite_log</title>
+<g id="a_proc~~initialise_geo~~CallsGraph_node4"><a xlink:href=".././proc/rootwrite_log.html" xlink:title="rootwrite_log">
+<polygon fill="#d9534f" stroke="#d9534f" points="352.79,-104.4 280.61,-104.4 280.61,-80.2 352.79,-80.2 352.79,-104.4"/>
+<text text-anchor="middle" x="316.7" y="-89.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">rootwrite_log</text>
+</a>
+</g>
+</g>
+<!-- proc~initialise_geo&#45;&gt;proc~rootwrite_log -->
+<g id="proc~~initialise_geo~~CallsGraph_edge3" class="edge">
+<title>proc~initialise_geo:&#45;&gt;proc~rootwrite_log:</title>
+<path fill="none" stroke="#000000" d="M37.78,-350.13C39.73,-314.46 50.41,-209.15 108.68,-153.3 120.54,-141.93 213.4,-117.49 270.65,-103.24"/>
+<polygon fill="#000000" stroke="#000000" points="271.69,-106.59 280.55,-100.78 270,-99.79 271.69,-106.59"/>
+</g>
+<!-- proc~calc_prml_sgnd_vlm -->
+<g id="proc~~initialise_geo~~CallsGraph_node5" class="node">
+<title>proc~calc_prml_sgnd_vlm</title>
+<g id="a_proc~~initialise_geo~~CallsGraph_node5"><a xlink:href=".././proc/calc_prml_sgnd_vlm.html" xlink:title="calc_prml_sgnd_vlm">
+<polygon fill="#d9534f" stroke="#d9534f" points="222.02,-689.4 114.68,-689.4 114.68,-665.2 222.02,-665.2 222.02,-689.4"/>
+<text text-anchor="middle" x="168.35" y="-674.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">calc_prml_sgnd_vlm</text>
+</a>
+</g>
+</g>
+<!-- proc~initialise_geo&#45;&gt;proc~calc_prml_sgnd_vlm -->
+<g id="proc~~initialise_geo~~CallsGraph_edge4" class="edge">
+<title>proc~initialise_geo:&#45;&gt;proc~calc_prml_sgnd_vlm:</title>
+<path fill="none" stroke="#000000" d="M37.55,-374.53C38.81,-415.55 47.66,-550.57 108.68,-637.3 114.97,-646.24 123.94,-653.79 132.98,-659.83"/>
+<polygon fill="#000000" stroke="#000000" points="131.24,-662.87 141.58,-665.16 134.92,-656.92 131.24,-662.87"/>
+</g>
+<!-- proc~calc_dual_vlm -->
+<g id="proc~~initialise_geo~~CallsGraph_node6" class="node">
+<title>proc~calc_dual_vlm</title>
+<g id="a_proc~~initialise_geo~~CallsGraph_node6"><a xlink:href=".././proc/calc_dual_vlm.html" xlink:title="calc_dual_vlm">
+<polygon fill="#d9534f" stroke="#d9534f" points="207.36,-394.4 129.34,-394.4 129.34,-370.2 207.36,-370.2 207.36,-394.4"/>
+<text text-anchor="middle" x="168.35" y="-379.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">calc_dual_vlm</text>
+</a>
+</g>
+</g>
+<!-- proc~initialise_geo&#45;&gt;proc~calc_dual_vlm -->
+<g id="proc~~initialise_geo~~CallsGraph_edge5" class="edge">
+<title>proc~initialise_geo:&#45;&gt;proc~calc_dual_vlm:</title>
+<path fill="none" stroke="#000000" d="M72.52,-367.71C86.83,-369.91 103.61,-372.49 119.04,-374.87"/>
+<polygon fill="#000000" stroke="#000000" points="118.52,-378.33 128.94,-376.39 119.59,-371.41 118.52,-378.33"/>
+</g>
+<!-- proc~get_lcl_node_indx -->
+<g id="proc~~initialise_geo~~CallsGraph_node7" class="node">
+<title>proc~get_lcl_node_indx</title>
+<g id="a_proc~~initialise_geo~~CallsGraph_node7"><a xlink:href=".././proc/get_lcl_node_indx.html" xlink:title="get_lcl_node_indx">
+<polygon fill="#d9534f" stroke="#d9534f" points="216.46,-585.4 120.23,-585.4 120.23,-561.2 216.46,-561.2 216.46,-585.4"/>
+<text text-anchor="middle" x="168.35" y="-570.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_lcl_node_indx</text>
+</a>
+</g>
+</g>
+<!-- proc~initialise_geo&#45;&gt;proc~get_lcl_node_indx -->
+<g id="proc~~initialise_geo~~CallsGraph_edge6" class="edge">
+<title>proc~initialise_geo:&#45;&gt;proc~get_lcl_node_indx:</title>
+<path fill="none" stroke="#000000" d="M38.84,-374.84C43.38,-407.45 59.78,-495.94 108.68,-547.3 111.83,-550.61 115.48,-553.53 119.39,-556.1"/>
+<polygon fill="#000000" stroke="#000000" points="117.84,-559.24 128.26,-561.17 121.31,-553.17 117.84,-559.24"/>
+</g>
+<!-- num_elm -->
+<g id="proc~~initialise_geo~~CallsGraph_node8" class="node">
+<title>num_elm</title>
+<polygon fill="#777777" stroke="#777777" points="344.37,-550.4 289.03,-550.4 289.03,-526.2 344.37,-526.2 344.37,-550.4"/>
+<text text-anchor="middle" x="316.7" y="-535.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">num_elm</text>
+</g>
+<!-- proc~initialise_geo&#45;&gt;num_elm -->
+<g id="proc~~initialise_geo~~CallsGraph_edge12" class="edge">
+<title>proc~initialise_geo:&#45;&gt;num_elm:</title>
+<path fill="none" stroke="#000000" d="M39.07,-374.7C43.93,-404.41 60.64,-479.74 108.68,-514.3 158.84,-550.4 234.23,-549.01 278.85,-544.09"/>
+<polygon fill="#000000" stroke="#000000" points="279.45,-547.54 288.96,-542.85 278.61,-540.59 279.45,-547.54"/>
+</g>
+<!-- lcl_complex -->
+<g id="proc~~initialise_geo~~CallsGraph_node9" class="node">
+<title>lcl_complex</title>
+<polygon fill="#777777" stroke="#777777" points="485.56,-434.4 418.89,-434.4 418.89,-410.2 485.56,-410.2 485.56,-434.4"/>
+<text text-anchor="middle" x="452.23" y="-419.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lcl_complex</text>
+</g>
+<!-- proc~initialise_geo&#45;&gt;lcl_complex -->
+<g id="proc~~initialise_geo~~CallsGraph_edge7" class="edge">
+<title>proc~initialise_geo:&#45;&gt;lcl_complex:</title>
+<path fill="none" stroke="#000000" d="M72.91,-354.99C134.97,-343.8 266.24,-327.09 369.38,-361.3 372.77,-362.42 404.35,-386.32 427.26,-403.86"/>
+<polygon fill="#000000" stroke="#000000" points="425.18,-406.68 435.25,-409.99 429.44,-401.12 425.18,-406.68"/>
+</g>
+<!-- proc~syncwrite_log_time -->
+<g id="proc~~initialise_geo~~CallsGraph_node10" class="node">
+<title>proc~syncwrite_log_time</title>
+<g id="a_proc~~initialise_geo~~CallsGraph_node10"><a xlink:href=".././proc/syncwrite_log_time.html" xlink:title="syncwrite_log_time">
+<polygon fill="#d9534f" stroke="#d9534f" points="219.1,-104.4 117.59,-104.4 117.59,-80.2 219.1,-80.2 219.1,-104.4"/>
+<text text-anchor="middle" x="168.35" y="-89.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">syncwrite_log_time</text>
+</a>
+</g>
+</g>
+<!-- proc~initialise_geo&#45;&gt;proc~syncwrite_log_time -->
+<g id="proc~~initialise_geo~~CallsGraph_edge8" class="edge">
+<title>proc~initialise_geo:&#45;&gt;proc~syncwrite_log_time:</title>
+<path fill="none" stroke="#000000" d="M37.89,-350C40.18,-312.27 51.72,-196.39 108.68,-125.3 113.66,-119.08 120.15,-113.83 127,-109.48"/>
+<polygon fill="#000000" stroke="#000000" points="128.84,-112.46 135.77,-104.44 125.35,-106.39 128.84,-112.46"/>
+</g>
+<!-- proc~calc_prml_dir -->
+<g id="proc~~initialise_geo~~CallsGraph_node11" class="node">
+<title>proc~calc_prml_dir</title>
+<g id="a_proc~~initialise_geo~~CallsGraph_node11"><a xlink:href=".././proc/calc_prml_dir.html" xlink:title="calc_prml_dir">
+<polygon fill="#d9534f" stroke="#d9534f" points="205.76,-505.4 130.94,-505.4 130.94,-481.2 205.76,-481.2 205.76,-505.4"/>
+<text text-anchor="middle" x="168.35" y="-490.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">calc_prml_dir</text>
+</a>
+</g>
+</g>
+<!-- proc~initialise_geo&#45;&gt;proc~calc_prml_dir -->
+<g id="proc~~initialise_geo~~CallsGraph_edge9" class="edge">
+<title>proc~initialise_geo:&#45;&gt;proc~calc_prml_dir:</title>
+<path fill="none" stroke="#000000" d="M42.28,-374.59C51.84,-396.92 74.95,-444.31 108.68,-471.3 112.66,-474.49 117.16,-477.25 121.84,-479.63"/>
+<polygon fill="#000000" stroke="#000000" points="120.44,-482.84 131,-483.75 123.32,-476.46 120.44,-482.84"/>
+</g>
+<!-- proc~calc_circumcenters -->
+<g id="proc~~initialise_geo~~CallsGraph_node12" class="node">
+<title>proc~calc_circumcenters</title>
+<g id="a_proc~~initialise_geo~~CallsGraph_node12"><a xlink:href=".././proc/calc_circumcenters.html" xlink:title="calc_circumcenters">
+<polygon fill="#d9534f" stroke="#d9534f" points="219.19,-628.4 117.51,-628.4 117.51,-604.2 219.19,-604.2 219.19,-628.4"/>
+<text text-anchor="middle" x="168.35" y="-613.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">calc_circumcenters</text>
+</a>
+</g>
+</g>
+<!-- proc~initialise_geo&#45;&gt;proc~calc_circumcenters -->
+<g id="proc~~initialise_geo~~CallsGraph_edge10" class="edge">
+<title>proc~initialise_geo:&#45;&gt;proc~calc_circumcenters:</title>
+<path fill="none" stroke="#000000" d="M37.5,-374.47C38.66,-412.29 47.3,-529.1 108.68,-594.3 110.07,-595.79 111.58,-597.17 113.18,-598.46"/>
+<polygon fill="#000000" stroke="#000000" points="111.5,-601.55 121.76,-604.18 115.38,-595.73 111.5,-601.55"/>
+</g>
+<!-- glb_num_elm -->
+<g id="proc~~initialise_geo~~CallsGraph_node13" class="node">
+<title>glb_num_elm</title>
+<polygon fill="#777777" stroke="#777777" points="205.86,-24.4 130.84,-24.4 130.84,-0.2 205.86,-0.2 205.86,-24.4"/>
+<text text-anchor="middle" x="168.35" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">glb_num_elm</text>
+</g>
+<!-- proc~initialise_geo&#45;&gt;glb_num_elm -->
+<g id="proc~~initialise_geo~~CallsGraph_edge16" class="edge">
+<title>proc~initialise_geo:&#45;&gt;glb_num_elm:</title>
+<path fill="none" stroke="#000000" d="M38.56,-350.02C44.07,-296.97 68.04,-88.03 108.68,-38.3 112.25,-33.93 116.7,-30.28 121.54,-27.22"/>
+<polygon fill="#000000" stroke="#000000" points="123.45,-30.17 130.59,-22.34 120.12,-24.01 123.45,-30.17"/>
+</g>
+<!-- proc~exchange_dual_vlm -->
+<g id="proc~~initialise_geo~~CallsGraph_node14" class="node">
+<title>proc~exchange_dual_vlm</title>
+<g id="a_proc~~initialise_geo~~CallsGraph_node14"><a xlink:href=".././proc/exchange_dual_vlm.html" xlink:title="exchange_dual_vlm">
+<polygon fill="#d9534f" stroke="#d9534f" points="369.57,-190.4 263.84,-190.4 263.84,-166.2 369.57,-166.2 369.57,-190.4"/>
+<text text-anchor="middle" x="316.7" y="-175.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">exchange_dual_vlm</text>
+</a>
+</g>
+</g>
+<!-- proc~initialise_geo&#45;&gt;proc~exchange_dual_vlm -->
+<g id="proc~~initialise_geo~~CallsGraph_edge1" class="edge">
+<title>proc~initialise_geo:&#45;&gt;proc~exchange_dual_vlm:</title>
+<path fill="none" stroke="#000000" d="M45.86,-350.05C58.19,-333 82.42,-301.87 108.68,-281.3 116.34,-275.3 255.22,-204.46 264.02,-200.3 268.1,-198.37 272.39,-196.42 276.68,-194.52"/>
+<polygon fill="#000000" stroke="#000000" points="278.23,-197.67 286.01,-190.47 275.44,-191.25 278.23,-197.67"/>
+</g>
+<!-- mpi_wtime -->
+<g id="proc~~initialise_geo~~CallsGraph_node15" class="node">
+<title>mpi_wtime</title>
+<polygon fill="#777777" stroke="#777777" points="347.86,-24.4 285.54,-24.4 285.54,-0.2 347.86,-0.2 347.86,-24.4"/>
+<text text-anchor="middle" x="316.7" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_wtime</text>
+</g>
+<!-- proc~initialise_geo&#45;&gt;mpi_wtime -->
+<g id="proc~~initialise_geo~~CallsGraph_edge13" class="edge">
+<title>proc~initialise_geo:&#45;&gt;mpi_wtime:</title>
+<path fill="none" stroke="#000000" d="M38.7,-350.13C44.5,-300.33 68.71,-112.79 108.68,-71.3 114.59,-65.16 217.23,-37.81 275.72,-22.59"/>
+<polygon fill="#000000" stroke="#000000" points="276.6,-25.98 285.4,-20.08 274.84,-19.2 276.6,-25.98"/>
+</g>
+<!-- proc~calc_dual_dir -->
+<g id="proc~~initialise_geo~~CallsGraph_node16" class="node">
+<title>proc~calc_dual_dir</title>
+<g id="a_proc~~initialise_geo~~CallsGraph_node16"><a xlink:href=".././proc/calc_dual_dir.html" xlink:title="calc_dual_dir">
+<polygon fill="#d9534f" stroke="#d9534f" points="205.19,-314.4 131.51,-314.4 131.51,-290.2 205.19,-290.2 205.19,-314.4"/>
+<text text-anchor="middle" x="168.35" y="-299.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">calc_dual_dir</text>
+</a>
+</g>
+</g>
+<!-- proc~initialise_geo&#45;&gt;proc~calc_dual_dir -->
+<g id="proc~~initialise_geo~~CallsGraph_edge14" class="edge">
+<title>proc~initialise_geo:&#45;&gt;proc~calc_dual_dir:</title>
+<path fill="none" stroke="#000000" d="M62.35,-350.17C76,-343.61 93.22,-335.41 108.68,-328.3 115.57,-325.13 122.94,-321.81 130.05,-318.64"/>
+<polygon fill="#000000" stroke="#000000" points="131.8,-321.7 139.52,-314.44 128.96,-315.3 131.8,-321.7"/>
+</g>
+<!-- proc~calc_prml_unsgnd_vlm -->
+<g id="proc~~initialise_geo~~CallsGraph_node17" class="node">
+<title>proc~calc_prml_unsgnd_vlm</title>
+<g id="a_proc~~initialise_geo~~CallsGraph_node17"><a xlink:href=".././proc/calc_prml_unsgnd_vlm.html" xlink:title="calc_prml_unsgnd_vlm">
+<polygon fill="#d9534f" stroke="#d9534f" points="228.2,-758.4 108.5,-758.4 108.5,-734.2 228.2,-734.2 228.2,-758.4"/>
+<text text-anchor="middle" x="168.35" y="-743.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">calc_prml_unsgnd_vlm</text>
+</a>
+</g>
+</g>
+<!-- proc~initialise_geo&#45;&gt;proc~calc_prml_unsgnd_vlm -->
+<g id="proc~~initialise_geo~~CallsGraph_edge11" class="edge">
+<title>proc~initialise_geo:&#45;&gt;proc~calc_prml_unsgnd_vlm:</title>
+<path fill="none" stroke="#000000" d="M37.12,-374.65C36.85,-420.93 40.89,-587.02 108.68,-698.3 115.86,-710.1 127.02,-720.29 137.68,-728.21"/>
+<polygon fill="#000000" stroke="#000000" points="135.84,-731.19 146.04,-734.06 139.85,-725.46 135.84,-731.19"/>
+</g>
+<!-- proc~calc_hodge_star&#45;&gt;num_elm -->
+<g id="proc~~initialise_geo~~CallsGraph_edge18" class="edge">
+<title>proc~calc_hodge_star:&#45;&gt;num_elm:</title>
+<path fill="none" stroke="#000000" d="M206.69,-462.46C213.93,-465.33 221.35,-468.64 228.02,-472.3 252.28,-485.61 277.23,-505.06 294.29,-519.4"/>
+<polygon fill="#000000" stroke="#000000" points="292.11,-522.15 301.99,-525.98 296.66,-516.82 292.11,-522.15"/>
+</g>
+<!-- proc~calc_hodge_star&#45;&gt;lcl_complex -->
+<g id="proc~~initialise_geo~~CallsGraph_edge17" class="edge">
+<title>proc~calc_hodge_star:&#45;&gt;lcl_complex:</title>
+<path fill="none" stroke="#000000" d="M213.17,-448.49C253.78,-446.51 315.81,-442.74 369.38,-436.3 382.13,-434.77 395.91,-432.61 408.47,-430.44"/>
+<polygon fill="#000000" stroke="#000000" points="409.44,-433.82 418.68,-428.63 408.22,-426.93 409.44,-433.82"/>
+</g>
+<!-- mpi_barrier -->
+<g id="proc~~initialise_geo~~CallsGraph_node27" class="node">
+<title>mpi_barrier</title>
+<polygon fill="#777777" stroke="#777777" points="484.8,-104.4 419.65,-104.4 419.65,-80.2 484.8,-80.2 484.8,-104.4"/>
+<text text-anchor="middle" x="452.23" y="-89.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_barrier</text>
+</g>
+<!-- proc~syncwrite_log&#45;&gt;mpi_barrier -->
+<g id="proc~~initialise_geo~~CallsGraph_edge19" class="edge">
+<title>proc~syncwrite_log:&#45;&gt;mpi_barrier:</title>
+<path fill="none" stroke="#000000" d="M354.54,-123.44C371.58,-117.95 391.89,-111.41 409.49,-105.74"/>
+<polygon fill="#000000" stroke="#000000" points="411.05,-108.92 419.49,-102.52 408.9,-102.25 411.05,-108.92"/>
+</g>
+<!-- proc~calc_prml_sgnd_vlm&#45;&gt;num_elm -->
+<g id="proc~~initialise_geo~~CallsGraph_edge21" class="edge">
+<title>proc~calc_prml_sgnd_vlm:&#45;&gt;num_elm:</title>
+<path fill="none" stroke="#000000" d="M189.8,-665.12C201.51,-657.73 216.18,-647.73 228.02,-637.3 256.03,-612.62 283.83,-579.36 300.39,-558.36"/>
+<polygon fill="#000000" stroke="#000000" points="303.18,-560.48 306.57,-550.44 297.66,-556.18 303.18,-560.48"/>
+</g>
+<!-- proc~calc_prml_sgnd_vlm&#45;&gt;lcl_complex -->
+<g id="proc~~initialise_geo~~CallsGraph_edge20" class="edge">
+<title>proc~calc_prml_sgnd_vlm:&#45;&gt;lcl_complex:</title>
+<path fill="none" stroke="#000000" d="M207.3,-689.49C250.83,-700.94 322.24,-711.68 369.38,-677.3 444.98,-622.17 452.3,-496.14 451.97,-444.75"/>
+<polygon fill="#000000" stroke="#000000" points="455.47,-444.64 451.8,-434.7 448.47,-444.76 455.47,-444.64"/>
+</g>
+<!-- proc~determinant -->
+<g id="proc~~initialise_geo~~CallsGraph_node22" class="node">
+<title>proc~determinant</title>
+<g id="a_proc~~initialise_geo~~CallsGraph_node22"><a xlink:href=".././proc/determinant.html" xlink:title="determinant">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="602.71,-746.4 534.85,-746.4 534.85,-722.2 602.71,-722.2 602.71,-746.4"/>
+<text text-anchor="middle" x="568.78" y="-731.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">determinant</text>
+</a>
+</g>
+</g>
+<!-- proc~calc_prml_sgnd_vlm&#45;&gt;proc~determinant -->
+<g id="proc~~initialise_geo~~CallsGraph_edge22" class="edge">
+<title>proc~calc_prml_sgnd_vlm:&#45;&gt;proc~determinant:</title>
+<path fill="none" stroke="#000000" d="M210.05,-689.51C226.66,-694.11 246.13,-699.02 264.02,-702.3 356.03,-719.19 465.47,-728 524.64,-731.84"/>
+<polygon fill="#000000" stroke="#000000" points="524.53,-735.34 534.73,-732.48 524.97,-728.36 524.53,-735.34"/>
+</g>
+<!-- proc~calc_dual_vlm&#45;&gt;num_elm -->
+<g id="proc~~initialise_geo~~CallsGraph_edge26" class="edge">
+<title>proc~calc_dual_vlm:&#45;&gt;num_elm:</title>
+<path fill="none" stroke="#000000" d="M186.61,-394.55C198.75,-403.55 215.09,-416.39 228.02,-429.3 256.55,-457.77 284.94,-495.14 301.38,-517.9"/>
+<polygon fill="#000000" stroke="#000000" points="298.61,-520.04 307.27,-526.14 304.3,-515.97 298.61,-520.04"/>
+</g>
+<!-- proc~calc_dual_vlm&#45;&gt;lcl_complex -->
+<g id="proc~~initialise_geo~~CallsGraph_edge23" class="edge">
+<title>proc~calc_dual_vlm:&#45;&gt;lcl_complex:</title>
+<path fill="none" stroke="#000000" d="M207.39,-391.81C224.59,-395.83 245.24,-400.27 264.02,-403.3 313.25,-411.23 370.33,-416.46 408.4,-419.39"/>
+<polygon fill="#000000" stroke="#000000" points="408.38,-422.9 418.61,-420.15 408.9,-415.92 408.38,-422.9"/>
+</g>
+<!-- proc~calc_dual_vlm_i -->
+<g id="proc~~initialise_geo~~CallsGraph_node23" class="node">
+<title>proc~calc_dual_vlm_i</title>
+<g id="a_proc~~initialise_geo~~CallsGraph_node23"><a xlink:href=".././proc/calc_dual_vlm_i.html" xlink:title="calc_dual_vlm_i">
+<polygon fill="#d9534f" stroke="#d9534f" points="359.88,-276.4 273.53,-276.4 273.53,-252.2 359.88,-252.2 359.88,-276.4"/>
+<text text-anchor="middle" x="316.7" y="-261.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">calc_dual_vlm_i</text>
+</a>
+</g>
+</g>
+<!-- proc~calc_dual_vlm&#45;&gt;proc~calc_dual_vlm_i -->
+<g id="proc~~initialise_geo~~CallsGraph_edge24" class="edge">
+<title>proc~calc_dual_vlm:&#45;&gt;proc~calc_dual_vlm_i:</title>
+<path fill="none" stroke="#000000" d="M184.46,-370.12C210.1,-349.45 262.26,-307.39 292.54,-282.98"/>
+<polygon fill="#000000" stroke="#000000" points="294.87,-285.6 300.45,-276.59 290.47,-280.15 294.87,-285.6"/>
+</g>
+<!-- proc~add_points_i -->
+<g id="proc~~initialise_geo~~CallsGraph_node25" class="node">
+<title>proc~add_points_i</title>
+<g id="a_proc~~initialise_geo~~CallsGraph_node25"><a xlink:href=".././proc/add_points_i.html" xlink:title="add_points_i">
+<polygon fill="#d9534f" stroke="#d9534f" points="352.23,-394.4 281.18,-394.4 281.18,-370.2 352.23,-370.2 352.23,-394.4"/>
+<text text-anchor="middle" x="316.7" y="-379.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_points_i</text>
+</a>
+</g>
+</g>
+<!-- proc~calc_dual_vlm&#45;&gt;proc~add_points_i -->
+<g id="proc~~initialise_geo~~CallsGraph_edge25" class="edge">
+<title>proc~calc_dual_vlm:&#45;&gt;proc~add_points_i:</title>
+<path fill="none" stroke="#000000" d="M207.42,-382.3C226.75,-382.3 250.36,-382.3 270.6,-382.3"/>
+<polygon fill="#000000" stroke="#000000" points="270.83,-385.8 280.83,-382.3 270.83,-378.8 270.83,-385.8"/>
+</g>
+<!-- proc~get_lcl_node_indx&#45;&gt;num_elm -->
+<g id="proc~~initialise_geo~~CallsGraph_edge28" class="edge">
+<title>proc~get_lcl_node_indx:&#45;&gt;num_elm:</title>
+<path fill="none" stroke="#000000" d="M216.87,-561.94C237.01,-557.12 260.12,-551.59 278.93,-547.1"/>
+<polygon fill="#000000" stroke="#000000" points="279.97,-550.44 288.88,-544.71 278.34,-543.64 279.97,-550.44"/>
+</g>
+<!-- proc~get_lcl_node_indx&#45;&gt;lcl_complex -->
+<g id="proc~~initialise_geo~~CallsGraph_edge27" class="edge">
+<title>proc~get_lcl_node_indx:&#45;&gt;lcl_complex:</title>
+<path fill="none" stroke="#000000" d="M216.72,-581.68C259.78,-586.73 323.41,-587.55 369.38,-559.3 412.01,-533.1 435.22,-475.69 445.2,-444.14"/>
+<polygon fill="#000000" stroke="#000000" points="448.57,-445.1 448.09,-434.52 441.86,-443.09 448.57,-445.1"/>
+</g>
+<!-- proc~syncwrite_log_time&#45;&gt;proc~rootwrite_log -->
+<g id="proc~~initialise_geo~~CallsGraph_edge30" class="edge">
+<title>proc~syncwrite_log_time:&#45;&gt;proc~rootwrite_log:</title>
+<path fill="none" stroke="#000000" d="M219.31,-92.3C235.75,-92.3 253.93,-92.3 270.03,-92.3"/>
+<polygon fill="#000000" stroke="#000000" points="270.27,-95.8 280.27,-92.3 270.27,-88.8 270.27,-95.8"/>
+</g>
+<!-- proc~syncwrite_log_time&#45;&gt;mpi_wtime -->
+<g id="proc~~initialise_geo~~CallsGraph_edge29" class="edge">
+<title>proc~syncwrite_log_time:&#45;&gt;mpi_wtime:</title>
+<path fill="none" stroke="#000000" d="M200.51,-80.17C209.61,-76.19 219.42,-71.45 228.02,-66.3 245.42,-55.89 246.89,-49.13 264.02,-38.3 269.08,-35.1 274.58,-31.99 280.05,-29.09"/>
+<polygon fill="#000000" stroke="#000000" points="281.83,-32.11 289.13,-24.43 278.64,-25.88 281.83,-32.11"/>
+</g>
+<!-- proc~syncwrite_log_time&#45;&gt;mpi_barrier -->
+<g id="proc~~initialise_geo~~CallsGraph_edge31" class="edge">
+<title>proc~syncwrite_log_time:&#45;&gt;mpi_barrier:</title>
+<path fill="none" stroke="#000000" d="M214.76,-80.12C230.26,-76.52 247.79,-73.08 264.02,-71.3 310.57,-66.2 322.93,-65.43 369.38,-71.3 382.59,-72.97 396.72,-76.09 409.45,-79.43"/>
+<polygon fill="#000000" stroke="#000000" points="408.75,-82.87 419.32,-82.13 410.6,-76.11 408.75,-82.87"/>
+</g>
+<!-- proc~calc_prml_dir&#45;&gt;num_elm -->
+<g id="proc~~initialise_geo~~CallsGraph_edge33" class="edge">
+<title>proc~calc_prml_dir:&#45;&gt;num_elm:</title>
+<path fill="none" stroke="#000000" d="M205.9,-504.54C228.22,-511.4 256.67,-520.15 279.01,-527.02"/>
+<polygon fill="#000000" stroke="#000000" points="278.22,-530.44 288.81,-530.03 280.28,-523.75 278.22,-530.44"/>
+</g>
+<!-- proc~calc_prml_dir&#45;&gt;lcl_complex -->
+<g id="proc~~initialise_geo~~CallsGraph_edge32" class="edge">
+<title>proc~calc_prml_dir:&#45;&gt;lcl_complex:</title>
+<path fill="none" stroke="#000000" d="M205.59,-488.25C246.02,-482.15 313.15,-470.63 369.38,-454.3 384.24,-449.99 400.16,-444.07 413.98,-438.5"/>
+<polygon fill="#000000" stroke="#000000" points="415.71,-441.57 423.63,-434.53 413.05,-435.1 415.71,-441.57"/>
+</g>
+<!-- proc~calc_circumcenters&#45;&gt;num_elm -->
+<g id="proc~~initialise_geo~~CallsGraph_edge36" class="edge">
+<title>proc~calc_circumcenters:&#45;&gt;num_elm:</title>
+<path fill="none" stroke="#000000" d="M205.54,-604.09C213.1,-601.17 220.92,-597.85 228.02,-594.3 250.03,-583.3 273.45,-568.14 290.54,-556.37"/>
+<polygon fill="#000000" stroke="#000000" points="292.67,-559.16 298.87,-550.57 288.66,-553.42 292.67,-559.16"/>
+</g>
+<!-- proc~calc_circumcenters&#45;&gt;lcl_complex -->
+<g id="proc~~initialise_geo~~CallsGraph_edge34" class="edge">
+<title>proc~calc_circumcenters:&#45;&gt;lcl_complex:</title>
+<path fill="none" stroke="#000000" d="M219.33,-620.66C262.96,-621.85 325.93,-616.96 369.38,-585.3 416.93,-550.66 438.57,-480.45 446.86,-444.54"/>
+<polygon fill="#000000" stroke="#000000" points="450.33,-445.09 449.02,-434.58 443.48,-443.61 450.33,-445.09"/>
+</g>
+<!-- dsysv -->
+<g id="proc~~initialise_geo~~CallsGraph_node21" class="node">
+<title>dsysv</title>
+<polygon fill="#777777" stroke="#777777" points="343.7,-668.4 289.7,-668.4 289.7,-644.2 343.7,-644.2 343.7,-668.4"/>
+<text text-anchor="middle" x="316.7" y="-653.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dsysv</text>
+</g>
+<!-- proc~calc_circumcenters&#45;&gt;dsysv -->
+<g id="proc~~initialise_geo~~CallsGraph_edge35" class="edge">
+<title>proc~calc_circumcenters:&#45;&gt;dsysv:</title>
+<path fill="none" stroke="#000000" d="M213.66,-628.41C234.72,-634.17 259.58,-640.96 279.5,-646.4"/>
+<polygon fill="#000000" stroke="#000000" points="278.84,-649.85 289.41,-649.11 280.69,-643.1 278.84,-649.85"/>
+</g>
+<!-- proc~exchange_dual_vlm&#45;&gt;lcl_complex -->
+<g id="proc~~initialise_geo~~CallsGraph_edge37" class="edge">
+<title>proc~exchange_dual_vlm:&#45;&gt;lcl_complex:</title>
+<path fill="none" stroke="#000000" d="M357.78,-190.43C362.17,-193.11 366.2,-196.36 369.38,-200.3 422.31,-265.78 361.51,-314.43 405.38,-386.3 409.44,-392.95 415.21,-398.86 421.29,-403.87"/>
+<polygon fill="#000000" stroke="#000000" points="419.53,-406.93 429.64,-410.12 423.73,-401.33 419.53,-406.93"/>
+</g>
+<!-- adj_proc -->
+<g id="proc~~initialise_geo~~CallsGraph_node18" class="node">
+<title>adj_proc</title>
+<polygon fill="#777777" stroke="#777777" points="479.23,-190.4 425.23,-190.4 425.23,-166.2 479.23,-166.2 479.23,-190.4"/>
+<text text-anchor="middle" x="452.23" y="-175.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">adj_proc</text>
+</g>
+<!-- proc~exchange_dual_vlm&#45;&gt;adj_proc -->
+<g id="proc~~initialise_geo~~CallsGraph_edge42" class="edge">
+<title>proc~exchange_dual_vlm:&#45;&gt;adj_proc:</title>
+<path fill="none" stroke="#000000" d="M369.71,-178.3C384.76,-178.3 400.87,-178.3 414.76,-178.3"/>
+<polygon fill="#000000" stroke="#000000" points="414.89,-181.8 424.89,-178.3 414.89,-174.8 414.89,-181.8"/>
+</g>
+<!-- mpi_waitall -->
+<g id="proc~~initialise_geo~~CallsGraph_node19" class="node">
+<title>mpi_waitall</title>
+<polygon fill="#777777" stroke="#777777" points="484.14,-147.4 420.32,-147.4 420.32,-123.2 484.14,-123.2 484.14,-147.4"/>
+<text text-anchor="middle" x="452.23" y="-132.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_waitall</text>
+</g>
+<!-- proc~exchange_dual_vlm&#45;&gt;mpi_waitall -->
+<g id="proc~~initialise_geo~~CallsGraph_edge38" class="edge">
+<title>proc~exchange_dual_vlm:&#45;&gt;mpi_waitall:</title>
+<path fill="none" stroke="#000000" d="M355.61,-166.09C372.62,-160.61 392.73,-154.14 410.11,-148.54"/>
+<polygon fill="#000000" stroke="#000000" points="411.54,-151.76 419.98,-145.36 409.39,-145.1 411.54,-151.76"/>
+</g>
+<!-- mpi_request_free -->
+<g id="proc~~initialise_geo~~CallsGraph_node20" class="node">
+<title>mpi_request_free</title>
+<polygon fill="#777777" stroke="#777777" points="498.91,-276.4 405.54,-276.4 405.54,-252.2 498.91,-252.2 498.91,-276.4"/>
+<text text-anchor="middle" x="452.23" y="-261.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_request_free</text>
+</g>
+<!-- proc~exchange_dual_vlm&#45;&gt;mpi_request_free -->
+<g id="proc~~initialise_geo~~CallsGraph_edge39" class="edge">
+<title>proc~exchange_dual_vlm:&#45;&gt;mpi_request_free:</title>
+<path fill="none" stroke="#000000" d="M352.54,-190.51C358.42,-193.29 364.27,-196.55 369.38,-200.3 389.22,-214.83 385.88,-227.33 405.38,-242.3 407.47,-243.9 409.68,-245.42 411.98,-246.87"/>
+<polygon fill="#000000" stroke="#000000" points="410.65,-250.14 421.07,-252.05 414.11,-244.06 410.65,-250.14"/>
+</g>
+<!-- num_send -->
+<g id="proc~~initialise_geo~~CallsGraph_node24" class="node">
+<title>num_send</title>
+<polygon fill="#777777" stroke="#777777" points="482.74,-319.4 421.71,-319.4 421.71,-295.2 482.74,-295.2 482.74,-319.4"/>
+<text text-anchor="middle" x="452.23" y="-304.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">num_send</text>
+</g>
+<!-- proc~exchange_dual_vlm&#45;&gt;num_send -->
+<g id="proc~~initialise_geo~~CallsGraph_edge41" class="edge">
+<title>proc~exchange_dual_vlm:&#45;&gt;num_send:</title>
+<path fill="none" stroke="#000000" d="M355.98,-190.53C360.88,-193.21 365.53,-196.44 369.38,-200.3 398.37,-229.34 377.06,-255.62 405.38,-285.3 407.64,-287.66 410.2,-289.8 412.93,-291.73"/>
+<polygon fill="#000000" stroke="#000000" points="411.13,-294.74 421.5,-296.92 414.75,-288.75 411.13,-294.74"/>
+</g>
+<!-- proc~exchange_dual_vlm&#45;&gt;mpi_barrier -->
+<g id="proc~~initialise_geo~~CallsGraph_edge40" class="edge">
+<title>proc~exchange_dual_vlm:&#45;&gt;mpi_barrier:</title>
+<path fill="none" stroke="#000000" d="M352.54,-166.09C358.42,-163.31 364.27,-160.05 369.38,-156.3 389.22,-141.77 385.88,-129.27 405.38,-114.3 407.47,-112.7 409.68,-111.18 411.98,-109.73"/>
+<polygon fill="#000000" stroke="#000000" points="414.11,-112.54 421.07,-104.55 410.65,-106.46 414.11,-112.54"/>
+</g>
+<!-- num_recv -->
+<g id="proc~~initialise_geo~~CallsGraph_node28" class="node">
+<title>num_recv</title>
+<polygon fill="#777777" stroke="#777777" points="481.31,-233.4 423.14,-233.4 423.14,-209.2 481.31,-209.2 481.31,-233.4"/>
+<text text-anchor="middle" x="452.23" y="-218.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">num_recv</text>
+</g>
+<!-- proc~exchange_dual_vlm&#45;&gt;num_recv -->
+<g id="proc~~initialise_geo~~CallsGraph_edge43" class="edge">
+<title>proc~exchange_dual_vlm:&#45;&gt;num_recv:</title>
+<path fill="none" stroke="#000000" d="M355.61,-190.51C373.69,-196.33 395.28,-203.28 413.36,-209.1"/>
+<polygon fill="#000000" stroke="#000000" points="412.4,-212.47 423,-212.21 414.55,-205.81 412.4,-212.47"/>
+</g>
+<!-- proc~calc_dual_dir&#45;&gt;num_elm -->
+<g id="proc~~initialise_geo~~CallsGraph_edge46" class="edge">
+<title>proc~calc_dual_dir:&#45;&gt;num_elm:</title>
+<path fill="none" stroke="#000000" d="M184.2,-314.76C196.95,-325.99 215.24,-343.45 228.02,-361.3 264.74,-412.6 293.97,-481.58 307.51,-516.33"/>
+<polygon fill="#000000" stroke="#000000" points="304.35,-517.87 311.19,-525.96 310.89,-515.37 304.35,-517.87"/>
+</g>
+<!-- proc~calc_dual_dir&#45;&gt;lcl_complex -->
+<g id="proc~~initialise_geo~~CallsGraph_edge44" class="edge">
+<title>proc~calc_dual_dir:&#45;&gt;lcl_complex:</title>
+<path fill="none" stroke="#000000" d="M205.34,-298.19C247.97,-295.18 319.48,-296.15 369.38,-328.3 394.89,-344.73 385.14,-363.7 405.38,-386.3 410.98,-392.55 417.77,-398.54 424.38,-403.77"/>
+<polygon fill="#000000" stroke="#000000" points="422.48,-406.71 432.57,-409.95 426.7,-401.13 422.48,-406.71"/>
+</g>
+<!-- proc~exchange_dual_dir -->
+<g id="proc~~initialise_geo~~CallsGraph_node26" class="node">
+<title>proc~exchange_dual_dir</title>
+<g id="a_proc~~initialise_geo~~CallsGraph_node26"><a xlink:href=".././proc/exchange_dual_dir.html" xlink:title="exchange_dual_dir">
+<polygon fill="#d9534f" stroke="#d9534f" points="366.9,-233.4 266.5,-233.4 266.5,-209.2 366.9,-209.2 366.9,-233.4"/>
+<text text-anchor="middle" x="316.7" y="-218.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">exchange_dual_dir</text>
+</a>
+</g>
+</g>
+<!-- proc~calc_dual_dir&#45;&gt;proc~exchange_dual_dir -->
+<g id="proc~~initialise_geo~~CallsGraph_edge45" class="edge">
+<title>proc~calc_dual_dir:&#45;&gt;proc~exchange_dual_dir:</title>
+<path fill="none" stroke="#000000" d="M192.27,-290.19C203.26,-284.19 216.5,-276.67 228.02,-269.3 244.65,-258.67 246.84,-253 264.02,-243.3 267.46,-241.36 271.1,-239.48 274.8,-237.7"/>
+<polygon fill="#000000" stroke="#000000" points="276.38,-240.82 284.01,-233.47 273.46,-234.46 276.38,-240.82"/>
+</g>
+<!-- proc~calc_prml_unsgnd_vlm&#45;&gt;num_elm -->
+<g id="proc~~initialise_geo~~CallsGraph_edge48" class="edge">
+<title>proc~calc_prml_unsgnd_vlm:&#45;&gt;num_elm:</title>
+<path fill="none" stroke="#000000" d="M187.86,-734.01C200.27,-725.13 216.42,-712.27 228.02,-698.3 232.99,-692.32 281.85,-601.51 304.4,-559.42"/>
+<polygon fill="#000000" stroke="#000000" points="307.53,-561.01 309.16,-550.54 301.35,-557.7 307.53,-561.01"/>
+</g>
+<!-- proc~calc_prml_unsgnd_vlm&#45;&gt;lcl_complex -->
+<g id="proc~~initialise_geo~~CallsGraph_edge47" class="edge">
+<title>proc~calc_prml_unsgnd_vlm:&#45;&gt;lcl_complex:</title>
+<path fill="none" stroke="#000000" d="M228.31,-748.51C272.54,-746.94 331.71,-737.5 369.38,-702.3 444.35,-632.25 451.92,-497.72 451.82,-444.63"/>
+<polygon fill="#000000" stroke="#000000" points="455.31,-444.55 451.7,-434.59 448.32,-444.63 455.31,-444.55"/>
+</g>
+<!-- proc~calc_prml_unsgnd_vlm&#45;&gt;proc~determinant -->
+<g id="proc~~initialise_geo~~CallsGraph_edge49" class="edge">
+<title>proc~calc_prml_unsgnd_vlm:&#45;&gt;proc~determinant:</title>
+<path fill="none" stroke="#000000" d="M228.19,-750.42C294.29,-754.17 404.67,-757.82 499.07,-748.3 507.42,-747.46 516.26,-746.05 524.72,-744.45"/>
+<polygon fill="#000000" stroke="#000000" points="525.67,-747.83 534.79,-742.42 524.29,-740.97 525.67,-747.83"/>
+</g>
+<!-- proc~determinant&#45;&gt;proc~determinant -->
+<g id="proc~~initialise_geo~~CallsGraph_edge50" class="edge">
+<title>proc~determinant:&#45;&gt;proc~determinant:</title>
+<path fill="none" stroke="#000000" d="M549.6,-746.43C542.91,-755.48 549.3,-764.6 568.78,-764.6 580.66,-764.6 587.67,-761.21 589.82,-756.52"/>
+<polygon fill="#000000" stroke="#000000" points="593.21,-755.64 587.96,-746.43 586.33,-756.9 593.21,-755.64"/>
+</g>
+<!-- proc~calc_dual_vlm_i&#45;&gt;lcl_complex -->
+<g id="proc~~initialise_geo~~CallsGraph_edge51" class="edge">
+<title>proc~calc_dual_vlm_i:&#45;&gt;lcl_complex:</title>
+<path fill="none" stroke="#000000" d="M351.13,-276.51C357.83,-280.14 364.35,-284.7 369.38,-290.3 399.83,-324.2 378.47,-349.53 405.38,-386.3 410.18,-392.85 416.46,-398.82 422.83,-403.94"/>
+<polygon fill="#000000" stroke="#000000" points="420.75,-406.75 430.85,-409.95 424.95,-401.15 420.75,-406.75"/>
+</g>
+<!-- proc~calc_unsgnd_vlm -->
+<g id="proc~~initialise_geo~~CallsGraph_node29" class="node">
+<title>proc~calc_unsgnd_vlm</title>
+<g id="a_proc~~initialise_geo~~CallsGraph_node29"><a xlink:href=".././proc/calc_unsgnd_vlm.html" xlink:title="calc_unsgnd_vlm">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="498.83,-377.4 405.63,-377.4 405.63,-353.2 498.83,-353.2 498.83,-377.4"/>
+<text text-anchor="middle" x="452.23" y="-362.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">calc_unsgnd_vlm</text>
+</a>
+</g>
+</g>
+<!-- proc~calc_dual_vlm_i&#45;&gt;proc~calc_unsgnd_vlm -->
+<g id="proc~~initialise_geo~~CallsGraph_edge52" class="edge">
+<title>proc~calc_dual_vlm_i:&#45;&gt;proc~calc_unsgnd_vlm:</title>
+<path fill="none" stroke="#000000" d="M346.37,-276.52C354.16,-280.41 362.37,-285.09 369.38,-290.3 388.05,-304.18 388.29,-312.51 405.38,-328.3 412.19,-334.58 419.91,-341.05 427.06,-346.79"/>
+<polygon fill="#000000" stroke="#000000" points="425.07,-349.68 435.09,-353.13 429.41,-344.19 425.07,-349.68"/>
+</g>
+<!-- proc~add_points_i&#45;&gt;lcl_complex -->
+<g id="proc~~initialise_geo~~CallsGraph_edge53" class="edge">
+<title>proc~add_points_i:&#45;&gt;lcl_complex:</title>
+<path fill="none" stroke="#000000" d="M352.44,-392.71C369.65,-397.86 390.58,-404.13 408.74,-409.57"/>
+<polygon fill="#000000" stroke="#000000" points="407.92,-412.98 418.5,-412.5 409.93,-406.27 407.92,-412.98"/>
+</g>
+<!-- proc~exchange_dual_dir&#45;&gt;lcl_complex -->
+<g id="proc~~initialise_geo~~CallsGraph_edge54" class="edge">
+<title>proc~exchange_dual_dir:&#45;&gt;lcl_complex:</title>
+<path fill="none" stroke="#000000" d="M357.32,-233.45C361.84,-236.13 366.02,-239.37 369.38,-243.3 411.98,-293.11 369.69,-331.33 405.38,-386.3 409.63,-392.84 415.46,-398.7 421.55,-403.7"/>
+<polygon fill="#000000" stroke="#000000" points="419.79,-406.75 429.89,-409.97 424,-401.16 419.79,-406.75"/>
+</g>
+<!-- proc~exchange_dual_dir&#45;&gt;adj_proc -->
+<g id="proc~~initialise_geo~~CallsGraph_edge59" class="edge">
+<title>proc~exchange_dual_dir:&#45;&gt;adj_proc:</title>
+<path fill="none" stroke="#000000" d="M355.61,-209.09C374.43,-203.03 397.04,-195.75 415.55,-189.79"/>
+<polygon fill="#000000" stroke="#000000" points="416.64,-193.12 425.09,-186.72 414.49,-186.45 416.64,-193.12"/>
+</g>
+<!-- proc~exchange_dual_dir&#45;&gt;mpi_waitall -->
+<g id="proc~~initialise_geo~~CallsGraph_edge55" class="edge">
+<title>proc~exchange_dual_dir:&#45;&gt;mpi_waitall:</title>
+<path fill="none" stroke="#000000" d="M352.54,-209.09C358.42,-206.31 364.27,-203.05 369.38,-199.3 389.22,-184.77 385.88,-172.27 405.38,-157.3 407.47,-155.7 409.68,-154.18 411.98,-152.73"/>
+<polygon fill="#000000" stroke="#000000" points="414.11,-155.54 421.07,-147.55 410.65,-149.46 414.11,-155.54"/>
+</g>
+<!-- proc~exchange_dual_dir&#45;&gt;mpi_request_free -->
+<g id="proc~~initialise_geo~~CallsGraph_edge56" class="edge">
+<title>proc~exchange_dual_dir:&#45;&gt;mpi_request_free:</title>
+<path fill="none" stroke="#000000" d="M355.61,-233.51C370.55,-238.32 387.88,-243.9 403.65,-248.98"/>
+<polygon fill="#000000" stroke="#000000" points="402.63,-252.33 413.23,-252.06 404.78,-245.67 402.63,-252.33"/>
+</g>
+<!-- proc~exchange_dual_dir&#45;&gt;num_send -->
+<g id="proc~~initialise_geo~~CallsGraph_edge58" class="edge">
+<title>proc~exchange_dual_dir:&#45;&gt;num_send:</title>
+<path fill="none" stroke="#000000" d="M352.54,-233.51C358.42,-236.29 364.27,-239.55 369.38,-243.3 389.22,-257.83 385.88,-270.33 405.38,-285.3 407.68,-287.06 410.14,-288.74 412.69,-290.31"/>
+<polygon fill="#000000" stroke="#000000" points="411.12,-293.45 421.55,-295.3 414.55,-287.35 411.12,-293.45"/>
+</g>
+<!-- proc~exchange_dual_dir&#45;&gt;mpi_barrier -->
+<g id="proc~~initialise_geo~~CallsGraph_edge57" class="edge">
+<title>proc~exchange_dual_dir:&#45;&gt;mpi_barrier:</title>
+<path fill="none" stroke="#000000" d="M355.98,-209.07C360.88,-206.39 365.53,-203.16 369.38,-199.3 398.37,-170.26 377.06,-143.98 405.38,-114.3 407.14,-112.46 409.09,-110.75 411.16,-109.17"/>
+<polygon fill="#000000" stroke="#000000" points="413.11,-112.07 419.6,-103.7 409.3,-106.2 413.11,-112.07"/>
+</g>
+<!-- proc~exchange_dual_dir&#45;&gt;num_recv -->
+<g id="proc~~initialise_geo~~CallsGraph_edge60" class="edge">
+<title>proc~exchange_dual_dir:&#45;&gt;num_recv:</title>
+<path fill="none" stroke="#000000" d="M367.04,-221.3C382.08,-221.3 398.38,-221.3 412.6,-221.3"/>
+<polygon fill="#000000" stroke="#000000" points="413.02,-224.8 423.02,-221.3 413.02,-217.8 413.02,-224.8"/>
+</g>
+<!-- proc~calc_unsgnd_vlm&#45;&gt;proc~determinant -->
+<g id="proc~~initialise_geo~~CallsGraph_edge61" class="edge">
+<title>proc~calc_unsgnd_vlm:&#45;&gt;proc~determinant:</title>
+<path fill="none" stroke="#000000" d="M474.76,-377.51C483.58,-383.57 493.1,-391.66 499.07,-401.3 562.58,-503.9 568.48,-654.97 568.27,-711.69"/>
+<polygon fill="#000000" stroke="#000000" points="564.77,-711.98 568.16,-722.02 571.77,-712.06 564.77,-711.98"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="552pt" height="33pt"
+ viewBox="0.00 0.00 552.39 32.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28.6)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28.6 548.39,-28.6 548.39,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="62.65,-24.4 0.12,-24.4 0.12,-0.2 62.65,-0.2 62.65,-24.4"/>
+<text text-anchor="middle" x="31.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="134.38,-24.4 80.38,-24.4 80.38,-0.2 134.38,-0.2 134.38,-24.4"/>
+<text text-anchor="middle" x="107.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="206.38,-24.4 152.38,-24.4 152.38,-0.2 206.38,-0.2 206.38,-24.4"/>
+<text text-anchor="middle" x="179.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="358.24,-24.4 224.52,-24.4 224.52,-0.2 358.24,-0.2 358.24,-24.4"/>
+<text text-anchor="middle" x="291.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="430.38,-24.4 376.38,-24.4 376.38,-0.2 430.38,-0.2 430.38,-24.4"/>
+<text text-anchor="middle" x="403.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="544.39,-24.4 448.38,-24.4 448.38,-0.2 544.39,-0.2 544.39,-24.4"/>
+<text text-anchor="middle" x="496.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a procedure to one which it calls. Dashed 
+    arrows point from an interface to procedures which implement that interface.
+    This could include the module procedures in a generic interface or the
+    implementation in a submodule of an interface in a parent module.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+     
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/initialise_geo.html#variable-str">str</a>
+      
+      <a class="list-group-item" href="../proc/initialise_geo.html#variable-i%7E61">i</a>
+      
+      <a class="list-group-item" href="../proc/initialise_geo.html#variable-k%7E32">k</a>
+      
+      <a class="list-group-item" href="../proc/initialise_geo.html#variable-absminv">absminV</a>
+      
+      <a class="list-group-item" href="../proc/initialise_geo.html#variable-maxv">maxV</a>
+      
+      <a class="list-group-item" href="../proc/initialise_geo.html#variable-minv">minV</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    <section>    
+      <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-str"></span>character(len=slen),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>str</strong></td><td></td><td></td><td><p>string for writing to log file</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-i%7E61"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>i</strong></td><td></td><td></td><td><p>loop counters</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-k%7E32"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>k</strong></td><td></td><td></td><td><p>loop counters</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-absminv"></span>real(kind=iwp),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>absminV</strong></td><td></td><td></td><td><p>min/max volumes</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-maxv"></span>real(kind=iwp),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>maxV</strong></td><td></td><td></td><td><p>min/max volumes</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-minv"></span>real(kind=iwp),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>minV</strong></td><td></td><td></td><td><p>min/max volumes</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 <a rel="license" href="http://www.freebsd.org/copyright/freebsd-doc-license.html">FreeBSD Documentation License</a>
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> ParaGEMS was developed by Pieter Boom</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

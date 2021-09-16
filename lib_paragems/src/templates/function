@@ -1,0 +1,50 @@
+!
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!/****/f* [module_name/function_name]
+!* SYNOPSIS
+MODULE [function_name]
+!* PURPOSE
+!*   [purpose]
+!* ASSUMPTION
+!*   [assumption]
+!* INPUTS
+!*   Name                    Description
+!*   [input name]            [purpose]
+!* OUTPUTS
+!*   Name                    Description
+!*   [output name]           [purpose]
+!* SIDE EFFECTS
+!*   - [side_effects]
+!* AUTHOR
+!*   [author]
+!* MODIFICATION HISTORY
+!*   [date_created]: Created ([author_initials])
+!* COPYRIGHT
+!*   (c) University of Manchester
+!* NOTES
+!*   [notes]
+!******/
+!> author: [author]
+!> date: [date_created]
+!> [Module description]
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    IMPLICIT NONE
+
+    !-- arguments --
+    !type, intent() :: var_name    !> [description]
+
+    !-- local variables --
+    !type :: var_name    !> [description]
+
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+! MAIN EXECUTION
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+      !-- comment --
+
+
+  END function
+! [module_name/function_name]
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!

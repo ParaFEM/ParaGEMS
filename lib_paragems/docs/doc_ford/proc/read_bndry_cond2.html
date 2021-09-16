@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <meta name="description" content="Documentation for ParaGEMS">
+   
+    <meta name="author" content="Pieter Boom" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>read_bndry_cond2 &ndash; ParaGEMS</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">ParaGEMS </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li><a href='../page/index.html'>README</a></li>
+      
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            <li><a href="../lists/programs.html">Programs</a></li>
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>read_bndry_cond2
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     <li><i class="fa fa-pencil"></i> Pieter Boom</li>
+     
+     
+    <li><i class="fa fa-calendar-o"></i> 2019/08/23</li>
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 2.3% of total for procedures.">103 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/io_mod.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/io_mod.f90.html'>io_mod.f90</a></li>
+    
+     <li><a href='../module/io_mod.html'>io_mod</a></li>
+    
+  
+     <li class="active">read_bndry_cond2</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-fname%7E6">fname</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-buffer_size%7E4">buffer_size</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-fib">fib</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-i%7E9">i</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-ie%7E2">ie</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-iib">iib</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-in%7E2">in</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-int_buffer%7E4">int_buffer</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-j%7E6">j</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-junk%7E7">junk</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-k%7E7">k</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-l">l</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-max_read_size">max_read_size</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-node_indices%7E2">node_indices</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-num_read_iters">num_read_iters</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-orient">orient</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-prml_elm%7E2">prml_elm</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-proc%7E2">proc</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-proc_old%7E2">proc_old</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-ptr%7E5">ptr</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-read_size">read_size</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-req%7E5">req</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-resid_read_size">resid_read_size</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-status%7E6">status</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-stride">stride</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-strt_indx">strt_indx</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+public subroutine read_bndry_cond2()
+    
+    
+   
+</h2>
+    
+  
+
+
+    
+    <p>Read boundary conditions from file</p>
+    
+
+    <h3>Arguments</h3>
+    
+    <em>None</em>
+    <br>
+    
+    
+    
+    <br>
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Calls</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: proc~~read_bndry_cond2~~CallsGraph Pages: 1 -->
+<svg id="procread_bndry_cond2CallsGraph" width="345pt" height="242pt"
+ viewBox="0.00 0.00 344.74 241.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~read_bndry_cond2~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 237.6)">
+<title>proc~~read_bndry_cond2~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-237.6 340.74,-237.6 340.74,4 -4,4"/>
+<!-- proc~read_bndry_cond2 -->
+<g id="proc~~read_bndry_cond2~~CallsGraph_node1" class="node">
+<title>proc~read_bndry_cond2</title>
+<polygon fill="none" stroke="black" points="99.3,-131.4 0.23,-131.4 0.23,-107.2 99.3,-107.2 99.3,-131.4"/>
+<text text-anchor="middle" x="49.77" y="-116.15" font-family="Helvetica,sans-Serif" font-size="10.50">read_bndry_cond2</text>
+</g>
+<!-- proc~root_open_file_read -->
+<g id="proc~~read_bndry_cond2~~CallsGraph_node2" class="node">
+<title>proc~root_open_file_read</title>
+<g id="a_proc~~read_bndry_cond2~~CallsGraph_node2"><a xlink:href=".././proc/root_open_file_read.html" xlink:title="root_open_file_read">
+<polygon fill="#d9534f" stroke="#d9534f" points="241.09,-233.4 135.35,-233.4 135.35,-209.2 241.09,-209.2 241.09,-233.4"/>
+<text text-anchor="middle" x="188.22" y="-218.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">root_open_file_read</text>
+</a>
+</g>
+</g>
+<!-- proc~read_bndry_cond2&#45;&gt;proc~root_open_file_read -->
+<g id="proc~~read_bndry_cond2~~CallsGraph_edge1" class="edge">
+<title>proc~read_bndry_cond2:&#45;&gt;proc~root_open_file_read:</title>
+<path fill="none" stroke="#000000" d="M62.27,-131.46C77.84,-147.45 106.96,-175.81 135.53,-195.3 140.2,-198.48 145.31,-201.52 150.45,-204.33"/>
+<polygon fill="#000000" stroke="#000000" points="149.14,-207.59 159.63,-209.11 152.37,-201.38 149.14,-207.59"/>
+</g>
+<!-- mpi_bcast -->
+<g id="proc~~read_bndry_cond2~~CallsGraph_node3" class="node">
+<title>mpi_bcast</title>
+<polygon fill="#777777" stroke="#777777" points="336.66,-213.4 276.98,-213.4 276.98,-189.2 336.66,-189.2 336.66,-213.4"/>
+<text text-anchor="middle" x="306.82" y="-198.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_bcast</text>
+</g>
+<!-- proc~read_bndry_cond2&#45;&gt;mpi_bcast -->
+<g id="proc~~read_bndry_cond2~~CallsGraph_edge2" class="edge">
+<title>proc~read_bndry_cond2:&#45;&gt;mpi_bcast:</title>
+<path fill="none" stroke="#000000" d="M71.38,-131.56C88.16,-141.09 112.73,-154.04 135.53,-162.3 179.21,-178.11 231.58,-188.96 266.6,-195.13"/>
+<polygon fill="#000000" stroke="#000000" points="266.44,-198.65 276.89,-196.89 267.62,-191.75 266.44,-198.65"/>
+</g>
+<!-- lcl_complex -->
+<g id="proc~~read_bndry_cond2~~CallsGraph_node4" class="node">
+<title>lcl_complex</title>
+<polygon fill="#777777" stroke="#777777" points="221.55,-153.4 154.88,-153.4 154.88,-129.2 221.55,-129.2 221.55,-153.4"/>
+<text text-anchor="middle" x="188.22" y="-138.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lcl_complex</text>
+</g>
+<!-- proc~read_bndry_cond2&#45;&gt;lcl_complex -->
+<g id="proc~~read_bndry_cond2~~CallsGraph_edge3" class="edge">
+<title>proc~read_bndry_cond2:&#45;&gt;lcl_complex:</title>
+<path fill="none" stroke="#000000" d="M99.64,-127.18C114.41,-129.56 130.5,-132.16 144.81,-134.46"/>
+<polygon fill="#000000" stroke="#000000" points="144.44,-137.95 154.87,-136.08 145.55,-131.04 144.44,-137.95"/>
+</g>
+<!-- mpi_barrier -->
+<g id="proc~~read_bndry_cond2~~CallsGraph_node5" class="node">
+<title>mpi_barrier</title>
+<polygon fill="#777777" stroke="#777777" points="220.79,-110.4 155.64,-110.4 155.64,-86.2 220.79,-86.2 220.79,-110.4"/>
+<text text-anchor="middle" x="188.22" y="-95.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_barrier</text>
+</g>
+<!-- proc~read_bndry_cond2&#45;&gt;mpi_barrier -->
+<g id="proc~~read_bndry_cond2~~CallsGraph_edge4" class="edge">
+<title>proc~read_bndry_cond2:&#45;&gt;mpi_barrier:</title>
+<path fill="none" stroke="#000000" d="M99.64,-111.78C114.54,-109.49 130.77,-106.99 145.17,-104.77"/>
+<polygon fill="#000000" stroke="#000000" points="145.93,-108.2 155.28,-103.22 144.87,-101.28 145.93,-108.2"/>
+</g>
+<!-- num_elm -->
+<g id="proc~~read_bndry_cond2~~CallsGraph_node6" class="node">
+<title>num_elm</title>
+<polygon fill="#777777" stroke="#777777" points="215.89,-67.4 160.55,-67.4 160.55,-43.2 215.89,-43.2 215.89,-67.4"/>
+<text text-anchor="middle" x="188.22" y="-52.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">num_elm</text>
+</g>
+<!-- proc~read_bndry_cond2&#45;&gt;num_elm -->
+<g id="proc~~read_bndry_cond2~~CallsGraph_edge5" class="edge">
+<title>proc~read_bndry_cond2:&#45;&gt;num_elm:</title>
+<path fill="none" stroke="#000000" d="M74.34,-107.16C91.25,-98.57 114.65,-86.91 135.53,-77.3 140.57,-74.98 145.92,-72.61 151.2,-70.32"/>
+<polygon fill="#000000" stroke="#000000" points="152.72,-73.47 160.53,-66.31 149.96,-67.04 152.72,-73.47"/>
+</g>
+<!-- glb_num_elm -->
+<g id="proc~~read_bndry_cond2~~CallsGraph_node7" class="node">
+<title>glb_num_elm</title>
+<polygon fill="#777777" stroke="#777777" points="225.73,-24.4 150.71,-24.4 150.71,-0.2 225.73,-0.2 225.73,-24.4"/>
+<text text-anchor="middle" x="188.22" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">glb_num_elm</text>
+</g>
+<!-- proc~read_bndry_cond2&#45;&gt;glb_num_elm -->
+<g id="proc~~read_bndry_cond2~~CallsGraph_edge6" class="edge">
+<title>proc~read_bndry_cond2:&#45;&gt;glb_num_elm:</title>
+<path fill="none" stroke="#000000" d="M60.28,-107.13C74.85,-89.17 104.29,-55.43 135.53,-34.3 138.28,-32.44 141.21,-30.69 144.22,-29.05"/>
+<polygon fill="#000000" stroke="#000000" points="146.04,-32.05 153.42,-24.46 142.91,-25.79 146.04,-32.05"/>
+</g>
+<!-- proc~root_open_file_read&#45;&gt;mpi_bcast -->
+<g id="proc~~read_bndry_cond2~~CallsGraph_edge7" class="edge">
+<title>proc~root_open_file_read:&#45;&gt;mpi_bcast:</title>
+<path fill="none" stroke="#000000" d="M241.04,-212.41C249.68,-210.93 258.51,-209.41 266.76,-208"/>
+<polygon fill="#000000" stroke="#000000" points="267.58,-211.41 276.85,-206.27 266.4,-204.51 267.58,-211.41"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="552pt" height="33pt"
+ viewBox="0.00 0.00 552.39 32.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28.6)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28.6 548.39,-28.6 548.39,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="62.65,-24.4 0.12,-24.4 0.12,-0.2 62.65,-0.2 62.65,-24.4"/>
+<text text-anchor="middle" x="31.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="134.38,-24.4 80.38,-24.4 80.38,-0.2 134.38,-0.2 134.38,-24.4"/>
+<text text-anchor="middle" x="107.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="206.38,-24.4 152.38,-24.4 152.38,-0.2 206.38,-0.2 206.38,-24.4"/>
+<text text-anchor="middle" x="179.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="358.24,-24.4 224.52,-24.4 224.52,-0.2 358.24,-0.2 358.24,-24.4"/>
+<text text-anchor="middle" x="291.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="430.38,-24.4 376.38,-24.4 376.38,-0.2 430.38,-0.2 430.38,-24.4"/>
+<text text-anchor="middle" x="403.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="544.39,-24.4 448.38,-24.4 448.38,-0.2 544.39,-0.2 544.39,-24.4"/>
+<text text-anchor="middle" x="496.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a procedure to one which it calls. Dashed 
+    arrows point from an interface to procedures which implement that interface.
+    This could include the module procedures in a generic interface or the
+    implementation in a submodule of an interface in a parent module.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+     
+     
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Called by</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: proc~~read_bndry_cond2~~CalledByGraph Pages: 1 -->
+<svg id="procread_bndry_cond2CalledByGraph" width="349pt" height="248pt"
+ viewBox="0.00 0.00 349.40 247.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~read_bndry_cond2~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 243.6)">
+<title>proc~~read_bndry_cond2~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-243.6 345.4,-243.6 345.4,4 -4,4"/>
+<!-- proc~read_bndry_cond2 -->
+<g id="proc~~read_bndry_cond2~~CalledByGraph_node1" class="node">
+<title>proc~read_bndry_cond2</title>
+<polygon fill="none" stroke="black" points="341.17,-110.4 242.1,-110.4 242.1,-86.2 341.17,-86.2 341.17,-110.4"/>
+<text text-anchor="middle" x="291.63" y="-95.15" font-family="Helvetica,sans-Serif" font-size="10.50">read_bndry_cond2</text>
+</g>
+<!-- proc~get_rhs_darcy -->
+<g id="proc~~read_bndry_cond2~~CalledByGraph_node2" class="node">
+<title>proc~get_rhs_darcy</title>
+<g id="a_proc~~read_bndry_cond2~~CalledByGraph_node2"><a xlink:href=".././proc/get_rhs_darcy.html" xlink:title="get_RHS_darcy">
+<polygon fill="#d9534f" stroke="#d9534f" points="203,-153.4 116.8,-153.4 116.8,-129.2 203,-129.2 203,-153.4"/>
+<text text-anchor="middle" x="159.9" y="-138.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_RHS_darcy</text>
+</a>
+</g>
+</g>
+<!-- proc~get_rhs_darcy&#45;&gt;proc~read_bndry_cond2 -->
+<g id="proc~~read_bndry_cond2~~CalledByGraph_edge1" class="edge">
+<title>proc~get_rhs_darcy:&#45;&gt;proc~read_bndry_cond2:</title>
+<path fill="none" stroke="#000000" d="M197.73,-129.09C212.11,-124.33 228.76,-118.81 243.97,-113.77"/>
+<polygon fill="#000000" stroke="#000000" points="245.32,-117.01 253.71,-110.54 243.12,-110.36 245.32,-117.01"/>
+</g>
+<!-- proc~get_rhs_darcy2 -->
+<g id="proc~~read_bndry_cond2~~CalledByGraph_node3" class="node">
+<title>proc~get_rhs_darcy2</title>
+<g id="a_proc~~read_bndry_cond2~~CalledByGraph_node3"><a xlink:href=".././proc/get_rhs_darcy2.html" xlink:title="get_RHS_darcy2">
+<polygon fill="#d9534f" stroke="#d9534f" points="205.83,-67.4 113.96,-67.4 113.96,-43.2 205.83,-43.2 205.83,-67.4"/>
+<text text-anchor="middle" x="159.9" y="-52.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_RHS_darcy2</text>
+</a>
+</g>
+</g>
+<!-- proc~get_rhs_darcy2&#45;&gt;proc~read_bndry_cond2 -->
+<g id="proc~~read_bndry_cond2~~CalledByGraph_edge2" class="edge">
+<title>proc~get_rhs_darcy2:&#45;&gt;proc~read_bndry_cond2:</title>
+<path fill="none" stroke="#000000" d="M197.73,-67.51C212.11,-72.27 228.76,-77.79 243.97,-82.83"/>
+<polygon fill="#000000" stroke="#000000" points="243.12,-86.24 253.71,-86.06 245.32,-79.59 243.12,-86.24"/>
+</g>
+<!-- program~darcy_1f -->
+<g id="proc~~read_bndry_cond2~~CalledByGraph_node4" class="node">
+<title>program~darcy_1f</title>
+<g id="a_proc~~read_bndry_cond2~~CalledByGraph_node4"><a xlink:href=".././program/darcy_1f.html" xlink:title="darcy_1f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="65.97,-239.4 11.97,-239.4 11.97,-215.2 65.97,-215.2 65.97,-239.4"/>
+<text text-anchor="middle" x="38.97" y="-224.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_1f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_1f&#45;&gt;proc~get_rhs_darcy -->
+<g id="proc~~read_bndry_cond2~~CalledByGraph_edge6" class="edge">
+<title>program~darcy_1f:&#45;&gt;proc~get_rhs_darcy:</title>
+<path fill="none" stroke="#000000" d="M62.38,-215.03C67.57,-211.99 73.02,-208.64 77.93,-205.3 98.75,-191.15 121.11,-173.25 137.04,-159.98"/>
+<polygon fill="#000000" stroke="#000000" points="139.34,-162.62 144.75,-153.51 134.84,-157.26 139.34,-162.62"/>
+</g>
+<!-- program~darcy_2f -->
+<g id="proc~~read_bndry_cond2~~CalledByGraph_node5" class="node">
+<title>program~darcy_2f</title>
+<g id="a_proc~~read_bndry_cond2~~CalledByGraph_node5"><a xlink:href=".././program/darcy_2f.html" xlink:title="darcy_2f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="65.97,-67.4 11.97,-67.4 11.97,-43.2 65.97,-43.2 65.97,-67.4"/>
+<text text-anchor="middle" x="38.97" y="-52.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_2f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_2f&#45;&gt;proc~get_rhs_darcy2 -->
+<g id="proc~~read_bndry_cond2~~CalledByGraph_edge7" class="edge">
+<title>program~darcy_2f:&#45;&gt;proc~get_rhs_darcy2:</title>
+<path fill="none" stroke="#000000" d="M66.07,-55.3C77.07,-55.3 90.33,-55.3 103.34,-55.3"/>
+<polygon fill="#000000" stroke="#000000" points="103.68,-58.8 113.68,-55.3 103.68,-51.8 103.68,-58.8"/>
+</g>
+<!-- program~darcy -->
+<g id="proc~~read_bndry_cond2~~CalledByGraph_node6" class="node">
+<title>program~darcy</title>
+<g id="a_proc~~read_bndry_cond2~~CalledByGraph_node6"><a xlink:href=".././program/darcy.html" xlink:title="darcy">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="65.97,-196.4 11.97,-196.4 11.97,-172.2 65.97,-172.2 65.97,-196.4"/>
+<text text-anchor="middle" x="38.97" y="-181.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy</text>
+</a>
+</g>
+</g>
+<!-- program~darcy&#45;&gt;proc~get_rhs_darcy -->
+<g id="proc~~read_bndry_cond2~~CalledByGraph_edge5" class="edge">
+<title>program~darcy:&#45;&gt;proc~get_rhs_darcy:</title>
+<path fill="none" stroke="#000000" d="M66.07,-174.86C80.58,-169.61 99.03,-162.95 115.64,-156.94"/>
+<polygon fill="#000000" stroke="#000000" points="116.95,-160.19 125.17,-153.49 114.57,-153.6 116.95,-160.19"/>
+</g>
+<!-- program~darcy_crkp_1f -->
+<g id="proc~~read_bndry_cond2~~CalledByGraph_node7" class="node">
+<title>program~darcy_crkp_1f</title>
+<g id="a_proc~~read_bndry_cond2~~CalledByGraph_node7"><a xlink:href=".././program/darcy_crkp_1f.html" xlink:title="darcy_crkp_1f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="77.9,-153.4 0.03,-153.4 0.03,-129.2 77.9,-129.2 77.9,-153.4"/>
+<text text-anchor="middle" x="38.97" y="-138.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_1f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_crkp_1f&#45;&gt;proc~get_rhs_darcy -->
+<g id="proc~~read_bndry_cond2~~CalledByGraph_edge4" class="edge">
+<title>program~darcy_crkp_1f:&#45;&gt;proc~get_rhs_darcy:</title>
+<path fill="none" stroke="#000000" d="M77.92,-141.3C87.01,-141.3 96.87,-141.3 106.48,-141.3"/>
+<polygon fill="#000000" stroke="#000000" points="106.76,-144.8 116.76,-141.3 106.76,-137.8 106.76,-144.8"/>
+</g>
+<!-- program~darcy_crkp_2f~2 -->
+<g id="proc~~read_bndry_cond2~~CalledByGraph_node8" class="node">
+<title>program~darcy_crkp_2f~2</title>
+<g id="a_proc~~read_bndry_cond2~~CalledByGraph_node8"><a xlink:href=".././program/darcy_crkp_2f%7E2.html" xlink:title="darcy_crkp_2f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="77.9,-110.4 0.03,-110.4 0.03,-86.2 77.9,-86.2 77.9,-110.4"/>
+<text text-anchor="middle" x="38.97" y="-95.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_2f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_crkp_2f~2&#45;&gt;proc~get_rhs_darcy -->
+<g id="proc~~read_bndry_cond2~~CalledByGraph_edge3" class="edge">
+<title>program~darcy_crkp_2f~2:&#45;&gt;proc~get_rhs_darcy:</title>
+<path fill="none" stroke="#000000" d="M73.73,-110.51C86.66,-115.18 101.6,-120.58 115.32,-125.54"/>
+<polygon fill="#000000" stroke="#000000" points="114.46,-128.95 125.05,-129.06 116.84,-122.37 114.46,-128.95"/>
+</g>
+<!-- program~darcy_crkp_2f -->
+<g id="proc~~read_bndry_cond2~~CalledByGraph_node9" class="node">
+<title>program~darcy_crkp_2f</title>
+<g id="a_proc~~read_bndry_cond2~~CalledByGraph_node9"><a xlink:href=".././program/darcy_crkp_2f.html" xlink:title="darcy_crkp_2f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="77.9,-24.4 0.03,-24.4 0.03,-0.2 77.9,-0.2 77.9,-24.4"/>
+<text text-anchor="middle" x="38.97" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_2f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_crkp_2f&#45;&gt;proc~get_rhs_darcy2 -->
+<g id="proc~~read_bndry_cond2~~CalledByGraph_edge8" class="edge">
+<title>program~darcy_crkp_2f:&#45;&gt;proc~get_rhs_darcy2:</title>
+<path fill="none" stroke="#000000" d="M73.73,-24.51C86.66,-29.18 101.6,-34.58 115.32,-39.54"/>
+<polygon fill="#000000" stroke="#000000" points="114.46,-42.95 125.05,-43.06 116.84,-36.37 114.46,-42.95"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="552pt" height="33pt"
+ viewBox="0.00 0.00 552.39 32.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28.6)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28.6 548.39,-28.6 548.39,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="62.65,-24.4 0.12,-24.4 0.12,-0.2 62.65,-0.2 62.65,-24.4"/>
+<text text-anchor="middle" x="31.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="134.38,-24.4 80.38,-24.4 80.38,-0.2 134.38,-0.2 134.38,-24.4"/>
+<text text-anchor="middle" x="107.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="206.38,-24.4 152.38,-24.4 152.38,-0.2 206.38,-0.2 206.38,-24.4"/>
+<text text-anchor="middle" x="179.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="358.24,-24.4 224.52,-24.4 224.52,-0.2 358.24,-0.2 358.24,-24.4"/>
+<text text-anchor="middle" x="291.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="430.38,-24.4 376.38,-24.4 376.38,-0.2 430.38,-0.2 430.38,-24.4"/>
+<text text-anchor="middle" x="403.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="544.39,-24.4 448.38,-24.4 448.38,-0.2 544.39,-0.2 544.39,-24.4"/>
+<text text-anchor="middle" x="496.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a procedure to one which it calls. Dashed 
+    arrows point from an interface to procedures which implement that interface.
+    This could include the module procedures in a generic interface or the
+    implementation in a submodule of an interface in a parent module.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-fname%7E6">fname</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-buffer_size%7E4">buffer_size</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-fib">fib</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-i%7E9">i</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-ie%7E2">ie</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-iib">iib</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-in%7E2">in</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-int_buffer%7E4">int_buffer</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-j%7E6">j</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-junk%7E7">junk</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-k%7E7">k</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-l">l</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-max_read_size">max_read_size</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-node_indices%7E2">node_indices</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-num_read_iters">num_read_iters</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-orient">orient</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-prml_elm%7E2">prml_elm</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-proc%7E2">proc</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-proc_old%7E2">proc_old</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-ptr%7E5">ptr</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-read_size">read_size</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-req%7E5">req</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-resid_read_size">resid_read_size</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-status%7E6">status</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-stride">stride</a>
+      
+      <a class="list-group-item" href="../proc/read_bndry_cond2.html#variable-strt_indx">strt_indx</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    <section>    
+      <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-fname%7E6"></span>character(len=slen),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>fname</strong></td><td></td><td></td><td><p>file name</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-buffer_size%7E4"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>buffer_size</strong></td><td></td><td></td><td><p>size of MPI comm buffer</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-fib"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>fib</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-i%7E9"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>i</strong></td><td></td><td></td><td><p>loop indices (procs,elems)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ie%7E2"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>ie</strong></td><td></td><td></td><td><p>loop indices (procs,elems)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-iib"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>iib</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-in%7E2"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>in</strong></td><td></td><td></td><td><p>loop indices (procs,elems)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-int_buffer%7E4"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>ALLOCATABLE</td><td>::</td>
+  <td><strong>int_buffer</strong>(:)</td><td></td><td></td><td><p>integer buffer for MPI comms</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-j%7E6"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>j</strong></td><td></td><td></td><td><p>loop indices (procs,elems)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-junk%7E7"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>junk</strong></td><td></td><td></td><td><p>junk IO variable</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-k%7E7"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>k</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-l"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>l</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-max_read_size"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>max_read_size</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-node_indices%7E2"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>ALLOCATABLE</td><td>::</td>
+  <td><strong>node_indices</strong>(:)</td><td></td><td></td><td><p>junk IO variable for node indicies</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-num_read_iters"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>num_read_iters</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-orient"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>orient</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prml_elm%7E2"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>ALLOCATABLE</td><td>::</td>
+  <td><strong>prml_elm</strong>(:,:)</td><td></td><td></td><td><p>primal element list</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-proc%7E2"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>proc</strong></td><td></td><td></td><td><p>processor rank (current, past)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-proc_old%7E2"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>proc_old</strong></td><td></td><td></td><td><p>processor rank (current, past)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ptr%7E5"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>ptr</strong></td><td></td><td></td><td><p>pointer</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-read_size"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>read_size</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-req%7E5"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>ALLOCATABLE</td><td>::</td>
+  <td><strong>req</strong>(:)</td><td></td><td></td><td><p>request variable for non-blocking comms</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-resid_read_size"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>resid_read_size</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-status%7E6"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>ALLOCATABLE</td><td>::</td>
+  <td><strong>status</strong>(:)</td><td></td><td></td><td><p>size of MPI comm buffer</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-stride"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>stride</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-strt_indx"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>strt_indx</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 <a rel="license" href="http://www.freebsd.org/copyright/freebsd-doc-license.html">FreeBSD Documentation License</a>
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> ParaGEMS was developed by Pieter Boom</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

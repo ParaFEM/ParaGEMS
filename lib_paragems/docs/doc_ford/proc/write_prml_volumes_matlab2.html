@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <meta name="description" content="Documentation for ParaGEMS">
+   
+    <meta name="author" content="Pieter Boom" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>write_prml_volumes_MATLAB2 &ndash; ParaGEMS</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">ParaGEMS </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li><a href='../page/index.html'>README</a></li>
+      
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            <li><a href="../lists/programs.html">Programs</a></li>
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>write_prml_volumes_MATLAB2
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     <li><i class="fa fa-pencil"></i> Pieter Boom</li>
+     
+     
+    <li><i class="fa fa-calendar-o"></i> 2019/08/23</li>
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 0.5% of total for procedures.">25 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/io_mod.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/io_mod.f90.html'>io_mod.f90</a></li>
+    
+     <li><a href='../module/io_mod.html'>io_mod</a></li>
+    
+  
+     <li class="active">write_prml_volumes_MATLAB2</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/write_prml_volumes_matlab2.html#variable-fname%7E20">fname</a>
+      
+      <a class="list-group-item" href="../proc/write_prml_volumes_matlab2.html#variable-i%7E19">i</a>
+      
+      <a class="list-group-item" href="../proc/write_prml_volumes_matlab2.html#variable-id%7E5">id</a>
+      
+      <a class="list-group-item" href="../proc/write_prml_volumes_matlab2.html#variable-m%7E2">m</a>
+      
+      <a class="list-group-item" href="../proc/write_prml_volumes_matlab2.html#variable-work%7E7">work</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+public subroutine write_prml_volumes_MATLAB2()
+    
+    
+   
+</h2>
+    
+  
+
+
+    
+    <p>write primary volumes to file in MATLAB format</p>
+    
+
+    <h3>Arguments</h3>
+    
+    <em>None</em>
+    <br>
+    
+    
+    
+    <br>
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Calls</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: proc~~write_prml_volumes_matlab2~~CallsGraph Pages: 1 -->
+<svg id="procwrite_prml_volumes_matlab2CallsGraph" width="323pt" height="506pt"
+ viewBox="0.00 0.00 322.94 505.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 501.6)">
+<title>proc~~write_prml_volumes_matlab2~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-501.6 318.94,-501.6 318.94,4 -4,4"/>
+<!-- proc~write_prml_volumes_matlab2 -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_node1" class="node">
+<title>proc~write_prml_volumes_matlab2</title>
+<polygon fill="none" stroke="black" points="159.01,-260.4 -0,-260.4 -0,-236.2 159.01,-236.2 159.01,-260.4"/>
+<text text-anchor="middle" x="79.5" y="-245.15" font-family="Helvetica,sans-Serif" font-size="10.50">write_prml_volumes_MATLAB2</text>
+</g>
+<!-- petscviewerpushformat -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_node2" class="node">
+<title>petscviewerpushformat</title>
+<polygon fill="#777777" stroke="#777777" points="314.91,-497.4 195.04,-497.4 195.04,-473.2 314.91,-473.2 314.91,-497.4"/>
+<text text-anchor="middle" x="254.97" y="-482.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">petscviewerpushformat</text>
+</g>
+<!-- proc~write_prml_volumes_matlab2&#45;&gt;petscviewerpushformat -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_edge1" class="edge">
+<title>proc~write_prml_volumes_matlab2:&#45;&gt;petscviewerpushformat:</title>
+<path fill="none" stroke="#000000" d="M83.65,-260.44C93.62,-296.57 127.88,-404.51 195.01,-463.3 196.95,-465 199.03,-466.57 201.22,-468.03"/>
+<polygon fill="#000000" stroke="#000000" points="199.64,-471.16 210.06,-473.08 203.12,-465.08 199.64,-471.16"/>
+</g>
+<!-- veccreatempi -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_node3" class="node">
+<title>veccreatempi</title>
+<polygon fill="#777777" stroke="#777777" points="292.4,-454.4 217.55,-454.4 217.55,-430.2 292.4,-430.2 292.4,-454.4"/>
+<text text-anchor="middle" x="254.97" y="-439.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">veccreatempi</text>
+</g>
+<!-- proc~write_prml_volumes_matlab2&#45;&gt;veccreatempi -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_edge2" class="edge">
+<title>proc~write_prml_volumes_matlab2:&#45;&gt;veccreatempi:</title>
+<path fill="none" stroke="#000000" d="M85.46,-260.62C98.62,-291.8 137.38,-374.62 195.01,-420.3 199.02,-423.48 203.55,-426.24 208.26,-428.62"/>
+<polygon fill="#000000" stroke="#000000" points="206.91,-431.85 217.47,-432.74 209.77,-425.46 206.91,-431.85"/>
+</g>
+<!-- vecassemblyend -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_node4" class="node">
+<title>vecassemblyend</title>
+<polygon fill="#777777" stroke="#777777" points="300.16,-411.4 209.79,-411.4 209.79,-387.2 300.16,-387.2 300.16,-411.4"/>
+<text text-anchor="middle" x="254.97" y="-396.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">vecassemblyend</text>
+</g>
+<!-- proc~write_prml_volumes_matlab2&#45;&gt;vecassemblyend -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_edge6" class="edge">
+<title>proc~write_prml_volumes_matlab2:&#45;&gt;vecassemblyend:</title>
+<path fill="none" stroke="#000000" d="M88.45,-260.77C105.19,-286.13 146.6,-344.11 195.01,-377.3 197.89,-379.28 200.97,-381.1 204.15,-382.78"/>
+<polygon fill="#000000" stroke="#000000" points="202.8,-386.01 213.33,-387.15 205.81,-379.69 202.8,-386.01"/>
+</g>
+<!-- glb_num_elm -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_node5" class="node">
+<title>glb_num_elm</title>
+<polygon fill="#777777" stroke="#777777" points="292.48,-368.4 217.46,-368.4 217.46,-344.2 292.48,-344.2 292.48,-368.4"/>
+<text text-anchor="middle" x="254.97" y="-353.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">glb_num_elm</text>
+</g>
+<!-- proc~write_prml_volumes_matlab2&#45;&gt;glb_num_elm -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_edge12" class="edge">
+<title>proc~write_prml_volumes_matlab2:&#45;&gt;glb_num_elm:</title>
+<path fill="none" stroke="#000000" d="M94.06,-260.56C114.64,-278.65 155.53,-312.7 195.01,-334.3 199.16,-336.57 203.6,-338.71 208.11,-340.68"/>
+<polygon fill="#000000" stroke="#000000" points="206.8,-343.93 217.38,-344.52 209.48,-337.46 206.8,-343.93"/>
+</g>
+<!-- petscviewerdestroy -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_node6" class="node">
+<title>petscviewerdestroy</title>
+<polygon fill="#777777" stroke="#777777" points="305.82,-325.4 204.13,-325.4 204.13,-301.2 305.82,-301.2 305.82,-325.4"/>
+<text text-anchor="middle" x="254.97" y="-310.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">petscviewerdestroy</text>
+</g>
+<!-- proc~write_prml_volumes_matlab2&#45;&gt;petscviewerdestroy -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_edge4" class="edge">
+<title>proc~write_prml_volumes_matlab2:&#45;&gt;petscviewerdestroy:</title>
+<path fill="none" stroke="#000000" d="M113.07,-260.55C135.98,-269.17 167.36,-280.95 195.01,-291.3 200.45,-293.34 206.17,-295.48 211.83,-297.59"/>
+<polygon fill="#000000" stroke="#000000" points="210.63,-300.88 221.22,-301.09 213.07,-294.32 210.63,-300.88"/>
+</g>
+<!-- vecdestroy -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_node7" class="node">
+<title>vecdestroy</title>
+<polygon fill="#777777" stroke="#777777" points="286.23,-282.4 223.71,-282.4 223.71,-258.2 286.23,-258.2 286.23,-282.4"/>
+<text text-anchor="middle" x="254.97" y="-267.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">vecdestroy</text>
+</g>
+<!-- proc~write_prml_volumes_matlab2&#45;&gt;vecdestroy -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_edge5" class="edge">
+<title>proc~write_prml_volumes_matlab2:&#45;&gt;vecdestroy:</title>
+<path fill="none" stroke="#000000" d="M159.12,-258.27C177.8,-260.64 196.98,-263.07 213.17,-265.12"/>
+<polygon fill="#000000" stroke="#000000" points="212.97,-268.63 223.33,-266.41 213.85,-261.68 212.97,-268.63"/>
+</g>
+<!-- petscviewerasciiopen -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_node8" class="node">
+<title>petscviewerasciiopen</title>
+<polygon fill="#777777" stroke="#777777" points="310.74,-239.4 199.21,-239.4 199.21,-215.2 310.74,-215.2 310.74,-239.4"/>
+<text text-anchor="middle" x="254.97" y="-224.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">petscviewerasciiopen</text>
+</g>
+<!-- proc~write_prml_volumes_matlab2&#45;&gt;petscviewerasciiopen -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_edge7" class="edge">
+<title>proc~write_prml_volumes_matlab2:&#45;&gt;petscviewerasciiopen:</title>
+<path fill="none" stroke="#000000" d="M159.12,-238.78C169.16,-237.57 179.36,-236.33 189.15,-235.15"/>
+<polygon fill="#000000" stroke="#000000" points="189.68,-238.61 199.19,-233.93 188.84,-231.66 189.68,-238.61"/>
+</g>
+<!-- petscobjectsetname -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_node9" class="node">
+<title>petscobjectsetname</title>
+<polygon fill="#777777" stroke="#777777" points="307.84,-196.4 202.11,-196.4 202.11,-172.2 307.84,-172.2 307.84,-196.4"/>
+<text text-anchor="middle" x="254.97" y="-181.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">petscobjectsetname</text>
+</g>
+<!-- proc~write_prml_volumes_matlab2&#45;&gt;petscobjectsetname -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_edge10" class="edge">
+<title>proc~write_prml_volumes_matlab2:&#45;&gt;petscobjectsetname:</title>
+<path fill="none" stroke="#000000" d="M113.54,-236.11C141.39,-225.84 181.42,-211.07 211.63,-199.92"/>
+<polygon fill="#000000" stroke="#000000" points="212.89,-203.19 221.06,-196.44 210.47,-196.62 212.89,-203.19"/>
+</g>
+<!-- num_elm -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_node10" class="node">
+<title>num_elm</title>
+<polygon fill="#777777" stroke="#777777" points="282.64,-153.4 227.3,-153.4 227.3,-129.2 282.64,-129.2 282.64,-153.4"/>
+<text text-anchor="middle" x="254.97" y="-138.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">num_elm</text>
+</g>
+<!-- proc~write_prml_volumes_matlab2&#45;&gt;num_elm -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_edge9" class="edge">
+<title>proc~write_prml_volumes_matlab2:&#45;&gt;num_elm:</title>
+<path fill="none" stroke="#000000" d="M94.43,-235.9C115.15,-217.96 155.85,-184.58 195.01,-163.3 202.09,-159.45 210,-155.99 217.66,-153.01"/>
+<polygon fill="#000000" stroke="#000000" points="218.98,-156.26 227.15,-149.51 216.56,-149.69 218.98,-156.26"/>
+</g>
+<!-- lcl_complex -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_node11" class="node">
+<title>lcl_complex</title>
+<polygon fill="#777777" stroke="#777777" points="288.31,-110.4 221.64,-110.4 221.64,-86.2 288.31,-86.2 288.31,-110.4"/>
+<text text-anchor="middle" x="254.97" y="-95.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lcl_complex</text>
+</g>
+<!-- proc~write_prml_volumes_matlab2&#45;&gt;lcl_complex -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_edge3" class="edge">
+<title>proc~write_prml_volumes_matlab2:&#45;&gt;lcl_complex:</title>
+<path fill="none" stroke="#000000" d="M88.47,-235.93C105.26,-210.78 146.74,-153.25 195.01,-120.3 200.22,-116.74 206.08,-113.67 212.03,-111.05"/>
+<polygon fill="#000000" stroke="#000000" points="213.41,-114.26 221.38,-107.28 210.8,-107.77 213.41,-114.26"/>
+</g>
+<!-- vecassemblybegin -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_node12" class="node">
+<title>vecassemblybegin</title>
+<polygon fill="#777777" stroke="#777777" points="304.32,-67.4 205.62,-67.4 205.62,-43.2 304.32,-43.2 304.32,-67.4"/>
+<text text-anchor="middle" x="254.97" y="-52.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">vecassemblybegin</text>
+</g>
+<!-- proc~write_prml_volumes_matlab2&#45;&gt;vecassemblybegin -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_edge11" class="edge">
+<title>proc~write_prml_volumes_matlab2:&#45;&gt;vecassemblybegin:</title>
+<path fill="none" stroke="#000000" d="M85.48,-236.05C98.69,-205.05 137.55,-122.72 195.01,-77.3 197.3,-75.49 199.75,-73.82 202.31,-72.27"/>
+<polygon fill="#000000" stroke="#000000" points="204.12,-75.28 211.33,-67.51 200.85,-69.09 204.12,-75.28"/>
+</g>
+<!-- vecview -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_node13" class="node">
+<title>vecview</title>
+<polygon fill="#777777" stroke="#777777" points="281.97,-24.4 227.97,-24.4 227.97,-0.2 281.97,-0.2 281.97,-24.4"/>
+<text text-anchor="middle" x="254.97" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">vecview</text>
+</g>
+<!-- proc~write_prml_volumes_matlab2&#45;&gt;vecview -->
+<g id="proc~~write_prml_volumes_matlab2~~CallsGraph_edge8" class="edge">
+<title>proc~write_prml_volumes_matlab2:&#45;&gt;vecview:</title>
+<path fill="none" stroke="#000000" d="M83.74,-235.95C93.85,-199.74 128.22,-92.67 195.01,-34.3 201.63,-28.51 209.92,-24.19 218.17,-20.98"/>
+<polygon fill="#000000" stroke="#000000" points="219.41,-24.26 227.74,-17.71 217.14,-17.63 219.41,-24.26"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="552pt" height="33pt"
+ viewBox="0.00 0.00 552.39 32.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28.6)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28.6 548.39,-28.6 548.39,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="62.65,-24.4 0.12,-24.4 0.12,-0.2 62.65,-0.2 62.65,-24.4"/>
+<text text-anchor="middle" x="31.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="134.38,-24.4 80.38,-24.4 80.38,-0.2 134.38,-0.2 134.38,-24.4"/>
+<text text-anchor="middle" x="107.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="206.38,-24.4 152.38,-24.4 152.38,-0.2 206.38,-0.2 206.38,-24.4"/>
+<text text-anchor="middle" x="179.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="358.24,-24.4 224.52,-24.4 224.52,-0.2 358.24,-0.2 358.24,-24.4"/>
+<text text-anchor="middle" x="291.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="430.38,-24.4 376.38,-24.4 376.38,-0.2 430.38,-0.2 430.38,-24.4"/>
+<text text-anchor="middle" x="403.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="544.39,-24.4 448.38,-24.4 448.38,-0.2 544.39,-0.2 544.39,-24.4"/>
+<text text-anchor="middle" x="496.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a procedure to one which it calls. Dashed 
+    arrows point from an interface to procedures which implement that interface.
+    This could include the module procedures in a generic interface or the
+    implementation in a submodule of an interface in a parent module.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+     
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/write_prml_volumes_matlab2.html#variable-fname%7E20">fname</a>
+      
+      <a class="list-group-item" href="../proc/write_prml_volumes_matlab2.html#variable-i%7E19">i</a>
+      
+      <a class="list-group-item" href="../proc/write_prml_volumes_matlab2.html#variable-id%7E5">id</a>
+      
+      <a class="list-group-item" href="../proc/write_prml_volumes_matlab2.html#variable-m%7E2">m</a>
+      
+      <a class="list-group-item" href="../proc/write_prml_volumes_matlab2.html#variable-work%7E7">work</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    <section>    
+      <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-fname%7E20"></span>character(len=slen),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>fname</strong></td><td></td><td></td><td><p>file name</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-i%7E19"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>i</strong></td><td></td><td></td><td><p>loop and temporary indicies</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-id%7E5"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>id</strong></td><td></td><td></td><td><p>loop and temporary indicies</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-m%7E2"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>m</strong></td><td></td><td></td><td><p>number of rows in global solution variables</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-work%7E7"></span>vec,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>work</strong></td><td></td><td></td><td><p>PETSc work array</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 <a rel="license" href="http://www.freebsd.org/copyright/freebsd-doc-license.html">FreeBSD Documentation License</a>
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> ParaGEMS was developed by Pieter Boom</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

@@ -1,0 +1,26 @@
+&darcy_param
+   mu = 1.d0
+   k  = 1.d0
+   vel = 0.d0, 0.d0, -1.d0
+   p_ref = 0.d0,
+   bc_press = 1.d0, 0.d0
+   crck_type = 1
+   max_crcks = 1000
+   crcks_pstep = 10
+   crck_thrshld = 0.9d0
+   rnd_max = 0.5d0
+ &end
+ &io_param
+   mesh_prefix = 'icos.1'
+ &end
+ &solver_param
+   ksp_type = "fgmres"
+   pc_type = "asm"
+   abs_tol = 1.e-10
+   rel_tol = 1.e-10
+   max_iter = 100
+   nz_init = .true.
+   solver_monitor = .true.
+   sol_output = .true.
+   output_frqcy = 1
+ &end

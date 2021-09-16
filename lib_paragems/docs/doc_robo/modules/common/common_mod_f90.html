@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-type" content="text/html; charset=ISO-8859-1" />
+<link rel="stylesheet" href="../../robodoc.css" type="text/css" />
+<title>./../src/modules/common/common_mod.f90</title>
+<!-- Source: ./../src/modules/common/common_mod.f90 -->
+<!-- Generated with ROBODoc Version 4.99.43 (Sep  9 2020) -->
+</head>
+<body>
+<div id="logo">
+<a name="robo_top_of_doc">ParaGEMS Documentation</a>
+</div> <!-- logo -->
+<div id="navigation">
+<a class="menuitem" href="../../toc_index.html#top">Table of Contents</a>
+<a class="menuitem" href="../../robo_sourcefiles.html#top">Sourcefiles</a>
+<a class="menuitem" href="../../masterindex.html#top">Index</a>
+<a class="menuitem" href="../../robo_functions.html#top">Functions</a>
+<a class="menuitem" href="../../robo_modules.html#top">Modules</a>
+<a class="menuitem" href="../../robo_subroutines.html#top">Subrountines</a>
+</div> <!-- navigation -->
+<div id="content">
+<h3>TABLE OF CONTENTS</h3>
+<ul>
+<li>1. <a href="#robo1">modules|comon/common_mod</a></li>
+<ul>
+<li>1.1. <a href="#robo9">common_mod/clean_up</a></li>
+</ul>
+</ul>
+<hr />
+<a name="modules7ccomon2fcommon5fmod"></a>
+<a name="robo1"></a><h2>modules|comon/common_mod [ Modules ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="../../robo_modules.html#robo_top_of_doc">Modules</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">MODULE <strong>common_mod</strong>
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Module for global variables, included library, and common code
+</pre>
+<p class="item_name">INCLUDES</p>
+<pre>   Name                  Purpose
+   petsc.h                 - petsc library (includes mpi execution
+                             environment library)
+   global_precision.inc    - precision of real numbers
+   global_vars.inc         - general global variables and parameters
+   global_mpi.inc          - global mpi variables
+   global_io.inc           - global IO variables
+   global_mesh.inc         - global mesh variables
+   global_element.inc      - global primary structures
+</pre>
+<p class="item_name">CONTAINS</p>
+<pre>   Subroutine              Purpose
+   <a href="#robo9">clean_up</a>()              - deallocated global structures/variables
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/20: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="common5fmod2fclean5fup"></a>
+<a name="robo9"></a><h2>common_mod/clean_up [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo1">common_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>clean_up</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Deallocate global structures/variables
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   Global structure (lcl_complex) deallocated
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/21: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+</div> <!-- content -->
+<div id="footer">
+<p>Generated from ./../src/modules/common/common_mod.f90 with <a href="http://www.xs4all.nl/~rfsber/Robo/robodoc.html">ROBODoc</a> V4.99.43 on Wed Mar 17 2021 09:16:11
+</p>
+</div> <!-- footer -->
+</body>
+</html>

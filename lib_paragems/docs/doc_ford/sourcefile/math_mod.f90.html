@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <meta name="description" content="Documentation for ParaGEMS">
+   
+    <meta name="author" content="Pieter Boom" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>math_mod.f90 &ndash; ParaGEMS</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">ParaGEMS </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li><a href='../page/index.html'>README</a></li>
+      
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            <li><a href="../lists/programs.html">Programs</a></li>
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>math_mod.f90
+    <small>Source File</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 4.2% of total for source files.">212 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/math_mod.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+  
+     <li class="active">math_mod.f90</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#mods-0">Modules</a></h3></div>
+  <div id="mods-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/math_mod.html">math_mod</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../sourcefile/math_mod.f90.html#src">math_mod.f90</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      <p>Module for common math functions and routines</p>
+      <br>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">This file depends on</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: sourcefile~~math_mod.f90~~EfferentGraph Pages: 1 -->
+<svg id="sourcefilemath_modf90EfferentGraph" width="328pt" height="53pt"
+ viewBox="0.00 0.00 327.80 52.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~math_mod.f90~~EfferentGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 48.6)">
+<title>sourcefile~~math_mod.f90~~EfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-48.6 323.8,-48.6 323.8,4 -4,4"/>
+<!-- sourcefile~math_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~EfferentGraph_node1" class="node">
+<title>sourcefile~math_mod.f90</title>
+<polygon fill="none" stroke="black" points="319.85,-44.4 240.64,-44.4 240.64,-20.2 319.85,-20.2 319.85,-44.4"/>
+<text text-anchor="middle" x="280.25" y="-29.15" font-family="Helvetica,sans-Serif" font-size="10.50">math_mod.f90</text>
+</g>
+<!-- sourcefile~common_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~EfferentGraph_node2" class="node">
+<title>sourcefile~common_mod.f90</title>
+<g id="a_sourcefile~~math_mod.f90~~EfferentGraph_node2"><a xlink:href=".././sourcefile/common_mod.f90.html" xlink:title="common_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="96.03,-44.4 -0.01,-44.4 -0.01,-20.2 96.03,-20.2 96.03,-44.4"/>
+<text text-anchor="middle" x="48.01" y="-29.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">common_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~math_mod.f90&#45;&gt;sourcefile~common_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~EfferentGraph_edge1" class="edge">
+<title>sourcefile~math_mod.f90:&#45;&gt;sourcefile~common_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M240.56,-32.92C229.02,-33.08 216.35,-33.22 204.7,-33.3 172.4,-33.52 164.32,-33.49 132.02,-33.3 123.82,-33.25 115.17,-33.17 106.67,-33.08"/>
+<polygon fill="#000000" stroke="#000000" points="106.46,-29.58 96.42,-32.97 106.38,-36.58 106.46,-29.58"/>
+</g>
+<!-- sourcefile~mpi_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~EfferentGraph_node3" class="node">
+<title>sourcefile~mpi_mod.f90</title>
+<g id="a_sourcefile~~math_mod.f90~~EfferentGraph_node3"><a xlink:href=".././sourcefile/mpi_mod.f90.html" xlink:title="mpi_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="204.54,-24.4 132.18,-24.4 132.18,-0.2 204.54,-0.2 204.54,-24.4"/>
+<text text-anchor="middle" x="168.36" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~math_mod.f90&#45;&gt;sourcefile~mpi_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~EfferentGraph_edge2" class="edge">
+<title>sourcefile~math_mod.f90:&#45;&gt;sourcefile~mpi_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M240.5,-25.25C232.15,-23.73 223.26,-22.11 214.68,-20.55"/>
+<polygon fill="#000000" stroke="#000000" points="215.28,-17.1 204.82,-18.75 214.03,-23.99 215.28,-17.1"/>
+</g>
+<!-- sourcefile~mpi_mod.f90&#45;&gt;sourcefile~common_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~EfferentGraph_edge3" class="edge">
+<title>sourcefile~mpi_mod.f90:&#45;&gt;sourcefile~common_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M132.17,-18.25C123.95,-19.64 114.99,-21.15 106.09,-22.65"/>
+<polygon fill="#000000" stroke="#000000" points="105.39,-19.22 96.12,-24.34 106.56,-26.12 105.39,-19.22"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="188pt" height="33pt"
+ viewBox="0.00 0.00 187.55 32.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28.6)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28.6 183.55,-28.6 183.55,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="65.13,-24.4 -0.04,-24.4 -0.04,-0.2 65.13,-0.2 65.13,-24.4"/>
+<text text-anchor="middle" x="32.54" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="179.55,-24.4 83.54,-24.4 83.54,-0.2 179.55,-0.2 179.55,-24.4"/>
+<text text-anchor="middle" x="131.54" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a file to a file which it depends on. A file
+    is dependent upon another if the latter must be compiled before the former
+    can be.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+    
+      
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Files dependent on this one</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: sourcefile~~math_mod.f90~~AfferentGraph Pages: 1 -->
+<svg id="sourcefilemath_modf90AfferentGraph" width="637pt" height="334pt"
+ viewBox="0.00 0.00 637.39 333.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~math_mod.f90~~AfferentGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 329.6)">
+<title>sourcefile~~math_mod.f90~~AfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-329.6 633.39,-329.6 633.39,4 -4,4"/>
+<!-- sourcefile~math_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_node1" class="node">
+<title>sourcefile~math_mod.f90</title>
+<polygon fill="none" stroke="black" points="79.16,-237.4 -0.05,-237.4 -0.05,-213.2 79.16,-213.2 79.16,-237.4"/>
+<text text-anchor="middle" x="39.55" y="-222.15" font-family="Helvetica,sans-Serif" font-size="10.50">math_mod.f90</text>
+</g>
+<!-- sourcefile~test_math_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_node2" class="node">
+<title>sourcefile~test_math_mod.f90</title>
+<g id="a_sourcefile~~math_mod.f90~~AfferentGraph_node2"><a xlink:href=".././sourcefile/test_math_mod.f90.html" xlink:title="test_math_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="216.9,-277.4 115.17,-277.4 115.17,-253.2 216.9,-253.2 216.9,-277.4"/>
+<text text-anchor="middle" x="166.03" y="-262.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_math_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~test_math_mod.f90&#45;&gt;sourcefile~math_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge1" class="edge">
+<title>sourcefile~test_math_mod.f90:&#45;&gt;sourcefile~math_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M127.35,-253.19C115.03,-249.23 101.19,-244.78 88.23,-240.62"/>
+<polygon fill="#000000" stroke="#000000" points="89.13,-237.23 78.54,-237.51 86.99,-243.9 89.13,-237.23"/>
+</g>
+<!-- sourcefile~dec_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_node3" class="node">
+<title>sourcefile~dec_mod.f90</title>
+<g id="a_sourcefile~~math_mod.f90~~AfferentGraph_node3"><a xlink:href=".././sourcefile/dec_mod.f90.html" xlink:title="dec_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="202.23,-197.4 129.84,-197.4 129.84,-173.2 202.23,-173.2 202.23,-197.4"/>
+<text text-anchor="middle" x="166.03" y="-182.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dec_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~dec_mod.f90&#45;&gt;sourcefile~math_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge2" class="edge">
+<title>sourcefile~dec_mod.f90:&#45;&gt;sourcefile~math_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M129.7,-196.66C116.86,-200.78 102.12,-205.52 88.38,-209.93"/>
+<polygon fill="#000000" stroke="#000000" points="87.04,-206.68 78.59,-213.08 89.18,-213.35 87.04,-206.68"/>
+</g>
+<!-- sourcefile~partition_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_node4" class="node">
+<title>sourcefile~partition_mod.f90</title>
+<g id="a_sourcefile~~math_mod.f90~~AfferentGraph_node4"><a xlink:href=".././sourcefile/partition_mod.f90.html" xlink:title="partition_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="477.57,-217.4 384.36,-217.4 384.36,-193.2 477.57,-193.2 477.57,-217.4"/>
+<text text-anchor="middle" x="430.97" y="-202.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">partition_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~partition_mod.f90&#45;&gt;sourcefile~math_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge3" class="edge">
+<title>sourcefile~partition_mod.f90:&#45;&gt;sourcefile~math_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M299.69,-225.3C226.46,-225.48 141.58,-225.43 89.47,-225.37"/>
+<polygon fill="#000000" stroke="#000000" points="89.19,-221.87 79.19,-225.36 89.18,-228.87 89.19,-221.87"/>
+</g>
+<!-- sourcefile~partition_mod.f90&#45;&gt;sourcefile~dec_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge5" class="edge">
+<title>sourcefile~partition_mod.f90:&#45;&gt;sourcefile~dec_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M384.22,-215.89C359.86,-220.65 329.3,-225.23 301.69,-225.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M299.69,-225.3C265.14,-225.38 227.59,-212.78 201.29,-201.7"/>
+<polygon fill="#000000" stroke="#000000" points="202.36,-198.35 191.8,-197.56 199.56,-204.76 202.36,-198.35"/>
+</g>
+<!-- sourcefile~io_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_node7" class="node">
+<title>sourcefile~io_mod.f90</title>
+<g id="a_sourcefile~~math_mod.f90~~AfferentGraph_node7"><a xlink:href=".././sourcefile/io_mod.f90.html" xlink:title="io_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="332.62,-154.4 268.76,-154.4 268.76,-130.2 332.62,-130.2 332.62,-154.4"/>
+<text text-anchor="middle" x="300.69" y="-139.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">io_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~partition_mod.f90&#45;&gt;sourcefile~io_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge15" class="edge">
+<title>sourcefile~partition_mod.f90:&#45;&gt;sourcefile~io_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M404.35,-193.13C397.83,-189.97 390.84,-186.55 384.42,-183.3 368.27,-175.14 364.6,-172.38 348.42,-164.3 344.82,-162.5 341.05,-160.66 337.27,-158.85"/>
+<polygon fill="#000000" stroke="#000000" points="338.52,-155.56 327.99,-154.42 335.51,-161.88 338.52,-155.56"/>
+</g>
+<!-- sourcefile~darcy.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_node5" class="node">
+<title>sourcefile~darcy.f90</title>
+<g id="a_sourcefile~~math_mod.f90~~AfferentGraph_node5"><a xlink:href=".././sourcefile/darcy.f90.html" xlink:title="darcy.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="599.13,-282.4 543.77,-282.4 543.77,-258.2 599.13,-258.2 599.13,-282.4"/>
+<text text-anchor="middle" x="571.45" y="-267.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~darcy.f90&#45;&gt;sourcefile~partition_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge7" class="edge">
+<title>sourcefile~darcy.f90:&#45;&gt;sourcefile~partition_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M543.83,-260.75C534.18,-257.09 523.26,-252.73 513.52,-248.3 496.27,-240.45 477.53,-230.66 462.37,-222.41"/>
+<polygon fill="#000000" stroke="#000000" points="463.88,-219.25 453.43,-217.5 460.51,-225.38 463.88,-219.25"/>
+</g>
+<!-- sourcefile~darcy_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_node14" class="node">
+<title>sourcefile~darcy_mod.f90</title>
+<g id="a_sourcefile~~math_mod.f90~~AfferentGraph_node14"><a xlink:href=".././sourcefile/darcy_mod.f90.html" xlink:title="darcy_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="471.91,-131.4 390.03,-131.4 390.03,-107.2 471.91,-107.2 471.91,-131.4"/>
+<text text-anchor="middle" x="430.97" y="-116.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~darcy.f90&#45;&gt;sourcefile~darcy_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge17" class="edge">
+<title>sourcefile~darcy.f90:&#45;&gt;sourcefile~darcy_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M543.59,-265.12C533.01,-261.87 521.51,-256.65 513.52,-248.3 478.84,-212.05 510.71,-178.93 477.52,-141.3 476.36,-139.99 475.11,-138.74 473.78,-137.57"/>
+<polygon fill="#000000" stroke="#000000" points="475.67,-134.61 465.52,-131.57 471.55,-140.28 475.67,-134.61"/>
+</g>
+<!-- sourcefile~darcy_1f.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_node6" class="node">
+<title>sourcefile~darcy_1f.f90</title>
+<g id="a_sourcefile~~math_mod.f90~~AfferentGraph_node6"><a xlink:href=".././sourcefile/darcy_1f.f90.html" xlink:title="darcy_1f.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="606.23,-239.4 536.68,-239.4 536.68,-215.2 606.23,-215.2 606.23,-239.4"/>
+<text text-anchor="middle" x="571.45" y="-224.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_1f.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~darcy_1f.f90&#45;&gt;sourcefile~partition_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge8" class="edge">
+<title>sourcefile~darcy_1f.f90:&#45;&gt;sourcefile~partition_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M536.58,-221.92C521.86,-219.58 504.22,-216.78 487.66,-214.15"/>
+<polygon fill="#000000" stroke="#000000" points="487.95,-210.65 477.52,-212.54 486.85,-217.56 487.95,-210.65"/>
+</g>
+<!-- sourcefile~darcy_1f.f90&#45;&gt;sourcefile~darcy_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge18" class="edge">
+<title>sourcefile~darcy_1f.f90:&#45;&gt;sourcefile~darcy_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M536.41,-218.51C528.29,-215.29 520.09,-210.99 513.52,-205.3 488.85,-183.94 501.31,-163.64 477.52,-141.3 476.03,-139.9 474.44,-138.58 472.77,-137.32"/>
+<polygon fill="#000000" stroke="#000000" points="474.26,-134.12 463.96,-131.63 470.46,-140 474.26,-134.12"/>
+</g>
+<!-- sourcefile~io_mod.f90&#45;&gt;sourcefile~dec_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge6" class="edge">
+<title>sourcefile~io_mod.f90:&#45;&gt;sourcefile~dec_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M268.59,-152.38C251.84,-157.81 230.87,-164.61 212.34,-170.61"/>
+<polygon fill="#000000" stroke="#000000" points="211.06,-167.35 202.63,-173.76 213.22,-174.01 211.06,-167.35"/>
+</g>
+<!-- sourcefile~darcy_crkp_2f_old.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_node8" class="node">
+<title>sourcefile~darcy_crkp_2f_old.f90</title>
+<g id="a_sourcefile~~math_mod.f90~~AfferentGraph_node8"><a xlink:href=".././sourcefile/darcy_crkp_2f_old.f90.html" xlink:title="darcy_crkp_2f_old.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="629.24,-196.4 513.67,-196.4 513.67,-172.2 629.24,-172.2 629.24,-196.4"/>
+<text text-anchor="middle" x="571.45" y="-181.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_2f_old.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~darcy_crkp_2f_old.f90&#45;&gt;sourcefile~partition_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge9" class="edge">
+<title>sourcefile~darcy_crkp_2f_old.f90:&#45;&gt;sourcefile~partition_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M513.73,-192.9C505.14,-194.2 496.28,-195.55 487.71,-196.85"/>
+<polygon fill="#000000" stroke="#000000" points="487.18,-193.39 477.82,-198.35 488.23,-200.31 487.18,-193.39"/>
+</g>
+<!-- sourcefile~darcy_crkp_2f_old.f90&#45;&gt;sourcefile~darcy_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge19" class="edge">
+<title>sourcefile~darcy_crkp_2f_old.f90:&#45;&gt;sourcefile~darcy_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M536.36,-172.14C528.74,-169.15 520.78,-165.79 513.52,-162.3 496.83,-154.27 493.87,-150 477.52,-141.3 474.23,-139.55 470.77,-137.77 467.3,-136.02"/>
+<polygon fill="#000000" stroke="#000000" points="468.68,-132.8 458.16,-131.52 465.58,-139.08 468.68,-132.8"/>
+</g>
+<!-- sourcefile~darcy_crkp_2f.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_node9" class="node">
+<title>sourcefile~darcy_crkp_2f.f90</title>
+<g id="a_sourcefile~~math_mod.f90~~AfferentGraph_node9"><a xlink:href=".././sourcefile/darcy_crkp_2f.f90.html" xlink:title="darcy_crkp_2f.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="619.4,-153.4 523.51,-153.4 523.51,-129.2 619.4,-129.2 619.4,-153.4"/>
+<text text-anchor="middle" x="571.45" y="-138.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_2f.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~darcy_crkp_2f.f90&#45;&gt;sourcefile~partition_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge10" class="edge">
+<title>sourcefile~darcy_crkp_2f.f90:&#45;&gt;sourcefile~partition_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M536.71,-153.45C529.01,-156.47 520.91,-159.84 513.52,-163.3 496.95,-171.06 493.77,-174.87 477.52,-183.3 474.21,-185.02 470.74,-186.77 467.26,-188.5"/>
+<polygon fill="#000000" stroke="#000000" points="465.55,-185.44 458.11,-192.99 468.63,-191.73 465.55,-185.44"/>
+</g>
+<!-- sourcefile~darcy_crkp_2f.f90&#45;&gt;sourcefile~darcy_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge20" class="edge">
+<title>sourcefile~darcy_crkp_2f.f90:&#45;&gt;sourcefile~darcy_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M523.57,-133.85C510.19,-131.73 495.56,-129.4 482,-127.25"/>
+<polygon fill="#000000" stroke="#000000" points="482.3,-123.75 471.87,-125.64 481.2,-130.67 482.3,-123.75"/>
+</g>
+<!-- sourcefile~test_partition_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_node10" class="node">
+<title>sourcefile~test_partition_mod.f90</title>
+<g id="a_sourcefile~~math_mod.f90~~AfferentGraph_node10"><a xlink:href=".././sourcefile/test_partition_mod.f90.html" xlink:title="test_partition_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="629.32,-325.4 513.59,-325.4 513.59,-301.2 629.32,-301.2 629.32,-325.4"/>
+<text text-anchor="middle" x="571.45" y="-310.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_partition_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~test_partition_mod.f90&#45;&gt;sourcefile~partition_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge11" class="edge">
+<title>sourcefile~test_partition_mod.f90:&#45;&gt;sourcefile~partition_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M531.92,-301.11C525.53,-298.34 519.16,-295.07 513.52,-291.3 486.54,-273.22 461.83,-244.75 446.85,-225.57"/>
+<polygon fill="#000000" stroke="#000000" points="449.52,-223.3 440.67,-217.48 443.96,-227.55 449.52,-223.3"/>
+</g>
+<!-- sourcefile~darcy_2f.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_node11" class="node">
+<title>sourcefile~darcy_2f.f90</title>
+<g id="a_sourcefile~~math_mod.f90~~AfferentGraph_node11"><a xlink:href=".././sourcefile/darcy_2f.f90.html" xlink:title="darcy_2f.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="606.23,-110.4 536.68,-110.4 536.68,-86.2 606.23,-86.2 606.23,-110.4"/>
+<text text-anchor="middle" x="571.45" y="-95.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_2f.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~darcy_2f.f90&#45;&gt;sourcefile~partition_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge13" class="edge">
+<title>sourcefile~darcy_2f.f90:&#45;&gt;sourcefile~partition_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M536.43,-107.12C528.32,-110.34 520.11,-114.63 513.52,-120.3 489.07,-141.33 501.1,-161.3 477.52,-183.3 476.03,-184.69 474.43,-186.01 472.76,-187.27"/>
+<polygon fill="#000000" stroke="#000000" points="470.45,-184.59 463.94,-192.95 474.24,-190.47 470.45,-184.59"/>
+</g>
+<!-- sourcefile~darcy_2f.f90&#45;&gt;sourcefile~darcy_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge22" class="edge">
+<title>sourcefile~darcy_2f.f90:&#45;&gt;sourcefile~darcy_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M536.58,-103.44C520.17,-105.93 500.14,-108.96 482.01,-111.71"/>
+<polygon fill="#000000" stroke="#000000" points="481.25,-108.29 471.89,-113.25 482.3,-115.21 481.25,-108.29"/>
+</g>
+<!-- sourcefile~darcy_crkp_1f.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_node12" class="node">
+<title>sourcefile~darcy_crkp_1f.f90</title>
+<g id="a_sourcefile~~math_mod.f90~~AfferentGraph_node12"><a xlink:href=".././sourcefile/darcy_crkp_1f.f90.html" xlink:title="darcy_crkp_1f.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="619.4,-67.4 523.51,-67.4 523.51,-43.2 619.4,-43.2 619.4,-67.4"/>
+<text text-anchor="middle" x="571.45" y="-52.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_1f.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~darcy_crkp_1f.f90&#45;&gt;sourcefile~partition_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge12" class="edge">
+<title>sourcefile~darcy_crkp_1f.f90:&#45;&gt;sourcefile~partition_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M526.6,-67.53C521.77,-70.18 517.26,-73.4 513.52,-77.3 479.07,-113.2 510.48,-146.03 477.52,-183.3 476.36,-184.61 475.11,-185.85 473.78,-187.03"/>
+<polygon fill="#000000" stroke="#000000" points="471.55,-184.32 465.51,-193.02 475.66,-189.98 471.55,-184.32"/>
+</g>
+<!-- sourcefile~darcy_crkp_1f.f90&#45;&gt;sourcefile~darcy_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge21" class="edge">
+<title>sourcefile~darcy_crkp_1f.f90:&#45;&gt;sourcefile~darcy_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M537.09,-67.51C529.29,-70.55 521.06,-73.91 513.52,-77.3 496.56,-84.92 478.1,-94.33 463.05,-102.3"/>
+<polygon fill="#000000" stroke="#000000" points="461.32,-99.26 454.15,-107.06 464.62,-105.43 461.32,-99.26"/>
+</g>
+<!-- sourcefile~test_dec_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_node13" class="node">
+<title>sourcefile~test_dec_mod.f90</title>
+<g id="a_sourcefile~~math_mod.f90~~AfferentGraph_node13"><a xlink:href=".././sourcefile/test_dec_mod.f90.html" xlink:title="test_dec_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="348.64,-197.4 252.74,-197.4 252.74,-173.2 348.64,-173.2 348.64,-197.4"/>
+<text text-anchor="middle" x="300.69" y="-182.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_dec_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~test_dec_mod.f90&#45;&gt;sourcefile~dec_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge4" class="edge">
+<title>sourcefile~test_dec_mod.f90:&#45;&gt;sourcefile~dec_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M252.92,-185.3C239.85,-185.3 225.68,-185.3 212.67,-185.3"/>
+<polygon fill="#000000" stroke="#000000" points="212.55,-181.8 202.55,-185.3 212.54,-188.8 212.55,-181.8"/>
+</g>
+<!-- sourcefile~darcy_mod.f90&#45;&gt;sourcefile~io_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge16" class="edge">
+<title>sourcefile~darcy_mod.f90:&#45;&gt;sourcefile~io_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M390.08,-126.45C375.15,-129.13 358.15,-132.18 343.08,-134.88"/>
+<polygon fill="#000000" stroke="#000000" points="342.22,-131.48 333,-136.69 343.46,-138.37 342.22,-131.48"/>
+</g>
+<!-- sourcefile~test_io_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_node15" class="node">
+<title>sourcefile~test_io_mod.f90</title>
+<g id="a_sourcefile~~math_mod.f90~~AfferentGraph_node15"><a xlink:href=".././sourcefile/test_io_mod.f90.html" xlink:title="test_io_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="474.16,-174.4 387.78,-174.4 387.78,-150.2 474.16,-150.2 474.16,-174.4"/>
+<text text-anchor="middle" x="430.97" y="-159.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_io_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~test_io_mod.f90&#45;&gt;sourcefile~io_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge14" class="edge">
+<title>sourcefile~test_io_mod.f90:&#45;&gt;sourcefile~io_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M387.61,-155.7C373.16,-153.44 357.05,-150.93 342.71,-148.69"/>
+<polygon fill="#000000" stroke="#000000" points="343.05,-145.21 332.63,-147.12 341.97,-152.12 343.05,-145.21"/>
+</g>
+<!-- sourcefile~test_darcy_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_node16" class="node">
+<title>sourcefile~test_darcy_mod.f90</title>
+<g id="a_sourcefile~~math_mod.f90~~AfferentGraph_node16"><a xlink:href=".././sourcefile/test_darcy_mod.f90.html" xlink:title="test_darcy_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="623.65,-24.4 519.26,-24.4 519.26,-0.2 623.65,-0.2 623.65,-24.4"/>
+<text text-anchor="middle" x="571.45" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_darcy_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~test_darcy_mod.f90&#45;&gt;sourcefile~darcy_mod.f90 -->
+<g id="sourcefile~~math_mod.f90~~AfferentGraph_edge23" class="edge">
+<title>sourcefile~test_darcy_mod.f90:&#45;&gt;sourcefile~darcy_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M531.94,-24.52C525.55,-27.29 519.17,-30.54 513.52,-34.3 486.8,-52.09 462.19,-80.02 447.15,-98.97"/>
+<polygon fill="#000000" stroke="#000000" points="444.3,-96.92 440.93,-106.97 449.83,-101.22 444.3,-96.92"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="188pt" height="33pt"
+ viewBox="0.00 0.00 187.55 32.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28.6)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28.6 183.55,-28.6 183.55,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="65.13,-24.4 -0.04,-24.4 -0.04,-0.2 65.13,-0.2 65.13,-24.4"/>
+<text text-anchor="middle" x="32.54" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="179.55,-24.4 83.54,-24.4 83.54,-0.2 179.55,-0.2 179.55,-24.4"/>
+<text text-anchor="middle" x="131.54" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a file to a file which it depends on. A file
+    is dependent upon another if the latter must be compiled before the former
+    can be.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+      
+      <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#mods-1">Modules</a></h3></div>
+  <div id="mods-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/math_mod.html">math_mod</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../sourcefile/math_mod.f90.html#src">math_mod.f90</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    <section>
+      <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl"><pre><span></span><a name="ln-1"></a><span class="c">!</span>
+<a name="ln-2"></a><span class="c">!===============================================================================</span>
+<a name="ln-3"></a><span class="c">!-- Math Module</span>
+<a name="ln-4"></a><span class="c">!&gt; Module for common math functions and routines</span>
+<a name="ln-5"></a><span class="c">!===============================================================================</span>
+<a name="ln-6"></a><span class="c">!/****/h* modules|math/math_mod</span>
+<a name="ln-7"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-8"></a><span class="k">MODULE </span><span class="n">math_mod</span>
+<a name="ln-9"></a><span class="c">!* PURPOSE</span>
+<a name="ln-10"></a><span class="c">!*   Module for common math functions and routines</span>
+<a name="ln-11"></a><span class="c">!* INCLUDES</span>
+<a name="ln-12"></a><span class="c">!*   Name                    Purpose</span>
+<a name="ln-13"></a><span class="c">!*   common_mod              variable definitions</span>
+<a name="ln-14"></a><span class="c">!*   mpi_mod                 ???</span>
+<a name="ln-15"></a><span class="c">!* CONTAINS</span>
+<a name="ln-16"></a><span class="c">!*   Subroutine              Purpose</span>
+<a name="ln-17"></a><span class="c">!*   int_merge_sort_rows()   merge sort rows of integer array in ascending order</span>
+<a name="ln-18"></a><span class="c">!*   int_merge_rows()        merge rows of integer array in ascending order</span>
+<a name="ln-19"></a><span class="c">!*   int_insertion_sort()    insertion sort for integer array</span>
+<a name="ln-20"></a><span class="c">!*   any_element_in_list()   test if any element of one array is in another</span>
+<a name="ln-21"></a><span class="c">!*   num_element_in_list()   determine how many elements of one array are in another</span>
+<a name="ln-22"></a><span class="c">!* AUTHOR</span>
+<a name="ln-23"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-24"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-25"></a><span class="c">!*   2019/08/23: Created (PB)</span>
+<a name="ln-26"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-27"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-28"></a><span class="c">!******/</span>
+<a name="ln-29"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-30"></a><span class="c">!&gt; date: 2019/08/23</span>
+<a name="ln-31"></a><span class="c">!&gt; Module for common math functions and routines</span>
+<a name="ln-32"></a><span class="c">!===============================================================================</span>
+<a name="ln-33"></a>
+<a name="ln-34"></a>  <span class="c">!-- use statements and implicit none --</span>
+<a name="ln-35"></a>  <span class="k">USE </span><span class="n">common_mod</span>
+<a name="ln-36"></a>  <span class="k">USE </span><span class="n">mpi_mod</span>
+<a name="ln-37"></a>
+<a name="ln-38"></a>  <span class="k">IMPLICIT NONE</span>
+<a name="ln-39"></a>
+<a name="ln-40"></a><span class="c">!===============================================================================</span>
+<a name="ln-41"></a><span class="k">CONTAINS</span>
+<a name="ln-42"></a><span class="c">!===============================================================================</span>
+<a name="ln-43"></a><span class="c">!</span>
+<a name="ln-44"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-45"></a><span class="c">!/****/s*  math_mod/int_merge_sort_rows</span>
+<a name="ln-46"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-47"></a>  <span class="k">RECURSIVE SUBROUTINE </span><span class="n">int_merge_sort_rows</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">length</span><span class="p">,</span><span class="n">irow</span><span class="p">,</span><span class="n">frow</span><span class="p">,</span><span class="n">work</span><span class="p">)</span>
+<a name="ln-48"></a><span class="c">!* PURPOSE</span>
+<a name="ln-49"></a><span class="c">!*   Merge sort rows of integer array in ascending order</span>
+<a name="ln-50"></a><span class="c">!* ASSUMPTION</span>
+<a name="ln-51"></a><span class="c">!*   Rows are already sorted in ascending order</span>
+<a name="ln-52"></a><span class="c">!* INPUTS</span>
+<a name="ln-53"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-54"></a><span class="c">!*</span>
+<a name="ln-55"></a><span class="c">!* OUTPUTS</span>
+<a name="ln-56"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-57"></a><span class="c">!*</span>
+<a name="ln-58"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-59"></a><span class="c">!*   -</span>
+<a name="ln-60"></a><span class="c">!* AUTHOR</span>
+<a name="ln-61"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-62"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-63"></a><span class="c">!*   2019/08/23: Created (PB)</span>
+<a name="ln-64"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-65"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-66"></a><span class="c">!* NOTES</span>
+<a name="ln-67"></a><span class="c">!*   ADAPTED FROM: https://rosettacode.org/wiki/Sorting_algorithms/Merge_sort#Fortran</span>
+<a name="ln-68"></a><span class="c">!******/</span>
+<a name="ln-69"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-70"></a><span class="c">!&gt; date: 2019/08/23</span>
+<a name="ln-71"></a><span class="c">!&gt; Merge sort rows of integer array in ascending order</span>
+<a name="ln-72"></a><span class="c">!&gt; Assumption: rows are already sorted in ascending order</span>
+<a name="ln-73"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-74"></a>
+<a name="ln-75"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-76"></a>
+<a name="ln-77"></a>    <span class="c">!-- arguments --</span>
+<a name="ln-78"></a>    <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">INOUT</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">A</span><span class="p">(:,:)</span>      <span class="c">!&gt;</span>
+<a name="ln-79"></a>    <span class="kt">INTEGER</span>                 <span class="kd">::</span> <span class="n">length</span>      <span class="c">!&gt;</span>
+<a name="ln-80"></a>    <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>     <span class="kd">::</span> <span class="n">irow</span><span class="p">,</span> <span class="n">frow</span>  <span class="c">!&gt;</span>
+<a name="ln-81"></a>    <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">INOUT</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">work</span><span class="p">(:,:)</span>   <span class="c">!&gt;</span>
+<a name="ln-82"></a>
+<a name="ln-83"></a>    <span class="c">!-- local variables --</span>
+<a name="ln-84"></a>    <span class="kt">INTEGER</span>                 <span class="kd">::</span> <span class="n">half</span>        <span class="c">!&gt;</span>
+<a name="ln-85"></a>    <span class="kt">INTEGER</span>                 <span class="kd">::</span> <span class="n">ir</span><span class="p">,</span><span class="n">i</span>        <span class="c">!&gt;</span>
+<a name="ln-86"></a>
+<a name="ln-87"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-88"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-89"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-90"></a>
+<a name="ln-91"></a>    <span class="c">!-- sort directly if there are two elements --</span>
+<a name="ln-92"></a>    <span class="c">!-- NOTE: if there is only one row, then it is already sorted! --</span>
+<a name="ln-93"></a>    <span class="k">IF</span> <span class="p">(</span><span class="n">length</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> <span class="k">THEN</span>
+<a name="ln-94"></a>      <span class="c">!-- if out of order, then swap</span>
+<a name="ln-95"></a>      <span class="k">DO </span><span class="n">ir</span> <span class="o">=</span> <span class="n">irow</span><span class="p">,</span> <span class="n">frow</span>
+<a name="ln-96"></a>        <span class="k">IF</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ir</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">ir</span><span class="p">))</span> <span class="k">THEN</span>
+<a name="ln-97"></a><span class="k">          </span><span class="n">work</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span>
+<a name="ln-98"></a>          <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,:)</span>
+<a name="ln-99"></a>          <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,:)</span> <span class="o">=</span> <span class="n">work</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span>
+<a name="ln-100"></a>          <span class="k">EXIT</span>
+<a name="ln-101"></a><span class="k">        </span><span class="n">ELSEIF</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ir</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">ir</span><span class="p">))</span> <span class="k">THEN</span>
+<a name="ln-102"></a><span class="k">          EXIT</span>
+<a name="ln-103"></a><span class="k">        END IF</span>
+<a name="ln-104"></a><span class="k">      END DO</span>
+<a name="ln-105"></a>
+<a name="ln-106"></a>    <span class="c">!-- for more than two rows, split the array and call merge sort on each half --</span>
+<a name="ln-107"></a>    <span class="n">ELSEIF</span> <span class="p">(</span><span class="n">length</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">)</span> <span class="k">THEN</span>
+<a name="ln-108"></a>      <span class="c">!-- compute array midpoint --</span>
+<a name="ln-109"></a>      <span class="n">half</span> <span class="o">=</span> <span class="p">(</span><span class="n">length</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+<a name="ln-110"></a>
+<a name="ln-111"></a>      <span class="c">!-- merge sort half arrays --</span>
+<a name="ln-112"></a>      <span class="k">CALL </span><span class="n">int_merge_sort_rows</span><span class="p">(</span><span class="n">A</span><span class="p">(:</span> <span class="n">half</span><span class="p">,:),</span>  <span class="n">half</span><span class="p">,</span>       <span class="n">irow</span><span class="p">,</span><span class="n">frow</span><span class="p">,</span><span class="n">work</span><span class="p">)</span>
+<a name="ln-113"></a>      <span class="k">CALL </span><span class="n">int_merge_sort_rows</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">half</span><span class="o">+</span><span class="mi">1</span> <span class="p">:,:),</span><span class="n">length</span><span class="o">-</span><span class="n">half</span><span class="p">,</span><span class="n">irow</span><span class="p">,</span><span class="n">frow</span><span class="p">,</span><span class="n">work</span><span class="p">)</span>
+<a name="ln-114"></a>
+<a name="ln-115"></a>      <span class="c">!-- merge sorted half arrays --</span>
+<a name="ln-116"></a>      <span class="k">DO </span><span class="n">ir</span> <span class="o">=</span> <span class="n">irow</span><span class="p">,</span> <span class="n">frow</span>
+<a name="ln-117"></a>        <span class="k">IF</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">half</span><span class="p">,</span><span class="n">ir</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="n">half</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">ir</span><span class="p">))</span> <span class="k">THEN</span>
+<a name="ln-118"></a><span class="k">          </span><span class="n">work</span><span class="p">(</span><span class="mi">1</span> <span class="p">:</span> <span class="n">half</span><span class="p">,:)</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span> <span class="p">:</span> <span class="n">half</span><span class="p">,:)</span>
+<a name="ln-119"></a>          <span class="k">CALL </span><span class="n">int_merge_rows</span><span class="p">(</span><span class="n">work</span><span class="p">(</span><span class="mi">1</span> <span class="p">:</span> <span class="n">half</span><span class="p">,:),</span><span class="n">A</span><span class="p">(</span><span class="n">half</span><span class="o">+</span><span class="mi">1</span> <span class="p">:</span> <span class="n">length</span><span class="p">,:),</span><span class="n">A</span><span class="p">,</span><span class="n">irow</span><span class="p">,</span><span class="n">frow</span><span class="p">)</span>
+<a name="ln-120"></a>          <span class="k">EXIT</span>
+<a name="ln-121"></a><span class="k">        </span><span class="n">ELSEIF</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">half</span><span class="p">,</span><span class="n">ir</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">A</span><span class="p">(</span><span class="n">half</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">ir</span><span class="p">))</span> <span class="k">THEN</span>
+<a name="ln-122"></a><span class="k">          EXIT</span>
+<a name="ln-123"></a><span class="k">        END IF</span>
+<a name="ln-124"></a><span class="k">      END DO</span>
+<a name="ln-125"></a><span class="k">    END IF</span>
+<a name="ln-126"></a><span class="k">  END SUBROUTINE</span>
+<a name="ln-127"></a><span class="c">!  math_mod/int_merge_sort_rows</span>
+<a name="ln-128"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-129"></a><span class="c">!</span>
+<a name="ln-130"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-131"></a><span class="c">!/****/s*  math_mod/int_merge_rows</span>
+<a name="ln-132"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-133"></a>  <span class="k">SUBROUTINE </span><span class="n">int_merge_rows</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">irow</span><span class="p">,</span><span class="n">frow</span><span class="p">)</span>
+<a name="ln-134"></a><span class="c">!* PURPOSE</span>
+<a name="ln-135"></a><span class="c">!*   Merge rows of an array in ascending order</span>
+<a name="ln-136"></a><span class="c">!* ASSUMPTION</span>
+<a name="ln-137"></a><span class="c">!*   Rows are already sorted in ascending order</span>
+<a name="ln-138"></a><span class="c">!* INPUTS</span>
+<a name="ln-139"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-140"></a><span class="c">!*</span>
+<a name="ln-141"></a><span class="c">!* OUTPUTS</span>
+<a name="ln-142"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-143"></a><span class="c">!*</span>
+<a name="ln-144"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-145"></a><span class="c">!*   -</span>
+<a name="ln-146"></a><span class="c">!* AUTHOR</span>
+<a name="ln-147"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-148"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-149"></a><span class="c">!*   2019/08/23: Created (PB)</span>
+<a name="ln-150"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-151"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-152"></a><span class="c">!* NOTES</span>
+<a name="ln-153"></a><span class="c">!*   ADAPTED FROM: https://rosettacode.org/wiki/Sorting_algorithms/Merge_sort#Fortran</span>
+<a name="ln-154"></a><span class="c">!******/</span>
+<a name="ln-155"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-156"></a><span class="c">!&gt; date: 2019/08/23</span>
+<a name="ln-157"></a><span class="c">!&gt; Merge rows of an array in ascending order</span>
+<a name="ln-158"></a><span class="c">!&gt; Assumption: rows are already sorted in ascending order</span>
+<a name="ln-159"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-160"></a>
+<a name="ln-161"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-162"></a>
+<a name="ln-163"></a>    <span class="c">!-- arguments --</span>
+<a name="ln-164"></a>    <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>     <span class="kd">::</span> <span class="n">A</span><span class="p">(:,:),</span><span class="n">B</span><span class="p">(:,:)</span>   <span class="c">!&gt;</span>
+<a name="ln-165"></a>    <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">INOUT</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">C</span><span class="p">(:,:)</span>          <span class="c">!&gt;</span>
+<a name="ln-166"></a>    <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>     <span class="kd">::</span> <span class="n">irow</span><span class="p">,</span> <span class="n">frow</span>      <span class="c">!&gt;</span>
+<a name="ln-167"></a>
+<a name="ln-168"></a>    <span class="c">!-- local variables --</span>
+<a name="ln-169"></a>    <span class="kt">LOGICAL</span>                 <span class="kd">::</span> <span class="n">is_le</span>           <span class="c">!&gt;</span>
+<a name="ln-170"></a>    <span class="kt">INTEGER</span>                 <span class="kd">::</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span>           <span class="c">!&gt;</span>
+<a name="ln-171"></a>    <span class="kt">INTEGER</span>                 <span class="kd">::</span> <span class="n">ir</span>              <span class="c">!&gt;</span>
+<a name="ln-172"></a>
+<a name="ln-173"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-174"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-175"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-176"></a>    <span class="c">!-- dimension check --</span>
+<a name="ln-177"></a>    <span class="k">IF</span> <span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="nb">DIM</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="nb">DIM</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="nb">DIM</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="k">THEN</span>
+<a name="ln-178"></a><span class="k">      WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="s1">&#39;Error in merge: Arrays sizes are not compatible&#39;</span>
+<a name="ln-179"></a>      <span class="k">CALL </span><span class="n">end_mpi</span><span class="p">()</span>
+<a name="ln-180"></a>    <span class="k">END IF</span>
+<a name="ln-181"></a>
+<a name="ln-182"></a>    <span class="c">!-- loop for all elements of merged array --</span>
+<a name="ln-183"></a>    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="ln-184"></a>    <span class="k">DO </span><span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="nb">DIM</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a name="ln-185"></a>      <span class="k">IF</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="nb">DIM</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="p">.</span><span class="nb">and</span><span class="p">.</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="nb">DIM</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="k">THEN</span>
+<a name="ln-186"></a><span class="k">        </span><span class="n">is_le</span> <span class="o">=</span> <span class="p">.</span><span class="n">TRUE</span><span class="p">.</span>
+<a name="ln-187"></a>
+<a name="ln-188"></a>        <span class="k">DO </span><span class="n">ir</span> <span class="o">=</span> <span class="n">irow</span><span class="p">,</span> <span class="n">frow</span>
+<a name="ln-189"></a>          <span class="k">IF</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">ir</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">B</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">ir</span><span class="p">))</span> <span class="k">THEN</span>
+<a name="ln-190"></a><span class="k">            EXIT</span>
+<a name="ln-191"></a><span class="k">          </span><span class="n">ELSEIF</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">ir</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">B</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">ir</span><span class="p">))</span> <span class="k">THEN</span>
+<a name="ln-192"></a><span class="k">            </span><span class="n">is_le</span> <span class="o">=</span> <span class="p">.</span><span class="n">FALSE</span><span class="p">.</span>
+<a name="ln-193"></a>            <span class="k">EXIT</span>
+<a name="ln-194"></a><span class="k">          END IF</span>
+<a name="ln-195"></a><span class="k">        END DO</span>
+<a name="ln-196"></a>
+<a name="ln-197"></a><span class="k">        IF</span> <span class="p">(</span><span class="n">is_le</span><span class="p">)</span> <span class="k">THEN</span>
+<a name="ln-198"></a><span class="k">          </span><span class="n">C</span><span class="p">(</span><span class="n">k</span><span class="p">,:)</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,:)</span>
+<a name="ln-199"></a>          <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<a name="ln-200"></a>        <span class="k">ELSE</span>
+<a name="ln-201"></a><span class="k">          </span><span class="n">C</span><span class="p">(</span><span class="n">k</span><span class="p">,:)</span> <span class="o">=</span> <span class="n">B</span><span class="p">(</span><span class="n">j</span><span class="p">,:)</span>
+<a name="ln-202"></a>          <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+<a name="ln-203"></a>        <span class="k">END IF</span>
+<a name="ln-204"></a><span class="k">      </span><span class="n">ELSEIF</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="nb">DIM</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="k">THEN</span>
+<a name="ln-205"></a><span class="k">        </span><span class="n">C</span><span class="p">(</span><span class="n">k</span><span class="p">,:)</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,:)</span>
+<a name="ln-206"></a>        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<a name="ln-207"></a>      <span class="n">ELSEIF</span> <span class="p">(</span><span class="n">j</span> <span class="o">&lt;=</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="nb">DIM</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="k">THEN</span>
+<a name="ln-208"></a><span class="k">        </span><span class="n">C</span><span class="p">(</span><span class="n">k</span><span class="p">,:)</span> <span class="o">=</span> <span class="n">B</span><span class="p">(</span><span class="n">j</span><span class="p">,:)</span>
+<a name="ln-209"></a>        <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+<a name="ln-210"></a>      <span class="k">END IF</span>
+<a name="ln-211"></a><span class="k">    END DO</span>
+<a name="ln-212"></a>
+<a name="ln-213"></a><span class="k">  END SUBROUTINE</span>
+<a name="ln-214"></a><span class="c">!  math_mod/int_merge_rows</span>
+<a name="ln-215"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-216"></a><span class="c">!</span>
+<a name="ln-217"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-218"></a><span class="c">!/****/s*  math_mod/int_insertion_sort</span>
+<a name="ln-219"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-220"></a>  <span class="k">SUBROUTINE </span><span class="n">int_insertion_sort</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<a name="ln-221"></a><span class="c">!* PURPOSE</span>
+<a name="ln-222"></a><span class="c">!*   Insertion sort of integer array</span>
+<a name="ln-223"></a><span class="c">!* INPUTS</span>
+<a name="ln-224"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-225"></a><span class="c">!*</span>
+<a name="ln-226"></a><span class="c">!* OUTPUTS</span>
+<a name="ln-227"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-228"></a><span class="c">!*</span>
+<a name="ln-229"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-230"></a><span class="c">!*   -</span>
+<a name="ln-231"></a><span class="c">!* AUTHOR</span>
+<a name="ln-232"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-233"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-234"></a><span class="c">!*   2019/08/29: Created (PB)</span>
+<a name="ln-235"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-236"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-237"></a><span class="c">!******/</span>
+<a name="ln-238"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-239"></a><span class="c">!&gt; date: 2019/08/29</span>
+<a name="ln-240"></a><span class="c">!&gt; Insertion sort of integer array</span>
+<a name="ln-241"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-242"></a>
+<a name="ln-243"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-244"></a>
+<a name="ln-245"></a>    <span class="c">!-- arguments --</span>
+<a name="ln-246"></a>    <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">INOUT</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">A</span><span class="p">(:)</span>       <span class="c">!&gt;</span>
+<a name="ln-247"></a>
+<a name="ln-248"></a>    <span class="c">!-- local variables --</span>
+<a name="ln-249"></a>    <span class="kt">INTEGER</span>                 <span class="kd">::</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span>        <span class="c">!&gt;</span>
+<a name="ln-250"></a>    <span class="kt">INTEGER</span>                 <span class="kd">::</span> <span class="n">work</span>       <span class="c">!&gt;</span>
+<a name="ln-251"></a>
+<a name="ln-252"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-253"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-254"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-255"></a>    <span class="k">DO </span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<a name="ln-256"></a>      <span class="n">work</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<a name="ln-257"></a>      <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+<a name="ln-258"></a>      <span class="k">DO WHILE</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)</span>
+<a name="ln-259"></a>          <span class="k">IF</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">work</span><span class="p">)</span> <span class="k">EXIT</span>
+<a name="ln-260"></a><span class="k">          </span><span class="n">A</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+<a name="ln-261"></a>          <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span>
+<a name="ln-262"></a>      <span class="k">END DO</span>
+<a name="ln-263"></a><span class="k">      </span><span class="n">A</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">work</span>
+<a name="ln-264"></a>    <span class="k">END DO</span>
+<a name="ln-265"></a>
+<a name="ln-266"></a><span class="k">    RETURN</span>
+<a name="ln-267"></a>
+<a name="ln-268"></a><span class="k">  END SUBROUTINE</span>
+<a name="ln-269"></a><span class="c">!  math_mod/int_insertion_sort</span>
+<a name="ln-270"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-271"></a><span class="c">!</span>
+<a name="ln-272"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-273"></a><span class="c">!/****/f*  math_mod/any_element_in_list</span>
+<a name="ln-274"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-275"></a>  <span class="k">FUNCTION </span><span class="n">any_element_in_list</span><span class="p">(</span><span class="n">elm</span><span class="p">,</span><span class="n">node_list</span><span class="p">)</span>
+<a name="ln-276"></a><span class="c">!* PURPOSE</span>
+<a name="ln-277"></a><span class="c">!*   Test if any element of one array is in another</span>
+<a name="ln-278"></a><span class="c">!* INPUTS</span>
+<a name="ln-279"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-280"></a><span class="c">!*</span>
+<a name="ln-281"></a><span class="c">!* OUTPUTS</span>
+<a name="ln-282"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-283"></a><span class="c">!*</span>
+<a name="ln-284"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-285"></a><span class="c">!*   -</span>
+<a name="ln-286"></a><span class="c">!* AUTHOR</span>
+<a name="ln-287"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-288"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-289"></a><span class="c">!*   2019/08/29: Created (PB)</span>
+<a name="ln-290"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-291"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-292"></a><span class="c">!******/</span>
+<a name="ln-293"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-294"></a><span class="c">!&gt; date: 2019/08/29</span>
+<a name="ln-295"></a><span class="c">!&gt; Test if any element of one array is in another</span>
+<a name="ln-296"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-297"></a>
+<a name="ln-298"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-299"></a>
+<a name="ln-300"></a>    <span class="c">!-- arguments --</span>
+<a name="ln-301"></a>    <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">elm</span><span class="p">(:)</span>                <span class="c">!&gt;</span>
+<a name="ln-302"></a>    <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">node_list</span><span class="p">(:)</span>          <span class="c">!&gt;</span>
+<a name="ln-303"></a>    <span class="kt">LOGICAL</span>               <span class="kd">::</span> <span class="n">any_element_in_list</span>   <span class="c">!&gt;</span>
+<a name="ln-304"></a>
+<a name="ln-305"></a>    <span class="c">!-- local variables --</span>
+<a name="ln-306"></a>    <span class="kt">INTEGER</span>               <span class="kd">::</span> <span class="n">in</span><span class="p">,</span> <span class="n">jn</span><span class="p">,</span> <span class="n">end_array</span>     <span class="c">!&gt;</span>
+<a name="ln-307"></a>
+<a name="ln-308"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-309"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-310"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-311"></a>
+<a name="ln-312"></a>    <span class="c">!-- assume it is true --</span>
+<a name="ln-313"></a>    <span class="n">any_element_in_list</span> <span class="o">=</span> <span class="p">.</span><span class="n">TRUE</span><span class="p">.</span>
+<a name="ln-314"></a>
+<a name="ln-315"></a>    <span class="c">!-- search second array for match --</span>
+<a name="ln-316"></a>    <span class="n">end_array</span> <span class="o">=</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">node_list</span><span class="p">,</span><span class="nb">DIM</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a name="ln-317"></a>    <span class="k">DO </span><span class="n">in</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">SIZE</span><span class="p">(</span><span class="n">elm</span><span class="p">,</span><span class="nb">DIM</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a name="ln-318"></a>      <span class="k">DO </span><span class="n">jn</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="nb">CEILING</span><span class="p">(</span><span class="n">end_array</span><span class="o">/</span><span class="mi">100</span><span class="mf">0.d0</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+<a name="ln-319"></a>        <span class="k">IF</span> <span class="p">(</span><span class="nb">ANY</span><span class="p">(</span><span class="n">elm</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="o">==</span><span class="n">node_list</span><span class="p">(</span><span class="n">jn</span><span class="o">*</span><span class="mi">1000</span><span class="o">-</span><span class="mi">999</span><span class="p">:</span><span class="n">jn</span><span class="o">*</span><span class="mi">1000</span><span class="p">)))</span> <span class="k">RETURN</span>
+<a name="ln-320"></a><span class="k">      END DO</span>
+<a name="ln-321"></a><span class="k">      IF</span> <span class="p">(</span><span class="nb">ANY</span><span class="p">(</span><span class="n">elm</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="o">==</span><span class="n">node_list</span><span class="p">(</span><span class="n">jn</span><span class="o">*</span><span class="mi">1000</span><span class="o">-</span><span class="mi">999</span><span class="p">:</span><span class="n">end_array</span><span class="p">)))</span> <span class="k">RETURN</span>
+<a name="ln-322"></a><span class="k">    END DO</span>
+<a name="ln-323"></a>
+<a name="ln-324"></a>    <span class="c">!-- it is false --</span>
+<a name="ln-325"></a>    <span class="n">any_element_in_list</span> <span class="o">=</span> <span class="p">.</span><span class="n">FALSE</span><span class="p">.</span>
+<a name="ln-326"></a>
+<a name="ln-327"></a>    <span class="k">RETURN</span>
+<a name="ln-328"></a>
+<a name="ln-329"></a><span class="k">  END FUNCTION</span>
+<a name="ln-330"></a><span class="c">!  math_mod/any_element_in_list</span>
+<a name="ln-331"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-332"></a><span class="c">!</span>
+<a name="ln-333"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-334"></a><span class="c">!/****/f*  math_mod/num_element_in_list</span>
+<a name="ln-335"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-336"></a>  <span class="k">FUNCTION </span><span class="n">num_element_in_list</span><span class="p">(</span><span class="n">elm</span><span class="p">,</span><span class="n">node_list</span><span class="p">)</span>
+<a name="ln-337"></a><span class="c">!* PURPOSE</span>
+<a name="ln-338"></a><span class="c">!*   Count number of elements of one array is in another</span>
+<a name="ln-339"></a><span class="c">!* INPUTS</span>
+<a name="ln-340"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-341"></a><span class="c">!*</span>
+<a name="ln-342"></a><span class="c">!* OUTPUTS</span>
+<a name="ln-343"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-344"></a><span class="c">!*</span>
+<a name="ln-345"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-346"></a><span class="c">!*   -</span>
+<a name="ln-347"></a><span class="c">!* AUTHOR</span>
+<a name="ln-348"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-349"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-350"></a><span class="c">!*   2019/08/29: Created (PB)</span>
+<a name="ln-351"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-352"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-353"></a><span class="c">!******/</span>
+<a name="ln-354"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-355"></a><span class="c">!&gt; date: 2019/08/29</span>
+<a name="ln-356"></a><span class="c">!&gt; Test if any element of one array is in another</span>
+<a name="ln-357"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-358"></a>
+<a name="ln-359"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-360"></a>
+<a name="ln-361"></a>    <span class="c">!-- arguments --</span>
+<a name="ln-362"></a>    <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">elm</span><span class="p">(:)</span>                  <span class="c">!&gt;</span>
+<a name="ln-363"></a>    <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">node_list</span><span class="p">(:)</span>            <span class="c">!&gt;</span>
+<a name="ln-364"></a>    <span class="kt">INTEGER</span>               <span class="kd">::</span> <span class="n">num_element_in_list</span>     <span class="c">!&gt;</span>
+<a name="ln-365"></a>
+<a name="ln-366"></a>    <span class="c">!-- local variables --</span>
+<a name="ln-367"></a>    <span class="kt">INTEGER</span>               <span class="kd">::</span> <span class="n">in</span>                      <span class="c">!&gt;</span>
+<a name="ln-368"></a>
+<a name="ln-369"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-370"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-371"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-372"></a>    <span class="c">!-- search second array for matches --</span>
+<a name="ln-373"></a>    <span class="n">num_element_in_list</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="ln-374"></a>    <span class="k">DO </span><span class="n">in</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">SIZE</span><span class="p">(</span><span class="n">elm</span><span class="p">,</span><span class="nb">DIM</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a name="ln-375"></a>      <span class="k">IF</span> <span class="p">(</span><span class="nb">ANY</span><span class="p">(</span><span class="n">elm</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="o">==</span><span class="n">node_list</span><span class="p">))</span> <span class="p">&amp;</span>
+<a name="ln-376"></a>        <span class="n">num_element_in_list</span> <span class="o">=</span> <span class="n">num_element_in_list</span> <span class="o">+</span> <span class="mi">1</span>
+<a name="ln-377"></a>    <span class="k">END DO</span>
+<a name="ln-378"></a>
+<a name="ln-379"></a><span class="k">    RETURN</span>
+<a name="ln-380"></a>
+<a name="ln-381"></a><span class="k">  END FUNCTION</span>
+<a name="ln-382"></a><span class="c">!  math_mod/num_element_in_list</span>
+<a name="ln-383"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-384"></a><span class="c">!</span>
+<a name="ln-385"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-386"></a><span class="c">!/****/f*  math_mod/index_in_list</span>
+<a name="ln-387"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-388"></a>  <span class="k">FUNCTION </span><span class="n">index_in_list</span><span class="p">(</span><span class="n">elm</span><span class="p">,</span><span class="n">list</span><span class="p">,</span><span class="n">init_guess</span><span class="p">)</span>
+<a name="ln-389"></a><span class="c">!* PURPOSE</span>
+<a name="ln-390"></a><span class="c">!*   Index of element in array</span>
+<a name="ln-391"></a><span class="c">!* INPUTS</span>
+<a name="ln-392"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-393"></a><span class="c">!*</span>
+<a name="ln-394"></a><span class="c">!* OUTPUTS</span>
+<a name="ln-395"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-396"></a><span class="c">!*</span>
+<a name="ln-397"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-398"></a><span class="c">!*   -</span>
+<a name="ln-399"></a><span class="c">!* AUTHOR</span>
+<a name="ln-400"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-401"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-402"></a><span class="c">!*   2019/08/29: Created (PB)</span>
+<a name="ln-403"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-404"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-405"></a><span class="c">!******/</span>
+<a name="ln-406"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-407"></a><span class="c">!&gt; date: 2019/08/29</span>
+<a name="ln-408"></a><span class="c">!&gt; Test if any element of one array is in another</span>
+<a name="ln-409"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-410"></a>
+<a name="ln-411"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-412"></a>
+<a name="ln-413"></a>    <span class="c">!-- arguments --</span>
+<a name="ln-414"></a>    <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">elm</span><span class="p">,</span> <span class="n">list</span><span class="p">(:)</span>        <span class="c">!&gt;</span>
+<a name="ln-415"></a>    <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">init_guess</span>          <span class="c">!&gt;</span>
+<a name="ln-416"></a>    <span class="kt">INTEGER</span>               <span class="kd">::</span> <span class="n">index_in_list</span>       <span class="c">!&gt;</span>
+<a name="ln-417"></a>
+<a name="ln-418"></a>    <span class="c">!-- local variables --</span>
+<a name="ln-419"></a>    <span class="kt">INTEGER</span>               <span class="kd">::</span> <span class="n">in</span>                  <span class="c">!&gt;</span>
+<a name="ln-420"></a>
+<a name="ln-421"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-422"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-423"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-424"></a>    <span class="c">!-- search second array for matches --</span>
+<a name="ln-425"></a>    <span class="k">DO </span><span class="n">in</span> <span class="o">=</span> <span class="n">init_guess</span><span class="p">,</span><span class="n">SIZE</span><span class="p">(</span><span class="n">list</span><span class="p">,</span><span class="nb">DIM</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a name="ln-426"></a>      <span class="k">IF</span> <span class="p">(</span><span class="n">elm</span><span class="o">==</span><span class="n">list</span><span class="p">(</span><span class="n">in</span><span class="p">))</span> <span class="k">THEN</span>
+<a name="ln-427"></a><span class="k">        </span><span class="n">index_in_list</span><span class="o">=</span><span class="n">in</span>
+<a name="ln-428"></a>        <span class="k">RETURN</span>
+<a name="ln-429"></a><span class="k">      END IF</span>
+<a name="ln-430"></a><span class="k">    END DO</span>
+<a name="ln-431"></a><span class="k">    DO </span><span class="n">in</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">init_guess</span><span class="o">-</span><span class="mi">1</span>
+<a name="ln-432"></a>      <span class="k">IF</span> <span class="p">(</span><span class="n">elm</span><span class="o">==</span><span class="n">list</span><span class="p">(</span><span class="n">in</span><span class="p">))</span> <span class="k">THEN</span>
+<a name="ln-433"></a><span class="k">        </span><span class="n">index_in_list</span><span class="o">=</span><span class="n">in</span>
+<a name="ln-434"></a>        <span class="k">RETURN</span>
+<a name="ln-435"></a><span class="k">      END IF</span>
+<a name="ln-436"></a><span class="k">    END DO</span>
+<a name="ln-437"></a>
+<a name="ln-438"></a><span class="k">    </span><span class="n">index_in_list</span><span class="o">=-</span><span class="mi">1</span>
+<a name="ln-439"></a>    <span class="k">RETURN</span>
+<a name="ln-440"></a>
+<a name="ln-441"></a><span class="k">  END FUNCTION</span>
+<a name="ln-442"></a><span class="c">!  math_mod/index_in_list</span>
+<a name="ln-443"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-444"></a><span class="c">!</span>
+<a name="ln-445"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-446"></a><span class="c">!/****/f*  math_mod/determinant</span>
+<a name="ln-447"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-448"></a>  <span class="k">RECURSIVE FUNCTION </span><span class="n">determinant</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="k">RESULT</span><span class="p">(</span><span class="n">accumulation</span><span class="p">)</span>
+<a name="ln-449"></a><span class="c">!* PURPOSE</span>
+<a name="ln-450"></a><span class="c">!*   Compute determinant</span>
+<a name="ln-451"></a><span class="c">!* INPUTS</span>
+<a name="ln-452"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-453"></a><span class="c">!*</span>
+<a name="ln-454"></a><span class="c">!* OUTPUTS</span>
+<a name="ln-455"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-456"></a><span class="c">!*</span>
+<a name="ln-457"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-458"></a><span class="c">!*   -</span>
+<a name="ln-459"></a><span class="c">!* AUTHOR</span>
+<a name="ln-460"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-461"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-462"></a><span class="c">!*   2019/08/29: Created (PB)</span>
+<a name="ln-463"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-464"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-465"></a><span class="c">!* NOTES</span>
+<a name="ln-466"></a><span class="c">!*   Adapted from:</span>
+<a name="ln-467"></a><span class="c">!*   http://fortranwiki.org/fortran/show/Matrix+inversion</span>
+<a name="ln-468"></a><span class="c">!*   https://rosettacode.org/wiki/Determinant_and_permanent#Fortran</span>
+<a name="ln-469"></a><span class="c">!******/</span>
+<a name="ln-470"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-471"></a><span class="c">!&gt; date: 2019/08/29</span>
+<a name="ln-472"></a><span class="c">!&gt; Compute determinant</span>
+<a name="ln-473"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-474"></a>
+<a name="ln-475"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-476"></a>
+<a name="ln-477"></a>    <span class="c">!-- arguments --</span>
+<a name="ln-478"></a>    <span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span> <span class="kd">::</span> <span class="n">A</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>    <span class="c">!&gt;</span>
+<a name="ln-479"></a>    <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">n</span>         <span class="c">!&gt;</span>
+<a name="ln-480"></a>
+<a name="ln-481"></a>    <span class="c">!-- local variables --</span>
+<a name="ln-482"></a>    <span class="kt">INTEGER</span>               <span class="kd">::</span> <span class="n">i</span><span class="p">,</span> <span class="n">sgn</span>         <span class="c">!&gt;</span>
+<a name="ln-483"></a>    <span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">B</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>     <span class="c">!&gt;</span>
+<a name="ln-484"></a>    <span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">accumulation</span>   <span class="c">!&gt;</span>
+<a name="ln-485"></a>
+<a name="ln-486"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-487"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-488"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-489"></a>    <span class="c">!-- search second array for matches --</span>
+<a name="ln-490"></a>    <span class="k">SELECT CASE</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<a name="ln-491"></a>    <span class="k">CASE</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a name="ln-492"></a>      <span class="n">accumulation</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<a name="ln-493"></a>    <span class="k">CASE</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<a name="ln-494"></a>      <span class="n">accumulation</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<a name="ln-495"></a>    <span class="k">CASE</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<a name="ln-496"></a>      <span class="n">accumulation</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="p">&amp;</span>
+<a name="ln-497"></a>        <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="p">&amp;</span>
+<a name="ln-498"></a>        <span class="o">+</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
+<a name="ln-499"></a>    <span class="k">CASE </span><span class="n">DEFAULT</span>
+<a name="ln-500"></a>    <span class="c">! IF (n==1) THEN</span>
+<a name="ln-501"></a>    <span class="c">!   accumulation = a(1,1)</span>
+<a name="ln-502"></a>    <span class="c">! ELSE</span>
+<a name="ln-503"></a>      <span class="n">accumulation</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>   <span class="n">sgn</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="ln-504"></a>      <span class="k">DO </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span>
+<a name="ln-505"></a>        <span class="n">B</span><span class="p">(:,</span> <span class="p">:(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">:,</span> <span class="p">:</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>   <span class="n">B</span><span class="p">(:,</span> <span class="n">i</span><span class="p">:)</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">:,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:)</span>
+<a name="ln-506"></a>        <span class="n">accumulation</span> <span class="o">=</span> <span class="n">accumulation</span> <span class="o">+</span> <span class="n">sgn</span> <span class="o">*</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">determinant</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<a name="ln-507"></a>        <span class="n">sgn</span> <span class="o">=</span> <span class="o">-</span><span class="n">sgn</span>
+<a name="ln-508"></a>      <span class="k">END DO</span>
+<a name="ln-509"></a><span class="k">    END SELECT</span>
+<a name="ln-510"></a>
+<a name="ln-511"></a><span class="k">    RETURN</span>
+<a name="ln-512"></a>
+<a name="ln-513"></a><span class="k">  END FUNCTION</span>
+<a name="ln-514"></a><span class="c">!  math_mod/determinant</span>
+<a name="ln-515"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-516"></a><span class="c">!</span>
+<a name="ln-517"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-518"></a><span class="c">!/****/f*  math_mod/matinv2</span>
+<a name="ln-519"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-520"></a>  <span class="k">FUNCTION </span><span class="n">matinv2</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="k">RESULT</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<a name="ln-521"></a><span class="c">!* PURPOSE</span>
+<a name="ln-522"></a><span class="c">!*   Performs a direct calculation of the inverse of a 2x2 matrix.</span>
+<a name="ln-523"></a><span class="c">!* INPUTS</span>
+<a name="ln-524"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-525"></a><span class="c">!*   elem</span>
+<a name="ln-526"></a><span class="c">!*   orientation</span>
+<a name="ln-527"></a><span class="c">!* OUTPUTS</span>
+<a name="ln-528"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-529"></a><span class="c">!*   elem</span>
+<a name="ln-530"></a><span class="c">!*   orientation</span>
+<a name="ln-531"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-532"></a><span class="c">!*   - the nodal indices of elm are sorted numerically in ascending order</span>
+<a name="ln-533"></a><span class="c">!*   - orientation contains the ±1 orientation of the element</span>
+<a name="ln-534"></a><span class="c">!* AUTHOR</span>
+<a name="ln-535"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-536"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-537"></a><span class="c">!*   2019/08/29: Created (PB)</span>
+<a name="ln-538"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-539"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-540"></a><span class="c">!* NOTES</span>
+<a name="ln-541"></a><span class="c">!*   Adapted from: http://fortranwiki.org/fortran/show/Matrix+inversion</span>
+<a name="ln-542"></a><span class="c">!******/</span>
+<a name="ln-543"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-544"></a><span class="c">!&gt; date: 2019/08/29</span>
+<a name="ln-545"></a><span class="c">!&gt; Performs a direct calculation of the inverse of a 2x2 matrix.</span>
+<a name="ln-546"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-547"></a>
+<a name="ln-548"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-549"></a>
+<a name="ln-550"></a>    <span class="c">!-- arguments --</span>
+<a name="ln-551"></a>    <span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span> <span class="kd">::</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>   <span class="c">!&gt; Matrix</span>
+<a name="ln-552"></a>
+<a name="ln-553"></a>    <span class="c">!-- local variables --</span>
+<a name="ln-554"></a>    <span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">)</span>             <span class="kd">::</span> <span class="n">B</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>   <span class="c">!&gt; Inverse matrix</span>
+<a name="ln-555"></a>    <span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">)</span>             <span class="kd">::</span> <span class="n">detinv</span>   <span class="c">!&gt;</span>
+<a name="ln-556"></a>
+<a name="ln-557"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-558"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-559"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-560"></a>
+<a name="ln-561"></a>    <span class="c">!-- Calculate the inverse determinant of the matrix --</span>
+<a name="ln-562"></a>    <span class="n">detinv</span> <span class="o">=</span> <span class="mf">1.d0</span><span class="o">/</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<a name="ln-563"></a>
+<a name="ln-564"></a>    <span class="c">!-- Calculate the inverse of the matrix --</span>
+<a name="ln-565"></a>    <span class="n">B</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="o">+</span><span class="n">detinv</span> <span class="o">*</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<a name="ln-566"></a>    <span class="n">B</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="n">detinv</span> <span class="o">*</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<a name="ln-567"></a>    <span class="n">B</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="n">detinv</span> <span class="o">*</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<a name="ln-568"></a>    <span class="n">B</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="o">+</span><span class="n">detinv</span> <span class="o">*</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<a name="ln-569"></a>
+<a name="ln-570"></a>    <span class="k">RETURN</span>
+<a name="ln-571"></a>
+<a name="ln-572"></a><span class="k">  END FUNCTION</span>
+<a name="ln-573"></a><span class="c">!  math_mod/matinv2</span>
+<a name="ln-574"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-575"></a><span class="c">!</span>
+<a name="ln-576"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-577"></a><span class="c">!/****/f*  math_mod/matinv3</span>
+<a name="ln-578"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-579"></a>  <span class="k">FUNCTION </span><span class="n">matinv3</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="k">RESULT</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<a name="ln-580"></a><span class="c">!* PURPOSE</span>
+<a name="ln-581"></a><span class="c">!*   Performs a direct calculation of the inverse of a 3×3 matrix.</span>
+<a name="ln-582"></a><span class="c">!* INPUTS</span>
+<a name="ln-583"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-584"></a><span class="c">!*</span>
+<a name="ln-585"></a><span class="c">!* OUTPUTS</span>
+<a name="ln-586"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-587"></a><span class="c">!*</span>
+<a name="ln-588"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-589"></a><span class="c">!*   -</span>
+<a name="ln-590"></a><span class="c">!* AUTHOR</span>
+<a name="ln-591"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-592"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-593"></a><span class="c">!*   2019/08/29: Created (PB)</span>
+<a name="ln-594"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-595"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-596"></a><span class="c">!* NOTES</span>
+<a name="ln-597"></a><span class="c">!*   Adapted from: http://fortranwiki.org/fortran/show/Matrix+inversion</span>
+<a name="ln-598"></a><span class="c">!******/</span>
+<a name="ln-599"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-600"></a><span class="c">!&gt; date: 2019/08/29</span>
+<a name="ln-601"></a><span class="c">!&gt; Performs a direct calculation of the inverse of a 3×3 matrix.</span>
+<a name="ln-602"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-603"></a>
+<a name="ln-604"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-605"></a>
+<a name="ln-606"></a>    <span class="c">!-- arguments --</span>
+<a name="ln-607"></a>    <span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span> <span class="kd">::</span> <span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>   <span class="c">!&gt; Matrix</span>
+<a name="ln-608"></a>
+<a name="ln-609"></a>    <span class="c">!-- local variables --</span>
+<a name="ln-610"></a>    <span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">)</span>             <span class="kd">::</span> <span class="n">B</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>   <span class="c">!&gt; Inverse matrix</span>
+<a name="ln-611"></a>    <span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">)</span>             <span class="kd">::</span> <span class="n">detinv</span>   <span class="c">!&gt;</span>
+<a name="ln-612"></a>
+<a name="ln-613"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-614"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-615"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-616"></a>
+<a name="ln-617"></a>    <span class="c">!-- Calculate the inverse determinant of the matrix --</span>
+<a name="ln-618"></a>    <span class="n">detinv</span> <span class="o">=</span> <span class="mf">1.d0</span><span class="o">/</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))&amp;</span>
+<a name="ln-619"></a>      <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">))&amp;</span>
+<a name="ln-620"></a>      <span class="o">+</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
+<a name="ln-621"></a>
+<a name="ln-622"></a>    <span class="c">!-- Calculate the inverse of the matrix --</span>
+<a name="ln-623"></a>    <span class="n">B</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="o">+</span><span class="n">detinv</span> <span class="o">*</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<a name="ln-624"></a>    <span class="n">B</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="n">detinv</span> <span class="o">*</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<a name="ln-625"></a>    <span class="n">B</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="o">+</span><span class="n">detinv</span> <span class="o">*</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<a name="ln-626"></a>    <span class="n">B</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="n">detinv</span> <span class="o">*</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<a name="ln-627"></a>    <span class="n">B</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="o">+</span><span class="n">detinv</span> <span class="o">*</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<a name="ln-628"></a>    <span class="n">B</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="n">detinv</span> <span class="o">*</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<a name="ln-629"></a>    <span class="n">B</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="o">+</span><span class="n">detinv</span> <span class="o">*</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<a name="ln-630"></a>    <span class="n">B</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="n">detinv</span> <span class="o">*</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<a name="ln-631"></a>    <span class="n">B</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="o">+</span><span class="n">detinv</span> <span class="o">*</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<a name="ln-632"></a>
+<a name="ln-633"></a>    <span class="k">RETURN</span>
+<a name="ln-634"></a>
+<a name="ln-635"></a><span class="k">  END FUNCTION</span>
+<a name="ln-636"></a><span class="c">!  math_mod/matinv3</span>
+<a name="ln-637"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-638"></a><span class="c">!</span>
+<a name="ln-639"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-640"></a><span class="c">!/****/f*  math_mod/cross_product</span>
+<a name="ln-641"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-642"></a>  <span class="k">FUNCTION </span><span class="n">cross_product</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<a name="ln-643"></a><span class="c">!* PURPOSE</span>
+<a name="ln-644"></a><span class="c">!*   Performs a direct calculation of vector cross product</span>
+<a name="ln-645"></a><span class="c">!* INPUTS</span>
+<a name="ln-646"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-647"></a><span class="c">!*</span>
+<a name="ln-648"></a><span class="c">!* OUTPUTS</span>
+<a name="ln-649"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-650"></a><span class="c">!*</span>
+<a name="ln-651"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-652"></a><span class="c">!*   -</span>
+<a name="ln-653"></a><span class="c">!* AUTHOR</span>
+<a name="ln-654"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-655"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-656"></a><span class="c">!*   2019/08/29: Created (PB)</span>
+<a name="ln-657"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-658"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-659"></a><span class="c">!* NOTES</span>
+<a name="ln-660"></a><span class="c">!*   Adapted from: https://rosettacode.org/wiki/Vector_products#Fortran</span>
+<a name="ln-661"></a><span class="c">!******/</span>
+<a name="ln-662"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-663"></a><span class="c">!&gt; date: 2019/08/29</span>
+<a name="ln-664"></a><span class="c">!&gt; Performs a direct calculation of vector cross product</span>
+<a name="ln-665"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-666"></a>
+<a name="ln-667"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-668"></a>
+<a name="ln-669"></a>    <span class="c">!-- arguments --</span>
+<a name="ln-670"></a>    <span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">b</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>       <span class="c">!&gt; input vectors</span>
+<a name="ln-671"></a>
+<a name="ln-672"></a>    <span class="c">!-- local variables --</span>
+<a name="ln-673"></a>    <span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">)</span>              <span class="kd">::</span> <span class="n">cross_product</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c">!&gt; resulting vector</span>
+<a name="ln-674"></a>
+<a name="ln-675"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-676"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-677"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-678"></a>    <span class="c">!-- compute the cross product --</span>
+<a name="ln-679"></a>    <span class="n">cross_product</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">a</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">b</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">b</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<a name="ln-680"></a>    <span class="n">cross_product</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">b</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<a name="ln-681"></a>    <span class="n">cross_product</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">b</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<a name="ln-682"></a>
+<a name="ln-683"></a>    <span class="k">RETURN</span>
+<a name="ln-684"></a>
+<a name="ln-685"></a><span class="k">  END FUNCTION</span>
+<a name="ln-686"></a><span class="c">!  math_mod/cross_product</span>
+<a name="ln-687"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-688"></a><span class="c">!</span>
+<a name="ln-689"></a>
+<a name="ln-690"></a>
+<a name="ln-691"></a><span class="k">END MODULE</span>
+<a name="ln-692"></a><span class="c">! math_mod</span>
+<a name="ln-693"></a><span class="c">!===============================================================================</span>
+<a name="ln-694"></a><span class="c">!</span>
+</pre></div>
+
+    </section>
+    </div>
+  </div>
+
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 <a rel="license" href="http://www.freebsd.org/copyright/freebsd-doc-license.html">FreeBSD Documentation License</a>
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> ParaGEMS was developed by Pieter Boom</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

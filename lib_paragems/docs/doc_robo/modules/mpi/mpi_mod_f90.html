@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-type" content="text/html; charset=ISO-8859-1" />
+<link rel="stylesheet" href="../../robodoc.css" type="text/css" />
+<title>./../src/modules/mpi/mpi_mod.f90</title>
+<!-- Source: ./../src/modules/mpi/mpi_mod.f90 -->
+<!-- Generated with ROBODoc Version 4.99.43 (Sep  9 2020) -->
+</head>
+<body>
+<div id="logo">
+<a name="robo_top_of_doc">ParaGEMS Documentation</a>
+</div> <!-- logo -->
+<div id="navigation">
+<a class="menuitem" href="../../toc_index.html#top">Table of Contents</a>
+<a class="menuitem" href="../../robo_sourcefiles.html#top">Sourcefiles</a>
+<a class="menuitem" href="../../masterindex.html#top">Index</a>
+<a class="menuitem" href="../../robo_functions.html#top">Functions</a>
+<a class="menuitem" href="../../robo_modules.html#top">Modules</a>
+<a class="menuitem" href="../../robo_subroutines.html#top">Subrountines</a>
+</div> <!-- navigation -->
+<div id="content">
+<h3>TABLE OF CONTENTS</h3>
+<ul>
+<li>1. <a href="#robo5">modules|mpi/mpi_mod</a></li>
+<ul>
+<li>1.1. <a href="#robo84">mpi_mod/close_log</a></li>
+<li>1.2. <a href="#robo85">mpi_mod/close_unsteady_log</a></li>
+<li>1.3. <a href="#robo86">mpi_mod/elm2proc</a></li>
+<li>1.4. <a href="#robo87">mpi_mod/end_mpi</a></li>
+<li>1.5. <a href="#robo88">mpi_mod/open_log</a></li>
+<li>1.6. <a href="#robo89">mpi_mod/open_unsteady_log</a></li>
+<li>1.7. <a href="#robo90">mpi_mod/rootwrite_log</a></li>
+<li>1.8. <a href="#robo91">mpi_mod/start_mpi</a></li>
+<li>1.9. <a href="#robo92">mpi_mod/syncwrite_log</a></li>
+<li>1.10. <a href="#robo93">mpi_mod/syncwrite_log_mpidata</a></li>
+<li>1.11. <a href="#robo94">mpi_mod/syncwrite_log_time</a></li>
+<li>1.12. <a href="#robo95">mpi_mod/write_log</a></li>
+</ul>
+</ul>
+<hr />
+<a name="modules7cmpi2fmpi5fmod"></a>
+<a name="robo5"></a><h2>modules|mpi/mpi_mod [ Modules ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="../../robo_modules.html#robo_top_of_doc">Modules</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">MODULE <strong>mpi_mod</strong>
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Module contains routines for controlling MPI execution environment
+</pre>
+<p class="item_name">INCLUDES</p>
+<pre>   Name                    Purpose
+   <a href="../common/common_mod_f90.html#robo1">common_mod</a>              variable definitions
+</pre>
+<p class="item_name">CONTAINS</p>
+<pre>   Subroutine              Purpose
+   <a href="#robo91">start_mpi</a>()             start MPI execution environment &amp; get details
+   <a href="#robo87">end_mpi</a>()               end MPI execution environment &amp; stop ParaGEMS
+   <a href="#robo86">elm2proc</a>()              convert partitioning element to process num (rank)
+   <a href="#robo88">open_log</a>                Open log file from root process &amp; write header
+   <a href="#robo84">close_log</a>               Close log file from root process
+   <a href="#robo90">rootwrite_log</a>           Write unsynchronised message to log from root
+   <a href="#robo95">write_log</a>               Write unsynchronised messages to log from all ranks
+   <a href="#robo92">syncwrite_log</a>           Write synchronised message to log from root
+   <a href="#robo93">syncwrite_log_mpidata</a>   Write a synchronised message to log with num ranks
+   <a href="#robo94">syncwrite_log_time</a>      Write a synchronised message to log with timings
+   <a href="#robo89">open_unsteady_log</a>       Open log file for unsteady simulations from root
+                           and write header
+   <a href="#robo85">close_unsteady_log</a>      Close log file for unsteady simulations from root
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2020/09/16: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="mpi5fmod2fclose5flog"></a>
+<a name="robo84"></a><h2>mpi_mod/close_log [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo5">mpi_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>close_log</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Close log file from root process
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2020/09/16: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="mpi5fmod2fclose5funsteady5flog"></a>
+<a name="robo85"></a><h2>mpi_mod/close_unsteady_log [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo5">mpi_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>close_unsteady_log</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Close log file for unsteady simulations from root
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2020/09/16: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="mpi5fmod2felm2proc"></a>
+<a name="robo86"></a><h2>mpi_mod/elm2proc [ Functions ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo5">mpi_mod</a> ] [ <a href="../../robo_functions.html#robo_top_of_doc">Functions</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  FUNCTION <strong>elm2proc</strong>(id)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Convert partitioning element to process number (rank)
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+   id                      global vertex index
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+   id                      global vertex index
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2020/09/16: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="mpi5fmod2fend5fmpi"></a>
+<a name="robo87"></a><h2>mpi_mod/end_mpi [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo5">mpi_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>end_mpi</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   End MPI execution environment &amp; stop ParaGEMS
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   - MPI execution environment ended and ParaGEMS stoped
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2020/09/16: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="mpi5fmod2fopen5flog"></a>
+<a name="robo88"></a><h2>mpi_mod/open_log [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo5">mpi_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>open_log</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Open log file from root process and write ParaGEMS header
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2020/09/16: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="mpi5fmod2fopen5funsteady5flog"></a>
+<a name="robo89"></a><h2>mpi_mod/open_unsteady_log [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo5">mpi_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>open_unsteady_log</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Open log file for unsteady simulations from root process and write header
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2020/09/16: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="mpi5fmod2frootwrite5flog"></a>
+<a name="robo90"></a><h2>mpi_mod/rootwrite_log [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo5">mpi_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>rootwrite_log</strong>(msg)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Write unsynchronised message from root process to log file
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+   msg                     message string to be written to file
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2020/09/16: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="mpi5fmod2fstart5fmpi"></a>
+<a name="robo91"></a><h2>mpi_mod/start_mpi [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo5">mpi_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>start_mpi</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Start MPI execution environment &amp; get details
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   - MPI execution environment started, rank identified, and number of
+     processes evaluated
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2020/09/16: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="mpi5fmod2fsyncwrite5flog"></a>
+<a name="robo92"></a><h2>mpi_mod/syncwrite_log [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo5">mpi_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>syncwrite_log</strong>(msg)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Write synchronised message from root process to log file
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+   msg                     message string to be written to file
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2020/09/16: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="mpi5fmod2fsyncwrite5flog5fmpidata"></a>
+<a name="robo93"></a><h2>mpi_mod/syncwrite_log_mpidata [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo5">mpi_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>syncwrite_log_mpidata</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Write a synchronised message with number of mpi ranks to log file
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2020/09/16: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="mpi5fmod2fsyncwrite5flog5ftime"></a>
+<a name="robo94"></a><h2>mpi_mod/syncwrite_log_time [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo5">mpi_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>syncwrite_log_time</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Write a synchronised message to log file with timings
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2020/09/16: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="mpi5fmod2fwrite5flog"></a>
+<a name="robo95"></a><h2>mpi_mod/write_log [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo5">mpi_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>write_log</strong>(msg)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Write unsynchronised messages collated from processes to log file
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+   msg                     message string to be written to file
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2020/09/16: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+</div> <!-- content -->
+<div id="footer">
+<p>Generated from ./../src/modules/mpi/mpi_mod.f90 with <a href="http://www.xs4all.nl/~rfsber/Robo/robodoc.html">ROBODoc</a> V4.99.43 on Wed Mar 17 2021 09:16:11
+</p>
+</div> <!-- footer -->
+</body>
+</html>

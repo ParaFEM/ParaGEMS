@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-type" content="text/html; charset=ISO-8859-1" />
+<link rel="stylesheet" href="../../robodoc.css" type="text/css" />
+<title>./../src/modules/solvers/solver_mod.f90</title>
+<!-- Source: ./../src/modules/solvers/solver_mod.f90 -->
+<!-- Generated with ROBODoc Version 4.99.43 (Sep  9 2020) -->
+</head>
+<body>
+<div id="logo">
+<a name="robo_top_of_doc">ParaGEMS Documentation</a>
+</div> <!-- logo -->
+<div id="navigation">
+<a class="menuitem" href="../../toc_index.html#top">Table of Contents</a>
+<a class="menuitem" href="../../robo_sourcefiles.html#top">Sourcefiles</a>
+<a class="menuitem" href="../../masterindex.html#top">Index</a>
+<a class="menuitem" href="../../robo_functions.html#top">Functions</a>
+<a class="menuitem" href="../../robo_modules.html#top">Modules</a>
+<a class="menuitem" href="../../robo_subroutines.html#top">Subrountines</a>
+</div> <!-- navigation -->
+<div id="content">
+<h3>TABLE OF CONTENTS</h3>
+<ul>
+<li>1. <a href="#robo8">modules|solvers/solver_mod</a></li>
+<ul>
+<li>1.1. <a href="#robo103">solver_mod/check_param_solver</a></li>
+<li>1.2. <a href="#robo104">solver_mod/end_petsc</a></li>
+<li>1.3. <a href="#robo105">solver_mod/extract_sol_KSP</a></li>
+<li>1.4. <a href="#robo106">solver_mod/extract_sol_KSP2</a></li>
+<li>1.5. <a href="#robo107">solver_mod/set_defaults_solver</a></li>
+<li>1.6. <a href="#robo108">solver_mod/solve_KSP</a></li>
+<li>1.7. <a href="#robo109">solver_mod/solve_KSP2</a></li>
+<li>1.8. <a href="#robo110">solver_mod/start_petsc</a></li>
+</ul>
+</ul>
+<hr />
+<a name="modules7csolvers2fsolver5fmod"></a>
+<a name="robo8"></a><h2>modules|solvers/solver_mod [ Modules ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="../../robo_modules.html#robo_top_of_doc">Modules</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">MODULE <strong>solver_mod</strong>
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Module contains general routines for solvers (linear and nonlinear)
+</pre>
+<p class="item_name">INCLUDES</p>
+<pre>   Name                    Purpose
+   <a href="../common/common_mod_f90.html#robo1">common_mod</a>              variable definitions
+   <a href="../mpi/mpi_mod_f90.html#robo5">mpi_mod</a>                 ???
+   ieee_arithmeti
+   iso_fortran_env
+   petsc.h
+   solver_vars.inc
+</pre>
+<p class="item_name">CONTAINS</p>
+<pre>   Subroutine              Purpose
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+   2019/11/21: KSP (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="solver5fmod2fcheck5fparam5fsolver"></a>
+<a name="robo103"></a><h2>solver_mod/check_param_solver [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo8">solver_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>check_param_solver</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Check values set for solver
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="solver5fmod2fend5fpetsc"></a>
+<a name="robo104"></a><h2>solver_mod/end_petsc [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo8">solver_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>end_petsc</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Finalise PETSc library
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="solver5fmod2fextract5fsol5fKSP"></a>
+<a name="robo105"></a><h2>solver_mod/extract_sol_KSP [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo8">solver_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>extract_sol_KSP</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   extract local solution values from distributed PETSc vector
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="solver5fmod2fextract5fsol5fKSP2"></a>
+<a name="robo106"></a><h2>solver_mod/extract_sol_KSP2 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo8">solver_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>extract_sol_KSP2</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   extract local solution values from distributed PETSc vector
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="solver5fmod2fset5fdefaults5fsolver"></a>
+<a name="robo107"></a><h2>solver_mod/set_defaults_solver [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo8">solver_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>set_defaults_solver</strong>(solver)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Set default values for solver
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+   2019/11/21: KSP (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="solver5fmod2fsolve5fKSP"></a>
+<a name="robo108"></a><h2>solver_mod/solve_KSP [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo8">solver_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>solve_KSP</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Solve linear system using PETSc KSP
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="solver5fmod2fsolve5fKSP2"></a>
+<a name="robo109"></a><h2>solver_mod/solve_KSP2 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo8">solver_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>solve_KSP2</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Solve linear system using PETSc KSP
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="solver5fmod2fstart5fpetsc"></a>
+<a name="robo110"></a><h2>solver_mod/start_petsc [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo8">solver_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>start_petsc</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Initialise PETSc library
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+</div> <!-- content -->
+<div id="footer">
+<p>Generated from ./../src/modules/solvers/solver_mod.f90 with <a href="http://www.xs4all.nl/~rfsber/Robo/robodoc.html">ROBODoc</a> V4.99.43 on Wed Mar 17 2021 09:16:11
+</p>
+</div> <!-- footer -->
+</body>
+</html>

@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <meta name="description" content="Documentation for ParaGEMS">
+   
+    <meta name="author" content="Pieter Boom" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>solver_mod &ndash; ParaGEMS</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">ParaGEMS </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li><a href='../page/index.html'>README</a></li>
+      
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            <li><a href="../lists/programs.html">Programs</a></li>
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>solver_mod 
+    <small>Module</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     <li><i class="fa fa-pencil"></i> Pieter Boom</li>
+     
+     
+    <li><i class="fa fa-calendar-o"></i> 2019/08/23</li>
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 4.2% of total for modules and submodules.">190 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/solver_mod.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/solver_mod.f90.html'>solver_mod.f90</a></li>
+    
+  
+     <li class="active">solver_mod</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-0">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-0" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/solver_mod.html#proc-check_param_solver">check_param_solver</a>
+      
+      <a class="list-group-item" href="../module/solver_mod.html#proc-end_petsc">end_petsc</a>
+      
+      <a class="list-group-item" href="../module/solver_mod.html#proc-extract_sol_ksp">extract_sol_KSP</a>
+      
+      <a class="list-group-item" href="../module/solver_mod.html#proc-extract_sol_ksp2">extract_sol_KSP2</a>
+      
+      <a class="list-group-item" href="../module/solver_mod.html#proc-set_defaults_solver">set_defaults_solver</a>
+      
+      <a class="list-group-item" href="../module/solver_mod.html#proc-solve_ksp">solve_KSP</a>
+      
+      <a class="list-group-item" href="../module/solver_mod.html#proc-solve_ksp2">solve_KSP2</a>
+      
+      <a class="list-group-item" href="../module/solver_mod.html#proc-start_petsc">start_petsc</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <p>Module contains general routines for solvers (linear and nonlinear)</p>
+      <br>
+    
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
+    
+    <li><a href='../module/common_mod.html'>common_mod</a></li>
+    
+    <li><a href='../module/mpi_mod.html'>mpi_mod</a></li>
+    
+    <li><a href="http://fortranwiki.org/fortran/show/IEEE_ARITHMETIC">ieee_arithmetic</a></li>
+    
+    <li><a href="http://fortranwiki.org/fortran/show/ISO_FORTRAN_ENV">iso_fortran_env</a></li>
+    
+  </ul>
+      </li>
+      
+      
+      
+      <li class="list-group-item">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: module~~solver_mod~~UsesGraph Pages: 1 -->
+<svg id="modulesolver_modUsesGraph" width="399pt" height="135pt"
+ viewBox="0.00 0.00 399.12 134.95" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~solver_mod~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 130.95)">
+<title>module~~solver_mod~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-130.95 395.12,-130.95 395.12,4 -4,4"/>
+<!-- module~solver_mod -->
+<g id="module~~solver_mod~~UsesGraph_node1" class="node">
+<title>module~solver_mod</title>
+<polygon fill="none" stroke="black" points="391.24,-88.4 324.73,-88.4 324.73,-64.2 391.24,-64.2 391.24,-88.4"/>
+<text text-anchor="middle" x="357.99" y="-73.15" font-family="Helvetica,sans-Serif" font-size="10.50">solver_mod</text>
+</g>
+<!-- module~common_mod -->
+<g id="module~~solver_mod~~UsesGraph_node2" class="node">
+<title>module~common_mod</title>
+<g id="a_module~~solver_mod~~UsesGraph_node2"><a xlink:href=".././module/common_mod.html" xlink:title="common_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="168.26,-87.4 90.24,-87.4 90.24,-63.2 168.26,-63.2 168.26,-87.4"/>
+<text text-anchor="middle" x="129.25" y="-72.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">common_mod</text>
+</a>
+</g>
+</g>
+<!-- module~solver_mod&#45;&gt;module~common_mod -->
+<g id="module~~solver_mod~~UsesGraph_edge1" class="edge">
+<title>module~solver_mod:&#45;&gt;module~common_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M343.01,-88.49C330,-98.97 309.55,-113.32 288.86,-119.3 252.85,-129.71 240.66,-129.21 204.51,-119.3 186.13,-114.26 167.69,-103.38 153.79,-93.69"/>
+<polygon fill="#000000" stroke="#000000" points="155.5,-90.61 145.35,-87.58 151.39,-96.28 155.5,-90.61"/>
+</g>
+<!-- iso_fortran_env -->
+<g id="module~~solver_mod~~UsesGraph_node3" class="node">
+<title>iso_fortran_env</title>
+<g id="a_module~~solver_mod~~UsesGraph_node3"><a xlink:href="http://fortranwiki.org/fortran/show/ISO_FORTRAN_ENV" xlink:title="iso_fortran_env">
+<polygon fill="#337ab7" stroke="#337ab7" points="289.04,-110.4 204.33,-110.4 204.33,-86.2 289.04,-86.2 289.04,-110.4"/>
+<text text-anchor="middle" x="246.68" y="-95.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
+</a>
+</g>
+</g>
+<!-- module~solver_mod&#45;&gt;iso_fortran_env -->
+<g id="module~~solver_mod~~UsesGraph_edge2" class="edge">
+<title>module~solver_mod:&#45;&gt;iso_fortran_env:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M324.78,-82.78C316.64,-84.42 307.69,-86.22 298.86,-88"/>
+<polygon fill="#000000" stroke="#000000" points="298.11,-84.58 289,-89.98 299.49,-91.44 298.11,-84.58"/>
+</g>
+<!-- ieee_arithmetic -->
+<g id="module~~solver_mod~~UsesGraph_node4" class="node">
+<title>ieee_arithmetic</title>
+<g id="a_module~~solver_mod~~UsesGraph_node4"><a xlink:href="http://fortranwiki.org/fortran/show/IEEE_ARITHMETIC" xlink:title="ieee_arithmetic">
+<polygon fill="#337ab7" stroke="#337ab7" points="288.36,-67.4 205.01,-67.4 205.01,-43.2 288.36,-43.2 288.36,-67.4"/>
+<text text-anchor="middle" x="246.68" y="-52.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ieee_arithmetic</text>
+</a>
+</g>
+</g>
+<!-- module~solver_mod&#45;&gt;ieee_arithmetic -->
+<g id="module~~solver_mod~~UsesGraph_edge3" class="edge">
+<title>module~solver_mod:&#45;&gt;ieee_arithmetic:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M324.78,-70.11C316.55,-68.53 307.49,-66.79 298.57,-65.08"/>
+<polygon fill="#000000" stroke="#000000" points="299.08,-61.61 288.6,-63.16 297.76,-68.48 299.08,-61.61"/>
+</g>
+<!-- module~mpi_mod -->
+<g id="module~~solver_mod~~UsesGraph_node5" class="node">
+<title>module~mpi_mod</title>
+<g id="a_module~~solver_mod~~UsesGraph_node5"><a xlink:href=".././module/mpi_mod.html" xlink:title="mpi_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="274.35,-24.4 219.02,-24.4 219.02,-0.2 274.35,-0.2 274.35,-24.4"/>
+<text text-anchor="middle" x="246.68" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_mod</text>
+</a>
+</g>
+</g>
+<!-- module~solver_mod&#45;&gt;module~mpi_mod -->
+<g id="module~~solver_mod~~UsesGraph_edge4" class="edge">
+<title>module~solver_mod:&#45;&gt;module~mpi_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M337.8,-64.03C324.25,-55.48 305.61,-43.92 288.86,-34.3 286.05,-32.68 283.11,-31.04 280.16,-29.41"/>
+<polygon fill="#000000" stroke="#000000" points="281.8,-26.32 271.34,-24.62 278.45,-32.47 281.8,-26.32"/>
+</g>
+<!-- petsc -->
+<g id="module~~solver_mod~~UsesGraph_node6" class="node">
+<title>petsc</title>
+<g id="a_module~~solver_mod~~UsesGraph_node6"><a xlink:href="https://www.mcs.anl.gov/petsc/" xlink:title="petsc">
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-87.4 0,-87.4 0,-63.2 54,-63.2 54,-87.4"/>
+<text text-anchor="middle" x="27" y="-72.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">petsc</text>
+</a>
+</g>
+</g>
+<!-- module~common_mod&#45;&gt;petsc -->
+<g id="module~~solver_mod~~UsesGraph_edge5" class="edge">
+<title>module~common_mod:&#45;&gt;petsc:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M90.07,-75.3C81.66,-75.3 72.78,-75.3 64.45,-75.3"/>
+<polygon fill="#000000" stroke="#000000" points="64.26,-71.8 54.26,-75.3 64.26,-78.8 64.26,-71.8"/>
+</g>
+<!-- module~mpi_mod&#45;&gt;module~common_mod -->
+<g id="module~~solver_mod~~UsesGraph_edge6" class="edge">
+<title>module~mpi_mod:&#45;&gt;module~common_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M222.57,-24.58C216.67,-27.73 210.35,-31.13 204.51,-34.3 190.21,-42.07 174.42,-50.77 161.09,-58.15"/>
+<polygon fill="#000000" stroke="#000000" points="159.35,-55.11 152.3,-63.02 162.75,-61.23 159.35,-55.11"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="484pt" height="33pt"
+ viewBox="0.00 0.00 484.00 32.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28.6)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28.6 480,-28.6 480,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24.4 0,-24.4 0,-0.2 54,-0.2 54,-24.4"/>
+<text text-anchor="middle" x="27" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="137.6,-24.4 72.4,-24.4 72.4,-0.2 137.6,-0.2 137.6,-24.4"/>
+<text text-anchor="middle" x="105" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="218.27,-24.4 155.73,-24.4 155.73,-0.2 218.27,-0.2 218.27,-24.4"/>
+<text text-anchor="middle" x="187" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="290,-24.4 236,-24.4 236,-0.2 290,-0.2 290,-24.4"/>
+<text text-anchor="middle" x="263" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="362,-24.4 308,-24.4 308,-0.2 362,-0.2 362,-24.4"/>
+<text text-anchor="middle" x="335" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="476.01,-24.4 379.99,-24.4 379.99,-0.2 476.01,-0.2 476.01,-24.4"/>
+<text text-anchor="middle" x="428" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a submodule to the (sub)module which it is
+    descended from. Dashed arrows point from a module or program unit to 
+    modules which it uses.
+    </p>
+    </div></div></div></div>
+      </li>
+      
+      </ul>
+    </div>
+    
+
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Used by</h3>
+      </div>
+      <ul class="list-group">
+  
+  
+  <li class="list-group-item">
+    <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: module~~solver_mod~~UsedByGraph Pages: 1 -->
+<svg id="modulesolver_modUsedByGraph" width="445pt" height="371pt"
+ viewBox="0.00 0.00 445.22 370.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~solver_mod~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 366.6)">
+<title>module~~solver_mod~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-366.6 441.22,-366.6 441.22,4 -4,4"/>
+<!-- module~solver_mod -->
+<g id="module~~solver_mod~~UsedByGraph_node1" class="node">
+<title>module~solver_mod</title>
+<polygon fill="none" stroke="black" points="66.38,-276.4 -0.13,-276.4 -0.13,-252.2 66.38,-252.2 66.38,-276.4"/>
+<text text-anchor="middle" x="33.13" y="-261.15" font-family="Helvetica,sans-Serif" font-size="10.50">solver_mod</text>
+</g>
+<!-- program~darcy_1f -->
+<g id="module~~solver_mod~~UsedByGraph_node2" class="node">
+<title>program~darcy_1f</title>
+<g id="a_module~~solver_mod~~UsedByGraph_node2"><a xlink:href=".././program/darcy_1f.html" xlink:title="darcy_1f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="415.04,-362.4 361.04,-362.4 361.04,-338.2 415.04,-338.2 415.04,-362.4"/>
+<text text-anchor="middle" x="388.04" y="-347.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_1f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_1f&#45;&gt;module~solver_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge1" class="edge">
+<title>program~darcy_1f:&#45;&gt;module~solver_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M360.97,-353.31C309.21,-358.17 190.83,-363.68 102.26,-325.3 81.43,-316.28 62.62,-298.31 50.07,-284.2"/>
+<polygon fill="#000000" stroke="#000000" points="52.59,-281.77 43.43,-276.44 47.27,-286.31 52.59,-281.77"/>
+</g>
+<!-- module~darcy_mod -->
+<g id="module~~solver_mod~~UsedByGraph_node4" class="node">
+<title>module~darcy_mod</title>
+<g id="a_module~~solver_mod~~UsedByGraph_node4"><a xlink:href=".././module/darcy_mod.html" xlink:title="darcy_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="296.99,-236.4 233.14,-236.4 233.14,-212.2 296.99,-212.2 296.99,-236.4"/>
+<text text-anchor="middle" x="265.07" y="-221.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_mod</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_1f&#45;&gt;module~darcy_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge10" class="edge">
+<title>program~darcy_1f:&#45;&gt;module~darcy_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M360.94,-342.35C353.11,-338.99 344.99,-334.4 338.87,-328.3 311.81,-301.36 327.29,-279.65 302.87,-250.3 300.71,-247.71 298.25,-245.26 295.63,-242.98"/>
+<polygon fill="#000000" stroke="#000000" points="297.54,-240.03 287.51,-236.63 293.23,-245.54 297.54,-240.03"/>
+</g>
+<!-- module~partition_mod -->
+<g id="module~~solver_mod~~UsedByGraph_node12" class="node">
+<title>module~partition_mod</title>
+<g id="a_module~~solver_mod~~UsedByGraph_node12"><a xlink:href=".././module/partition_mod.html" xlink:title="partition_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="302.67,-193.4 227.47,-193.4 227.47,-169.2 302.67,-169.2 302.67,-193.4"/>
+<text text-anchor="middle" x="265.07" y="-178.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">partition_mod</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_1f&#45;&gt;module~partition_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge20" class="edge">
+<title>program~darcy_1f:&#45;&gt;module~partition_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M360.86,-343.1C352.85,-339.75 344.63,-334.99 338.87,-328.3 301.12,-284.51 338.14,-249.11 302.87,-203.3 301.96,-202.12 300.97,-200.99 299.91,-199.91"/>
+<polygon fill="#000000" stroke="#000000" points="302.13,-197.21 292.21,-193.49 297.65,-202.58 302.13,-197.21"/>
+</g>
+<!-- module~test_solver_mod -->
+<g id="module~~solver_mod~~UsedByGraph_node3" class="node">
+<title>module~test_solver_mod</title>
+<g id="a_module~~solver_mod~~UsedByGraph_node3"><a xlink:href=".././module/test_solver_mod.html" xlink:title="test_solver_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="191.28,-316.4 102.25,-316.4 102.25,-292.2 191.28,-292.2 191.28,-316.4"/>
+<text text-anchor="middle" x="146.76" y="-301.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_solver_mod</text>
+</a>
+</g>
+</g>
+<!-- module~test_solver_mod&#45;&gt;module~solver_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge7" class="edge">
+<title>module~test_solver_mod:&#45;&gt;module~solver_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M111.97,-292.19C100.64,-288.13 87.86,-283.55 75.99,-279.3"/>
+<polygon fill="#000000" stroke="#000000" points="76.88,-275.9 66.28,-275.82 74.51,-282.49 76.88,-275.9"/>
+</g>
+<!-- module~darcy_mod&#45;&gt;module~solver_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge3" class="edge">
+<title>module~darcy_mod:&#45;&gt;module~solver_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M145.76,-264.3C122.96,-266.21 97.45,-266.36 76.58,-265.97"/>
+<polygon fill="#000000" stroke="#000000" points="76.51,-262.46 66.43,-265.73 76.34,-269.46 76.51,-262.46"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M239.89,-236.57C216.88,-247.27 180.96,-261.51 147.76,-264.3"/>
+</g>
+<!-- module~io_mod -->
+<g id="module~~solver_mod~~UsedByGraph_node5" class="node">
+<title>module~io_mod</title>
+<g id="a_module~~solver_mod~~UsedByGraph_node5"><a xlink:href=".././module/io_mod.html" xlink:title="io_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="173.76,-214.4 119.76,-214.4 119.76,-190.2 173.76,-190.2 173.76,-214.4"/>
+<text text-anchor="middle" x="146.76" y="-199.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">io_mod</text>
+</a>
+</g>
+</g>
+<!-- module~darcy_mod&#45;&gt;module~io_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge17" class="edge">
+<title>module~darcy_mod:&#45;&gt;module~io_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M232.9,-218.4C217.78,-215.54 199.52,-212.09 183.8,-209.12"/>
+<polygon fill="#000000" stroke="#000000" points="184.37,-205.66 173.9,-207.24 183.07,-212.54 184.37,-205.66"/>
+</g>
+<!-- module~io_mod&#45;&gt;module~solver_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge4" class="edge">
+<title>module~io_mod:&#45;&gt;module~solver_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M123.71,-214.55C106.97,-223.85 83.73,-236.75 65.12,-247.09"/>
+<polygon fill="#000000" stroke="#000000" points="63.18,-244.16 56.14,-252.08 66.58,-250.28 63.18,-244.16"/>
+</g>
+<!-- program~darcy_crkp_2f -->
+<g id="module~~solver_mod~~UsedByGraph_node6" class="node">
+<title>program~darcy_crkp_2f</title>
+<g id="a_module~~solver_mod~~UsedByGraph_node6"><a xlink:href=".././program/darcy_crkp_2f.html" xlink:title="darcy_crkp_2f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="426.97,-276.4 349.11,-276.4 349.11,-252.2 426.97,-252.2 426.97,-276.4"/>
+<text text-anchor="middle" x="388.04" y="-261.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_2f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_crkp_2f&#45;&gt;module~solver_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge9" class="edge">
+<title>program~darcy_crkp_2f:&#45;&gt;module~solver_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M349.1,-262.62C325.23,-261.98 293.79,-261.89 266.07,-264.3"/>
+</g>
+<!-- program~darcy_crkp_2f&#45;&gt;module~darcy_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge16" class="edge">
+<title>program~darcy_crkp_2f:&#45;&gt;module~darcy_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M350.42,-252.19C336.76,-247.68 321.18,-242.52 307.15,-237.88"/>
+<polygon fill="#000000" stroke="#000000" points="307.85,-234.43 297.26,-234.61 305.66,-241.08 307.85,-234.43"/>
+</g>
+<!-- program~darcy_crkp_2f&#45;&gt;module~partition_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge26" class="edge">
+<title>program~darcy_crkp_2f:&#45;&gt;module~partition_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M355.7,-252.19C349.87,-249.34 344,-246.02 338.87,-242.3 319.76,-228.46 321.18,-218.17 302.87,-203.3 301.13,-201.89 299.29,-200.51 297.4,-199.16"/>
+<polygon fill="#000000" stroke="#000000" points="299.21,-196.16 288.94,-193.58 295.36,-202.01 299.21,-196.16"/>
+</g>
+<!-- program~darcy -->
+<g id="module~~solver_mod~~UsedByGraph_node7" class="node">
+<title>program~darcy</title>
+<g id="a_module~~solver_mod~~UsedByGraph_node7"><a xlink:href=".././program/darcy.html" xlink:title="darcy">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="415.04,-110.4 361.04,-110.4 361.04,-86.2 415.04,-86.2 415.04,-110.4"/>
+<text text-anchor="middle" x="388.04" y="-95.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy</text>
+</a>
+</g>
+</g>
+<!-- program~darcy&#45;&gt;module~solver_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge6" class="edge">
+<title>program~darcy:&#45;&gt;module~solver_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M360.59,-97.42C336.06,-96.81 298.57,-96.41 266.07,-98.3"/>
+</g>
+<!-- program~darcy&#45;&gt;module~darcy_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge13" class="edge">
+<title>program~darcy:&#45;&gt;module~darcy_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M360.87,-106.18C353.04,-109.54 344.93,-114.14 338.87,-120.3 310.93,-148.65 329.2,-172.45 302.87,-202.3 301.85,-203.45 300.76,-204.56 299.61,-205.63"/>
+<polygon fill="#000000" stroke="#000000" points="297.15,-203.11 291.42,-212.02 301.46,-208.63 297.15,-203.11"/>
+</g>
+<!-- program~darcy&#45;&gt;module~partition_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge23" class="edge">
+<title>program~darcy:&#45;&gt;module~partition_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M361,-107.93C353.51,-111.29 345.57,-115.45 338.87,-120.3 319.76,-134.14 321.18,-144.43 302.87,-159.3 301.13,-160.71 299.29,-162.09 297.4,-163.44"/>
+<polygon fill="#000000" stroke="#000000" points="295.36,-160.59 288.94,-169.02 299.21,-166.44 295.36,-160.59"/>
+</g>
+<!-- program~darcy_crkp_1f -->
+<g id="module~~solver_mod~~UsedByGraph_node8" class="node">
+<title>program~darcy_crkp_1f</title>
+<g id="a_module~~solver_mod~~UsedByGraph_node8"><a xlink:href=".././program/darcy_crkp_1f.html" xlink:title="darcy_crkp_1f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="426.97,-24.4 349.11,-24.4 349.11,-0.2 426.97,-0.2 426.97,-24.4"/>
+<text text-anchor="middle" x="388.04" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_1f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_crkp_1f&#45;&gt;module~solver_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge2" class="edge">
+<title>program~darcy_crkp_1f:&#45;&gt;module~solver_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M356.77,-24.48C350.66,-27.39 344.42,-30.7 338.87,-34.3 302.71,-57.72 309.08,-95.8 266.07,-98.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M264.07,-98.3C183.38,-102.99 165.17,-130.56 102.26,-181.3 80.14,-199.14 60.2,-225.16 47.7,-243.3"/>
+<polygon fill="#000000" stroke="#000000" points="44.54,-241.72 41.86,-251.98 50.35,-245.63 44.54,-241.72"/>
+</g>
+<!-- program~darcy_crkp_1f&#45;&gt;module~darcy_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge14" class="edge">
+<title>program~darcy_crkp_1f:&#45;&gt;module~darcy_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M350.2,-24.55C345.92,-27.21 341.98,-30.43 338.87,-34.3 291.04,-93.83 347.33,-140.22 302.87,-202.3 302.11,-203.36 301.29,-204.37 300.41,-205.34"/>
+<polygon fill="#000000" stroke="#000000" points="298.02,-202.78 292.81,-212.01 302.63,-208.05 298.02,-202.78"/>
+</g>
+<!-- program~darcy_crkp_1f&#45;&gt;module~partition_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge24" class="edge">
+<title>program~darcy_crkp_1f:&#45;&gt;module~partition_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M350.93,-24.46C346.42,-27.15 342.23,-30.4 338.87,-34.3 301.12,-78.09 338.14,-113.49 302.87,-159.3 301.96,-160.48 300.97,-161.61 299.91,-162.69"/>
+<polygon fill="#000000" stroke="#000000" points="297.65,-160.02 292.21,-169.11 302.13,-165.39 297.65,-160.02"/>
+</g>
+<!-- program~darcy_crkp_2f~2 -->
+<g id="module~~solver_mod~~UsedByGraph_node9" class="node">
+<title>program~darcy_crkp_2f~2</title>
+<g id="a_module~~solver_mod~~UsedByGraph_node9"><a xlink:href=".././program/darcy_crkp_2f%7E2.html" xlink:title="darcy_crkp_2f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="426.97,-233.4 349.11,-233.4 349.11,-209.2 426.97,-209.2 426.97,-233.4"/>
+<text text-anchor="middle" x="388.04" y="-218.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_2f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_crkp_2f~2&#45;&gt;module~solver_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge8" class="edge">
+<title>program~darcy_crkp_2f~2:&#45;&gt;module~solver_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M264.07,-264.3C212.57,-268.77 199.27,-259.98 147.76,-264.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M358.19,-233.47C328.53,-245.62 284.22,-262.73 266.07,-264.3"/>
+</g>
+<!-- program~darcy_crkp_2f~2&#45;&gt;module~darcy_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge15" class="edge">
+<title>program~darcy_crkp_2f~2:&#45;&gt;module~darcy_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M349.1,-222.24C335.74,-222.57 320.66,-222.95 307.06,-223.28"/>
+<polygon fill="#000000" stroke="#000000" points="306.91,-219.79 297,-223.53 307.08,-226.78 306.91,-219.79"/>
+</g>
+<!-- program~darcy_crkp_2f~2&#45;&gt;module~partition_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge25" class="edge">
+<title>program~darcy_crkp_2f~2:&#45;&gt;module~partition_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M350.42,-209.19C338.57,-205.27 325.26,-200.87 312.78,-196.74"/>
+<polygon fill="#000000" stroke="#000000" points="313.58,-193.32 302.99,-193.51 311.38,-199.97 313.58,-193.32"/>
+</g>
+<!-- program~darcy_2f -->
+<g id="module~~solver_mod~~UsedByGraph_node10" class="node">
+<title>program~darcy_2f</title>
+<g id="a_module~~solver_mod~~UsedByGraph_node10"><a xlink:href=".././program/darcy_2f.html" xlink:title="darcy_2f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="415.04,-153.4 361.04,-153.4 361.04,-129.2 415.04,-129.2 415.04,-153.4"/>
+<text text-anchor="middle" x="388.04" y="-138.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_2f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_2f&#45;&gt;module~solver_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge5" class="edge">
+<title>program~darcy_2f:&#45;&gt;module~solver_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M360.88,-129.28C331.29,-116.18 284.82,-97.21 266.07,-98.3"/>
+</g>
+<!-- program~darcy_2f&#45;&gt;module~darcy_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge12" class="edge">
+<title>program~darcy_2f:&#45;&gt;module~darcy_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M371.2,-153.42C354.5,-166.05 327.27,-186.2 302.87,-202.3 300.69,-203.73 298.42,-205.19 296.13,-206.63"/>
+<polygon fill="#000000" stroke="#000000" points="293.98,-203.84 287.28,-212.05 297.64,-209.81 293.98,-203.84"/>
+</g>
+<!-- program~darcy_2f&#45;&gt;module~partition_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge22" class="edge">
+<title>program~darcy_2f:&#45;&gt;module~partition_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M360.79,-149.98C346.75,-154.62 329.04,-160.48 312.74,-165.87"/>
+<polygon fill="#000000" stroke="#000000" points="311.22,-162.69 302.82,-169.15 313.42,-169.33 311.22,-162.69"/>
+</g>
+<!-- module~test_darcy_mod -->
+<g id="module~~solver_mod~~UsedByGraph_node11" class="node">
+<title>module~test_darcy_mod</title>
+<g id="a_module~~solver_mod~~UsedByGraph_node11"><a xlink:href=".././module/test_darcy_mod.html" xlink:title="test_darcy_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="431.23,-319.4 344.86,-319.4 344.86,-295.2 431.23,-295.2 431.23,-319.4"/>
+<text text-anchor="middle" x="388.04" y="-304.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_darcy_mod</text>
+</a>
+</g>
+</g>
+<!-- module~test_darcy_mod&#45;&gt;module~darcy_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge11" class="edge">
+<title>module~test_darcy_mod:&#45;&gt;module~darcy_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M356.12,-295.09C350.19,-292.22 344.18,-288.93 338.87,-285.3 320.45,-272.7 320.03,-264.56 302.87,-250.3 299.71,-247.68 296.3,-245.03 292.87,-242.49"/>
+<polygon fill="#000000" stroke="#000000" points="294.62,-239.44 284.45,-236.45 290.54,-245.13 294.62,-239.44"/>
+</g>
+<!-- module~partition_mod&#45;&gt;module~io_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge18" class="edge">
+<title>module~partition_mod:&#45;&gt;module~io_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M227.27,-187.94C213.48,-190.43 197.83,-193.26 184.09,-195.74"/>
+<polygon fill="#000000" stroke="#000000" points="183.23,-192.34 174.01,-197.56 184.47,-199.23 183.23,-192.34"/>
+</g>
+<!-- module~test_io_mod -->
+<g id="module~~solver_mod~~UsedByGraph_node13" class="node">
+<title>module~test_io_mod</title>
+<g id="a_module~~solver_mod~~UsedByGraph_node13"><a xlink:href=".././module/test_io_mod.html" xlink:title="test_io_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="299.75,-150.4 230.39,-150.4 230.39,-126.2 299.75,-126.2 299.75,-150.4"/>
+<text text-anchor="middle" x="265.07" y="-135.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_io_mod</text>
+</a>
+</g>
+</g>
+<!-- module~test_io_mod&#45;&gt;module~io_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge19" class="edge">
+<title>module~test_io_mod:&#45;&gt;module~io_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M241.92,-150.49C224.05,-160.32 198.71,-174.26 178.82,-185.21"/>
+<polygon fill="#000000" stroke="#000000" points="176.9,-182.27 169.83,-190.16 180.28,-188.4 176.9,-182.27"/>
+</g>
+<!-- module~test_partition_mod -->
+<g id="module~~solver_mod~~UsedByGraph_node14" class="node">
+<title>module~test_partition_mod</title>
+<g id="a_module~~solver_mod~~UsedByGraph_node14"><a xlink:href=".././module/test_partition_mod.html" xlink:title="test_partition_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="437.4,-67.4 338.69,-67.4 338.69,-43.2 437.4,-43.2 437.4,-67.4"/>
+<text text-anchor="middle" x="388.04" y="-52.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_partition_mod</text>
+</a>
+</g>
+</g>
+<!-- module~test_partition_mod&#45;&gt;module~partition_mod -->
+<g id="module~~solver_mod~~UsedByGraph_edge21" class="edge">
+<title>module~test_partition_mod:&#45;&gt;module~partition_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M351.88,-67.61C347.13,-70.29 342.61,-73.5 338.87,-77.3 310.93,-105.65 329.2,-129.45 302.87,-159.3 301.85,-160.45 300.76,-161.56 299.61,-162.63"/>
+<polygon fill="#000000" stroke="#000000" points="297.15,-160.11 291.42,-169.02 301.46,-165.63 297.15,-160.11"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="484pt" height="33pt"
+ viewBox="0.00 0.00 484.00 32.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28.6)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28.6 480,-28.6 480,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24.4 0,-24.4 0,-0.2 54,-0.2 54,-24.4"/>
+<text text-anchor="middle" x="27" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="137.6,-24.4 72.4,-24.4 72.4,-0.2 137.6,-0.2 137.6,-24.4"/>
+<text text-anchor="middle" x="105" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="218.27,-24.4 155.73,-24.4 155.73,-0.2 218.27,-0.2 218.27,-24.4"/>
+<text text-anchor="middle" x="187" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="290,-24.4 236,-24.4 236,-0.2 290,-0.2 290,-24.4"/>
+<text text-anchor="middle" x="263" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="362,-24.4 308,-24.4 308,-0.2 362,-0.2 362,-24.4"/>
+<text text-anchor="middle" x="335" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="476.01,-24.4 379.99,-24.4 379.99,-0.2 476.01,-0.2 476.01,-24.4"/>
+<text text-anchor="middle" x="428" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a submodule to the (sub)module which it is
+    descended from. Dashed arrows point from a module or program unit to 
+    modules which it uses.
+    </p>
+    </div></div></div></div>
+  </li>
+  
+      </ul>
+    </div>
+    
+
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-1">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-1" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/solver_mod.html#proc-check_param_solver">check_param_solver</a>
+      
+      <a class="list-group-item" href="../module/solver_mod.html#proc-end_petsc">end_petsc</a>
+      
+      <a class="list-group-item" href="../module/solver_mod.html#proc-extract_sol_ksp">extract_sol_KSP</a>
+      
+      <a class="list-group-item" href="../module/solver_mod.html#proc-extract_sol_ksp2">extract_sol_KSP2</a>
+      
+      <a class="list-group-item" href="../module/solver_mod.html#proc-set_defaults_solver">set_defaults_solver</a>
+      
+      <a class="list-group-item" href="../module/solver_mod.html#proc-solve_ksp">solve_KSP</a>
+      
+      <a class="list-group-item" href="../module/solver_mod.html#proc-solve_ksp2">solve_KSP2</a>
+      
+      <a class="list-group-item" href="../module/solver_mod.html#proc-start_petsc">start_petsc</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    <section>
+    <h2>Subroutines</h2>
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-check_param_solver"></span><h3>
+public subroutine <a href='../proc/check_param_solver.html'>check_param_solver</a>()
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Pieter Boom</dd>
+    
+    
+    <dt>Date</dt><dd>2019/08/23</dd>
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Check values set for solver</p>
+    
+    <h4>Arguments</h4>
+    
+      <em>None</em>
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-end_petsc"></span><h3>
+public subroutine <a href='../proc/end_petsc.html'>end_petsc</a>()
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Pieter Boom</dd>
+    
+    
+    <dt>Date</dt><dd>2019/08/23</dd>
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Finalise PETSc library</p>
+    
+    <h4>Arguments</h4>
+    
+      <em>None</em>
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-extract_sol_ksp"></span><h3>
+public subroutine <a href='../proc/extract_sol_ksp.html'>extract_sol_KSP</a>()
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Pieter Boom</dd>
+    
+    
+    <dt>Date</dt><dd>2019/08/23</dd>
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>extract local solution values from distributed PETSc vector</p><a href="../proc/extract_sol_ksp.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+    
+    <h4>Arguments</h4>
+    
+      <em>None</em>
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-extract_sol_ksp2"></span><h3>
+public subroutine <a href='../proc/extract_sol_ksp2.html'>extract_sol_KSP2</a>()
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Pieter Boom</dd>
+    
+    
+    <dt>Date</dt><dd>2019/08/23</dd>
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>extract local solution values from distributed PETSc vector</p><a href="../proc/extract_sol_ksp2.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+    
+    <h4>Arguments</h4>
+    
+      <em>None</em>
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-set_defaults_solver"></span><h3>
+public subroutine <a href='../proc/set_defaults_solver.html'>set_defaults_solver</a>(solver)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Pieter Boom</dd>
+    
+    
+    <dt>Date</dt><dd>2019/08/23</dd>
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Set default values for solver</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>solver</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-solve_ksp"></span><h3>
+public subroutine <a href='../proc/solve_ksp.html'>solve_KSP</a>()
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Pieter Boom</dd>
+    
+    
+    <dt>Date</dt><dd>2019/08/23</dd>
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Solve linear system using PETSc KSP</p>
+    
+    <h4>Arguments</h4>
+    
+      <em>None</em>
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-solve_ksp2"></span><h3>
+public subroutine <a href='../proc/solve_ksp2.html'>solve_KSP2</a>()
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Pieter Boom</dd>
+    
+    
+    <dt>Date</dt><dd>2019/08/23</dd>
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Solve linear system using PETSc KSP</p>
+    
+    <h4>Arguments</h4>
+    
+      <em>None</em>
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-start_petsc"></span><h3>
+public subroutine <a href='../proc/start_petsc.html'>start_petsc</a>()
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Pieter Boom</dd>
+    
+    
+    <dt>Date</dt><dd>2019/08/23</dd>
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Initialise PETSc library</p>
+    
+    <h4>Arguments</h4>
+    
+      <em>None</em>
+    
+    
+
+  </div>
+  </div>
+
+    
+    </section>    
+    <br>
+    
+    
+    
+    </div>
+  </div>
+
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 <a rel="license" href="http://www.freebsd.org/copyright/freebsd-doc-license.html">FreeBSD Documentation License</a>
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> ParaGEMS was developed by Pieter Boom</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

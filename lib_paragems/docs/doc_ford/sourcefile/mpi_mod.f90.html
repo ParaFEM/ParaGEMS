@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <meta name="description" content="Documentation for ParaGEMS">
+   
+    <meta name="author" content="Pieter Boom" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>mpi_mod.f90 &ndash; ParaGEMS</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">ParaGEMS </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li><a href='../page/index.html'>README</a></li>
+      
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            <li><a href="../lists/programs.html">Programs</a></li>
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>mpi_mod.f90
+    <small>Source File</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 3.5% of total for source files.">177 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/mpi_mod.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+  
+     <li class="active">mpi_mod.f90</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#mods-0">Modules</a></h3></div>
+  <div id="mods-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/mpi_mod.html">mpi_mod</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../sourcefile/mpi_mod.f90.html#src">mpi_mod.f90</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      <p>Module contains routines for controlling MPI execution environment</p>
+      <br>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">This file depends on</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: sourcefile~~mpi_mod.f90~~EfferentGraph Pages: 1 -->
+<svg id="sourcefilempi_modf90EfferentGraph" width="213pt" height="33pt"
+ viewBox="0.00 0.00 212.70 32.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~mpi_mod.f90~~EfferentGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28.6)">
+<title>sourcefile~~mpi_mod.f90~~EfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28.6 208.7,-28.6 208.7,4 -4,4"/>
+<!-- sourcefile~mpi_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~EfferentGraph_node1" class="node">
+<title>sourcefile~mpi_mod.f90</title>
+<polygon fill="none" stroke="black" points="204.54,-24.4 132.18,-24.4 132.18,-0.2 204.54,-0.2 204.54,-24.4"/>
+<text text-anchor="middle" x="168.36" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50">mpi_mod.f90</text>
+</g>
+<!-- sourcefile~common_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~EfferentGraph_node2" class="node">
+<title>sourcefile~common_mod.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~EfferentGraph_node2"><a xlink:href=".././sourcefile/common_mod.f90.html" xlink:title="common_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="96.03,-24.4 -0.01,-24.4 -0.01,-0.2 96.03,-0.2 96.03,-24.4"/>
+<text text-anchor="middle" x="48.01" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">common_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mpi_mod.f90&#45;&gt;sourcefile~common_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~EfferentGraph_edge1" class="edge">
+<title>sourcefile~mpi_mod.f90:&#45;&gt;sourcefile~common_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M132.17,-12.3C124.04,-12.3 115.18,-12.3 106.38,-12.3"/>
+<polygon fill="#000000" stroke="#000000" points="106.12,-8.8 96.12,-12.3 106.12,-15.8 106.12,-8.8"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="188pt" height="33pt"
+ viewBox="0.00 0.00 187.55 32.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28.6)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28.6 183.55,-28.6 183.55,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="65.13,-24.4 -0.04,-24.4 -0.04,-0.2 65.13,-0.2 65.13,-24.4"/>
+<text text-anchor="middle" x="32.54" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="179.55,-24.4 83.54,-24.4 83.54,-0.2 179.55,-0.2 179.55,-24.4"/>
+<text text-anchor="middle" x="131.54" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a file to a file which it depends on. A file
+    is dependent upon another if the latter must be compiled before the former
+    can be.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+    
+      
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Files dependent on this one</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: sourcefile~~mpi_mod.f90~~AfferentGraph Pages: 1 -->
+<svg id="sourcefilempi_modf90AfferentGraph" width="641pt" height="437pt"
+ viewBox="0.00 0.00 641.00 436.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph" class="graph" transform="scale(0.85 0.85) rotate(0) translate(4 511.6)">
+<title>sourcefile~~mpi_mod.f90~~AfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-511.6 753.14,-511.6 753.14,4 -4,4"/>
+<!-- sourcefile~mpi_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node1" class="node">
+<title>sourcefile~mpi_mod.f90</title>
+<polygon fill="none" stroke="black" points="72.52,-150.4 0.16,-150.4 0.16,-126.2 72.52,-126.2 72.52,-150.4"/>
+<text text-anchor="middle" x="36.34" y="-135.15" font-family="Helvetica,sans-Serif" font-size="10.50">mpi_mod.f90</text>
+</g>
+<!-- sourcefile~darcy.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node2" class="node">
+<title>sourcefile~darcy.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~AfferentGraph_node2"><a xlink:href=".././sourcefile/darcy.f90.html" xlink:title="darcy.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="718.89,-464.4 663.53,-464.4 663.53,-440.2 718.89,-440.2 718.89,-464.4"/>
+<text text-anchor="middle" x="691.21" y="-449.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~darcy.f90&#45;&gt;sourcefile~mpi_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge1" class="edge">
+<title>sourcefile~darcy.f90:&#45;&gt;sourcefile~mpi_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M663.58,-450.7C635.63,-449.39 590.47,-448.34 551.72,-452.3"/>
+</g>
+<!-- sourcefile~darcy_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node3" class="node">
+<title>sourcefile~darcy_mod.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~AfferentGraph_node3"><a xlink:href=".././sourcefile/darcy_mod.f90.html" xlink:title="darcy_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="591.66,-349.4 509.79,-349.4 509.79,-325.2 591.66,-325.2 591.66,-349.4"/>
+<text text-anchor="middle" x="550.72" y="-334.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~darcy.f90&#45;&gt;sourcefile~darcy_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge14" class="edge">
+<title>sourcefile~darcy.f90:&#45;&gt;sourcefile~darcy_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M669.55,-440.17C658.45,-433.34 644.74,-424.37 633.28,-415.3 610.31,-397.11 586.35,-373.56 570.39,-357.12"/>
+<polygon fill="#000000" stroke="#000000" points="572.69,-354.46 563.24,-349.67 567.64,-359.31 572.69,-354.46"/>
+</g>
+<!-- sourcefile~solver_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node7" class="node">
+<title>sourcefile~solver_mod.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~AfferentGraph_node7"><a xlink:href=".././sourcefile/solver_mod.f90.html" xlink:title="solver_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="316.48,-348.4 232.95,-348.4 232.95,-324.2 316.48,-324.2 316.48,-348.4"/>
+<text text-anchor="middle" x="274.71" y="-333.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">solver_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~darcy.f90&#45;&gt;sourcefile~solver_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge24" class="edge">
+<title>sourcefile~darcy.f90:&#45;&gt;sourcefile~solver_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M663.44,-441.53C635.94,-431.29 591.64,-417.05 551.72,-414.3"/>
+</g>
+<!-- sourcefile~partition_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node10" class="node">
+<title>sourcefile~partition_mod.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~AfferentGraph_node10"><a xlink:href=".././sourcefile/partition_mod.f90.html" xlink:title="partition_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="597.33,-150.4 504.12,-150.4 504.12,-126.2 597.33,-126.2 597.33,-150.4"/>
+<text text-anchor="middle" x="550.72" y="-135.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">partition_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~darcy.f90&#45;&gt;sourcefile~partition_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge36" class="edge">
+<title>sourcefile~darcy.f90:&#45;&gt;sourcefile~partition_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M663.46,-441.08C652.37,-435.06 640.43,-426.53 633.28,-415.3 571.76,-318.78 664.76,-252.75 597.28,-160.3 596.49,-159.22 595.64,-158.2 594.73,-157.22"/>
+<polygon fill="#000000" stroke="#000000" points="596.75,-154.34 586.83,-150.62 592.26,-159.72 596.75,-154.34"/>
+</g>
+<!-- sourcefile~darcy_mod.f90&#45;&gt;sourcefile~mpi_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge2" class="edge">
+<title>sourcefile~darcy_mod.f90:&#45;&gt;sourcefile~mpi_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M273.71,-490.3C191.8,-458.13 217.99,-391.24 149.23,-336.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M540.76,-349.67C521.44,-375.12 472.95,-432.6 415.91,-452.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.91,-452.3C383.8,-462.7 305.36,-501.94 275.71,-490.3"/>
+</g>
+<!-- sourcefile~io_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node4" class="node">
+<title>sourcefile~io_mod.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~AfferentGraph_node4"><a xlink:href=".././sourcefile/io_mod.f90.html" xlink:title="io_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="446.84,-230.4 382.97,-230.4 382.97,-206.2 446.84,-206.2 446.84,-230.4"/>
+<text text-anchor="middle" x="414.91" y="-215.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">io_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~darcy_mod.f90&#45;&gt;sourcefile~io_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge23" class="edge">
+<title>sourcefile~darcy_mod.f90:&#45;&gt;sourcefile~io_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M535.91,-325.01C512.57,-304.26 465.18,-262.11 437.45,-237.45"/>
+<polygon fill="#000000" stroke="#000000" points="439.65,-234.73 429.85,-230.7 435,-239.96 439.65,-234.73"/>
+</g>
+<!-- sourcefile~darcy_mod.f90&#45;&gt;sourcefile~solver_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge32" class="edge">
+<title>sourcefile~darcy_mod.f90:&#45;&gt;sourcefile~solver_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M509.88,-337.15C461.45,-336.98 379.66,-336.68 326.69,-336.49"/>
+<polygon fill="#000000" stroke="#000000" points="326.51,-332.99 316.5,-336.45 326.49,-339.99 326.51,-332.99"/>
+</g>
+<!-- sourcefile~io_mod.f90&#45;&gt;sourcefile~mpi_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge3" class="edge">
+<title>sourcefile~io_mod.f90:&#45;&gt;sourcefile~mpi_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M147.23,-336.3C88.3,-289.22 55.98,-201.5 43.48,-160.5"/>
+<polygon fill="#000000" stroke="#000000" points="46.78,-159.29 40.6,-150.68 40.06,-161.27 46.78,-159.29"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M388.44,-230.45C379.85,-234.68 370.26,-239.56 361.65,-244.3 322.53,-265.82 318.5,-283.59 275.71,-296.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M273.71,-296.3C266.75,-298.37 154.91,-340.83 149.23,-336.3"/>
+</g>
+<!-- sourcefile~io_mod.f90&#45;&gt;sourcefile~solver_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge26" class="edge">
+<title>sourcefile~io_mod.f90:&#45;&gt;sourcefile~solver_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M382.86,-229.88C375.33,-233.68 367.7,-238.47 361.65,-244.3 337.58,-267.48 349.5,-286.9 325.65,-310.3 322.42,-313.47 318.73,-316.34 314.85,-318.91"/>
+<polygon fill="#000000" stroke="#000000" points="312.95,-315.97 306.15,-324.09 316.53,-321.98 312.95,-315.97"/>
+</g>
+<!-- sourcefile~dec_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node13" class="node">
+<title>sourcefile~dec_mod.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~AfferentGraph_node13"><a xlink:href=".././sourcefile/dec_mod.f90.html" xlink:title="dec_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="310.9,-150.4 238.52,-150.4 238.52,-126.2 310.9,-126.2 310.9,-150.4"/>
+<text text-anchor="middle" x="274.71" y="-135.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dec_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~io_mod.f90&#45;&gt;sourcefile~dec_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge45" class="edge">
+<title>sourcefile~io_mod.f90:&#45;&gt;sourcefile~dec_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M388.12,-206.11C379.6,-201.91 370.13,-197.06 361.65,-192.3 341.42,-180.95 319.28,-167 302.53,-156.12"/>
+<polygon fill="#000000" stroke="#000000" points="304.12,-152.97 293.83,-150.42 300.28,-158.83 304.12,-152.97"/>
+</g>
+<!-- sourcefile~darcy_crkp_2f_old.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node5" class="node">
+<title>sourcefile~darcy_crkp_2f_old.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~AfferentGraph_node5"><a xlink:href=".././sourcefile/darcy_crkp_2f_old.f90.html" xlink:title="darcy_crkp_2f_old.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="748.99,-507.4 633.43,-507.4 633.43,-483.2 748.99,-483.2 748.99,-507.4"/>
+<text text-anchor="middle" x="691.21" y="-492.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_2f_old.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~darcy_crkp_2f_old.f90&#45;&gt;sourcefile~mpi_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge6" class="edge">
+<title>sourcefile~darcy_crkp_2f_old.f90:&#45;&gt;sourcefile~mpi_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.91,-490.3C355.28,-472 332.88,-512.75 275.71,-490.3"/>
+</g>
+<!-- sourcefile~darcy_crkp_2f_old.f90&#45;&gt;sourcefile~darcy_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge16" class="edge">
+<title>sourcefile~darcy_crkp_2f_old.f90:&#45;&gt;sourcefile~darcy_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M647.98,-483.18C642.66,-480.49 637.58,-477.23 633.28,-473.3 606.58,-448.89 615.94,-431.29 597.28,-400.3 588.31,-385.41 576.84,-369.57 567.65,-357.49"/>
+<polygon fill="#000000" stroke="#000000" points="570.31,-355.21 561.44,-349.43 564.77,-359.48 570.31,-355.21"/>
+</g>
+<!-- sourcefile~darcy_crkp_2f_old.f90&#45;&gt;sourcefile~solver_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge27" class="edge">
+<title>sourcefile~darcy_crkp_2f_old.f90:&#45;&gt;sourcefile~solver_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M633.5,-501.8C577.31,-506.49 489.26,-509.12 415.91,-490.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.91,-490.3C348.75,-469.97 304.18,-394.97 285.54,-357.66"/>
+<polygon fill="#000000" stroke="#000000" points="288.67,-356.11 281.16,-348.63 282.37,-359.16 288.67,-356.11"/>
+</g>
+<!-- sourcefile~darcy_crkp_2f_old.f90&#45;&gt;sourcefile~partition_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge38" class="edge">
+<title>sourcefile~darcy_crkp_2f_old.f90:&#45;&gt;sourcefile~partition_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M644.42,-483.13C640.17,-480.47 636.32,-477.24 633.28,-473.3 547.61,-362.53 678.37,-274.45 597.28,-160.3 596.5,-159.21 595.66,-158.18 594.76,-157.19"/>
+<polygon fill="#000000" stroke="#000000" points="596.81,-154.34 586.92,-150.55 592.29,-159.69 596.81,-154.34"/>
+</g>
+<!-- sourcefile~darcy_crkp_2f.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node6" class="node">
+<title>sourcefile~darcy_crkp_2f.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~AfferentGraph_node6"><a xlink:href=".././sourcefile/darcy_crkp_2f.f90.html" xlink:title="darcy_crkp_2f.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="739.15,-67.4 643.27,-67.4 643.27,-43.2 739.15,-43.2 739.15,-67.4"/>
+<text text-anchor="middle" x="691.21" y="-52.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_2f.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~darcy_crkp_2f.f90&#45;&gt;sourcefile~mpi_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge5" class="edge">
+<title>sourcefile~darcy_crkp_2f.f90:&#45;&gt;sourcefile~mpi_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M147.23,-108.3C124.38,-110.4 99.67,-116.75 79.48,-123.08"/>
+<polygon fill="#000000" stroke="#000000" points="78.4,-119.75 69.96,-126.16 80.56,-126.41 78.4,-119.75"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.91,-98.3C296.5,-89.7 266.46,-97.54 149.23,-108.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M549.72,-98.3C490.42,-102.81 475.22,-102.64 415.91,-98.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M657.07,-67.47C623.04,-79.63 572.24,-96.74 551.72,-98.3"/>
+</g>
+<!-- sourcefile~darcy_crkp_2f.f90&#45;&gt;sourcefile~darcy_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge17" class="edge">
+<title>sourcefile~darcy_crkp_2f.f90:&#45;&gt;sourcefile~darcy_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M645.4,-67.49C640.85,-70.14 636.67,-73.37 633.28,-77.3 586.16,-131.78 620.07,-166.98 597.28,-235.3 587.68,-264.07 572.8,-295.76 562.68,-316.06"/>
+<polygon fill="#000000" stroke="#000000" points="559.53,-314.55 558.14,-325.05 565.77,-317.71 559.53,-314.55"/>
+</g>
+<!-- sourcefile~darcy_crkp_2f.f90&#45;&gt;sourcefile~solver_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge28" class="edge">
+<title>sourcefile~darcy_crkp_2f.f90:&#45;&gt;sourcefile~solver_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M645.89,-67.52C641.2,-70.17 636.85,-73.39 633.28,-77.3 594.24,-119.95 635.74,-159.14 597.28,-202.3 582.68,-218.68 570.62,-210.16 551.72,-221.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M549.72,-221.3C474.02,-265.93 439.29,-241.15 361.65,-282.3 343.74,-291.79 342.7,-299.35 325.65,-310.3 320.86,-313.37 315.68,-316.38 310.52,-319.21"/>
+<polygon fill="#000000" stroke="#000000" points="308.55,-316.29 301.36,-324.07 311.83,-322.48 308.55,-316.29"/>
+</g>
+<!-- sourcefile~darcy_crkp_2f.f90&#45;&gt;sourcefile~partition_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge39" class="edge">
+<title>sourcefile~darcy_crkp_2f.f90:&#45;&gt;sourcefile~partition_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M652.41,-67.43C645.8,-70.24 639.16,-73.53 633.28,-77.3 614.49,-89.34 615.11,-98.88 597.28,-112.3 593.3,-115.29 588.95,-118.19 584.56,-120.9"/>
+<polygon fill="#000000" stroke="#000000" points="582.46,-118.07 575.61,-126.16 586.01,-124.11 582.46,-118.07"/>
+</g>
+<!-- sourcefile~solver_mod.f90&#45;&gt;sourcefile~mpi_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge4" class="edge">
+<title>sourcefile~solver_mod.f90:&#45;&gt;sourcefile~mpi_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M232.73,-348.34C206.14,-353.49 172.28,-354.71 149.23,-336.3"/>
+</g>
+<!-- sourcefile~math_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node8" class="node">
+<title>sourcefile~math_mod.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~AfferentGraph_node8"><a xlink:href=".././sourcefile/math_mod.f90.html" xlink:title="math_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="187.83,-170.4 108.63,-170.4 108.63,-146.2 187.83,-146.2 187.83,-170.4"/>
+<text text-anchor="middle" x="148.23" y="-155.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">math_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~math_mod.f90&#45;&gt;sourcefile~mpi_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge7" class="edge">
+<title>sourcefile~math_mod.f90:&#45;&gt;sourcefile~mpi_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M108.49,-151.25C100.14,-149.73 91.24,-148.11 82.66,-146.55"/>
+<polygon fill="#000000" stroke="#000000" points="83.26,-143.1 72.8,-144.75 82.01,-149.99 83.26,-143.1"/>
+</g>
+<!-- sourcefile~darcy_crkp_1f.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node9" class="node">
+<title>sourcefile~darcy_crkp_1f.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~AfferentGraph_node9"><a xlink:href=".././sourcefile/darcy_crkp_1f.f90.html" xlink:title="darcy_crkp_1f.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="739.15,-406.4 643.27,-406.4 643.27,-382.2 739.15,-382.2 739.15,-406.4"/>
+<text text-anchor="middle" x="691.21" y="-391.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_1f.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~darcy_crkp_1f.f90&#45;&gt;sourcefile~mpi_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge11" class="edge">
+<title>sourcefile~darcy_crkp_1f.f90:&#45;&gt;sourcefile~mpi_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M549.72,-452.3C490.56,-458.34 472.12,-432.88 415.91,-452.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M671.02,-406.65C645.15,-422.26 597.1,-447.67 551.72,-452.3"/>
+</g>
+<!-- sourcefile~darcy_crkp_1f.f90&#45;&gt;sourcefile~darcy_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge18" class="edge">
+<title>sourcefile~darcy_crkp_1f.f90:&#45;&gt;sourcefile~darcy_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M660.5,-382.07C640.15,-373.69 612.94,-362.5 590.83,-353.39"/>
+<polygon fill="#000000" stroke="#000000" points="591.96,-350.08 581.38,-349.51 589.3,-356.55 591.96,-350.08"/>
+</g>
+<!-- sourcefile~darcy_crkp_1f.f90&#45;&gt;sourcefile~solver_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge31" class="edge">
+<title>sourcefile~darcy_crkp_1f.f90:&#45;&gt;sourcefile~solver_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M643.33,-405.23C616.61,-410.41 582.44,-415.28 551.72,-414.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M549.72,-414.3C465.75,-411.61 440.53,-424.2 361.65,-395.3 337.19,-386.34 313.07,-368.81 296.64,-355.17"/>
+<polygon fill="#000000" stroke="#000000" points="298.67,-352.3 288.79,-348.47 294.12,-357.62 298.67,-352.3"/>
+</g>
+<!-- sourcefile~darcy_crkp_1f.f90&#45;&gt;sourcefile~partition_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge41" class="edge">
+<title>sourcefile~darcy_crkp_1f.f90:&#45;&gt;sourcefile~partition_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M660.43,-382.15C650.34,-376.61 639.95,-369.07 633.28,-359.3 582.58,-285.08 651.66,-231.86 597.28,-160.3 596.35,-159.08 595.33,-157.92 594.24,-156.82"/>
+<polygon fill="#000000" stroke="#000000" points="596.24,-153.93 586.24,-150.43 591.87,-159.41 596.24,-153.93"/>
+</g>
+<!-- sourcefile~partition_mod.f90&#45;&gt;sourcefile~mpi_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge9" class="edge">
+<title>sourcefile~partition_mod.f90:&#45;&gt;sourcefile~mpi_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M521.94,-126.13C495.34,-115.4 453.75,-101.07 415.91,-98.3"/>
+</g>
+<!-- sourcefile~partition_mod.f90&#45;&gt;sourcefile~io_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge22" class="edge">
+<title>sourcefile~partition_mod.f90:&#45;&gt;sourcefile~io_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M521.11,-150.62C515.34,-153.52 509.43,-156.79 504.17,-160.3 486.36,-172.18 485.91,-180.32 468.17,-192.3 463.45,-195.49 458.28,-198.54 453.08,-201.34"/>
+<polygon fill="#000000" stroke="#000000" points="451.09,-198.43 443.8,-206.12 454.29,-204.66 451.09,-198.43"/>
+</g>
+<!-- sourcefile~partition_mod.f90&#45;&gt;sourcefile~math_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge35" class="edge">
+<title>sourcefile~partition_mod.f90:&#45;&gt;sourcefile~math_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.91,-178.3C338.5,-183.77 251.04,-174.01 197.95,-166.3"/>
+<polygon fill="#000000" stroke="#000000" points="198.2,-162.8 187.8,-164.79 197.17,-169.72 198.2,-162.8"/>
+</g>
+<!-- sourcefile~partition_mod.f90&#45;&gt;sourcefile~dec_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge44" class="edge">
+<title>sourcefile~partition_mod.f90:&#45;&gt;sourcefile~dec_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.91,-178.3C376.69,-181 335.85,-166.93 308.29,-154.74"/>
+<polygon fill="#000000" stroke="#000000" points="309.67,-151.52 299.12,-150.54 306.76,-157.88 309.67,-151.52"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M521.94,-150.49C495.34,-161.22 453.76,-175.56 415.91,-178.3"/>
+</g>
+<!-- sourcefile~test_mpi.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node11" class="node">
+<title>sourcefile~test_mpi.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~AfferentGraph_node11"><a xlink:href=".././sourcefile/test_mpi.f90.html" xlink:title="test_mpi.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="182.91,-80.4 113.55,-80.4 113.55,-56.2 182.91,-56.2 182.91,-80.4"/>
+<text text-anchor="middle" x="148.23" y="-65.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_mpi.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~test_mpi.f90&#45;&gt;sourcefile~mpi_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge8" class="edge">
+<title>sourcefile~test_mpi.f90:&#45;&gt;sourcefile~mpi_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M128.09,-80.49C110.7,-91.57 84.85,-108.04 65.18,-120.57"/>
+<polygon fill="#000000" stroke="#000000" points="63.18,-117.69 56.63,-126.01 66.94,-123.59 63.18,-117.69"/>
+</g>
+<!-- sourcefile~darcy_2f.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node12" class="node">
+<title>sourcefile~darcy_2f.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~AfferentGraph_node12"><a xlink:href=".././sourcefile/darcy_2f.f90.html" xlink:title="darcy_2f.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="725.98,-307.4 656.44,-307.4 656.44,-283.2 725.98,-283.2 725.98,-307.4"/>
+<text text-anchor="middle" x="691.21" y="-292.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_2f.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~darcy_2f.f90&#45;&gt;sourcefile~mpi_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge10" class="edge">
+<title>sourcefile~darcy_2f.f90:&#45;&gt;sourcefile~mpi_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.91,-296.3C352.64,-300.65 334.59,-278.81 275.71,-296.3"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M656.37,-293.96C604.53,-292.25 502.36,-290.16 415.91,-296.3"/>
+</g>
+<!-- sourcefile~darcy_2f.f90&#45;&gt;sourcefile~darcy_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge19" class="edge">
+<title>sourcefile~darcy_2f.f90:&#45;&gt;sourcefile~darcy_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M656.33,-305.57C639.77,-310.6 619.52,-316.74 601.26,-322.28"/>
+<polygon fill="#000000" stroke="#000000" points="600.2,-318.94 591.64,-325.19 602.23,-325.64 600.2,-318.94"/>
+</g>
+<!-- sourcefile~darcy_2f.f90&#45;&gt;sourcefile~solver_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge30" class="edge">
+<title>sourcefile~darcy_2f.f90:&#45;&gt;sourcefile~solver_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.91,-296.3C379.18,-298.76 341.3,-310.4 314,-320.5"/>
+<polygon fill="#000000" stroke="#000000" points="312.55,-317.3 304.44,-324.12 315.04,-323.85 312.55,-317.3"/>
+</g>
+<!-- sourcefile~darcy_2f.f90&#45;&gt;sourcefile~partition_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge42" class="edge">
+<title>sourcefile~darcy_2f.f90:&#45;&gt;sourcefile~partition_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M684.45,-282.91C671.92,-257.06 639.82,-196.79 597.28,-160.3 595.35,-158.65 593.28,-157.09 591.12,-155.62"/>
+<polygon fill="#000000" stroke="#000000" points="592.86,-152.58 582.48,-150.43 589.25,-158.58 592.86,-152.58"/>
+</g>
+<!-- sourcefile~dec_mod.f90&#45;&gt;sourcefile~mpi_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge13" class="edge">
+<title>sourcefile~dec_mod.f90:&#45;&gt;sourcefile~mpi_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M245.92,-126.13C220.95,-116.51 183.1,-105.19 149.23,-108.3"/>
+</g>
+<!-- sourcefile~dec_mod.f90&#45;&gt;sourcefile~math_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge34" class="edge">
+<title>sourcefile~dec_mod.f90:&#45;&gt;sourcefile~math_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M238.37,-143.98C225.89,-145.98 211.61,-148.28 198.2,-150.43"/>
+<polygon fill="#000000" stroke="#000000" points="197.47,-147 188.15,-152.05 198.58,-153.92 197.47,-147"/>
+</g>
+<!-- sourcefile~darcy_1f.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node14" class="node">
+<title>sourcefile~darcy_1f.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~AfferentGraph_node14"><a xlink:href=".././sourcefile/darcy_1f.f90.html" xlink:title="darcy_1f.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="725.98,-110.4 656.44,-110.4 656.44,-86.2 725.98,-86.2 725.98,-110.4"/>
+<text text-anchor="middle" x="691.21" y="-95.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_1f.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~darcy_1f.f90&#45;&gt;sourcefile~mpi_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge12" class="edge">
+<title>sourcefile~darcy_1f.f90:&#45;&gt;sourcefile~mpi_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M656.29,-96.87C628.22,-96.03 587.32,-95.59 551.72,-98.3"/>
+</g>
+<!-- sourcefile~darcy_1f.f90&#45;&gt;sourcefile~darcy_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge15" class="edge">
+<title>sourcefile~darcy_1f.f90:&#45;&gt;sourcefile~darcy_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M683.15,-110.48C660.88,-148.92 591.91,-267.95 563.81,-316.43"/>
+<polygon fill="#000000" stroke="#000000" points="560.75,-314.74 558.77,-325.14 566.81,-318.25 560.75,-314.74"/>
+</g>
+<!-- sourcefile~darcy_1f.f90&#45;&gt;sourcefile~solver_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge25" class="edge">
+<title>sourcefile~darcy_1f.f90:&#45;&gt;sourcefile~solver_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M682.11,-110.49C667.45,-131.73 634.57,-175.77 597.28,-202.3 579.4,-215.02 570.62,-210.16 551.72,-221.3"/>
+</g>
+<!-- sourcefile~darcy_1f.f90&#45;&gt;sourcefile~partition_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge37" class="edge">
+<title>sourcefile~darcy_1f.f90:&#45;&gt;sourcefile~partition_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M656.33,-108.09C640.39,-112.69 621.02,-118.28 603.31,-123.4"/>
+<polygon fill="#000000" stroke="#000000" points="602.31,-120.05 593.67,-126.18 604.25,-126.77 602.31,-120.05"/>
+</g>
+<!-- sourcefile~test_math_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node15" class="node">
+<title>sourcefile~test_math_mod.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~AfferentGraph_node15"><a xlink:href=".././sourcefile/test_math_mod.f90.html" xlink:title="test_math_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="325.58,-230.4 223.85,-230.4 223.85,-206.2 325.58,-206.2 325.58,-230.4"/>
+<text text-anchor="middle" x="274.71" y="-215.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_math_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~test_math_mod.f90&#45;&gt;sourcefile~math_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge33" class="edge">
+<title>sourcefile~test_math_mod.f90:&#45;&gt;sourcefile~math_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M248.52,-206.16C229.79,-197.13 204.03,-184.71 183.44,-174.79"/>
+<polygon fill="#000000" stroke="#000000" points="184.91,-171.61 174.38,-170.42 181.87,-177.92 184.91,-171.61"/>
+</g>
+<!-- sourcefile~test_io_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node16" class="node">
+<title>sourcefile~test_io_mod.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~AfferentGraph_node16"><a xlink:href=".././sourcefile/test_io_mod.f90.html" xlink:title="test_io_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="593.92,-193.4 507.53,-193.4 507.53,-169.2 593.92,-169.2 593.92,-193.4"/>
+<text text-anchor="middle" x="550.72" y="-178.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_io_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~test_io_mod.f90&#45;&gt;sourcefile~io_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge21" class="edge">
+<title>sourcefile~test_io_mod.f90:&#45;&gt;sourcefile~io_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M507.38,-193.01C491.15,-197.5 472.68,-202.6 456.6,-207.05"/>
+<polygon fill="#000000" stroke="#000000" points="455.65,-203.68 446.94,-209.72 457.52,-210.43 455.65,-203.68"/>
+</g>
+<!-- sourcefile~test_solver_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node17" class="node">
+<title>sourcefile~test_solver_mod.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~AfferentGraph_node17"><a xlink:href=".././sourcefile/test_solver_mod.f90.html" xlink:title="test_solver_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="467.93,-386.4 361.88,-386.4 361.88,-362.2 467.93,-362.2 467.93,-386.4"/>
+<text text-anchor="middle" x="414.91" y="-371.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_solver_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~test_solver_mod.f90&#45;&gt;sourcefile~solver_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge29" class="edge">
+<title>sourcefile~test_solver_mod.f90:&#45;&gt;sourcefile~solver_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M369.8,-362.17C355.94,-358.36 340.53,-354.12 326.25,-350.2"/>
+<polygon fill="#000000" stroke="#000000" points="327.16,-346.82 316.59,-347.54 325.3,-353.57 327.16,-346.82"/>
+</g>
+<!-- sourcefile~test_dec_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node18" class="node">
+<title>sourcefile~test_dec_mod.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~AfferentGraph_node18"><a xlink:href=".././sourcefile/test_dec_mod.f90.html" xlink:title="test_dec_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="462.86,-150.4 366.96,-150.4 366.96,-126.2 462.86,-126.2 462.86,-150.4"/>
+<text text-anchor="middle" x="414.91" y="-135.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_dec_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~test_dec_mod.f90&#45;&gt;sourcefile~dec_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge43" class="edge">
+<title>sourcefile~test_dec_mod.f90:&#45;&gt;sourcefile~dec_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M367.12,-138.3C352.38,-138.3 336.11,-138.3 321.44,-138.3"/>
+<polygon fill="#000000" stroke="#000000" points="321.09,-134.8 311.09,-138.3 321.09,-141.8 321.09,-134.8"/>
+</g>
+<!-- sourcefile~test_darcy_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node19" class="node">
+<title>sourcefile~test_darcy_mod.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~AfferentGraph_node19"><a xlink:href=".././sourcefile/test_darcy_mod.f90.html" xlink:title="test_darcy_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="743.4,-350.4 639.01,-350.4 639.01,-326.2 743.4,-326.2 743.4,-350.4"/>
+<text text-anchor="middle" x="691.21" y="-335.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_darcy_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~test_darcy_mod.f90&#45;&gt;sourcefile~darcy_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge20" class="edge">
+<title>sourcefile~test_darcy_mod.f90:&#45;&gt;sourcefile~darcy_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M639.03,-337.93C627,-337.84 614.18,-337.75 602.17,-337.66"/>
+<polygon fill="#000000" stroke="#000000" points="601.9,-334.16 591.87,-337.59 601.84,-341.16 601.9,-334.16"/>
+</g>
+<!-- sourcefile~test_partition_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_node20" class="node">
+<title>sourcefile~test_partition_mod.f90</title>
+<g id="a_sourcefile~~mpi_mod.f90~~AfferentGraph_node20"><a xlink:href=".././sourcefile/test_partition_mod.f90.html" xlink:title="test_partition_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="749.07,-24.4 633.34,-24.4 633.34,-0.2 749.07,-0.2 749.07,-24.4"/>
+<text text-anchor="middle" x="691.21" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_partition_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~test_partition_mod.f90&#45;&gt;sourcefile~partition_mod.f90 -->
+<g id="sourcefile~~mpi_mod.f90~~AfferentGraph_edge40" class="edge">
+<title>sourcefile~test_partition_mod.f90:&#45;&gt;sourcefile~partition_mod.f90:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M647.6,-24.46C642.39,-27.14 637.45,-30.38 633.28,-34.3 605.43,-60.43 623.08,-84.16 597.28,-112.3 594.58,-115.24 591.48,-117.93 588.19,-120.37"/>
+<polygon fill="#000000" stroke="#000000" points="586.15,-117.52 579.73,-125.94 590,-123.37 586.15,-117.52"/>
+</g>
+</g>
+</svg>
+</div><script>var pansourcefilempi_modf90AfferentGraph = svgPanZoom('#sourcefilempi_modf90AfferentGraph', {zoomEnabled: true,controlIconsEnabled: true, fit: true, center: true,}); </script><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="188pt" height="33pt"
+ viewBox="0.00 0.00 187.55 32.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28.6)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28.6 183.55,-28.6 183.55,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="65.13,-24.4 -0.04,-24.4 -0.04,-0.2 65.13,-0.2 65.13,-24.4"/>
+<text text-anchor="middle" x="32.54" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="179.55,-24.4 83.54,-24.4 83.54,-0.2 179.55,-0.2 179.55,-24.4"/>
+<text text-anchor="middle" x="131.54" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a file to a file which it depends on. A file
+    is dependent upon another if the latter must be compiled before the former
+    can be.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+      
+      <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#mods-1">Modules</a></h3></div>
+  <div id="mods-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/mpi_mod.html">mpi_mod</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../sourcefile/mpi_mod.f90.html#src">mpi_mod.f90</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    <section>
+      <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl"><pre><span></span><a name="ln-1"></a><span class="c">!</span>
+<a name="ln-2"></a><span class="c">!===============================================================================</span>
+<a name="ln-3"></a><span class="c">!-- MPI Module</span>
+<a name="ln-4"></a><span class="c">!&gt; Module contains routines for controlling MPI execution environment</span>
+<a name="ln-5"></a><span class="c">!===============================================================================</span>
+<a name="ln-6"></a><span class="c">!/****/h* modules|mpi/mpi_mod</span>
+<a name="ln-7"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-8"></a><span class="k">MODULE </span><span class="n">mpi_mod</span>
+<a name="ln-9"></a><span class="c">!* PURPOSE</span>
+<a name="ln-10"></a><span class="c">!*   Module contains routines for controlling MPI execution environment</span>
+<a name="ln-11"></a><span class="c">!* INCLUDES</span>
+<a name="ln-12"></a><span class="c">!*   Name                    Purpose</span>
+<a name="ln-13"></a><span class="c">!*   common_mod              variable definitions</span>
+<a name="ln-14"></a><span class="c">!* CONTAINS</span>
+<a name="ln-15"></a><span class="c">!*   Subroutine              Purpose</span>
+<a name="ln-16"></a><span class="c">!*   start_mpi()             start MPI execution environment &amp; get details</span>
+<a name="ln-17"></a><span class="c">!*   end_mpi()               end MPI execution environment &amp; stop ParaGEMS</span>
+<a name="ln-18"></a><span class="c">!*   elm2proc()              convert partitioning element to process num (rank)</span>
+<a name="ln-19"></a><span class="c">!*   open_log                Open log file from root process &amp; write header</span>
+<a name="ln-20"></a><span class="c">!*   close_log               Close log file from root process</span>
+<a name="ln-21"></a><span class="c">!*   rootwrite_log           Write unsynchronised message to log from root</span>
+<a name="ln-22"></a><span class="c">!*   write_log               Write unsynchronised messages to log from all ranks</span>
+<a name="ln-23"></a><span class="c">!*   syncwrite_log           Write synchronised message to log from root</span>
+<a name="ln-24"></a><span class="c">!*   syncwrite_log_mpidata   Write a synchronised message to log with num ranks</span>
+<a name="ln-25"></a><span class="c">!*   syncwrite_log_time      Write a synchronised message to log with timings</span>
+<a name="ln-26"></a><span class="c">!*   open_unsteady_log       Open log file for unsteady simulations from root</span>
+<a name="ln-27"></a><span class="c">!*                           and write header</span>
+<a name="ln-28"></a><span class="c">!*   close_unsteady_log      Close log file for unsteady simulations from root</span>
+<a name="ln-29"></a><span class="c">!* AUTHOR</span>
+<a name="ln-30"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-31"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-32"></a><span class="c">!*   2020/09/16: Created (PB)</span>
+<a name="ln-33"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-34"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-35"></a><span class="c">!******/</span>
+<a name="ln-36"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-37"></a><span class="c">!&gt; date: 2020/09/16</span>
+<a name="ln-38"></a><span class="c">!&gt; Module contains routines for controlling MPI execution environment</span>
+<a name="ln-39"></a><span class="c">!===============================================================================</span>
+<a name="ln-40"></a>
+<a name="ln-41"></a>  <span class="c">!-- use statements and implicit none --</span>
+<a name="ln-42"></a>  <span class="k">USE </span><span class="n">common_mod</span>
+<a name="ln-43"></a>
+<a name="ln-44"></a>  <span class="k">IMPLICIT NONE</span>
+<a name="ln-45"></a>
+<a name="ln-46"></a><span class="c">!===============================================================================</span>
+<a name="ln-47"></a><span class="k">CONTAINS</span>
+<a name="ln-48"></a><span class="c">!===============================================================================</span>
+<a name="ln-49"></a><span class="c">!</span>
+<a name="ln-50"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-51"></a><span class="c">!/****/s* mpi_mod/start_mpi</span>
+<a name="ln-52"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-53"></a>  <span class="k">SUBROUTINE </span><span class="n">start_mpi</span><span class="p">()</span>
+<a name="ln-54"></a><span class="c">!* PURPOSE</span>
+<a name="ln-55"></a><span class="c">!*   Start MPI execution environment &amp; get details</span>
+<a name="ln-56"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-57"></a><span class="c">!*   - MPI execution environment started, rank identified, and number of</span>
+<a name="ln-58"></a><span class="c">!*     processes evaluated</span>
+<a name="ln-59"></a><span class="c">!* AUTHOR</span>
+<a name="ln-60"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-61"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-62"></a><span class="c">!*   2020/09/16: Created (PB)</span>
+<a name="ln-63"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-64"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-65"></a><span class="c">!******/</span>
+<a name="ln-66"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-67"></a><span class="c">!&gt; date: 2020/09/16</span>
+<a name="ln-68"></a><span class="c">!&gt; Start MPI execution environment &amp; get details</span>
+<a name="ln-69"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-70"></a>
+<a name="ln-71"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-72"></a>
+<a name="ln-73"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-74"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-75"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-76"></a>    <span class="c">!-- start MPI --</span>
+<a name="ln-77"></a>    <span class="k">CALL </span><span class="n">MPI_INIT</span><span class="p">(</span><span class="n">ier</span><span class="p">)</span>
+<a name="ln-78"></a>    <span class="k">IF</span> <span class="p">(</span><span class="n">ier</span> <span class="o">/=</span> <span class="n">MPI_SUCCESS</span><span class="p">)</span> <span class="k">THEN</span>
+<a name="ln-79"></a><span class="k">      WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(A,A,I5)&#39;</span><span class="p">)</span><span class="s1">&#39;Error in MPI_INIT: errcode = &#39;</span><span class="p">,</span><span class="n">ier</span>
+<a name="ln-80"></a>      <span class="k">STOP</span> <span class="s1">&#39;ParaGEMS: shutdown&#39;</span>
+<a name="ln-81"></a>    <span class="k">END IF</span>
+<a name="ln-82"></a>
+<a name="ln-83"></a>    <span class="c">!-- get local rank --</span>
+<a name="ln-84"></a>    <span class="k">CALL </span><span class="n">MPI_COMM_RANK</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="n">rank</span><span class="p">,</span><span class="n">ier</span><span class="p">)</span>
+<a name="ln-85"></a>    <span class="k">IF</span> <span class="p">(</span><span class="n">ier</span> <span class="o">/=</span> <span class="n">MPI_SUCCESS</span><span class="p">)</span> <span class="k">THEN</span>
+<a name="ln-86"></a><span class="k">      WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(A,A,I5)&#39;</span><span class="p">)</span><span class="s1">&#39;Error in MPI_COMM_RANK: errcode = &#39;</span><span class="p">,</span><span class="n">ier</span>
+<a name="ln-87"></a>      <span class="k">CALL </span><span class="n">end_mpi</span><span class="p">()</span>
+<a name="ln-88"></a>    <span class="k">END IF</span>
+<a name="ln-89"></a>
+<a name="ln-90"></a>    <span class="c">!-- get the global number of processes --</span>
+<a name="ln-91"></a>    <span class="k">CALL </span><span class="n">MPI_COMM_SIZE</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="n">num_procs</span><span class="p">,</span><span class="n">ier</span><span class="p">)</span>
+<a name="ln-92"></a>    <span class="k">IF</span> <span class="p">(</span><span class="n">ier</span> <span class="o">/=</span> <span class="n">MPI_SUCCESS</span><span class="p">)</span> <span class="k">THEN</span>
+<a name="ln-93"></a><span class="k">      WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(A,A,I5)&#39;</span><span class="p">)</span><span class="s1">&#39;Error in MPI_COMM_SIZE: errcode = &#39;</span><span class="p">,</span><span class="n">ier</span>
+<a name="ln-94"></a>      <span class="k">CALL </span><span class="n">end_mpi</span><span class="p">()</span>
+<a name="ln-95"></a>    <span class="k">END IF</span>
+<a name="ln-96"></a>
+<a name="ln-97"></a>    <span class="c">!-- record simumation start time --</span>
+<a name="ln-98"></a>    <span class="k">CALL </span><span class="n">MPI_BARRIER</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="n">ier</span><span class="p">)</span>
+<a name="ln-99"></a>    <span class="n">start_time</span> <span class="o">=</span> <span class="n">MPI_Wtime</span><span class="p">();</span>   <span class="n">curnt_time</span> <span class="o">=</span> <span class="n">start_time</span>
+<a name="ln-100"></a>
+<a name="ln-101"></a>    <span class="c">!-- open paragems log file and write mpi data --</span>
+<a name="ln-102"></a>    <span class="k">CALL </span><span class="n">open_log</span><span class="p">();</span>   <span class="k">CALL </span><span class="n">syncwrite_log_mpidata</span><span class="p">()</span>
+<a name="ln-103"></a>
+<a name="ln-104"></a>    <span class="k">RETURN</span>
+<a name="ln-105"></a>
+<a name="ln-106"></a><span class="k">  END SUBROUTINE</span>
+<a name="ln-107"></a><span class="c">! mpi_mod/start_mpi</span>
+<a name="ln-108"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-109"></a><span class="c">!</span>
+<a name="ln-110"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-111"></a><span class="c">!/****/s* mpi_mod/end_mpi</span>
+<a name="ln-112"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-113"></a>  <span class="k">SUBROUTINE </span><span class="n">end_mpi</span><span class="p">()</span>
+<a name="ln-114"></a><span class="c">!* PURPOSE</span>
+<a name="ln-115"></a><span class="c">!*   End MPI execution environment &amp; stop ParaGEMS</span>
+<a name="ln-116"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-117"></a><span class="c">!*   - MPI execution environment ended and ParaGEMS stoped</span>
+<a name="ln-118"></a><span class="c">!* AUTHOR</span>
+<a name="ln-119"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-120"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-121"></a><span class="c">!*   2020/09/16: Created (PB)</span>
+<a name="ln-122"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-123"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-124"></a><span class="c">!******/</span>
+<a name="ln-125"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-126"></a><span class="c">!&gt; date: 2020/09/16</span>
+<a name="ln-127"></a><span class="c">!&gt; End MPI execution environment &amp; stop ParaGEMS</span>
+<a name="ln-128"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-129"></a>
+<a name="ln-130"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-131"></a>
+<a name="ln-132"></a>    <span class="c">!-- local variables --</span>
+<a name="ln-133"></a>    <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="n">slen</span><span class="p">)</span> <span class="kd">::</span> <span class="n">str_out</span>          <span class="c">!&gt; STOP output string</span>
+<a name="ln-134"></a>
+<a name="ln-135"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-136"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-137"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-138"></a>    <span class="c">!-- end MPI execution environment and stop ParaGEMS --</span>
+<a name="ln-139"></a>    <span class="k">WRITE</span><span class="p">(</span><span class="n">str_out</span><span class="p">,</span><span class="s1">&#39;(A,A)&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
+<a name="ln-140"></a>      <span class="s1">&#39;ParaGEMS: shutdown: the program terminated successfully&#39;</span>
+<a name="ln-141"></a>    <span class="k">CALL </span><span class="n">syncwrite_log</span><span class="p">(</span><span class="n">str_out</span><span class="p">);</span>   <span class="k">CALL </span><span class="n">syncwrite_log_time</span><span class="p">();</span>   <span class="k">CALL </span><span class="n">close_log</span><span class="p">()</span>
+<a name="ln-142"></a>    <span class="k">CALL </span><span class="n">MPI_FINALIZE</span><span class="p">(</span><span class="n">ier</span><span class="p">)</span>
+<a name="ln-143"></a>    <span class="k">IF</span> <span class="p">(</span><span class="n">ier</span> <span class="o">/=</span> <span class="n">MPI_SUCCESS</span><span class="p">)</span> <span class="p">&amp;</span>
+<a name="ln-144"></a>      <span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(A,A,I5)&#39;</span><span class="p">)</span><span class="s1">&#39;Error in MPI_COMM_SIZE: errcode = &#39;</span><span class="p">,</span><span class="n">ier</span>
+<a name="ln-145"></a>    <span class="k">STOP</span>
+<a name="ln-146"></a>
+<a name="ln-147"></a><span class="k">    RETURN</span>
+<a name="ln-148"></a>
+<a name="ln-149"></a><span class="k">  END SUBROUTINE</span>
+<a name="ln-150"></a><span class="c">! mpi_mod/end_mpi</span>
+<a name="ln-151"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-152"></a><span class="c">!</span>
+<a name="ln-153"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-154"></a><span class="c">!/****/f* mpi_mod/elm2proc</span>
+<a name="ln-155"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-156"></a>  <span class="k">FUNCTION </span><span class="n">elm2proc</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<a name="ln-157"></a><span class="c">!* PURPOSE</span>
+<a name="ln-158"></a><span class="c">!*   Convert partitioning element to process number (rank)</span>
+<a name="ln-159"></a><span class="c">!* INPUTS</span>
+<a name="ln-160"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-161"></a><span class="c">!*   id                      global vertex index</span>
+<a name="ln-162"></a><span class="c">!* OUTPUTS</span>
+<a name="ln-163"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-164"></a><span class="c">!*   id                      global vertex index</span>
+<a name="ln-165"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-166"></a><span class="c">!*   -</span>
+<a name="ln-167"></a><span class="c">!* AUTHOR</span>
+<a name="ln-168"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-169"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-170"></a><span class="c">!*   2020/09/16: Created (PB)</span>
+<a name="ln-171"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-172"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-173"></a><span class="c">!******/</span>
+<a name="ln-174"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-175"></a><span class="c">!&gt; date: 2020/09/16</span>
+<a name="ln-176"></a><span class="c">!&gt; Convert partitioning element to process number (rank)</span>
+<a name="ln-177"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-178"></a>
+<a name="ln-179"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-180"></a>
+<a name="ln-181"></a>    <span class="c">!-- arguments --</span>
+<a name="ln-182"></a>    <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">id</span>         <span class="c">!&gt;</span>
+<a name="ln-183"></a>    <span class="kt">INTEGER</span>               <span class="kd">::</span> <span class="n">elm2proc</span>   <span class="c">!&gt;</span>
+<a name="ln-184"></a>
+<a name="ln-185"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-186"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-187"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-188"></a>    <span class="c">!-- identify process associated with given primary index --</span>
+<a name="ln-189"></a>    <span class="k">IF</span> <span class="p">(</span><span class="n">extra_pelm</span><span class="o">==</span><span class="mi">0</span> <span class="p">.</span><span class="nb">OR</span><span class="p">.</span> <span class="n">id</span><span class="o">&lt;</span><span class="n">extra_pelm</span><span class="o">*</span><span class="n">num_pelm_pp</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="k">THEN</span>
+<a name="ln-190"></a><span class="k">      </span><span class="n">elm2proc</span> <span class="o">=</span> <span class="p">(</span><span class="n">id</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">num_pelm_pp</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a name="ln-191"></a>    <span class="k">ELSE</span>
+<a name="ln-192"></a><span class="k">      </span><span class="n">elm2proc</span> <span class="o">=</span> <span class="p">(</span><span class="n">id</span><span class="o">-</span><span class="n">extra_pelm</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">num_pelm_pp</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<a name="ln-193"></a>    <span class="k">END IF</span>
+<a name="ln-194"></a>
+<a name="ln-195"></a><span class="k">    RETURN</span>
+<a name="ln-196"></a>
+<a name="ln-197"></a><span class="k">  END FUNCTION</span>
+<a name="ln-198"></a><span class="c">! mpi_mod/elm2proc</span>
+<a name="ln-199"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-200"></a><span class="c">!</span>
+<a name="ln-201"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-202"></a><span class="c">!/****/s* mpi_mod/open_log</span>
+<a name="ln-203"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-204"></a>  <span class="k">SUBROUTINE </span><span class="n">open_log</span><span class="p">()</span>
+<a name="ln-205"></a><span class="c">!* PURPOSE</span>
+<a name="ln-206"></a><span class="c">!*   Open log file from root process and write ParaGEMS header</span>
+<a name="ln-207"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-208"></a><span class="c">!*   -</span>
+<a name="ln-209"></a><span class="c">!* AUTHOR</span>
+<a name="ln-210"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-211"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-212"></a><span class="c">!*   2020/09/16: Created (PB)</span>
+<a name="ln-213"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-214"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-215"></a><span class="c">!******/</span>
+<a name="ln-216"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-217"></a><span class="c">!&gt; date: 2020/09/16</span>
+<a name="ln-218"></a><span class="c">!&gt; Open log file from root process and write ParaGEMS header</span>
+<a name="ln-219"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-220"></a>
+<a name="ln-221"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-222"></a>
+<a name="ln-223"></a>    <span class="c">!-- local variables --</span>
+<a name="ln-224"></a>    <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="n">slen</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">fname</span>          <span class="c">!&gt; file name</span>
+<a name="ln-225"></a>    <span class="kt">LOGICAL</span>               <span class="kd">::</span> <span class="n">err</span> <span class="o">=</span> <span class="p">.</span><span class="n">FALSE</span><span class="p">.</span>  <span class="c">!&gt; error variable</span>
+<a name="ln-226"></a>    <span class="kt">integer</span>               <span class="kd">::</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span>            <span class="c">!&gt; counter</span>
+<a name="ln-227"></a>    <span class="kt">LOGICAL</span>               <span class="kd">::</span> <span class="n">fexists</span>        <span class="c">!&gt; logical for file existence</span>
+<a name="ln-228"></a>
+<a name="ln-229"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-230"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-231"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-232"></a>    <span class="c">!-- on root process --</span>
+<a name="ln-233"></a>    <span class="k">IF</span> <span class="p">(</span><span class="n">rank</span> <span class="o">==</span> <span class="n">root</span><span class="p">)</span> <span class="k">THEN</span>
+<a name="ln-234"></a>      <span class="c">!-- Open log file and check for errors --</span>
+<a name="ln-235"></a>      <span class="n">fname</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="n">log_prefix</span><span class="p">)</span> <span class="o">//</span> <span class="s1">&#39;.log&#39;</span>
+<a name="ln-236"></a>      <span class="k">INQUIRE</span><span class="p">(</span><span class="k">FILE</span><span class="o">=</span><span class="n">fname</span><span class="p">,</span> <span class="n">EXIST</span><span class="o">=</span><span class="n">fexists</span><span class="p">)</span>
+<a name="ln-237"></a>      <span class="k">IF</span> <span class="p">(</span><span class="n">fexists</span><span class="p">)</span> <span class="k">THEN</span>
+<a name="ln-238"></a><span class="k">        </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="ln-239"></a>        <span class="k">DO WHILE</span><span class="p">(</span><span class="n">fexists</span><span class="p">)</span>
+<a name="ln-240"></a>          <span class="k">IF</span> <span class="p">(</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">)</span> <span class="k">THEN</span>
+<a name="ln-241"></a><span class="k">            WRITE</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span><span class="s1">&#39;(A,I1)&#39;</span><span class="p">)</span> <span class="nb">trim</span><span class="p">(</span><span class="n">log_prefix</span><span class="p">)</span> <span class="o">//</span> <span class="s1">&#39;.log.&#39;</span><span class="p">,</span><span class="n">i</span>
+<a name="ln-242"></a>          <span class="n">ELSEIF</span> <span class="p">(</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">)</span> <span class="k">THEN</span>
+<a name="ln-243"></a><span class="k">            WRITE</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span><span class="s1">&#39;(A,I2)&#39;</span><span class="p">)</span> <span class="nb">trim</span><span class="p">(</span><span class="n">log_prefix</span><span class="p">)</span> <span class="o">//</span> <span class="s1">&#39;.log.&#39;</span><span class="p">,</span><span class="n">i</span>
+<a name="ln-244"></a>          <span class="n">ELSEIF</span> <span class="p">(</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">)</span> <span class="k">THEN</span>
+<a name="ln-245"></a><span class="k">            WRITE</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span><span class="s1">&#39;(A,I3)&#39;</span><span class="p">)</span> <span class="nb">trim</span><span class="p">(</span><span class="n">log_prefix</span><span class="p">)</span> <span class="o">//</span> <span class="s1">&#39;.log.&#39;</span><span class="p">,</span><span class="n">i</span>
+<a name="ln-246"></a>          <span class="k">END IF</span>
+<a name="ln-247"></a><span class="k">          INQUIRE</span><span class="p">(</span><span class="k">FILE</span><span class="o">=</span><span class="n">fname</span><span class="p">,</span> <span class="n">EXIST</span><span class="o">=</span><span class="n">fexists</span><span class="p">)</span>
+<a name="ln-248"></a>          <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+<a name="ln-249"></a>        <span class="k">END DO</span>
+<a name="ln-250"></a><span class="k">      END IF</span>
+<a name="ln-251"></a><span class="k">      OPEN</span><span class="p">(</span><span class="n">log_unit</span><span class="p">,</span><span class="k">FILE</span><span class="o">=</span><span class="n">fname</span><span class="p">,</span><span class="n">STATUS</span><span class="o">=</span><span class="s1">&#39;NEW&#39;</span><span class="p">,</span><span class="n">ACTION</span><span class="o">=</span><span class="s1">&#39;WRITE&#39;</span><span class="p">,</span><span class="n">IOSTAT</span><span class="o">=</span><span class="n">ier</span><span class="p">)</span>
+<a name="ln-252"></a>      <span class="k">IF</span> <span class="p">(</span><span class="n">ier</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">THEN</span>
+<a name="ln-253"></a><span class="k">        WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(A,A,A,I5)&#39;</span><span class="p">)</span><span class="s1">&#39;Error opening &#39;</span><span class="p">,</span><span class="nb">trim</span><span class="p">(</span><span class="n">fname</span><span class="p">),</span><span class="s1">&#39;: errcode = &#39;</span><span class="p">,</span><span class="n">ier</span>
+<a name="ln-254"></a>        <span class="n">err</span> <span class="o">=</span> <span class="p">.</span><span class="n">TRUE</span><span class="p">.</span>
+<a name="ln-255"></a>      <span class="k">END IF</span>
+<a name="ln-256"></a>
+<a name="ln-257"></a>      <span class="c">!-- write header --</span>
+<a name="ln-258"></a>      <span class="k">WRITE</span><span class="p">(</span><span class="n">log_unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;======================================================&#39;</span>
+<a name="ln-259"></a>      <span class="k">WRITE</span><span class="p">(</span><span class="n">log_unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;ParaGEMS: Parallel GEometric Mechanics of Solids&#39;</span>
+<a name="ln-260"></a>      <span class="k">WRITE</span><span class="p">(</span><span class="n">log_unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;------------------------------------------------------&#39;</span>
+<a name="ln-261"></a>      <span class="k">WRITE</span><span class="p">(</span><span class="n">log_unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;Developed by: Pieter Boom&#39;</span>
+<a name="ln-262"></a>      <span class="k">WRITE</span><span class="p">(</span><span class="n">log_unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;University of Manchester&#39;</span>
+<a name="ln-263"></a>      <span class="k">WRITE</span><span class="p">(</span><span class="n">log_unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;======================================================&#39;</span>
+<a name="ln-264"></a>      <span class="k">CALL </span><span class="nb">FLUSH</span><span class="p">(</span><span class="n">log_unit</span><span class="p">)</span>
+<a name="ln-265"></a>    <span class="k">END IF</span>
+<a name="ln-266"></a>
+<a name="ln-267"></a>    <span class="c">!-- check for errors</span>
+<a name="ln-268"></a>    <span class="k">CALL </span><span class="n">MPI_BCAST</span><span class="p">(</span><span class="n">err</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">MPI_LOGICAL</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="n">ier</span><span class="p">)</span>
+<a name="ln-269"></a>    <span class="k">IF</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="k">CALL </span><span class="n">end_mpi</span><span class="p">()</span>
+<a name="ln-270"></a>
+<a name="ln-271"></a>    <span class="k">RETURN</span>
+<a name="ln-272"></a>
+<a name="ln-273"></a><span class="k">  END SUBROUTINE</span>
+<a name="ln-274"></a><span class="c">! mpi_mod/open_log</span>
+<a name="ln-275"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-276"></a><span class="c">!</span>
+<a name="ln-277"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-278"></a><span class="c">!/****/s* mpi_mod/close_log</span>
+<a name="ln-279"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-280"></a>  <span class="k">SUBROUTINE </span><span class="n">close_log</span><span class="p">()</span>
+<a name="ln-281"></a><span class="c">!* PURPOSE</span>
+<a name="ln-282"></a><span class="c">!*   Close log file from root process</span>
+<a name="ln-283"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-284"></a><span class="c">!*   -</span>
+<a name="ln-285"></a><span class="c">!* AUTHOR</span>
+<a name="ln-286"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-287"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-288"></a><span class="c">!*   2020/09/16: Created (PB)</span>
+<a name="ln-289"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-290"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-291"></a><span class="c">!******/</span>
+<a name="ln-292"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-293"></a><span class="c">!&gt; date: 2020/09/16</span>
+<a name="ln-294"></a><span class="c">!&gt; Close log file from root process</span>
+<a name="ln-295"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-296"></a>
+<a name="ln-297"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-298"></a>
+<a name="ln-299"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-300"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-301"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-302"></a>    <span class="c">!-- on root process: close log file --</span>
+<a name="ln-303"></a>    <span class="k">IF</span> <span class="p">(</span><span class="n">rank</span> <span class="o">==</span> <span class="n">root</span><span class="p">)</span> <span class="k">CLOSE</span><span class="p">(</span><span class="n">log_unit</span><span class="p">)</span>
+<a name="ln-304"></a>
+<a name="ln-305"></a>    <span class="k">RETURN</span>
+<a name="ln-306"></a>
+<a name="ln-307"></a><span class="k">  END SUBROUTINE</span>
+<a name="ln-308"></a><span class="c">! mpi_mod/close_log</span>
+<a name="ln-309"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-310"></a><span class="c">!</span>
+<a name="ln-311"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-312"></a><span class="c">!/****/s* mpi_mod/rootwrite_log</span>
+<a name="ln-313"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-314"></a>  <span class="k">SUBROUTINE </span><span class="n">rootwrite_log</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<a name="ln-315"></a><span class="c">!* PURPOSE</span>
+<a name="ln-316"></a><span class="c">!*   Write unsynchronised message from root process to log file</span>
+<a name="ln-317"></a><span class="c">!* INPUTS</span>
+<a name="ln-318"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-319"></a><span class="c">!*   msg                     message string to be written to file</span>
+<a name="ln-320"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-321"></a><span class="c">!*   -</span>
+<a name="ln-322"></a><span class="c">!* AUTHOR</span>
+<a name="ln-323"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-324"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-325"></a><span class="c">!*   2020/09/16: Created (PB)</span>
+<a name="ln-326"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-327"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-328"></a><span class="c">!******/</span>
+<a name="ln-329"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-330"></a><span class="c">!&gt; date: 2020/09/16</span>
+<a name="ln-331"></a><span class="c">!&gt; Write unsynchronised message from root process to log file</span>
+<a name="ln-332"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-333"></a>
+<a name="ln-334"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-335"></a>
+<a name="ln-336"></a>    <span class="c">!-- arguments --</span>
+<a name="ln-337"></a>    <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=*</span><span class="p">),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">msg</span>   <span class="c">!&gt; message string</span>
+<a name="ln-338"></a>
+<a name="ln-339"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-340"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-341"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-342"></a>    <span class="c">!-- write message to log file --</span>
+<a name="ln-343"></a>    <span class="k">IF</span> <span class="p">(</span><span class="n">rank</span><span class="o">==</span><span class="n">root</span><span class="p">)</span> <span class="k">THEN</span>
+<a name="ln-344"></a><span class="k">      WRITE</span><span class="p">(</span><span class="n">log_unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">msg</span><span class="p">;</span>   <span class="k">CALL </span><span class="nb">FLUSH</span><span class="p">(</span><span class="n">log_unit</span><span class="p">)</span>
+<a name="ln-345"></a>    <span class="k">END IF</span>
+<a name="ln-346"></a>
+<a name="ln-347"></a><span class="k">    RETURN</span>
+<a name="ln-348"></a>
+<a name="ln-349"></a><span class="k">  END SUBROUTINE</span>
+<a name="ln-350"></a><span class="c">! mpi_mod/rootwrite_log</span>
+<a name="ln-351"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-352"></a><span class="c">!</span>
+<a name="ln-353"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-354"></a><span class="c">!/****/s* mpi_mod/write_log</span>
+<a name="ln-355"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-356"></a>  <span class="k">SUBROUTINE </span><span class="n">write_log</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<a name="ln-357"></a><span class="c">!* PURPOSE</span>
+<a name="ln-358"></a><span class="c">!*   Write unsynchronised messages collated from processes to log file</span>
+<a name="ln-359"></a><span class="c">!* INPUTS</span>
+<a name="ln-360"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-361"></a><span class="c">!*   msg                     message string to be written to file</span>
+<a name="ln-362"></a><span class="c">!* AUTHOR</span>
+<a name="ln-363"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-364"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-365"></a><span class="c">!*   2020/09/16: Created (PB)</span>
+<a name="ln-366"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-367"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-368"></a><span class="c">!******/</span>
+<a name="ln-369"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-370"></a><span class="c">!&gt; date: 2020/09/16</span>
+<a name="ln-371"></a><span class="c">!&gt; Write unsynchronised messages collated from processes to log file</span>
+<a name="ln-372"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-373"></a>
+<a name="ln-374"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-375"></a>
+<a name="ln-376"></a>    <span class="c">!-- arguments --</span>
+<a name="ln-377"></a>    <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="n">slen</span><span class="p">),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">msg</span>          <span class="c">!&gt; message string</span>
+<a name="ln-378"></a>
+<a name="ln-379"></a>    <span class="c">!-- local variables --</span>
+<a name="ln-380"></a>    <span class="kt">INTEGER</span>             <span class="kd">::</span> <span class="n">i</span>                          <span class="c">!&gt; counter</span>
+<a name="ln-381"></a>    <span class="kt">INTEGER</span>             <span class="kd">::</span> <span class="n">status</span><span class="p">(</span><span class="n">MPI_STATUS_SIZE</span><span class="p">)</span>    <span class="c">!&gt; mpi status variable</span>
+<a name="ln-382"></a>
+<a name="ln-383"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-384"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-385"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-386"></a>    <span class="k">IF</span> <span class="p">(</span><span class="n">rank</span> <span class="o">==</span> <span class="n">root</span><span class="p">)</span> <span class="k">THEN</span>
+<a name="ln-387"></a>      <span class="c">!-- write message to log file --</span>
+<a name="ln-388"></a>      <span class="k">WRITE</span><span class="p">(</span><span class="n">log_unit</span><span class="p">,</span><span class="s1">&#39;(A,I8,A,A)&#39;</span><span class="p">)</span> <span class="s1">&#39;rank: &#39;</span><span class="p">,</span><span class="n">rank</span><span class="p">,</span><span class="s1">&#39; : &#39;</span><span class="p">,</span><span class="n">msg</span>
+<a name="ln-389"></a>      <span class="k">DO </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">num_procs</span><span class="o">-</span><span class="mi">1</span>
+<a name="ln-390"></a>        <span class="k">CALL </span><span class="n">MPI_RECV</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="n">slen</span><span class="p">,</span><span class="n">MPI_CHARACTER</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="n">status</span><span class="p">,</span><span class="n">ier</span><span class="p">)</span>
+<a name="ln-391"></a>        <span class="k">WRITE</span><span class="p">(</span><span class="n">log_unit</span><span class="p">,</span><span class="s1">&#39;(A,I8,A,A)&#39;</span><span class="p">)</span> <span class="s1">&#39;rank: &#39;</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39; : &#39;</span><span class="p">,</span><span class="n">msg</span>
+<a name="ln-392"></a>      <span class="k">END DO</span>
+<a name="ln-393"></a><span class="k">      CALL </span><span class="nb">FLUSH</span><span class="p">(</span><span class="n">log_unit</span><span class="p">)</span>
+<a name="ln-394"></a>    <span class="k">ELSE</span>
+<a name="ln-395"></a><span class="k">      CALL </span><span class="n">MPI_SEND</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="n">slen</span><span class="p">,</span><span class="n">MPI_CHARACTER</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">rank</span><span class="p">,</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="n">ier</span><span class="p">)</span>
+<a name="ln-396"></a>    <span class="k">END IF</span>
+<a name="ln-397"></a>
+<a name="ln-398"></a><span class="k">    RETURN</span>
+<a name="ln-399"></a>
+<a name="ln-400"></a><span class="k">  END SUBROUTINE</span>
+<a name="ln-401"></a><span class="c">! mpi_mod/write_log</span>
+<a name="ln-402"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-403"></a><span class="c">!</span>
+<a name="ln-404"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-405"></a><span class="c">!/****/s* mpi_mod/syncwrite_log</span>
+<a name="ln-406"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-407"></a>  <span class="k">SUBROUTINE </span><span class="n">syncwrite_log</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<a name="ln-408"></a><span class="c">!* PURPOSE</span>
+<a name="ln-409"></a><span class="c">!*   Write synchronised message from root process to log file</span>
+<a name="ln-410"></a><span class="c">!* INPUTS</span>
+<a name="ln-411"></a><span class="c">!*   Name                    Description</span>
+<a name="ln-412"></a><span class="c">!*   msg                     message string to be written to file</span>
+<a name="ln-413"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-414"></a><span class="c">!*   -</span>
+<a name="ln-415"></a><span class="c">!* AUTHOR</span>
+<a name="ln-416"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-417"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-418"></a><span class="c">!*   2020/09/16: Created (PB)</span>
+<a name="ln-419"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-420"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-421"></a><span class="c">!******/</span>
+<a name="ln-422"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-423"></a><span class="c">!&gt; date: 2020/09/16</span>
+<a name="ln-424"></a><span class="c">!&gt; Write uynchronised message from root process to log file</span>
+<a name="ln-425"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-426"></a>
+<a name="ln-427"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-428"></a>
+<a name="ln-429"></a>    <span class="c">!-- arguments --</span>
+<a name="ln-430"></a>    <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=*</span><span class="p">),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">msg</span>          <span class="c">!&gt; message string</span>
+<a name="ln-431"></a>
+<a name="ln-432"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-433"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-434"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-435"></a>    <span class="c">!-- synchronise processes --</span>
+<a name="ln-436"></a>    <span class="k">CALL </span><span class="n">MPI_BARRIER</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="n">ier</span><span class="p">);</span>
+<a name="ln-437"></a>
+<a name="ln-438"></a>    <span class="c">!-- write message from root process --</span>
+<a name="ln-439"></a>    <span class="k">IF</span> <span class="p">(</span><span class="n">rank</span> <span class="o">==</span> <span class="n">root</span><span class="p">)</span> <span class="k">THEN</span>
+<a name="ln-440"></a><span class="k">      WRITE</span><span class="p">(</span><span class="n">log_unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">msg</span><span class="p">;</span>   <span class="k">CALL </span><span class="nb">FLUSH</span><span class="p">(</span><span class="n">log_unit</span><span class="p">)</span>
+<a name="ln-441"></a>    <span class="k">END IF</span>
+<a name="ln-442"></a>
+<a name="ln-443"></a><span class="k">    RETURN</span>
+<a name="ln-444"></a>
+<a name="ln-445"></a><span class="k">  END SUBROUTINE</span>
+<a name="ln-446"></a><span class="c">! mpi_mod/syncwrite_log</span>
+<a name="ln-447"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-448"></a><span class="c">!</span>
+<a name="ln-449"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-450"></a><span class="c">!/****/s* mpi_mod/syncwrite_log_mpidata</span>
+<a name="ln-451"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-452"></a>  <span class="k">SUBROUTINE </span><span class="n">syncwrite_log_mpidata</span><span class="p">()</span>
+<a name="ln-453"></a><span class="c">!* PURPOSE</span>
+<a name="ln-454"></a><span class="c">!*   Write a synchronised message with number of mpi ranks to log file</span>
+<a name="ln-455"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-456"></a><span class="c">!*   -</span>
+<a name="ln-457"></a><span class="c">!* AUTHOR</span>
+<a name="ln-458"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-459"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-460"></a><span class="c">!*   2020/09/16: Created (PB)</span>
+<a name="ln-461"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-462"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-463"></a><span class="c">!******/</span>
+<a name="ln-464"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-465"></a><span class="c">!&gt; date: 2020/09/16</span>
+<a name="ln-466"></a><span class="c">!&gt; Write a synchronised message with number of mpi ranks to log file</span>
+<a name="ln-467"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-468"></a>
+<a name="ln-469"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-470"></a>
+<a name="ln-471"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-472"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-473"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-474"></a>    <span class="c">!-- synchronise processes --</span>
+<a name="ln-475"></a>    <span class="k">CALL </span><span class="n">MPI_BARRIER</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="n">ier</span><span class="p">);</span>
+<a name="ln-476"></a>
+<a name="ln-477"></a>    <span class="c">!-- write message from root process --</span>
+<a name="ln-478"></a>    <span class="k">IF</span> <span class="p">(</span><span class="n">rank</span> <span class="o">==</span> <span class="n">root</span><span class="p">)</span> <span class="k">THEN</span>
+<a name="ln-479"></a><span class="k">      WRITE</span><span class="p">(</span><span class="n">log_unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;ParaGEMS: running: &#39;</span><span class="p">,</span> <span class="n">num_procs</span> <span class="p">,</span><span class="s1">&#39; processes&#39;</span>
+<a name="ln-480"></a>      <span class="k">CALL </span><span class="nb">FLUSH</span><span class="p">(</span><span class="n">log_unit</span><span class="p">)</span>
+<a name="ln-481"></a>    <span class="k">END IF</span>
+<a name="ln-482"></a>
+<a name="ln-483"></a><span class="k">  END SUBROUTINE</span>
+<a name="ln-484"></a><span class="c">! mpi_mod/syncwrite_log_mpidata</span>
+<a name="ln-485"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-486"></a><span class="c">!</span>
+<a name="ln-487"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-488"></a><span class="c">!/****/s* mpi_mod/syncwrite_log_time</span>
+<a name="ln-489"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-490"></a>  <span class="k">SUBROUTINE </span><span class="n">syncwrite_log_time</span><span class="p">()</span>
+<a name="ln-491"></a><span class="c">!* PURPOSE</span>
+<a name="ln-492"></a><span class="c">!*   Write a synchronised message to log file with timings</span>
+<a name="ln-493"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-494"></a><span class="c">!*   -</span>
+<a name="ln-495"></a><span class="c">!* AUTHOR</span>
+<a name="ln-496"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-497"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-498"></a><span class="c">!*   2020/09/16: Created (PB)</span>
+<a name="ln-499"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-500"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-501"></a><span class="c">!******/</span>
+<a name="ln-502"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-503"></a><span class="c">!&gt; date: 2020/09/16</span>
+<a name="ln-504"></a><span class="c">!&gt; Write a synchronised message to log file with timings</span>
+<a name="ln-505"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-506"></a>
+<a name="ln-507"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-508"></a>
+<a name="ln-509"></a>    <span class="c">!-- local variables --</span>
+<a name="ln-510"></a>    <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="n">slen</span><span class="p">)</span>            <span class="kd">::</span> <span class="n">log_msg</span>       <span class="c">!&gt; message string</span>
+<a name="ln-511"></a>    <span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">)</span>                 <span class="kd">::</span> <span class="nb">time</span>          <span class="c">!&gt; time variable</span>
+<a name="ln-512"></a>
+<a name="ln-513"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-514"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-515"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-516"></a>    <span class="c">!-- synchronise processes and get current time --</span>
+<a name="ln-517"></a>    <span class="k">CALL </span><span class="n">MPI_BARRIER</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="n">ier</span><span class="p">)</span>
+<a name="ln-518"></a>    <span class="nb">time</span> <span class="o">=</span> <span class="n">MPI_WTIME</span><span class="p">()</span>
+<a name="ln-519"></a>
+<a name="ln-520"></a>    <span class="c">!-- write msg with difference in times --</span>
+<a name="ln-521"></a>    <span class="k">WRITE</span><span class="p">(</span><span class="n">log_msg</span><span class="p">,</span><span class="s1">&#39;(A,E10.3)&#39;</span><span class="p">)</span> <span class="s1">&#39;   - TIME for process:     &#39;</span><span class="p">,</span> <span class="nb">time</span><span class="o">-</span><span class="n">curnt_time</span>
+<a name="ln-522"></a>    <span class="k">CALL </span><span class="n">rootwrite_log</span><span class="p">(</span><span class="n">log_msg</span><span class="p">)</span>
+<a name="ln-523"></a>    <span class="k">WRITE</span><span class="p">(</span><span class="n">log_msg</span><span class="p">,</span><span class="s1">&#39;(A,E10.3)&#39;</span><span class="p">)</span> <span class="s1">&#39;   - TIME from MPI start:  &#39;</span><span class="p">,</span> <span class="nb">time</span><span class="o">-</span><span class="n">start_time</span>
+<a name="ln-524"></a>    <span class="k">CALL </span><span class="n">rootwrite_log</span><span class="p">(</span><span class="n">log_msg</span><span class="p">)</span>
+<a name="ln-525"></a>
+<a name="ln-526"></a>    <span class="c">!-- update current time --</span>
+<a name="ln-527"></a>    <span class="n">curnt_time</span> <span class="o">=</span> <span class="nb">time</span>
+<a name="ln-528"></a>
+<a name="ln-529"></a><span class="nb">    </span><span class="k">RETURN</span>
+<a name="ln-530"></a>
+<a name="ln-531"></a><span class="k">  END SUBROUTINE</span>
+<a name="ln-532"></a><span class="c">! mpi_mod/syncwrite_log_time</span>
+<a name="ln-533"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-534"></a><span class="c">!</span>
+<a name="ln-535"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-536"></a><span class="c">!/****/s* mpi_mod/open_unsteady_log</span>
+<a name="ln-537"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-538"></a>  <span class="k">SUBROUTINE </span><span class="n">open_unsteady_log</span><span class="p">()</span>
+<a name="ln-539"></a><span class="c">!* PURPOSE</span>
+<a name="ln-540"></a><span class="c">!*   Open log file for unsteady simulations from root process and write header</span>
+<a name="ln-541"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-542"></a><span class="c">!*   -</span>
+<a name="ln-543"></a><span class="c">!* AUTHOR</span>
+<a name="ln-544"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-545"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-546"></a><span class="c">!*   2020/09/16: Created (PB)</span>
+<a name="ln-547"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-548"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-549"></a><span class="c">!******/</span>
+<a name="ln-550"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-551"></a><span class="c">!&gt; date: 2020/09/16</span>
+<a name="ln-552"></a><span class="c">!&gt; Open log file for unsteady simulations from root process and write header</span>
+<a name="ln-553"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-554"></a>
+<a name="ln-555"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-556"></a>
+<a name="ln-557"></a>    <span class="c">!-- local variables --</span>
+<a name="ln-558"></a>    <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="n">slen</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">fname</span>          <span class="c">!&gt; file name</span>
+<a name="ln-559"></a>    <span class="kt">LOGICAL</span>               <span class="kd">::</span> <span class="n">err</span> <span class="o">=</span> <span class="p">.</span><span class="n">FALSE</span><span class="p">.</span>  <span class="c">!&gt; error variable</span>
+<a name="ln-560"></a>
+<a name="ln-561"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-562"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-563"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-564"></a>    <span class="c">!-- on root process --</span>
+<a name="ln-565"></a>    <span class="k">IF</span> <span class="p">(</span><span class="n">rank</span> <span class="o">==</span> <span class="n">root</span><span class="p">)</span> <span class="k">THEN</span>
+<a name="ln-566"></a>      <span class="c">!-- Open log file and check for errors --</span>
+<a name="ln-567"></a>      <span class="n">fname</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="n">unstdy_prefix</span><span class="p">)</span> <span class="o">//</span> <span class="s1">&#39;.log&#39;</span>
+<a name="ln-568"></a>      <span class="k">OPEN</span><span class="p">(</span><span class="n">ulog_unit</span><span class="p">,</span><span class="k">FILE</span><span class="o">=</span><span class="n">fname</span><span class="p">,</span><span class="n">STATUS</span><span class="o">=</span><span class="s1">&#39;UNKNOWN&#39;</span><span class="p">,</span><span class="n">ACTION</span><span class="o">=</span><span class="s1">&#39;WRITE&#39;</span><span class="p">,</span><span class="n">IOSTAT</span><span class="o">=</span><span class="n">ier</span><span class="p">)</span>
+<a name="ln-569"></a>      <span class="k">IF</span> <span class="p">(</span><span class="n">ier</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">THEN</span>
+<a name="ln-570"></a><span class="k">        WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(A,A,A,I5)&#39;</span><span class="p">)</span><span class="s1">&#39;Error opening &#39;</span><span class="p">,</span><span class="nb">trim</span><span class="p">(</span><span class="n">fname</span><span class="p">),</span><span class="s1">&#39;: errcode = &#39;</span><span class="p">,</span><span class="n">ier</span>
+<a name="ln-571"></a>        <span class="n">err</span> <span class="o">=</span> <span class="p">.</span><span class="n">TRUE</span><span class="p">.</span>
+<a name="ln-572"></a>      <span class="k">END IF</span>
+<a name="ln-573"></a><span class="k">      WRITE</span><span class="p">(</span><span class="n">ulog_unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;iter  max_flx indx   area   area^(3/2)   csum_area   csum_area^(3/2)&#39;</span>
+<a name="ln-574"></a>      <span class="k">CALL </span><span class="nb">FLUSH</span><span class="p">(</span><span class="n">ulog_unit</span><span class="p">)</span>
+<a name="ln-575"></a>    <span class="k">END IF</span>
+<a name="ln-576"></a>
+<a name="ln-577"></a>    <span class="c">!-- check for errors</span>
+<a name="ln-578"></a>    <span class="k">CALL </span><span class="n">MPI_BCAST</span><span class="p">(</span><span class="n">err</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">MPI_LOGICAL</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="n">ier</span><span class="p">)</span>
+<a name="ln-579"></a>    <span class="k">IF</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="k">CALL </span><span class="n">end_mpi</span><span class="p">()</span>
+<a name="ln-580"></a>
+<a name="ln-581"></a>    <span class="k">RETURN</span>
+<a name="ln-582"></a>
+<a name="ln-583"></a><span class="k">  END SUBROUTINE</span>
+<a name="ln-584"></a><span class="c">! mpi_mod/open_unsteady_log</span>
+<a name="ln-585"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-586"></a><span class="c">!</span>
+<a name="ln-587"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-588"></a><span class="c">!/****/s* mpi_mod/close_unsteady_log</span>
+<a name="ln-589"></a><span class="c">!* SYNOPSIS</span>
+<a name="ln-590"></a>  <span class="k">SUBROUTINE </span><span class="n">close_unsteady_log</span><span class="p">()</span>
+<a name="ln-591"></a><span class="c">!* PURPOSE</span>
+<a name="ln-592"></a><span class="c">!*   Close log file for unsteady simulations from root</span>
+<a name="ln-593"></a><span class="c">!* SIDE EFFECTS</span>
+<a name="ln-594"></a><span class="c">!*   -</span>
+<a name="ln-595"></a><span class="c">!* AUTHOR</span>
+<a name="ln-596"></a><span class="c">!*   Pieter Boom</span>
+<a name="ln-597"></a><span class="c">!* MODIFICATION HISTORY</span>
+<a name="ln-598"></a><span class="c">!*   2020/09/16: Created (PB)</span>
+<a name="ln-599"></a><span class="c">!* COPYRIGHT</span>
+<a name="ln-600"></a><span class="c">!*   (c) University of Manchester</span>
+<a name="ln-601"></a><span class="c">!******/</span>
+<a name="ln-602"></a><span class="c">!&gt; author: Pieter Boom</span>
+<a name="ln-603"></a><span class="c">!&gt; date: 2020/09/16</span>
+<a name="ln-604"></a><span class="c">!&gt; Close log file for unsteady simulations from root</span>
+<a name="ln-605"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-606"></a>
+<a name="ln-607"></a>    <span class="k">IMPLICIT NONE</span>
+<a name="ln-608"></a>
+<a name="ln-609"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-610"></a><span class="c">! MAIN EXECUTION</span>
+<a name="ln-611"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-612"></a>    <span class="c">!-- on root process: close log file --</span>
+<a name="ln-613"></a>    <span class="k">IF</span> <span class="p">(</span><span class="n">rank</span> <span class="o">==</span> <span class="n">root</span><span class="p">)</span> <span class="k">CLOSE</span><span class="p">(</span><span class="n">ulog_unit</span><span class="p">)</span>
+<a name="ln-614"></a>
+<a name="ln-615"></a>    <span class="k">RETURN</span>
+<a name="ln-616"></a>
+<a name="ln-617"></a><span class="k">  END SUBROUTINE</span>
+<a name="ln-618"></a><span class="c">! mpi_mod/close_unsteady_log</span>
+<a name="ln-619"></a><span class="c">!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<a name="ln-620"></a><span class="c">!</span>
+<a name="ln-621"></a>
+<a name="ln-622"></a><span class="k">END MODULE</span>
+<a name="ln-623"></a><span class="c">! mpi_mod</span>
+<a name="ln-624"></a><span class="c">!===============================================================================</span>
+<a name="ln-625"></a><span class="c">!</span>
+</pre></div>
+
+    </section>
+    </div>
+  </div>
+
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 <a rel="license" href="http://www.freebsd.org/copyright/freebsd-doc-license.html">FreeBSD Documentation License</a>
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> ParaGEMS was developed by Pieter Boom</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

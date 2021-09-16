@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-type" content="text/html; charset=ISO-8859-1" />
+<link rel="stylesheet" href="../../robodoc.css" type="text/css" />
+<title>./../src/modules/phy_darcy_flow/darcy_mod.f90</title>
+<!-- Source: ./../src/modules/phy_darcy_flow/darcy_mod.f90 -->
+<!-- Generated with ROBODoc Version 4.99.43 (Sep  9 2020) -->
+</head>
+<body>
+<div id="logo">
+<a name="robo_top_of_doc">ParaGEMS Documentation</a>
+</div> <!-- logo -->
+<div id="navigation">
+<a class="menuitem" href="../../toc_index.html#top">Table of Contents</a>
+<a class="menuitem" href="../../robo_sourcefiles.html#top">Sourcefiles</a>
+<a class="menuitem" href="../../masterindex.html#top">Index</a>
+<a class="menuitem" href="../../robo_functions.html#top">Functions</a>
+<a class="menuitem" href="../../robo_modules.html#top">Modules</a>
+<a class="menuitem" href="../../robo_subroutines.html#top">Subrountines</a>
+</div> <!-- navigation -->
+<div id="content">
+<h3>TABLE OF CONTENTS</h3>
+<ul>
+<li>1. <a href="#robo7">modules|phy_darcy_flow/darcy_mod</a></li>
+<ul>
+<li>1.1. <a href="#robo10">darcy_mod/check_param_darcy</a></li>
+<li>1.2. <a href="#robo11">darcy_mod/exchange_bndry_cond</a></li>
+<li>1.3. <a href="#robo12">darcy_mod/finalise_darcy</a></li>
+<li>1.4. <a href="#robo13">darcy_mod/finalise_darcy2</a></li>
+<li>1.5. <a href="#robo14">darcy_mod/get_LHS_darcy</a></li>
+<li>1.6. <a href="#robo15">darcy_mod/get_LHS_darcy2</a></li>
+<li>1.7. <a href="#robo16">darcy_mod/get_RHS_darcy</a></li>
+<li>1.8. <a href="#robo17">darcy_mod/get_RHS_darcy2</a></li>
+<li>1.9. <a href="#robo18">darcy_mod/identify_crack</a></li>
+<li>1.10. <a href="#robo19">darcy_mod/identify_crack2</a></li>
+<li>1.11. <a href="#robo20">darcy_mod/identify_crack3</a></li>
+<li>1.12. <a href="#robo21">darcy_mod/identify_crack4</a></li>
+<li>1.13. <a href="#robo22">darcy_mod/identify_crack5</a></li>
+<li>1.14. <a href="#robo23">darcy_mod/identify_crack6</a></li>
+<li>1.15. <a href="#robo24">darcy_mod/identify_crack7</a></li>
+<li>1.16. <a href="#robo25">darcy_mod/initialise_darcy</a></li>
+<li>1.17. <a href="#robo26">darcy_mod/initialise_darcy2</a></li>
+<li>1.18. <a href="#robo27">darcy_mod/read_input_darcy</a></li>
+</ul>
+</ul>
+<hr />
+<a name="modules7cphy5fdarcy5fflow2fdarcy5fmod"></a>
+<a name="robo7"></a><h2>modules|phy_darcy_flow/darcy_mod [ Modules ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="../../robo_modules.html#robo_top_of_doc">Modules</a> ]</p>
+<p class="item_name">PURPOSE</p>
+<pre>   Module contains routines specifically related to Darcy flow equations
+</pre>
+<p class="item_name">INCLUDES</p>
+<pre>   Name                    Purpose
+   <a href="../common/common_mod_f90.html#robo1">common_mod</a>              variable definitions
+   <a href="../mpi/mpi_mod_f90.html#robo5">mpi_mod</a>                 general mpi routines (start, end, syncwrite,etc)
+   <a href="../io/io_mod_f90.html#robo3">io_mod</a>                  IO functions and routines
+   <a href="../solvers/solver_mod_f90.html#robo8">solver_mod</a>              Solver routines (PETSc)
+   petsc.h                 PETSc variables and routines
+   darcy_vars.inc          Darcy specific variables
+</pre>
+<p class="item_name">CONTAINS</p>
+<pre>   Subroutine              Purpose
+   <a href="#robo27">read_input_darcy</a>        read inputs, and check parameters (phys/io/solver)
+   <a href="#robo10">check_param_darcy</a>       check parameters for Darcy flow simulations
+   <a href="#robo25">initialise_darcy</a>
+   <a href="#robo12">finalise_darcy</a>
+   <a href="#robo16">get_RHS_darcy</a>
+   <a href="#robo14">get_LHS_darcy</a>
+   <a href="#robo18">identify_crack</a>
+   <a href="#robo19">identify_crack2</a>
+   <a href="#robo20">identify_crack3</a>
+   <a href="#robo11">exchange_bndry_cond</a>
+   <a href="#robo26">initialise_darcy2</a>
+   <a href="#robo13">finalise_darcy2</a>
+   <a href="#robo17">get_RHS_darcy2</a>
+   <a href="#robo15">get_LHS_darcy2</a>
+   <a href="#robo21">identify_crack4</a>
+   <a href="#robo22">identify_crack5</a>
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2020/09/16: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="darcy5fmod2fcheck5fparam5fdarcy"></a>
+<a name="robo10"></a><h2>darcy_mod/check_param_darcy [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo7">darcy_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>check_param_darcy</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Check values set for solving Darcy flow simulation
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2020/09/16: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="darcy5fmod2fexchange5fbndry5fcond"></a>
+<a name="robo11"></a><h2>darcy_mod/exchange_bndry_cond [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo7">darcy_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>exchange_bndry_cond</strong>(k)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   exchange boundary conditions
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="darcy5fmod2ffinalise5fdarcy"></a>
+<a name="robo12"></a><h2>darcy_mod/finalise_darcy [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo7">darcy_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>finalise_darcy</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   clean up matrices and vectors for Darcy simulations
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="darcy5fmod2ffinalise5fdarcy2"></a>
+<a name="robo13"></a><h2>darcy_mod/finalise_darcy2 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo7">darcy_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>finalise_darcy2</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   clean up matrices and vectors for Darcy simulations
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="darcy5fmod2fget5fLHS5fdarcy"></a>
+<a name="robo14"></a><h2>darcy_mod/get_LHS_darcy [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo7">darcy_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>get_LHS_darcy</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   setup left hand side matrix for darcy simulations
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="darcy5fmod2fget5fLHS5fdarcy2"></a>
+<a name="robo15"></a><h2>darcy_mod/get_LHS_darcy2 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo7">darcy_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>get_LHS_darcy2</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   setup left hand side matrix for darcy simulations
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="darcy5fmod2fget5fRHS5fdarcy"></a>
+<a name="robo16"></a><h2>darcy_mod/get_RHS_darcy [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo7">darcy_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>get_RHS_darcy</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   setup right hand side vector and boundary conditions for darcy simulations
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="darcy5fmod2fget5fRHS5fdarcy2"></a>
+<a name="robo17"></a><h2>darcy_mod/get_RHS_darcy2 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo7">darcy_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>get_RHS_darcy2</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   setup right hand side vector and boundary conditions for darcy simulations
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="darcy5fmod2fidentify5fcrack"></a>
+<a name="robo18"></a><h2>darcy_mod/identify_crack [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo7">darcy_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>identify_crack</strong>(exit_cond)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   identify faces to crack based on threshold value
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="darcy5fmod2fidentify5fcrack2"></a>
+<a name="robo19"></a><h2>darcy_mod/identify_crack2 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo7">darcy_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>identify_crack2</strong>(exit_cond)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   identify faces to crack based on threshold value
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="darcy5fmod2fidentify5fcrack3"></a>
+<a name="robo20"></a><h2>darcy_mod/identify_crack3 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo7">darcy_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>identify_crack3</strong>(iter,exit_cond)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   identify faces to crack based on max value
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="darcy5fmod2fidentify5fcrack4"></a>
+<a name="robo21"></a><h2>darcy_mod/identify_crack4 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo7">darcy_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>identify_crack4</strong>(iter,exit_cond)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   identify faces to crack based on threshold value
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="darcy5fmod2fidentify5fcrack5"></a>
+<a name="robo22"></a><h2>darcy_mod/identify_crack5 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo7">darcy_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>identify_crack5</strong>(iter,exit_cond)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>    identify faces to crack based on max value
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="darcy5fmod2fidentify5fcrack6"></a>
+<a name="robo23"></a><h2>darcy_mod/identify_crack6 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo7">darcy_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>identify_crack6</strong>(iter,exit_cond)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Introduce random crack to face not on the boundary or already cracked
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+   iter
+   exit_cond
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2020/12/09: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="darcy5fmod2fidentify5fcrack7"></a>
+<a name="robo24"></a><h2>darcy_mod/identify_crack7 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo7">darcy_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>identify_crack7</strong>(iter,exit_cond)
+</pre>
+<p class="item_name">PURPOSE</p>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="darcy5fmod2finitialise5fdarcy"></a>
+<a name="robo25"></a><h2>darcy_mod/initialise_darcy [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo7">darcy_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>initialise_darcy</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   initialise matrices and vectors for Darcy simulations
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="darcy5fmod2finitialise5fdarcy2"></a>
+<a name="robo26"></a><h2>darcy_mod/initialise_darcy2 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo7">darcy_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>initialise_darcy2</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   initialise matrices and vectors for Darcy simulations
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="darcy5fmod2fread5finput5fdarcy"></a>
+<a name="robo27"></a><h2>darcy_mod/read_input_darcy [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo7">darcy_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>read_input_darcy</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Read input file for user defined parameters, and perform checks to ensure
+   reasonable values are set
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2020/09/16: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+</div> <!-- content -->
+<div id="footer">
+<p>Generated from ./../src/modules/phy_darcy_flow/darcy_mod.f90 with <a href="http://www.xs4all.nl/~rfsber/Robo/robodoc.html">ROBODoc</a> V4.99.43 on Wed Mar 17 2021 09:16:11
+</p>
+</div> <!-- footer -->
+</body>
+</html>

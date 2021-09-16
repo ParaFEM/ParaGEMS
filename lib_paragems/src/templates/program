@@ -1,0 +1,49 @@
+!
+!===============================================================================
+!-- program name
+!> [program description]
+!===============================================================================
+!/****/p* programs|[program_directory/program_name]
+!* SYNOPSIS
+PROGRAM [program_name]
+!* PURPOSE
+!*   [purpose]
+!* ASSUMPTION
+!*   [assumption]
+!* INCLUDES
+!*   Name                    Purpose
+!*   [include name]          [purpose]
+!* SIDE EFFECTS
+!*   [side_effects]
+!* AUTHOR
+!*   [author]
+!* MODIFICATION HISTORY
+!*   [date_created]: Created ([author_initials])
+!* COPYRIGHT
+!*   (c) University of Manchester
+!******/
+!> author: [author]
+!> date: [date_created]
+!> [program description]
+!===============================================================================
+
+  !-- use statements and implicit none --
+  USE
+
+  IMPLICIT NONE
+
+  !-- local variables --
+  !type :: var_name    !> [description]
+
+
+!===============================================================================
+! MAIN EXECUTION
+!===============================================================================
+
+  !-- comment --
+
+
+END PROGRAM
+! program_name
+!===============================================================================
+!

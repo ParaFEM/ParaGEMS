@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <meta name="description" content="Documentation for ParaGEMS">
+   
+    <meta name="author" content="Pieter Boom" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>global_io.inc &ndash; ParaGEMS</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">ParaGEMS </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li><a href='../page/index.html'>README</a></li>
+      
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            <li><a href="../lists/programs.html">Programs</a></li>
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>global_io.inc
+    <small>Source File</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     <li><i class="fa fa-pencil"></i> Pieter Boom</li>
+     
+     
+    <li><i class="fa fa-calendar-o"></i> 2019/08/20</li>
+     
+     
+     
+    
+    
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/global_io.inc"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+  
+     <li class="active">global_io.inc</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../sourcefile/global_io.inc.html#src">global_io.inc</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      <p>Define global IO variables</p>
+<h1>MPI-IO</h1>
+<p>Use MPI-IO?</p>
+<h2></h2>
+<ul>
+<li>use parallel IO</li>
+</ul>
+<h1>file prefexes</h1>
+<p>Default file prefexes</p>
+<h2></h2>
+<ul>
+<li>file prefix: input</li>
+<li>file prefix: mesh</li>
+<li>file prefix: solution</li>
+<li>file prefix: unsteady</li>
+<li>file prefix: log</li>
+</ul>
+<h1>IO units</h1>
+<p>Default IO units</p>
+<h2></h2>
+<ul>
+<li>IO unit: input</li>
+<li>IO unit: mesh files</li>
+<li>IO unit: node files</li>
+<li>IO unit: edge files</li>
+<li>IO unit: face files</li>
+<li>IO unit: volm files</li>
+<li>IO unit: solution</li>
+<li>IO unit: unsteady</li>
+<li>IO unit: unsteady log</li>
+<li>IO unit: logs</li>
+</ul>
+<h1>IO namelist</h1>
+<p>IO namelist for input file</p>
+<h2></h2>
+<h1>index offsets</h1>
+<p>Offsets to account entity indices not starting from 1</p>
+<h2></h2>
+<ul>
+<li>index offsets in files</li>
+</ul>
+      <br>
+    
+      
+      <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../sourcefile/global_io.inc.html#src">global_io.inc</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    <section>
+      <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl"><pre><span></span><a name="ln-1"></a><span class="err">!</span>
+<a name="ln-2"></a><span class="err">!</span><span class="o">===============================================================================</span>
+<a name="ln-3"></a><span class="err">!</span><span class="cm">/****v* modules|common/global_io</span>
+<a name="ln-4"></a><span class="cm">!* PURPOSE</span>
+<a name="ln-5"></a><span class="cm">!*   Define global IO variables</span>
+<a name="ln-6"></a><span class="cm">!* CONTAINS</span>
+<a name="ln-7"></a><span class="cm">!*   Structure/Variable      Purpose</span>
+<a name="ln-8"></a><span class="cm">!*   MPI-IO                  Use MPI-IO?</span>
+<a name="ln-9"></a><span class="cm">!*   file prefixes           Default file prefexes</span>
+<a name="ln-10"></a><span class="cm">!*   IO units                Default IO units</span>
+<a name="ln-11"></a><span class="cm">!*   IO namelist             IO namelist for input file</span>
+<a name="ln-12"></a><span class="cm">!*   index offsets           Offsets to account entity indices not starting from 1</span>
+<a name="ln-13"></a><span class="cm">!* AUTHOR</span>
+<a name="ln-14"></a><span class="cm">!*   Pieter Boom</span>
+<a name="ln-15"></a><span class="cm">!* MODIFICATION HISTORY</span>
+<a name="ln-16"></a><span class="cm">!*   2019/08/20: Created (PB)</span>
+<a name="ln-17"></a><span class="cm">!* COPYRIGHT</span>
+<a name="ln-18"></a><span class="cm">!*   (c) University of Manchester</span>
+<a name="ln-19"></a><span class="cm">!******/</span>
+<a name="ln-20"></a><span class="err">!</span><span class="p">&gt;</span> <span class="n">author</span><span class="err">:</span> <span class="n">Pieter</span> <span class="n">Boom</span>
+<a name="ln-21"></a><span class="err">!</span><span class="p">&gt;</span> <span class="n">date</span><span class="err">:</span> <span class="mi">2019</span><span class="o">/</span><span class="mi">08</span><span class="o">/</span><span class="mi">20</span>
+<a name="ln-22"></a><span class="err">!</span><span class="p">&gt;</span> <span class="n">Define</span> <span class="n">global</span> <span class="n">IO</span> <span class="n">variables</span>
+<a name="ln-23"></a><span class="err">!</span><span class="o">===============================================================================</span>
+<a name="ln-24"></a>
+<a name="ln-25"></a>  <span class="err">!</span><span class="p">&gt;</span> <span class="err">#</span> <span class="n">MPI</span><span class="o">-</span><span class="n">IO</span>
+<a name="ln-26"></a>  <span class="err">!</span><span class="p">&gt;</span> <span class="n">Use</span> <span class="n">MPI</span><span class="o">-</span><span class="n">IO</span><span class="err">?</span>
+<a name="ln-27"></a>  <span class="err">!</span><span class="p">&gt;</span> <span class="err">##</span>
+<a name="ln-28"></a>  <span class="n">LOGICAL</span>             <span class="err">::</span> <span class="n">use_mpiio</span> <span class="o">=</span> <span class="err">.</span><span class="n">FALSE</span><span class="err">.</span>             <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">use</span> <span class="n">parallel</span> <span class="n">IO</span>
+<a name="ln-29"></a>
+<a name="ln-30"></a>  <span class="err">!</span><span class="p">&gt;</span> <span class="err">#</span> <span class="n">file</span> <span class="n">prefexes</span>
+<a name="ln-31"></a>  <span class="err">!</span><span class="p">&gt;</span> <span class="n">Default</span> <span class="n">file</span> <span class="n">prefexes</span>
+<a name="ln-32"></a>  <span class="err">!</span><span class="p">&gt;</span> <span class="err">##</span>
+<a name="ln-33"></a>  <span class="n">CHARACTER</span><span class="p">(</span><span class="n">LEN</span><span class="o">=</span><span class="n">slen</span><span class="p">)</span> <span class="err">::</span> <span class="n">input_file</span>    <span class="o">=</span><span class="err">&#39;</span><span class="n">input</span><span class="err">.</span><span class="n">param</span><span class="err">&#39;</span>    <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">file</span> <span class="n">prefix</span><span class="err">:</span> <span class="n">input</span>
+<a name="ln-34"></a>  <span class="n">CHARACTER</span><span class="p">(</span><span class="n">LEN</span><span class="o">=</span><span class="n">slen</span><span class="p">)</span> <span class="err">::</span> <span class="n">mesh_prefix</span>   <span class="o">=</span><span class="err">&#39;</span><span class="nb">mesh</span><span class="err">&#39;</span>           <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">file</span> <span class="n">prefix</span><span class="err">:</span> <span class="nb">mesh</span>
+<a name="ln-35"></a>  <span class="n">CHARACTER</span><span class="p">(</span><span class="n">LEN</span><span class="o">=</span><span class="n">slen</span><span class="p">)</span> <span class="err">::</span> <span class="n">sol_prefix</span>    <span class="o">=</span><span class="err">&#39;</span><span class="n">solution</span><span class="err">&#39;</span>       <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">file</span> <span class="n">prefix</span><span class="err">:</span> <span class="n">solution</span>
+<a name="ln-36"></a>  <span class="n">CHARACTER</span><span class="p">(</span><span class="n">LEN</span><span class="o">=</span><span class="n">slen</span><span class="p">)</span> <span class="err">::</span> <span class="n">unstdy_prefix</span> <span class="o">=</span><span class="err">&#39;</span><span class="n">unsteady</span><span class="err">&#39;</span>       <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">file</span> <span class="n">prefix</span><span class="err">:</span> <span class="n">unsteady</span>
+<a name="ln-37"></a>  <span class="n">CHARACTER</span><span class="p">(</span><span class="n">LEN</span><span class="o">=</span><span class="n">slen</span><span class="p">)</span> <span class="err">::</span> <span class="n">log_prefix</span>    <span class="o">=</span><span class="err">&#39;</span><span class="n">paragems</span><span class="err">&#39;</span>       <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">file</span> <span class="n">prefix</span><span class="err">:</span> <span class="k">log</span>
+<a name="ln-38"></a>
+<a name="ln-39"></a>  <span class="err">!</span><span class="p">&gt;</span> <span class="err">#</span> <span class="n">IO</span> <span class="n">units</span>
+<a name="ln-40"></a>  <span class="err">!</span><span class="p">&gt;</span> <span class="n">Default</span> <span class="n">IO</span> <span class="n">units</span>
+<a name="ln-41"></a>  <span class="err">!</span><span class="p">&gt;</span> <span class="err">##</span>
+<a name="ln-42"></a>  <span class="n">INTEGER</span><span class="p">,</span> <span class="n">PARAMETER</span> <span class="err">::</span> <span class="n">input_unit</span>  <span class="o">=</span> <span class="mi">10</span>                <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">IO</span> <span class="n">unit</span><span class="err">:</span> <span class="n">input</span>
+<a name="ln-43"></a>  <span class="n">INTEGER</span><span class="p">,</span> <span class="n">PARAMETER</span> <span class="err">::</span> <span class="n">mesh_unit</span>   <span class="o">=</span> <span class="mi">20</span>                <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">IO</span> <span class="n">unit</span><span class="err">:</span> <span class="nb">mesh</span> <span class="n">files</span>
+<a name="ln-44"></a>  <span class="n">INTEGER</span><span class="p">,</span> <span class="n">PARAMETER</span> <span class="err">::</span> <span class="n">node_unit</span>   <span class="o">=</span> <span class="mi">22</span>                <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">IO</span> <span class="n">unit</span><span class="err">:</span> <span class="n">node</span> <span class="n">files</span>
+<a name="ln-45"></a>  <span class="n">INTEGER</span><span class="p">,</span> <span class="n">PARAMETER</span> <span class="err">::</span> <span class="n">edge_unit</span>   <span class="o">=</span> <span class="mi">24</span>                <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">IO</span> <span class="n">unit</span><span class="err">:</span> <span class="n">edge</span> <span class="n">files</span>
+<a name="ln-46"></a>  <span class="n">INTEGER</span><span class="p">,</span> <span class="n">PARAMETER</span> <span class="err">::</span> <span class="n">face_unit</span>   <span class="o">=</span> <span class="mi">26</span>                <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">IO</span> <span class="n">unit</span><span class="err">:</span> <span class="n">face</span> <span class="n">files</span>
+<a name="ln-47"></a>  <span class="n">INTEGER</span><span class="p">,</span> <span class="n">PARAMETER</span> <span class="err">::</span> <span class="n">volm_unit</span>   <span class="o">=</span> <span class="mi">28</span>                <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">IO</span> <span class="n">unit</span><span class="err">:</span> <span class="n">volm</span> <span class="n">files</span>
+<a name="ln-48"></a>  <span class="n">INTEGER</span><span class="p">,</span> <span class="n">PARAMETER</span> <span class="err">::</span> <span class="n">sol_unit</span>    <span class="o">=</span> <span class="mi">30</span>                <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">IO</span> <span class="n">unit</span><span class="err">:</span> <span class="n">solution</span>
+<a name="ln-49"></a>  <span class="n">INTEGER</span><span class="p">,</span> <span class="n">PARAMETER</span> <span class="err">::</span> <span class="n">unstdy_unit</span> <span class="o">=</span> <span class="mi">40</span>                <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">IO</span> <span class="n">unit</span><span class="err">:</span> <span class="n">unsteady</span>
+<a name="ln-50"></a>  <span class="n">INTEGER</span><span class="p">,</span> <span class="n">PARAMETER</span> <span class="err">::</span> <span class="n">ulog_unit</span>   <span class="o">=</span> <span class="mi">45</span>                <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">IO</span> <span class="n">unit</span><span class="err">:</span> <span class="n">unsteady</span> <span class="k">log</span>
+<a name="ln-51"></a>  <span class="n">INTEGER</span><span class="p">,</span> <span class="n">PARAMETER</span> <span class="err">::</span> <span class="n">log_unit</span>    <span class="o">=</span> <span class="mi">90</span>                <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">IO</span> <span class="n">unit</span><span class="err">:</span> <span class="n">logs</span>
+<a name="ln-52"></a>
+<a name="ln-53"></a>  <span class="err">!</span><span class="p">&gt;</span> <span class="err">#</span> <span class="n">IO</span> <span class="n">namelist</span>
+<a name="ln-54"></a>  <span class="err">!</span><span class="p">&gt;</span> <span class="n">IO</span> <span class="n">namelist</span> <span class="n">for</span> <span class="n">input</span> <span class="n">file</span>
+<a name="ln-55"></a>  <span class="err">!</span><span class="p">&gt;</span> <span class="err">##</span>
+<a name="ln-56"></a>  <span class="n">NAMELIST</span> <span class="o">/</span><span class="n">io_param</span><span class="o">/</span> <span class="n">mesh_prefix</span><span class="p">,</span> <span class="n">sol_prefix</span><span class="p">,</span> <span class="n">unstdy_prefix</span><span class="p">,</span> <span class="n">log_prefix</span>
+<a name="ln-57"></a>
+<a name="ln-58"></a>  <span class="err">!</span><span class="p">&gt;</span> <span class="err">#</span> <span class="n">index</span> <span class="n">offsets</span>
+<a name="ln-59"></a>  <span class="err">!</span><span class="p">&gt;</span> <span class="n">Offsets</span> <span class="n">to</span> <span class="n">account</span> <span class="n">entity</span> <span class="n">indices</span> <span class="n">not</span> <span class="n">starting</span> <span class="n">from</span> <span class="mi">1</span>
+<a name="ln-60"></a>  <span class="err">!</span><span class="p">&gt;</span> <span class="err">##</span>
+<a name="ln-61"></a>  <span class="n">INTEGER</span>               <span class="err">::</span> <span class="n">indx_offset</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">=</span><span class="mi">0</span>              <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">index</span> <span class="n">offsets</span> <span class="n">in</span> <span class="n">files</span>
+<a name="ln-62"></a><span class="err">!</span> <span class="n">global_io</span>
+<a name="ln-63"></a><span class="err">!</span><span class="o">===============================================================================</span>
+<a name="ln-64"></a><span class="err">!</span>
+</pre></div>
+
+    </section>
+    </div>
+  </div>
+
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 <a rel="license" href="http://www.freebsd.org/copyright/freebsd-doc-license.html">FreeBSD Documentation License</a>
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> ParaGEMS was developed by Pieter Boom</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

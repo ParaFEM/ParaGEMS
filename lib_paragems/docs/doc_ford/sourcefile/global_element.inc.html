@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <meta name="description" content="Documentation for ParaGEMS">
+   
+    <meta name="author" content="Pieter Boom" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>global_element.inc &ndash; ParaGEMS</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">ParaGEMS </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li><a href='../page/index.html'>README</a></li>
+      
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            <li><a href="../lists/programs.html">Programs</a></li>
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>global_element.inc
+    <small>Source File</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     <li><i class="fa fa-pencil"></i> Pieter Boom</li>
+     
+     
+    <li><i class="fa fa-calendar-o"></i> 2019/08/21</li>
+     
+     
+     
+    
+    
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/global_element.inc"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+  
+     <li class="active">global_element.inc</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../sourcefile/global_element.inc.html#src">global_element.inc</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      <p>Define global primary structures</p>
+<h1>Index structure</h1>
+<p>Structure for defining (co)boundary operators</p>
+<ul>
+<li>sign</li>
+<li>index</li>
+</ul>
+<h1>Local complex structure</h1>
+<p>Primary structure for simplicial complex and solution</p>
+<h2>global information</h2>
+<ul>
+<li>global index</li>
+</ul>
+<h2>local information</h2>
+<ul>
+<li>global node indices</li>
+<li>local node indices</li>
+<li>orientation</li>
+<li>default ordering</li>
+</ul>
+<h2>boundary information</h2>
+<ul>
+<li>boundary type</li>
+</ul>
+<h2>DEC information</h2>
+<ul>
+<li>location of centers</li>
+<li>primal volume</li>
+<li>dual volume</li>
+<li>hodge star</li>
+<li>hodge star inverse</li>
+<li>num boundaries</li>
+<li>
+<p>num co-boundaries</p>
+</li>
+<li>
+<p>boundary indices</p>
+</li>
+<li>
+<p>co-boundary indices</p>
+</li>
+<li>prml unit direction</li>
+<li>dual unit direction</li>
+</ul>
+<h2>solution information</h2>
+<ul>
+<li>primal solution</li>
+<li>dual solution</li>
+<li>Whitney interpolated solution</li>
+</ul>
+<h2>external (process non-local) and MPI comms information</h2>
+<ul>
+<li>num external boundaries</li>
+<li>external info:
+1 sign;
+2 external boundary index;
+3 local entity index</li>
+<li>num boundaries to send</li>
+<li>send info:
+1 send process rank;
+2 local boundary index</li>
+<li>num boundaries to recv</li>
+<li>recieve info:
+1 recieve process rank;
+2 local boundary index</li>
+</ul>
+<h2>surface information</h2>
+<ul>
+<li>num surface boundaries</li>
+<li>surface info:
+1 sign;
+2 surface boundary index;
+3 local entity index;
+4 boundary type</li>
+</ul>
+      <br>
+    
+      
+      <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../sourcefile/global_element.inc.html#src">global_element.inc</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    <section>
+      <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl"><pre><span></span><a name="ln-1"></a><span class="err">!</span>
+<a name="ln-2"></a><span class="err">!</span><span class="o">===============================================================================</span>
+<a name="ln-3"></a><span class="err">!</span><span class="cm">/****v* modules|common/global_element</span>
+<a name="ln-4"></a><span class="cm">!* PURPOSE</span>
+<a name="ln-5"></a><span class="cm">!*   Define global primary structures</span>
+<a name="ln-6"></a><span class="cm">!* CONTAINS</span>
+<a name="ln-7"></a><span class="cm">!*   Structure/Variable      Purpose</span>
+<a name="ln-8"></a><span class="cm">!*   index structure         - Structure for defining (co)boundary operators</span>
+<a name="ln-9"></a><span class="cm">!*   local complex structure - Primary structure for simplicial complex and solution</span>
+<a name="ln-10"></a><span class="cm">!*        &gt; global information</span>
+<a name="ln-11"></a><span class="cm">!*        &gt; local information</span>
+<a name="ln-12"></a><span class="cm">!*        &gt; DEC information</span>
+<a name="ln-13"></a><span class="cm">!*        &gt; solution information</span>
+<a name="ln-14"></a><span class="cm">!*        &gt; external and MPI comms information</span>
+<a name="ln-15"></a><span class="cm">!*        &gt; surface information</span>
+<a name="ln-16"></a><span class="cm">!* AUTHOR</span>
+<a name="ln-17"></a><span class="cm">!*   Pieter Boom</span>
+<a name="ln-18"></a><span class="cm">!* MODIFICATION HISTORY</span>
+<a name="ln-19"></a><span class="cm">!*   2019/08/21: Created (PB)</span>
+<a name="ln-20"></a><span class="cm">!* COPYRIGHT</span>
+<a name="ln-21"></a><span class="cm">!*   (c) University of Manchester</span>
+<a name="ln-22"></a><span class="cm">!******/</span>
+<a name="ln-23"></a><span class="err">!</span><span class="p">&gt;</span> <span class="n">author</span><span class="err">:</span> <span class="n">Pieter</span> <span class="n">Boom</span>
+<a name="ln-24"></a><span class="err">!</span><span class="p">&gt;</span> <span class="n">date</span><span class="err">:</span> <span class="mi">2019</span><span class="o">/</span><span class="mi">08</span><span class="o">/</span><span class="mi">21</span>
+<a name="ln-25"></a><span class="err">!</span><span class="p">&gt;</span> <span class="n">Define</span> <span class="n">global</span> <span class="n">primary</span> <span class="n">structures</span>
+<a name="ln-26"></a><span class="err">!</span><span class="o">===============================================================================</span>
+<a name="ln-27"></a>
+<a name="ln-28"></a>  <span class="err">!</span><span class="p">&gt;</span> <span class="err">#</span> <span class="n">Index</span> <span class="n">structure</span>
+<a name="ln-29"></a>  <span class="err">!</span><span class="p">&gt;</span> <span class="n">Structure</span> <span class="n">for</span> <span class="n">defining</span> <span class="p">(</span><span class="n">co</span><span class="p">)</span><span class="n">boundary</span> <span class="n">operators</span>
+<a name="ln-30"></a>  <span class="n">TYPE</span> <span class="n">indx_stuct</span>
+<a name="ln-31"></a>    <span class="n">INTEGER</span><span class="p">,</span> <span class="n">ALLOCATABLE</span>  <span class="err">::</span> <span class="n">sgn</span><span class="p">(</span><span class="err">:</span><span class="p">)</span>             <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">sign</span>
+<a name="ln-32"></a>    <span class="n">INTEGER</span><span class="p">,</span> <span class="n">ALLOCATABLE</span>  <span class="err">::</span> <span class="n">indx</span><span class="p">(</span><span class="err">:</span><span class="p">)</span>            <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">index</span>
+<a name="ln-33"></a>  <span class="n">END</span> <span class="n">TYPE</span>
+<a name="ln-34"></a>
+<a name="ln-35"></a>  <span class="err">!</span><span class="p">&gt;</span> <span class="err">#</span> <span class="n">Local</span> <span class="n">complex</span> <span class="n">structure</span>
+<a name="ln-36"></a>  <span class="err">!</span><span class="p">&gt;</span> <span class="n">Primary</span> <span class="n">structure</span> <span class="n">for</span> <span class="n">simplicial</span> <span class="n">complex</span> <span class="n">and</span> <span class="n">solution</span>
+<a name="ln-37"></a>  <span class="n">TYPE</span> <span class="n">lcl_complex_struc</span>
+<a name="ln-38"></a>    <span class="err">!</span><span class="p">&gt;</span> <span class="err">##</span> <span class="n">global</span> <span class="n">information</span>
+<a name="ln-39"></a>    <span class="n">INTEGER</span><span class="p">,</span> <span class="n">ALLOCATABLE</span>  <span class="err">::</span> <span class="n">glb_indx</span><span class="p">(</span><span class="err">:</span><span class="p">)</span>        <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">global</span> <span class="n">index</span>
+<a name="ln-40"></a>
+<a name="ln-41"></a>    <span class="err">!</span><span class="p">&gt;</span> <span class="err">##</span> <span class="n">local</span> <span class="n">information</span>
+<a name="ln-42"></a>    <span class="n">INTEGER</span><span class="p">,</span> <span class="n">ALLOCATABLE</span>  <span class="err">::</span> <span class="n">node_indx</span><span class="p">(</span><span class="err">:</span><span class="p">,</span><span class="err">:</span><span class="p">)</span>     <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">global</span> <span class="n">node</span> <span class="n">indices</span>
+<a name="ln-43"></a>    <span class="n">INTEGER</span><span class="p">,</span> <span class="n">ALLOCATABLE</span>  <span class="err">::</span> <span class="n">lcl_node_indx</span><span class="p">(</span><span class="err">:</span><span class="p">,</span><span class="err">:</span><span class="p">)</span> <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">local</span> <span class="n">node</span> <span class="n">indices</span>
+<a name="ln-44"></a>    <span class="n">INTEGER</span><span class="p">,</span> <span class="n">ALLOCATABLE</span>  <span class="err">::</span> <span class="n">orientation</span><span class="p">(</span><span class="err">:</span><span class="p">)</span>     <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">orientation</span>
+<a name="ln-45"></a>    <span class="n">INTEGER</span><span class="p">,</span> <span class="n">ALLOCATABLE</span>  <span class="err">::</span> <span class="n">deflt_order</span><span class="p">(</span><span class="err">:</span><span class="p">,</span><span class="err">:</span><span class="p">)</span>   <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="k">default</span> <span class="n">ordering</span>
+<a name="ln-46"></a>
+<a name="ln-47"></a>    <span class="err">!</span><span class="p">&gt;</span> <span class="err">##</span> <span class="n">boundary</span> <span class="n">information</span>
+<a name="ln-48"></a>    <span class="n">INTEGER</span><span class="p">,</span> <span class="n">ALLOCATABLE</span>  <span class="err">::</span> <span class="n">bc_type</span><span class="p">(</span><span class="err">:</span><span class="p">)</span>         <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">boundary</span> <span class="k">type</span>
+<a name="ln-49"></a>
+<a name="ln-50"></a>    <span class="err">!</span><span class="p">&gt;</span> <span class="err">##</span> <span class="n">DEC</span> <span class="n">information</span>
+<a name="ln-51"></a>    <span class="n">REAL</span><span class="p">(</span><span class="n">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">),</span> <span class="n">ALLOCATABLE</span> <span class="err">::</span> <span class="n">centers</span><span class="p">(</span><span class="err">:</span><span class="p">,</span><span class="err">:</span><span class="p">)</span>       <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="k">location</span> <span class="n">of</span> <span class="n">centers</span>
+<a name="ln-52"></a>    <span class="n">REAL</span><span class="p">(</span><span class="n">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">),</span> <span class="n">ALLOCATABLE</span> <span class="err">::</span> <span class="n">prml_volume</span><span class="p">(</span><span class="err">:</span><span class="p">)</span>     <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">primal</span> <span class="n">volume</span>
+<a name="ln-53"></a>    <span class="n">REAL</span><span class="p">(</span><span class="n">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">),</span> <span class="n">ALLOCATABLE</span> <span class="err">::</span> <span class="n">dual_volume</span><span class="p">(</span><span class="err">:</span><span class="p">)</span>     <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">dual</span> <span class="n">volume</span>
+<a name="ln-54"></a>    <span class="n">REAL</span><span class="p">(</span><span class="n">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">),</span> <span class="n">ALLOCATABLE</span> <span class="err">::</span> <span class="n">hdg_star</span><span class="p">(</span><span class="err">:</span><span class="p">)</span>        <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">hodge</span> <span class="n">star</span>
+<a name="ln-55"></a>    <span class="n">REAL</span><span class="p">(</span><span class="n">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">),</span> <span class="n">ALLOCATABLE</span> <span class="err">::</span> <span class="n">inv_hdg_star</span><span class="p">(</span><span class="err">:</span><span class="p">)</span>    <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">hodge</span> <span class="n">star</span> <span class="k">inverse</span>
+<a name="ln-56"></a>    <span class="n">INTEGER</span><span class="p">,</span> <span class="n">ALLOCATABLE</span>        <span class="err">::</span> <span class="n">num_bndry</span><span class="p">(</span><span class="err">:</span><span class="p">)</span>       <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">num</span> <span class="n">boundaries</span>
+<a name="ln-57"></a>    <span class="n">INTEGER</span><span class="p">,</span> <span class="n">ALLOCATABLE</span>        <span class="err">::</span> <span class="n">num_cobndry</span><span class="p">(</span><span class="err">:</span><span class="p">)</span>     <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">num</span> <span class="n">co</span><span class="o">-</span><span class="n">boundaries</span>
+<a name="ln-58"></a>    <span class="n">TYPE</span><span class="p">(</span><span class="n">indx_stuct</span><span class="p">),</span> <span class="n">ALLOCATABLE</span>  <span class="err">::</span> <span class="err">&amp;</span>
+<a name="ln-59"></a>                                   <span class="n">bndry</span><span class="p">(</span><span class="err">:</span><span class="p">)</span>           <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">boundary</span> <span class="n">indices</span>
+<a name="ln-60"></a>    <span class="n">TYPE</span><span class="p">(</span><span class="n">indx_stuct</span><span class="p">),</span> <span class="n">ALLOCATABLE</span>  <span class="err">::</span> <span class="err">&amp;</span>
+<a name="ln-61"></a>                                   <span class="n">cobndry</span><span class="p">(</span><span class="err">:</span><span class="p">)</span>         <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">co</span><span class="o">-</span><span class="n">boundary</span> <span class="n">indices</span>
+<a name="ln-62"></a>    <span class="n">REAL</span><span class="p">(</span><span class="n">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">),</span> <span class="n">ALLOCATABLE</span> <span class="err">::</span> <span class="n">prml_dir</span><span class="p">(</span><span class="err">:</span><span class="p">,</span><span class="err">:</span><span class="p">)</span>      <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">prml</span> <span class="n">unit</span> <span class="k">direction</span>
+<a name="ln-63"></a>    <span class="n">REAL</span><span class="p">(</span><span class="n">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">),</span> <span class="n">ALLOCATABLE</span> <span class="err">::</span> <span class="n">dual_dir</span><span class="p">(</span><span class="err">:</span><span class="p">,</span><span class="err">:</span><span class="p">)</span>      <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">dual</span> <span class="n">unit</span> <span class="k">direction</span>
+<a name="ln-64"></a>
+<a name="ln-65"></a>    <span class="err">!</span><span class="p">&gt;</span> <span class="err">##</span> <span class="n">solution</span> <span class="n">information</span>
+<a name="ln-66"></a>    <span class="n">REAL</span><span class="p">(</span><span class="n">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">),</span> <span class="n">ALLOCATABLE</span> <span class="err">::</span> <span class="n">prml_sol</span><span class="p">(</span><span class="err">:</span><span class="p">,</span><span class="err">:</span><span class="p">)</span>      <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">primal</span> <span class="n">solution</span>
+<a name="ln-67"></a>    <span class="n">REAL</span><span class="p">(</span><span class="n">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">),</span> <span class="n">ALLOCATABLE</span> <span class="err">::</span> <span class="n">dual_sol</span><span class="p">(</span><span class="err">:</span><span class="p">,</span><span class="err">:</span><span class="p">)</span>      <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">dual</span> <span class="n">solution</span>
+<a name="ln-68"></a>    <span class="n">REAL</span><span class="p">(</span><span class="n">KIND</span><span class="o">=</span><span class="n">iwp</span><span class="p">),</span> <span class="n">ALLOCATABLE</span> <span class="err">::</span> <span class="n">whtny_sol</span><span class="p">(</span><span class="err">:</span><span class="p">,</span><span class="err">:</span><span class="p">)</span>     <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">Whitney</span> <span class="n">interpolated</span> <span class="n">solution</span>
+<a name="ln-69"></a>
+<a name="ln-70"></a>    <span class="err">!</span><span class="p">&gt;</span> <span class="err">##</span> <span class="n">external</span> <span class="p">(</span><span class="n">process</span> <span class="n">non</span><span class="o">-</span><span class="n">local</span><span class="p">)</span> <span class="n">and</span> <span class="n">MPI</span> <span class="n">comms</span> <span class="n">information</span>
+<a name="ln-71"></a>    <span class="n">INTEGER</span>                     <span class="err">::</span> <span class="n">num_ext</span>            <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">num</span> <span class="n">external</span> <span class="n">boundaries</span>
+<a name="ln-72"></a>    <span class="n">INTEGER</span><span class="p">,</span> <span class="n">ALLOCATABLE</span>        <span class="err">::</span> <span class="n">ext_indx</span><span class="p">(</span><span class="err">:</span><span class="p">,</span><span class="err">:</span><span class="p">)</span>      <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">external</span> <span class="n">info</span><span class="err">:</span>
+<a name="ln-73"></a>                                                      <span class="err">!</span><span class="p">&gt;</span> <span class="mi">1</span> <span class="n">sign</span><span class="p">;</span>
+<a name="ln-74"></a>                                                      <span class="err">!</span><span class="p">&gt;</span> <span class="mi">2</span> <span class="n">external</span> <span class="n">boundary</span> <span class="n">index</span><span class="p">;</span>
+<a name="ln-75"></a>                                                      <span class="err">!</span><span class="p">&gt;</span> <span class="mi">3</span> <span class="n">local</span> <span class="n">entity</span> <span class="n">index</span>
+<a name="ln-76"></a>    <span class="n">INTEGER</span>                     <span class="err">::</span> <span class="n">num_send</span>           <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">num</span> <span class="n">boundaries</span> <span class="n">to</span> <span class="n">send</span>
+<a name="ln-77"></a>    <span class="n">INTEGER</span><span class="p">,</span> <span class="n">ALLOCATABLE</span>        <span class="err">::</span> <span class="n">send_indx</span><span class="p">(</span><span class="err">:</span><span class="p">,</span><span class="err">:</span><span class="p">)</span>     <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">send</span> <span class="n">info</span><span class="err">:</span>
+<a name="ln-78"></a>                                                      <span class="err">!</span><span class="p">&gt;</span> <span class="mi">1</span> <span class="n">send</span> <span class="n">process</span> <span class="n">rank</span><span class="p">;</span>
+<a name="ln-79"></a>                                                      <span class="err">!</span><span class="p">&gt;</span> <span class="mi">2</span> <span class="n">local</span> <span class="n">boundary</span> <span class="n">index</span>
+<a name="ln-80"></a>    <span class="n">INTEGER</span>                     <span class="err">::</span> <span class="n">num_recv</span>           <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">num</span> <span class="n">boundaries</span> <span class="n">to</span> <span class="n">recv</span>
+<a name="ln-81"></a>    <span class="n">INTEGER</span><span class="p">,</span> <span class="n">ALLOCATABLE</span>        <span class="err">::</span> <span class="n">recv_indx</span><span class="p">(</span><span class="err">:</span><span class="p">,</span><span class="err">:</span><span class="p">)</span>     <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">recieve</span> <span class="n">info</span><span class="err">:</span>
+<a name="ln-82"></a>                                                      <span class="err">!</span><span class="p">&gt;</span> <span class="mi">1</span> <span class="n">recieve</span> <span class="n">process</span> <span class="n">rank</span><span class="p">;</span>
+<a name="ln-83"></a>                                                      <span class="err">!</span><span class="p">&gt;</span> <span class="mi">2</span> <span class="n">local</span> <span class="n">boundary</span> <span class="n">index</span>
+<a name="ln-84"></a>
+<a name="ln-85"></a>    <span class="err">!</span><span class="p">&gt;</span> <span class="err">##</span> <span class="n">surface</span> <span class="n">information</span>
+<a name="ln-86"></a>    <span class="n">INTEGER</span>                     <span class="err">::</span> <span class="n">num_surf</span><span class="o">=</span><span class="mi">0</span>         <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">num</span> <span class="n">surface</span> <span class="n">boundaries</span>
+<a name="ln-87"></a>    <span class="n">INTEGER</span><span class="p">,</span> <span class="n">ALLOCATABLE</span>        <span class="err">::</span> <span class="n">surf_indx</span><span class="p">(</span><span class="err">:</span><span class="p">,</span><span class="err">:</span><span class="p">)</span>     <span class="err">!</span><span class="p">&gt;</span><span class="o">-</span> <span class="n">surface</span> <span class="n">info</span><span class="err">:</span>
+<a name="ln-88"></a>                                                      <span class="err">!</span><span class="p">&gt;</span> <span class="mi">1</span> <span class="n">sign</span><span class="p">;</span>
+<a name="ln-89"></a>                                                      <span class="err">!</span><span class="p">&gt;</span> <span class="mi">2</span> <span class="n">surface</span> <span class="n">boundary</span> <span class="n">index</span><span class="p">;</span>
+<a name="ln-90"></a>                                                      <span class="err">!</span><span class="p">&gt;</span> <span class="mi">3</span> <span class="n">local</span> <span class="n">entity</span> <span class="n">index</span><span class="p">;</span>
+<a name="ln-91"></a>                                                      <span class="err">!</span><span class="p">&gt;</span> <span class="mi">4</span> <span class="n">boundary</span> <span class="k">type</span>
+<a name="ln-92"></a>
+<a name="ln-93"></a>
+<a name="ln-94"></a>    <span class="err">!</span><span class="o">--</span> <span class="n">crack</span> <span class="n">information</span> <span class="o">--</span>
+<a name="ln-95"></a>    <span class="n">INTEGER</span>                     <span class="err">::</span> <span class="n">num_crack</span><span class="o">=</span><span class="mi">0</span>        <span class="err">!</span> <span class="err">#</span> <span class="n">cracked</span> <span class="n">elements</span>
+<a name="ln-96"></a>    <span class="n">INTEGER</span><span class="p">,</span> <span class="n">ALLOCATABLE</span>        <span class="err">::</span> <span class="n">crack_indx</span><span class="p">(</span><span class="err">:</span><span class="p">)</span>      <span class="err">!</span> <span class="n">index</span>
+<a name="ln-97"></a>  <span class="n">END</span> <span class="n">TYPE</span>
+<a name="ln-98"></a>  <span class="n">TYPE</span><span class="p">(</span><span class="n">lcl_complex_struc</span><span class="p">),</span> <span class="n">ALLOCATABLE</span> <span class="err">::</span> <span class="n">lcl_complex</span><span class="p">(</span><span class="err">:</span><span class="p">)</span>
+<a name="ln-99"></a>
+<a name="ln-100"></a><span class="err">!</span> <span class="n">global_element</span>
+<a name="ln-101"></a><span class="err">!</span><span class="o">===============================================================================</span>
+<a name="ln-102"></a><span class="err">!</span>
+</pre></div>
+
+    </section>
+    </div>
+  </div>
+
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 <a rel="license" href="http://www.freebsd.org/copyright/freebsd-doc-license.html">FreeBSD Documentation License</a>
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> ParaGEMS was developed by Pieter Boom</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

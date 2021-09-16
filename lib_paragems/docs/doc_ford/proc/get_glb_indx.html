@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <meta name="description" content="Documentation for ParaGEMS">
+   
+    <meta name="author" content="Pieter Boom" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>get_glb_indx &ndash; ParaGEMS</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">ParaGEMS </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li><a href='../page/index.html'>README</a></li>
+      
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            <li><a href="../lists/programs.html">Programs</a></li>
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>get_glb_indx
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     <li><i class="fa fa-pencil"></i> Pieter Boom</li>
+     
+     
+    <li><i class="fa fa-calendar-o"></i> 2020/09/16</li>
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 0.2% of total for procedures.">10 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/partition_mod.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/partition_mod.f90.html'>partition_mod.f90</a></li>
+    
+     <li><a href='../module/partition_mod.html'>partition_mod</a></li>
+    
+  
+     <li class="active">get_glb_indx</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/get_glb_indx.html#variable-k%7E4">k</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+public subroutine get_glb_indx()
+    
+    
+   
+</h2>
+    
+  
+
+
+    
+    <p>Get global entity indices from file</p>
+    
+
+    <h3>Arguments</h3>
+    
+    <em>None</em>
+    <br>
+    
+    
+    
+    <br>
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Calls</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: proc~~get_glb_indx~~CallsGraph Pages: 1 -->
+<svg id="procget_glb_indxCallsGraph" width="605pt" height="724pt"
+ viewBox="0.00 0.00 604.69 723.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~get_glb_indx~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 719.6)">
+<title>proc~~get_glb_indx~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-719.6 600.69,-719.6 600.69,4 -4,4"/>
+<!-- proc~get_glb_indx -->
+<g id="proc~~get_glb_indx~~CallsGraph_node1" class="node">
+<title>proc~get_glb_indx</title>
+<polygon fill="none" stroke="black" points="71.29,-380.4 0.24,-380.4 0.24,-356.2 71.29,-356.2 71.29,-380.4"/>
+<text text-anchor="middle" x="35.76" y="-365.15" font-family="Helvetica,sans-Serif" font-size="10.50">get_glb_indx</text>
+</g>
+<!-- proc~read_glb_indx2 -->
+<g id="proc~~get_glb_indx~~CallsGraph_node2" class="node">
+<title>proc~read_glb_indx2</title>
+<g id="a_proc~~get_glb_indx~~CallsGraph_node2"><a xlink:href=".././proc/read_glb_indx2.html" xlink:title="read_glb_indx2">
+<polygon fill="#d9534f" stroke="#d9534f" points="200.53,-422.4 116.97,-422.4 116.97,-398.2 200.53,-398.2 200.53,-422.4"/>
+<text text-anchor="middle" x="158.75" y="-407.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">read_glb_indx2</text>
+</a>
+</g>
+</g>
+<!-- proc~get_glb_indx&#45;&gt;proc~read_glb_indx2 -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge1" class="edge">
+<title>proc~get_glb_indx:&#45;&gt;proc~read_glb_indx2:</title>
+<path fill="none" stroke="#000000" d="M71.43,-380.34C84.36,-384.82 99.22,-389.98 112.92,-394.74"/>
+<polygon fill="#000000" stroke="#000000" points="112.06,-398.14 122.65,-398.12 114.36,-391.53 112.06,-398.14"/>
+</g>
+<!-- lcl_complex -->
+<g id="proc~~get_glb_indx~~CallsGraph_node3" class="node">
+<title>lcl_complex</title>
+<polygon fill="#777777" stroke="#777777" points="331.99,-276.4 265.33,-276.4 265.33,-252.2 331.99,-252.2 331.99,-276.4"/>
+<text text-anchor="middle" x="298.66" y="-261.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lcl_complex</text>
+</g>
+<!-- proc~get_glb_indx&#45;&gt;lcl_complex -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge2" class="edge">
+<title>proc~get_glb_indx:&#45;&gt;lcl_complex:</title>
+<path fill="none" stroke="#000000" d="M67.2,-356.17C114.4,-337.35 205.26,-301.13 257.69,-280.23"/>
+<polygon fill="#000000" stroke="#000000" points="259.02,-283.47 267.01,-276.52 256.43,-276.97 259.02,-283.47"/>
+</g>
+<!-- num_elm -->
+<g id="proc~~get_glb_indx~~CallsGraph_node4" class="node">
+<title>num_elm</title>
+<polygon fill="#777777" stroke="#777777" points="326.33,-608.4 270.99,-608.4 270.99,-584.2 326.33,-584.2 326.33,-608.4"/>
+<text text-anchor="middle" x="298.66" y="-593.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">num_elm</text>
+</g>
+<!-- proc~get_glb_indx&#45;&gt;num_elm -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge3" class="edge">
+<title>proc~get_glb_indx:&#45;&gt;num_elm:</title>
+<path fill="none" stroke="#000000" d="M46.38,-380.59C74.03,-415.23 157.45,-515.02 245.98,-574.3 250.74,-577.49 256.03,-580.37 261.37,-582.92"/>
+<polygon fill="#000000" stroke="#000000" points="260.35,-586.3 270.91,-587.15 263.19,-579.9 260.35,-586.3"/>
+</g>
+<!-- proc~exchange_glb_indx -->
+<g id="proc~~get_glb_indx~~CallsGraph_node5" class="node">
+<title>proc~exchange_glb_indx</title>
+<g id="a_proc~~get_glb_indx~~CallsGraph_node5"><a xlink:href=".././proc/exchange_glb_indx.html" xlink:title="exchange_glb_indx">
+<polygon fill="#d9534f" stroke="#d9534f" points="210.2,-169.4 107.3,-169.4 107.3,-145.2 210.2,-145.2 210.2,-169.4"/>
+<text text-anchor="middle" x="158.75" y="-154.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">exchange_glb_indx</text>
+</a>
+</g>
+</g>
+<!-- proc~get_glb_indx&#45;&gt;proc~exchange_glb_indx -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge4" class="edge">
+<title>proc~get_glb_indx:&#45;&gt;proc~exchange_glb_indx:</title>
+<path fill="none" stroke="#000000" d="M43.79,-356.04C63.67,-321.37 120.49,-222.28 145.58,-178.52"/>
+<polygon fill="#000000" stroke="#000000" points="148.76,-180.01 150.7,-169.59 142.69,-176.52 148.76,-180.01"/>
+</g>
+<!-- proc~read_glb_indx2&#45;&gt;lcl_complex -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge9" class="edge">
+<title>proc~read_glb_indx2:&#45;&gt;lcl_complex:</title>
+<path fill="none" stroke="#000000" d="M165.35,-398.03C177.04,-373.62 206.31,-318.56 245.98,-286.3 249.08,-283.78 252.52,-281.5 256.1,-279.45"/>
+<polygon fill="#000000" stroke="#000000" points="257.87,-282.47 265.2,-274.82 254.69,-276.23 257.87,-282.47"/>
+</g>
+<!-- proc~read_glb_indx2&#45;&gt;num_elm -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge12" class="edge">
+<title>proc~read_glb_indx2:&#45;&gt;num_elm:</title>
+<path fill="none" stroke="#000000" d="M164.9,-422.55C179.43,-456.63 221.26,-551.52 245.98,-574.3 250.48,-578.45 255.88,-581.89 261.47,-584.71"/>
+<polygon fill="#000000" stroke="#000000" points="260.37,-588.05 270.93,-588.9 263.21,-581.65 260.37,-588.05"/>
+</g>
+<!-- proc~end_mpi -->
+<g id="proc~~get_glb_indx~~CallsGraph_node6" class="node">
+<title>proc~end_mpi</title>
+<g id="a_proc~~get_glb_indx~~CallsGraph_node6"><a xlink:href=".././proc/end_mpi.html" xlink:title="end_mpi">
+<polygon fill="#d9534f" stroke="#d9534f" points="325.66,-565.4 271.66,-565.4 271.66,-541.2 325.66,-541.2 325.66,-565.4"/>
+<text text-anchor="middle" x="298.66" y="-550.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">end_mpi</text>
+</a>
+</g>
+</g>
+<!-- proc~read_glb_indx2&#45;&gt;proc~end_mpi -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge5" class="edge">
+<title>proc~read_glb_indx2:&#45;&gt;proc~end_mpi:</title>
+<path fill="none" stroke="#000000" d="M166.28,-422.72C178.96,-445.87 208.95,-496.06 245.98,-527.3 250.91,-531.47 256.63,-535.18 262.43,-538.41"/>
+<polygon fill="#000000" stroke="#000000" points="261,-541.61 271.5,-543.07 264.2,-535.38 261,-541.61"/>
+</g>
+<!-- proc~root_open_file_read -->
+<g id="proc~~get_glb_indx~~CallsGraph_node7" class="node">
+<title>proc~root_open_file_read</title>
+<g id="a_proc~~get_glb_indx~~CallsGraph_node7"><a xlink:href=".././proc/root_open_file_read.html" xlink:title="root_open_file_read">
+<polygon fill="#d9534f" stroke="#d9534f" points="351.53,-442.4 245.79,-442.4 245.79,-418.2 351.53,-418.2 351.53,-442.4"/>
+<text text-anchor="middle" x="298.66" y="-427.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">root_open_file_read</text>
+</a>
+</g>
+</g>
+<!-- proc~read_glb_indx2&#45;&gt;proc~root_open_file_read -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge6" class="edge">
+<title>proc~read_glb_indx2:&#45;&gt;proc~root_open_file_read:</title>
+<path fill="none" stroke="#000000" d="M200.75,-416.25C211.8,-417.85 223.99,-419.62 235.89,-421.34"/>
+<polygon fill="#000000" stroke="#000000" points="235.39,-424.81 245.79,-422.78 236.4,-417.88 235.39,-424.81"/>
+</g>
+<!-- indx_offset -->
+<g id="proc~~get_glb_indx~~CallsGraph_node8" class="node">
+<title>indx_offset</title>
+<polygon fill="#777777" stroke="#777777" points="329.93,-485.4 267.39,-485.4 267.39,-461.2 329.93,-461.2 329.93,-485.4"/>
+<text text-anchor="middle" x="298.66" y="-470.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">indx_offset</text>
+</g>
+<!-- proc~read_glb_indx2&#45;&gt;indx_offset -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge7" class="edge">
+<title>proc~read_glb_indx2:&#45;&gt;indx_offset:</title>
+<path fill="none" stroke="#000000" d="M184.53,-422.42C201.69,-430.73 225.12,-441.91 245.98,-451.3 250.31,-453.25 254.86,-455.25 259.39,-457.22"/>
+<polygon fill="#000000" stroke="#000000" points="258.02,-460.44 268.59,-461.18 260.79,-454.01 258.02,-460.44"/>
+</g>
+<!-- mpi_bcast -->
+<g id="proc~~get_glb_indx~~CallsGraph_node9" class="node">
+<title>mpi_bcast</title>
+<polygon fill="#777777" stroke="#777777" points="467.81,-424.4 408.13,-424.4 408.13,-400.2 467.81,-400.2 467.81,-424.4"/>
+<text text-anchor="middle" x="437.97" y="-409.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_bcast</text>
+</g>
+<!-- proc~read_glb_indx2&#45;&gt;mpi_bcast -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge8" class="edge">
+<title>proc~read_glb_indx2:&#45;&gt;mpi_bcast:</title>
+<path fill="none" stroke="#000000" d="M200.86,-409.55C239.66,-408.96 299.46,-408.39 351.34,-409.3 366.54,-409.57 383.25,-410.1 397.85,-410.64"/>
+<polygon fill="#000000" stroke="#000000" points="397.92,-414.15 408.04,-411.03 398.19,-407.15 397.92,-414.15"/>
+</g>
+<!-- mpi_barrier -->
+<g id="proc~~get_glb_indx~~CallsGraph_node11" class="node">
+<title>mpi_barrier</title>
+<polygon fill="#777777" stroke="#777777" points="593.22,-545.4 528.07,-545.4 528.07,-521.2 593.22,-521.2 593.22,-545.4"/>
+<text text-anchor="middle" x="560.64" y="-530.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_barrier</text>
+</g>
+<!-- proc~read_glb_indx2&#45;&gt;mpi_barrier -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge10" class="edge">
+<title>proc~read_glb_indx2:&#45;&gt;mpi_barrier:</title>
+<path fill="none" stroke="#000000" d="M176.78,-422.43C186.87,-429.96 199.66,-440.12 209.98,-450.3 227.96,-468.05 223.86,-482.09 245.98,-494.3 291.77,-519.58 443.28,-528.83 517.68,-531.91"/>
+<polygon fill="#000000" stroke="#000000" points="517.95,-535.43 528.08,-532.32 518.22,-528.43 517.95,-535.43"/>
+</g>
+<!-- proc~elm2proc -->
+<g id="proc~~get_glb_indx~~CallsGraph_node12" class="node">
+<title>proc~elm2proc</title>
+<g id="a_proc~~get_glb_indx~~CallsGraph_node12"><a xlink:href=".././proc/elm2proc.html" xlink:title="elm2proc">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="326.33,-362.4 270.99,-362.4 270.99,-338.2 326.33,-338.2 326.33,-362.4"/>
+<text text-anchor="middle" x="298.66" y="-347.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">elm2proc</text>
+</a>
+</g>
+</g>
+<!-- proc~read_glb_indx2&#45;&gt;proc~elm2proc -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge11" class="edge">
+<title>proc~read_glb_indx2:&#45;&gt;proc~elm2proc:</title>
+<path fill="none" stroke="#000000" d="M187.66,-398.16C208.87,-388.93 238.23,-376.16 261.28,-366.13"/>
+<polygon fill="#000000" stroke="#000000" points="262.96,-369.21 270.73,-362.02 260.17,-362.8 262.96,-369.21"/>
+</g>
+<!-- glb_num_elm -->
+<g id="proc~~get_glb_indx~~CallsGraph_node16" class="node">
+<title>glb_num_elm</title>
+<polygon fill="#777777" stroke="#777777" points="336.17,-319.4 261.15,-319.4 261.15,-295.2 336.17,-295.2 336.17,-319.4"/>
+<text text-anchor="middle" x="298.66" y="-304.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">glb_num_elm</text>
+</g>
+<!-- proc~read_glb_indx2&#45;&gt;glb_num_elm -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge13" class="edge">
+<title>proc~read_glb_indx2:&#45;&gt;glb_num_elm:</title>
+<path fill="none" stroke="#000000" d="M170.1,-398.18C185.3,-380.99 215.19,-349.4 245.98,-329.3 248.88,-327.4 251.98,-325.61 255.16,-323.93"/>
+<polygon fill="#000000" stroke="#000000" points="256.79,-327.02 264.24,-319.48 253.72,-320.73 256.79,-327.02"/>
+</g>
+<!-- proc~exchange_glb_indx&#45;&gt;lcl_complex -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge14" class="edge">
+<title>proc~exchange_glb_indx:&#45;&gt;lcl_complex:</title>
+<path fill="none" stroke="#000000" d="M169.48,-169.46C184.35,-187.4 214.37,-221.12 245.98,-242.3 249.12,-244.41 252.49,-246.38 255.96,-248.21"/>
+<polygon fill="#000000" stroke="#000000" points="254.73,-251.5 265.25,-252.72 257.79,-245.2 254.73,-251.5"/>
+</g>
+<!-- mpi_request_free -->
+<g id="proc~~get_glb_indx~~CallsGraph_node10" class="node">
+<title>mpi_request_free</title>
+<polygon fill="#777777" stroke="#777777" points="345.35,-104.4 251.97,-104.4 251.97,-80.2 345.35,-80.2 345.35,-104.4"/>
+<text text-anchor="middle" x="298.66" y="-89.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_request_free</text>
+</g>
+<!-- proc~exchange_glb_indx&#45;&gt;mpi_request_free -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge16" class="edge">
+<title>proc~exchange_glb_indx:&#45;&gt;mpi_request_free:</title>
+<path fill="none" stroke="#000000" d="M183.35,-145.05C200.58,-136.23 224.56,-124.19 245.98,-114.3 250.12,-112.39 254.48,-110.44 258.84,-108.53"/>
+<polygon fill="#000000" stroke="#000000" points="260.49,-111.63 268.28,-104.44 257.71,-105.2 260.49,-111.63"/>
+</g>
+<!-- proc~exchange_glb_indx&#45;&gt;mpi_barrier -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge17" class="edge">
+<title>proc~exchange_glb_indx:&#45;&gt;mpi_barrier:</title>
+<path fill="none" stroke="#000000" d="M167.41,-144.9C180.58,-124.92 209.63,-86.33 245.98,-71.3 289.25,-53.41 311.2,-47.19 351.34,-71.3 514.53,-169.32 550.67,-431.66 557.94,-510.55"/>
+<polygon fill="#000000" stroke="#000000" points="554.48,-511.15 558.82,-520.82 561.46,-510.56 554.48,-511.15"/>
+</g>
+<!-- mpi_waitall -->
+<g id="proc~~get_glb_indx~~CallsGraph_node13" class="node">
+<title>mpi_waitall</title>
+<polygon fill="#777777" stroke="#777777" points="330.57,-24.4 266.75,-24.4 266.75,-0.2 330.57,-0.2 330.57,-24.4"/>
+<text text-anchor="middle" x="298.66" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_waitall</text>
+</g>
+<!-- proc~exchange_glb_indx&#45;&gt;mpi_waitall -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge15" class="edge">
+<title>proc~exchange_glb_indx:&#45;&gt;mpi_waitall:</title>
+<path fill="none" stroke="#000000" d="M166.03,-145.02C178.51,-121.64 208.47,-70.21 245.98,-38.3 249.75,-35.09 253.98,-32.16 258.36,-29.51"/>
+<polygon fill="#000000" stroke="#000000" points="260.4,-32.38 267.45,-24.47 257.01,-26.25 260.4,-32.38"/>
+</g>
+<!-- adj_proc -->
+<g id="proc~~get_glb_indx~~CallsGraph_node14" class="node">
+<title>adj_proc</title>
+<polygon fill="#777777" stroke="#777777" points="325.66,-233.4 271.66,-233.4 271.66,-209.2 325.66,-209.2 325.66,-233.4"/>
+<text text-anchor="middle" x="298.66" y="-218.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">adj_proc</text>
+</g>
+<!-- proc~exchange_glb_indx&#45;&gt;adj_proc -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge19" class="edge">
+<title>proc~exchange_glb_indx:&#45;&gt;adj_proc:</title>
+<path fill="none" stroke="#000000" d="M184.12,-169.58C201.31,-178.14 224.92,-189.7 245.98,-199.3 251.13,-201.65 256.61,-204.07 262,-206.4"/>
+<polygon fill="#000000" stroke="#000000" points="260.95,-209.76 271.52,-210.48 263.7,-203.32 260.95,-209.76"/>
+</g>
+<!-- num_recv -->
+<g id="proc~~get_glb_indx~~CallsGraph_node15" class="node">
+<title>num_recv</title>
+<polygon fill="#777777" stroke="#777777" points="327.75,-190.4 269.57,-190.4 269.57,-166.2 327.75,-166.2 327.75,-190.4"/>
+<text text-anchor="middle" x="298.66" y="-175.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">num_recv</text>
+</g>
+<!-- proc~exchange_glb_indx&#45;&gt;num_recv -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge20" class="edge">
+<title>proc~exchange_glb_indx:&#45;&gt;num_recv:</title>
+<path fill="none" stroke="#000000" d="M210.32,-165C226.56,-167.47 244.27,-170.17 259.47,-172.48"/>
+<polygon fill="#000000" stroke="#000000" points="259.13,-175.97 269.54,-174.02 260.18,-169.05 259.13,-175.97"/>
+</g>
+<!-- num_send -->
+<g id="proc~~get_glb_indx~~CallsGraph_node17" class="node">
+<title>num_send</title>
+<polygon fill="#777777" stroke="#777777" points="329.18,-147.4 268.14,-147.4 268.14,-123.2 329.18,-123.2 329.18,-147.4"/>
+<text text-anchor="middle" x="298.66" y="-132.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">num_send</text>
+</g>
+<!-- proc~exchange_glb_indx&#45;&gt;num_send -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge18" class="edge">
+<title>proc~exchange_glb_indx:&#45;&gt;num_send:</title>
+<path fill="none" stroke="#000000" d="M210.32,-149.23C226.06,-146.72 243.18,-143.99 258.06,-141.62"/>
+<polygon fill="#000000" stroke="#000000" points="258.63,-145.07 267.95,-140.04 257.53,-138.16 258.63,-145.07"/>
+</g>
+<!-- proc~syncwrite_log -->
+<g id="proc~~get_glb_indx~~CallsGraph_node18" class="node">
+<title>proc~syncwrite_log</title>
+<g id="a_proc~~get_glb_indx~~CallsGraph_node18"><a xlink:href=".././proc/syncwrite_log.html" xlink:title="syncwrite_log">
+<polygon fill="#d9534f" stroke="#d9534f" points="475.56,-565.4 400.38,-565.4 400.38,-541.2 475.56,-541.2 475.56,-565.4"/>
+<text text-anchor="middle" x="437.97" y="-550.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">syncwrite_log</text>
+</a>
+</g>
+</g>
+<!-- proc~end_mpi&#45;&gt;proc~syncwrite_log -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge21" class="edge">
+<title>proc~end_mpi:&#45;&gt;proc~syncwrite_log:</title>
+<path fill="none" stroke="#000000" d="M325.81,-553.3C343.93,-553.3 368.57,-553.3 390.04,-553.3"/>
+<polygon fill="#000000" stroke="#000000" points="390.29,-556.8 400.29,-553.3 390.29,-549.8 390.29,-556.8"/>
+</g>
+<!-- mpi_finalize -->
+<g id="proc~~get_glb_indx~~CallsGraph_node20" class="node">
+<title>mpi_finalize</title>
+<polygon fill="#777777" stroke="#777777" points="471.89,-651.4 404.05,-651.4 404.05,-627.2 471.89,-627.2 471.89,-651.4"/>
+<text text-anchor="middle" x="437.97" y="-636.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_finalize</text>
+</g>
+<!-- proc~end_mpi&#45;&gt;mpi_finalize -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge22" class="edge">
+<title>proc~end_mpi:&#45;&gt;mpi_finalize:</title>
+<path fill="none" stroke="#000000" d="M325.88,-561.75C334.45,-565.2 343.71,-569.71 351.34,-575.3 371.18,-589.83 367.62,-602.62 387.34,-617.3 389.8,-619.13 392.43,-620.84 395.15,-622.45"/>
+<polygon fill="#000000" stroke="#000000" points="393.58,-625.58 404.05,-627.2 396.87,-619.4 393.58,-625.58"/>
+</g>
+<!-- proc~syncwrite_log_time -->
+<g id="proc~~get_glb_indx~~CallsGraph_node21" class="node">
+<title>proc~syncwrite_log_time</title>
+<g id="a_proc~~get_glb_indx~~CallsGraph_node21"><a xlink:href=".././proc/syncwrite_log_time.html" xlink:title="syncwrite_log_time">
+<polygon fill="#d9534f" stroke="#d9534f" points="488.73,-694.4 387.22,-694.4 387.22,-670.2 488.73,-670.2 488.73,-694.4"/>
+<text text-anchor="middle" x="437.97" y="-679.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">syncwrite_log_time</text>
+</a>
+</g>
+</g>
+<!-- proc~end_mpi&#45;&gt;proc~syncwrite_log_time -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge23" class="edge">
+<title>proc~end_mpi:&#45;&gt;proc~syncwrite_log_time:</title>
+<path fill="none" stroke="#000000" d="M325.9,-560.06C334.87,-563.43 344.39,-568.33 351.34,-575.3 380.33,-604.34 358.58,-631.05 387.34,-660.3 388.78,-661.76 390.33,-663.13 391.97,-664.42"/>
+<polygon fill="#000000" stroke="#000000" points="390.43,-667.6 400.71,-670.17 394.28,-661.75 390.43,-667.6"/>
+</g>
+<!-- proc~close_log -->
+<g id="proc~~get_glb_indx~~CallsGraph_node22" class="node">
+<title>proc~close_log</title>
+<g id="a_proc~~get_glb_indx~~CallsGraph_node22"><a xlink:href=".././proc/close_log.html" xlink:title="close_log">
+<polygon fill="#d9534f" stroke="#d9534f" points="466.32,-608.4 409.63,-608.4 409.63,-584.2 466.32,-584.2 466.32,-608.4"/>
+<text text-anchor="middle" x="437.97" y="-593.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">close_log</text>
+</a>
+</g>
+</g>
+<!-- proc~end_mpi&#45;&gt;proc~close_log -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge24" class="edge">
+<title>proc~end_mpi:&#45;&gt;proc~close_log:</title>
+<path fill="none" stroke="#000000" d="M325.81,-561.49C346.78,-568.06 376.47,-577.35 399.9,-584.69"/>
+<polygon fill="#000000" stroke="#000000" points="398.92,-588.05 409.51,-587.7 401.01,-581.37 398.92,-588.05"/>
+</g>
+<!-- proc~root_open_file_read&#45;&gt;mpi_bcast -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge25" class="edge">
+<title>proc~root_open_file_read:&#45;&gt;mpi_bcast:</title>
+<path fill="none" stroke="#000000" d="M351.57,-423.49C366.97,-421.48 383.57,-419.3 398,-417.41"/>
+<polygon fill="#000000" stroke="#000000" points="398.62,-420.86 408.08,-416.09 397.71,-413.92 398.62,-420.86"/>
+</g>
+<!-- num_pelm_pp -->
+<g id="proc~~get_glb_indx~~CallsGraph_node19" class="node">
+<title>num_pelm_pp</title>
+<polygon fill="#777777" stroke="#777777" points="476.99,-362.4 398.95,-362.4 398.95,-338.2 476.99,-338.2 476.99,-362.4"/>
+<text text-anchor="middle" x="437.97" y="-347.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">num_pelm_pp</text>
+</g>
+<!-- proc~elm2proc&#45;&gt;num_pelm_pp -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge26" class="edge">
+<title>proc~elm2proc:&#45;&gt;num_pelm_pp:</title>
+<path fill="none" stroke="#000000" d="M326.46,-350.3C344.17,-350.3 367.88,-350.3 388.8,-350.3"/>
+<polygon fill="#000000" stroke="#000000" points="388.81,-353.8 398.81,-350.3 388.81,-346.8 388.81,-353.8"/>
+</g>
+<!-- proc~syncwrite_log&#45;&gt;mpi_barrier -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge27" class="edge">
+<title>proc~syncwrite_log:&#45;&gt;mpi_barrier:</title>
+<path fill="none" stroke="#000000" d="M475.83,-547.19C489.09,-544.99 504.14,-542.5 517.79,-540.24"/>
+<polygon fill="#000000" stroke="#000000" points="518.61,-543.65 527.9,-538.56 517.46,-536.74 518.61,-543.65"/>
+</g>
+<!-- proc~syncwrite_log_time&#45;&gt;mpi_barrier -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge30" class="edge">
+<title>proc~syncwrite_log_time:&#45;&gt;mpi_barrier:</title>
+<path fill="none" stroke="#000000" d="M474.09,-670.19C479.31,-667.45 484.35,-664.17 488.6,-660.3 521.05,-630.73 542.19,-582.77 552.41,-555.03"/>
+<polygon fill="#000000" stroke="#000000" points="555.76,-556.06 555.8,-545.46 549.16,-553.72 555.76,-556.06"/>
+</g>
+<!-- mpi_wtime -->
+<g id="proc~~get_glb_indx~~CallsGraph_node23" class="node">
+<title>mpi_wtime</title>
+<polygon fill="#777777" stroke="#777777" points="591.8,-672.4 529.48,-672.4 529.48,-648.2 591.8,-648.2 591.8,-672.4"/>
+<text text-anchor="middle" x="560.64" y="-657.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_wtime</text>
+</g>
+<!-- proc~syncwrite_log_time&#45;&gt;mpi_wtime -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge28" class="edge">
+<title>proc~syncwrite_log_time:&#45;&gt;mpi_wtime:</title>
+<path fill="none" stroke="#000000" d="M488.75,-673.22C498.97,-671.36 509.6,-669.42 519.42,-667.63"/>
+<polygon fill="#000000" stroke="#000000" points="520.11,-671.06 529.32,-665.83 518.86,-664.18 520.11,-671.06"/>
+</g>
+<!-- proc~rootwrite_log -->
+<g id="proc~~get_glb_indx~~CallsGraph_node24" class="node">
+<title>proc~rootwrite_log</title>
+<g id="a_proc~~get_glb_indx~~CallsGraph_node24"><a xlink:href=".././proc/rootwrite_log.html" xlink:title="rootwrite_log">
+<polygon fill="#d9534f" stroke="#d9534f" points="596.73,-715.4 524.55,-715.4 524.55,-691.2 596.73,-691.2 596.73,-715.4"/>
+<text text-anchor="middle" x="560.64" y="-700.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">rootwrite_log</text>
+</a>
+</g>
+</g>
+<!-- proc~syncwrite_log_time&#45;&gt;proc~rootwrite_log -->
+<g id="proc~~get_glb_indx~~CallsGraph_edge29" class="edge">
+<title>proc~syncwrite_log_time:&#45;&gt;proc~rootwrite_log:</title>
+<path fill="none" stroke="#000000" d="M488.75,-690.96C497.24,-692.44 506.02,-693.97 514.39,-695.42"/>
+<polygon fill="#000000" stroke="#000000" points="513.89,-698.89 524.34,-697.16 515.09,-691.99 513.89,-698.89"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="552pt" height="33pt"
+ viewBox="0.00 0.00 552.39 32.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28.6)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28.6 548.39,-28.6 548.39,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="62.65,-24.4 0.12,-24.4 0.12,-0.2 62.65,-0.2 62.65,-24.4"/>
+<text text-anchor="middle" x="31.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="134.38,-24.4 80.38,-24.4 80.38,-0.2 134.38,-0.2 134.38,-24.4"/>
+<text text-anchor="middle" x="107.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="206.38,-24.4 152.38,-24.4 152.38,-0.2 206.38,-0.2 206.38,-24.4"/>
+<text text-anchor="middle" x="179.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="358.24,-24.4 224.52,-24.4 224.52,-0.2 358.24,-0.2 358.24,-24.4"/>
+<text text-anchor="middle" x="291.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="430.38,-24.4 376.38,-24.4 376.38,-0.2 430.38,-0.2 430.38,-24.4"/>
+<text text-anchor="middle" x="403.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="544.39,-24.4 448.38,-24.4 448.38,-0.2 544.39,-0.2 544.39,-24.4"/>
+<text text-anchor="middle" x="496.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a procedure to one which it calls. Dashed 
+    arrows point from an interface to procedures which implement that interface.
+    This could include the module procedures in a generic interface or the
+    implementation in a submodule of an interface in a parent module.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+     
+     
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Called by</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: proc~~get_glb_indx~~CalledByGraph Pages: 1 -->
+<svg id="procget_glb_indxCalledByGraph" width="307pt" height="248pt"
+ viewBox="0.00 0.00 306.80 247.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~get_glb_indx~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 243.6)">
+<title>proc~~get_glb_indx~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-243.6 302.8,-243.6 302.8,4 -4,4"/>
+<!-- proc~get_glb_indx -->
+<g id="proc~~get_glb_indx~~CalledByGraph_node1" class="node">
+<title>proc~get_glb_indx</title>
+<polygon fill="none" stroke="black" points="298.57,-131.4 227.52,-131.4 227.52,-107.2 298.57,-107.2 298.57,-131.4"/>
+<text text-anchor="middle" x="263.04" y="-116.15" font-family="Helvetica,sans-Serif" font-size="10.50">get_glb_indx</text>
+</g>
+<!-- proc~parallel_setup -->
+<g id="proc~~get_glb_indx~~CalledByGraph_node2" class="node">
+<title>proc~parallel_setup</title>
+<g id="a_proc~~get_glb_indx~~CalledByGraph_node2"><a xlink:href=".././proc/parallel_setup.html" xlink:title="parallel_setup">
+<polygon fill="#d9534f" stroke="#d9534f" points="191.45,-131.4 113.76,-131.4 113.76,-107.2 191.45,-107.2 191.45,-131.4"/>
+<text text-anchor="middle" x="152.6" y="-116.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">parallel_setup</text>
+</a>
+</g>
+</g>
+<!-- proc~parallel_setup&#45;&gt;proc~get_glb_indx -->
+<g id="proc~~get_glb_indx~~CalledByGraph_edge1" class="edge">
+<title>proc~parallel_setup:&#45;&gt;proc~get_glb_indx:</title>
+<path fill="none" stroke="#000000" d="M191.53,-119.3C199.78,-119.3 208.58,-119.3 217.08,-119.3"/>
+<polygon fill="#000000" stroke="#000000" points="217.22,-122.8 227.22,-119.3 217.22,-115.8 217.22,-122.8"/>
+</g>
+<!-- program~darcy_1f -->
+<g id="proc~~get_glb_indx~~CalledByGraph_node3" class="node">
+<title>program~darcy_1f</title>
+<g id="a_proc~~get_glb_indx~~CalledByGraph_node3"><a xlink:href=".././program/darcy_1f.html" xlink:title="darcy_1f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="65.97,-239.4 11.97,-239.4 11.97,-215.2 65.97,-215.2 65.97,-239.4"/>
+<text text-anchor="middle" x="38.97" y="-224.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_1f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_1f&#45;&gt;proc~parallel_setup -->
+<g id="proc~~get_glb_indx~~CalledByGraph_edge2" class="edge">
+<title>program~darcy_1f:&#45;&gt;proc~parallel_setup:</title>
+<path fill="none" stroke="#000000" d="M64.08,-214.98C68.87,-212.08 73.71,-208.81 77.93,-205.3 101.42,-185.76 123.54,-158.26 137.29,-139.66"/>
+<polygon fill="#000000" stroke="#000000" points="140.13,-141.7 143.17,-131.55 134.47,-137.59 140.13,-141.7"/>
+</g>
+<!-- program~darcy_crkp_2f -->
+<g id="proc~~get_glb_indx~~CalledByGraph_node4" class="node">
+<title>program~darcy_crkp_2f</title>
+<g id="a_proc~~get_glb_indx~~CalledByGraph_node4"><a xlink:href=".././program/darcy_crkp_2f.html" xlink:title="darcy_crkp_2f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="77.9,-196.4 0.03,-196.4 0.03,-172.2 77.9,-172.2 77.9,-196.4"/>
+<text text-anchor="middle" x="38.97" y="-181.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_2f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_crkp_2f&#45;&gt;proc~parallel_setup -->
+<g id="proc~~get_glb_indx~~CalledByGraph_edge3" class="edge">
+<title>program~darcy_crkp_2f:&#45;&gt;proc~parallel_setup:</title>
+<path fill="none" stroke="#000000" d="M61.26,-171.98C66.69,-168.83 72.53,-165.44 77.93,-162.3 92.39,-153.89 108.43,-144.53 121.84,-136.7"/>
+<polygon fill="#000000" stroke="#000000" points="123.79,-139.62 130.66,-131.55 120.26,-133.57 123.79,-139.62"/>
+</g>
+<!-- program~darcy -->
+<g id="proc~~get_glb_indx~~CalledByGraph_node5" class="node">
+<title>program~darcy</title>
+<g id="a_proc~~get_glb_indx~~CalledByGraph_node5"><a xlink:href=".././program/darcy.html" xlink:title="darcy">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="65.97,-153.4 11.97,-153.4 11.97,-129.2 65.97,-129.2 65.97,-153.4"/>
+<text text-anchor="middle" x="38.97" y="-138.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy</text>
+</a>
+</g>
+</g>
+<!-- program~darcy&#45;&gt;proc~parallel_setup -->
+<g id="proc~~get_glb_indx~~CalledByGraph_edge4" class="edge">
+<title>program~darcy:&#45;&gt;proc~parallel_setup:</title>
+<path fill="none" stroke="#000000" d="M66.14,-136.14C77.33,-133.94 90.75,-131.29 103.61,-128.76"/>
+<polygon fill="#000000" stroke="#000000" points="104.62,-132.13 113.75,-126.76 103.26,-125.26 104.62,-132.13"/>
+</g>
+<!-- program~darcy_crkp_1f -->
+<g id="proc~~get_glb_indx~~CalledByGraph_node6" class="node">
+<title>program~darcy_crkp_1f</title>
+<g id="a_proc~~get_glb_indx~~CalledByGraph_node6"><a xlink:href=".././program/darcy_crkp_1f.html" xlink:title="darcy_crkp_1f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="77.9,-110.4 0.03,-110.4 0.03,-86.2 77.9,-86.2 77.9,-110.4"/>
+<text text-anchor="middle" x="38.97" y="-95.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_1f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_crkp_1f&#45;&gt;proc~parallel_setup -->
+<g id="proc~~get_glb_indx~~CalledByGraph_edge5" class="edge">
+<title>program~darcy_crkp_1f:&#45;&gt;proc~parallel_setup:</title>
+<path fill="none" stroke="#000000" d="M78.07,-105.47C86.34,-107.02 95.18,-108.69 103.76,-110.3"/>
+<polygon fill="#000000" stroke="#000000" points="103.19,-113.75 113.67,-112.16 104.49,-106.88 103.19,-113.75"/>
+</g>
+<!-- program~darcy_crkp_2f~2 -->
+<g id="proc~~get_glb_indx~~CalledByGraph_node7" class="node">
+<title>program~darcy_crkp_2f~2</title>
+<g id="a_proc~~get_glb_indx~~CalledByGraph_node7"><a xlink:href=".././program/darcy_crkp_2f%7E2.html" xlink:title="darcy_crkp_2f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="77.9,-67.4 0.03,-67.4 0.03,-43.2 77.9,-43.2 77.9,-67.4"/>
+<text text-anchor="middle" x="38.97" y="-52.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_2f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_crkp_2f~2&#45;&gt;proc~parallel_setup -->
+<g id="proc~~get_glb_indx~~CalledByGraph_edge6" class="edge">
+<title>program~darcy_crkp_2f~2:&#45;&gt;proc~parallel_setup:</title>
+<path fill="none" stroke="#000000" d="M61.23,-67.49C78.3,-77.28 102.48,-91.14 121.53,-102.06"/>
+<polygon fill="#000000" stroke="#000000" points="120.01,-105.22 130.42,-107.16 123.49,-99.15 120.01,-105.22"/>
+</g>
+<!-- program~darcy_2f -->
+<g id="proc~~get_glb_indx~~CalledByGraph_node8" class="node">
+<title>program~darcy_2f</title>
+<g id="a_proc~~get_glb_indx~~CalledByGraph_node8"><a xlink:href=".././program/darcy_2f.html" xlink:title="darcy_2f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="65.97,-24.4 11.97,-24.4 11.97,-0.2 65.97,-0.2 65.97,-24.4"/>
+<text text-anchor="middle" x="38.97" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_2f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_2f&#45;&gt;proc~parallel_setup -->
+<g id="proc~~get_glb_indx~~CalledByGraph_edge7" class="edge">
+<title>program~darcy_2f:&#45;&gt;proc~parallel_setup:</title>
+<path fill="none" stroke="#000000" d="M64.06,-24.64C68.85,-27.54 73.7,-30.8 77.93,-34.3 101.21,-53.55 123.26,-80.57 137.06,-98.94"/>
+<polygon fill="#000000" stroke="#000000" points="134.39,-101.22 143.14,-107.2 140.03,-97.07 134.39,-101.22"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="552pt" height="33pt"
+ viewBox="0.00 0.00 552.39 32.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28.6)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28.6 548.39,-28.6 548.39,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="62.65,-24.4 0.12,-24.4 0.12,-0.2 62.65,-0.2 62.65,-24.4"/>
+<text text-anchor="middle" x="31.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="134.38,-24.4 80.38,-24.4 80.38,-0.2 134.38,-0.2 134.38,-24.4"/>
+<text text-anchor="middle" x="107.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="206.38,-24.4 152.38,-24.4 152.38,-0.2 206.38,-0.2 206.38,-24.4"/>
+<text text-anchor="middle" x="179.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="358.24,-24.4 224.52,-24.4 224.52,-0.2 358.24,-0.2 358.24,-24.4"/>
+<text text-anchor="middle" x="291.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="430.38,-24.4 376.38,-24.4 376.38,-0.2 430.38,-0.2 430.38,-24.4"/>
+<text text-anchor="middle" x="403.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="544.39,-24.4 448.38,-24.4 448.38,-0.2 544.39,-0.2 544.39,-24.4"/>
+<text text-anchor="middle" x="496.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a procedure to one which it calls. Dashed 
+    arrows point from an interface to procedures which implement that interface.
+    This could include the module procedures in a generic interface or the
+    implementation in a submodule of an interface in a parent module.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/get_glb_indx.html#variable-k%7E4">k</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    <section>    
+      <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-k%7E4"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>k</strong></td><td></td><td></td><td><p>simplicial order</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 <a rel="license" href="http://www.freebsd.org/copyright/freebsd-doc-license.html">FreeBSD Documentation License</a>
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> ParaGEMS was developed by Pieter Boom</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

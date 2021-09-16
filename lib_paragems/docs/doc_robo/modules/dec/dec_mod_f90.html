@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-type" content="text/html; charset=ISO-8859-1" />
+<link rel="stylesheet" href="../../robodoc.css" type="text/css" />
+<title>./../src/modules/dec/dec_mod.f90</title>
+<!-- Source: ./../src/modules/dec/dec_mod.f90 -->
+<!-- Generated with ROBODoc Version 4.99.43 (Sep  9 2020) -->
+</head>
+<body>
+<div id="logo">
+<a name="robo_top_of_doc">ParaGEMS Documentation</a>
+</div> <!-- logo -->
+<div id="navigation">
+<a class="menuitem" href="../../toc_index.html#top">Table of Contents</a>
+<a class="menuitem" href="../../robo_sourcefiles.html#top">Sourcefiles</a>
+<a class="menuitem" href="../../masterindex.html#top">Index</a>
+<a class="menuitem" href="../../robo_functions.html#top">Functions</a>
+<a class="menuitem" href="../../robo_modules.html#top">Modules</a>
+<a class="menuitem" href="../../robo_subroutines.html#top">Subrountines</a>
+</div> <!-- navigation -->
+<div id="content">
+<h3>TABLE OF CONTENTS</h3>
+<ul>
+<li>1. <a href="#robo2">modules|dec/dec_mod</a></li>
+<ul>
+<li>1.1. <a href="#robo28">dec_mod/add_points_i</a></li>
+<li>1.2. <a href="#robo29">dec_mod/allocate_bndry_cobndry</a></li>
+<li>1.3. <a href="#robo30">dec_mod/build_bndry_work_array</a></li>
+<li>1.4. <a href="#robo31">dec_mod/calc_barycentric_grad</a></li>
+<li>1.5. <a href="#robo32">dec_mod/calc_bndry_cobndry</a></li>
+<li>1.6. <a href="#robo33">dec_mod/calc_circumcenters</a></li>
+<li>1.7. <a href="#robo34">dec_mod/calc_dual_dir</a></li>
+<li>1.8. <a href="#robo35">dec_mod/calc_dual_vlm</a></li>
+<li>1.9. <a href="#robo36">dec_mod/calc_dual_vlm_i</a></li>
+<li>1.10. <a href="#robo37">dec_mod/calc_hodge_star</a></li>
+<li>1.11. <a href="#robo38">dec_mod/calc_orientation</a></li>
+<li>1.12. <a href="#robo39">dec_mod/calc_prml_dir</a></li>
+<li>1.13. <a href="#robo40">dec_mod/calc_prml_sgnd_vlm</a></li>
+<li>1.14. <a href="#robo41">dec_mod/calc_prml_unsgnd_vlm</a></li>
+<li>1.15. <a href="#robo42">dec_mod/calc_unsgnd_vlm</a></li>
+<li>1.16. <a href="#robo43">dec_mod/calc_whitney_C2_BC</a></li>
+<li>1.17. <a href="#robo44">dec_mod/count_bndry_cobndry</a></li>
+<li>1.18. <a href="#robo45">dec_mod/exchange_dual_dir</a></li>
+<li>1.19. <a href="#robo46">dec_mod/exchange_dual_vlm</a></li>
+<li>1.20. <a href="#robo47">dec_mod/get_lcl_node_indx</a></li>
+<li>1.21. <a href="#robo48">dec_mod/initialise_geo</a></li>
+<li>1.22. <a href="#robo49">dec_mod/set_bndry_cobndry</a></li>
+</ul>
+</ul>
+<hr />
+<a name="modules7cdec2fdec5fmod"></a>
+<a name="robo2"></a><h2>modules|dec/dec_mod [ Modules ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="../../robo_modules.html#robo_top_of_doc">Modules</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">MODULE <strong>dec_mod</strong>
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Module containing routines for performing DEC operations
+</pre>
+<p class="item_name">INCLUDES</p>
+<pre>   Name                    Purpose
+   <a href="../common/common_mod_f90.html#robo1">common_mod</a>              variable definitions
+   <a href="../mpi/mpi_mod_f90.html#robo5">mpi_mod</a>                 ???
+   <a href="../math/math_mod_f90.html#robo4">math_mod</a>                basic math functions
+</pre>
+<p class="item_name">CONTAINS</p>
+<pre>   Subroutine              Purpose
+   <a href="#robo38">calc_orientation</a>        sort nodal indices and compute ±1 orientation
+   <a href="#robo32">calc_bndry_cobndry</a>      recursively compute element (co-)boundaries
+   <a href="#robo30">build_bndry_work_array</a>  build boundary data working array
+   <a href="#robo44">count_bndry_cobndry</a>     count [co-]boundaries: internal, external, surface
+   <a href="#robo49">set_bndry_cobndry</a>       set [co-]boundaries: internal, external, surface
+   <a href="#robo48">initialise_geo</a>          initialise geometric quantities for the given mesh
+   <a href="#robo47">get_lcl_node_indx</a>       create map between global and local node indices
+   <a href="#robo33">calc_circumcenters</a>      compute circumcenter of given elements
+   <a href="#robo40">calc_prml_sgnd_vlm</a>      compute signed volume of primal elements
+   <a href="#robo41">calc_prml_unsgnd_vlm</a>    compute unsigned volume of primal elements
+   <a href="#robo35">calc_dual_vlm</a>           compute volume for dual elements of all geometric order
+   <a href="#robo36">calc_dual_vlm_i</a>         recursively add to dual volume calculation
+   <a href="#robo28">add_points_i</a>            recursively adds points for dual volume calculation
+   <a href="#robo42">calc_unsgnd_vlm</a>         compute unsigned volume for given set of points
+   <a href="#robo46">exchange_dual_vlm</a>       exchange external dual volumes between adjacent processes
+   <a href="#robo45">exchange_dual_dir</a>       exchange external dual edge directions between adjacent processes
+   <a href="#robo41">calc_prml_unsgnd_vlm</a>    compute unsigned volume of primal elements
+   <a href="#robo37">calc_hodge_star</a>         compute hodge star and it's inverse from primal and dual volumes
+   <a href="#robo39">calc_prml_dir</a>           compute the unit direction of primal edges
+   <a href="#robo34">calc_dual_dir</a>           compute the unit direction of dual edges
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2020/09/16: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fadd5fpoints5fi"></a>
+<a name="robo28"></a><h2>dec_mod/add_points_i [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  RECURSIVE SUBROUTINE <strong>add_points_i</strong>(pts,indx,k)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Recursively adds points for dual volume calculation
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fallocate5fbndry5fcobndry"></a>
+<a name="robo29"></a><h2>dec_mod/allocate_bndry_cobndry [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>allocate_bndry_cobndry</strong>(k,cnt,bndry_cnt,cobndry_cnt,ext_cnt,&amp;
+    surf_cnt)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Allocate [co-]boundaries structures/variables
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fbuild5fbndry5fwork5farray"></a>
+<a name="robo30"></a><h2>dec_mod/build_bndry_work_array [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>build_bndry_work_array</strong>(bndry,k)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Build boundary data working array
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fcalc5fbarycentric5fgrad"></a>
+<a name="robo31"></a><h2>dec_mod/calc_barycentric_grad [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>calc_barycentric_grad</strong>(pts,n)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Compute barycentric gradients
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fcalc5fbndry5fcobndry"></a>
+<a name="robo32"></a><h2>dec_mod/calc_bndry_cobndry [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>calc_bndry_cobndry</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Recursively compute element (co-)boundaries from highest to lowest geometric order
+</pre>
+<p class="item_name">ASSUMPTION</p>
+<pre>   Mesh is a simplicial complex in TetGen format
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   - the nodal indices of elm are sorted numerically in ascending order
+   - orientation contains the ±1 orientation of the element
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2020/09/16: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fcalc5fcircumcenters"></a>
+<a name="robo33"></a><h2>dec_mod/calc_circumcenters [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>calc_circumcenters</strong>(k)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Compute circumcenter of given elements
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fcalc5fdual5fdir"></a>
+<a name="robo34"></a><h2>dec_mod/calc_dual_dir [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>calc_dual_dir</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Compute the unit direction of dual edges
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fcalc5fdual5fvlm"></a>
+<a name="robo35"></a><h2>dec_mod/calc_dual_vlm [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>calc_dual_vlm</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Compute volume for dual elements of all geometric order
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fcalc5fdual5fvlm5fi"></a>
+<a name="robo36"></a><h2>dec_mod/calc_dual_vlm_i [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  RECURSIVE SUBROUTINE <strong>calc_dual_vlm_i</strong>(pts,sgn,indx,p_indx,k)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Recursively add to dual volume calculation
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fcalc5fhodge5fstar"></a>
+<a name="robo37"></a><h2>dec_mod/calc_hodge_star [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>calc_hodge_star</strong>(k)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Compute hodge star and it's inverse from primal and dual volumes
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+   k
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+   k
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fcalc5forientation"></a>
+<a name="robo38"></a><h2>dec_mod/calc_orientation [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>calc_orientation</strong>(elm,orientation)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Sort nodal indices and compute ± orientation of an element
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+   elem
+   orientation
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+   elem
+   orientation
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   - the nodal indices of elm are sorted numerically in ascending order
+   - orientation contains the ±1 orientation of the element
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+<p class="item_name">NOTES</p>
+<pre>   Procedure adapted from:
+   https://rosettacode.org/wiki/Sorting_algorithms/Insertion_sort#Fortran
+</pre>
+
+<hr />
+<a name="dec5fmod2fcalc5fprml5fdir"></a>
+<a name="robo39"></a><h2>dec_mod/calc_prml_dir [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>calc_prml_dir</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Compute the unit direction of primal edges
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fcalc5fprml5fsgnd5fvlm"></a>
+<a name="robo40"></a><h2>dec_mod/calc_prml_sgnd_vlm [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>calc_prml_sgnd_vlm</strong>(k)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Compute signed volume of primal elements
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+   k
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+   k
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fcalc5fprml5funsgnd5fvlm"></a>
+<a name="robo41"></a><h2>dec_mod/calc_prml_unsgnd_vlm [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>calc_prml_unsgnd_vlm</strong>(k)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Compute unsigned volume of primal elements
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+   k
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+   k
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fcalc5funsgnd5fvlm"></a>
+<a name="robo42"></a><h2>dec_mod/calc_unsgnd_vlm [ Functions ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_functions.html#robo_top_of_doc">Functions</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  FUNCTION <strong>calc_unsgnd_vlm</strong>(pts,n)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Compute unsigned volume for given set of points
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fcalc5fwhitney5fC25fBC"></a>
+<a name="robo43"></a><h2>dec_mod/calc_whitney_C2_BC [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>calc_whitney_C2_BC</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Compute the Whitney interpolation of primal faces to primal volume barycentric centers
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fcount5fbndry5fcobndry"></a>
+<a name="robo44"></a><h2>dec_mod/count_bndry_cobndry [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>count_bndry_cobndry</strong>(bndry,k,cnt,bndry_cnt,cobndry_cnt,ext_cnt,&amp;
+    surf_cnt,local)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Count [co-]boundaries: internal, external, surface
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fexchange5fdual5fdir"></a>
+<a name="robo45"></a><h2>dec_mod/exchange_dual_dir [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>exchange_dual_dir</strong>(k)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Exchange external dual edge directions between adjacent processes
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+   k
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+   k
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/22: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fexchange5fdual5fvlm"></a>
+<a name="robo46"></a><h2>dec_mod/exchange_dual_vlm [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>exchange_dual_vlm</strong>(k)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Exchange external dual volumes between adjacent processes
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+   k
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+   k
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/22: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fget5flcl5fnode5findx"></a>
+<a name="robo47"></a><h2>dec_mod/get_lcl_node_indx [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>get_lcl_node_indx</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Create map between global and local node indices
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2finitialise5fgeo"></a>
+<a name="robo48"></a><h2>dec_mod/initialise_geo [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>initialise_geo</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Initialise geometric quantities for the given mesh
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="dec5fmod2fset5fbndry5fcobndry"></a>
+<a name="robo49"></a><h2>dec_mod/set_bndry_cobndry [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo2">dec_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>set_bndry_cobndry</strong>(bndry,k,cnt,bndry_cnt,cobndry_cnt,ext_cnt,surf_cnt,local)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Set [co-]boundaries: internal, external, surface
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+</div> <!-- content -->
+<div id="footer">
+<p>Generated from ./../src/modules/dec/dec_mod.f90 with <a href="http://www.xs4all.nl/~rfsber/Robo/robodoc.html">ROBODoc</a> V4.99.43 on Wed Mar 17 2021 09:16:11
+</p>
+</div> <!-- footer -->
+</body>
+</html>

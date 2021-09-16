@@ -1,0 +1,54 @@
+options:
+    --documenttitle "ParaGEMS Documentation"
+    --src ../src
+    --doc ./doc_robo
+    --html
+#    --latex
+    --multidoc
+    --index
+    --sections
+    --tell
+    --toc
+#    --ignore_case_when_linking
+#    --syntaxcolors
+#    --masterindex
+headertypes:
+    s  "Subrountines"       robo_subroutines
+    v  "Variables"          robo_variables
+    p  "Programs"           robo_programs
+items:
+    SYNOPSIS
+    PURPOSE
+    ASSUMPTION
+    USES
+    INCLUDES
+    CONTAINS
+    INPUTS
+    OUTPUTS
+    SIDE EFFECTS
+    NOTES
+    TODO
+    BUGS
+    SEE ALSO
+    TAGS
+    AUTHOR
+    MODIFICATION HISTORY
+    COPYRIGHT
+source items:
+    SYNOPSIS
+ignore files:
+    libraries
+    deprecated
+accept files:
+    *.f90
+    *.inc
+header markers:
+    !/****/
+remark markers:
+    !*
+end markers:
+    !******/
+remark begin markers:
+    !/*
+remark end markers:
+    !*/

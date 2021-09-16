@@ -1,0 +1,2 @@
+robodoc --rc paragems.rc
+ford paragems.md

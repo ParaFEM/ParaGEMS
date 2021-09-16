@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-type" content="text/html; charset=ISO-8859-1" />
+<link rel="stylesheet" href="../../robodoc.css" type="text/css" />
+<title>./src/programs/darcy_flow/darcy_1f.f90</title>
+<!-- Source: ./src/programs/darcy_flow/darcy_1f.f90 -->
+<!-- Generated with ROBODoc Version 4.99.43 (Sep  9 2020) -->
+</head>
+<body>
+<div id="logo">
+<a name="robo_top_of_doc">ParaGEMS Documentation</a>
+</div> <!-- logo -->
+<div id="navigation">
+<a class="menuitem" href="../../toc_index.html#top">Table of Contents</a>
+<a class="menuitem" href="../../robo_sourcefiles.html#top">Sourcefiles</a>
+<a class="menuitem" href="../../masterindex.html#top">Index</a>
+<a class="menuitem" href="../../robo_functions.html#top">Functions</a>
+<a class="menuitem" href="../../robo_modules.html#top">Modules</a>
+<a class="menuitem" href="../../robo_programs.html#top">Programs</a>
+<a class="menuitem" href="../../robo_subroutines.html#top">Subrountines</a>
+<a class="menuitem" href="../../robo_variables.html#top">Variables</a>
+</div> <!-- navigation -->
+<div id="content">
+<h3>TABLE OF CONTENTS</h3>
+<ul>
+<li>1. <a href="#robo101">programs|darcy_flow/darcy_1f</a></li>
+</ul>
+<hr />
+<a name="programs7cdarcy5fflow2fdarcy5f1f"></a>
+<a name="robo101"></a><h2>programs|darcy_flow/darcy_1f [ Programs ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="../../robo_programs.html#robo_top_of_doc">Programs</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">PROGRAM <strong>darcy_1f</strong>
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Miniapp to solve one-field Darcy flow in parallel using PETSc KSP
+</pre>
+<p class="item_name">ASSUMPTION</p>
+<pre>   Mesh file exists (TetGen tetrahedral mesh)
+   Input file (default: input.param)
+</pre>
+<p class="item_name">INCLUDES</p>
+<pre>   Name                    Purpose
+   common_mod              variable definitions
+   <a href="../../modules/mpi/mpi_mod_f90.html#robo5">mpi_mod</a>                 ???
+   <a href="../../modules/mpi/partition_mod_f90.html#robo6">partition_mod</a>
+   <a href="../../modules/phy_darcy_flow/darcy_mod_f90.html#robo7">darcy_mod</a>
+   <a href="../../modules/solvers/solver_mod_f90.html#robo8">solver_mod</a>
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   Solution to Darcy flow computed
+   Solution written to file
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+</div> <!-- content -->
+<div id="footer">
+<p>Generated from ./src/programs/darcy_flow/darcy_1f.f90 with <a href="http://www.xs4all.nl/~rfsber/Robo/robodoc.html">ROBODoc</a> V4.99.43 on Thu Sep 17 2020 16:36:27
+</p>
+</div> <!-- footer -->
+</body>
+</html>

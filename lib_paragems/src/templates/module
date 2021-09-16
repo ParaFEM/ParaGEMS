@@ -1,0 +1,43 @@
+!
+!===============================================================================
+!-- Module name
+!> [Module description]
+!===============================================================================
+!/****/h* modules|[module_directory/module_name]
+!* SYNOPSIS
+MODULE [module_name]
+!* PURPOSE
+!*   [purpose]
+!* INCLUDES
+!*   Name                    Purpose
+!*   [include name]          [purpose]
+!* CONTAINS
+!*   Subroutine              Purpose
+!*   [subroutine name]       [purpose]
+!* AUTHOR
+!*   [author]
+!* MODIFICATION HISTORY
+!*   [date_created]: Created ([author_initials])
+!* COPYRIGHT
+!*   (c) University of Manchester
+!******/
+!> author: [author]
+!> date: [date_created]
+!> [Module description]
+!===============================================================================
+
+  !-- use statements and implicit none --
+  USE
+
+  IMPLICIT NONE
+
+!===============================================================================
+CONTAINS
+!===============================================================================
+
+
+
+END MODULE
+! module_name
+!===============================================================================
+!

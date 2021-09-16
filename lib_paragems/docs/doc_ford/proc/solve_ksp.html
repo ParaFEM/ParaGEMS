@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <meta name="description" content="Documentation for ParaGEMS">
+   
+    <meta name="author" content="Pieter Boom" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>solve_KSP &ndash; ParaGEMS</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">ParaGEMS </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li><a href='../page/index.html'>README</a></li>
+      
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            <li><a href="../lists/programs.html">Programs</a></li>
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>solve_KSP
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     <li><i class="fa fa-pencil"></i> Pieter Boom</li>
+     
+     
+    <li><i class="fa fa-calendar-o"></i> 2019/08/23</li>
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 0.7% of total for procedures.">31 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/solver_mod.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/solver_mod.f90.html'>solver_mod.f90</a></li>
+    
+     <li><a href='../module/solver_mod.html'>solver_mod</a></li>
+    
+  
+     <li class="active">solve_KSP</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/solve_ksp.html#variable-msg%7E5">msg</a>
+      
+      <a class="list-group-item" href="../proc/solve_ksp.html#variable-iters">iters</a>
+      
+      <a class="list-group-item" href="../proc/solve_ksp.html#variable-rnorm">rnorm</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+public subroutine solve_KSP()
+    
+    
+   
+</h2>
+    
+  
+
+
+    
+    <p>Solve linear system using PETSc KSP</p>
+    
+
+    <h3>Arguments</h3>
+    
+    <em>None</em>
+    <br>
+    
+    
+    
+    <br>
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Calls</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: proc~~solve_ksp~~CallsGraph Pages: 1 -->
+<svg id="procsolve_kspCallsGraph" width="352pt" height="721pt"
+ viewBox="0.00 0.00 352.28 720.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~solve_ksp~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 716.6)">
+<title>proc~~solve_ksp~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-716.6 348.28,-716.6 348.28,4 -4,4"/>
+<!-- proc~solve_ksp -->
+<g id="proc~~solve_ksp~~CallsGraph_node1" class="node">
+<title>proc~solve_ksp</title>
+<polygon fill="none" stroke="black" points="63.52,-368.4 -0.18,-368.4 -0.18,-344.2 63.52,-344.2 63.52,-368.4"/>
+<text text-anchor="middle" x="31.67" y="-353.15" font-family="Helvetica,sans-Serif" font-size="10.50">solve_KSP</text>
+</g>
+<!-- proc~syncwrite_log -->
+<g id="proc~~solve_ksp~~CallsGraph_node2" class="node">
+<title>proc~syncwrite_log</title>
+<g id="a_proc~~solve_ksp~~CallsGraph_node2"><a xlink:href=".././proc/syncwrite_log.html" xlink:title="syncwrite_log">
+<polygon fill="#d9534f" stroke="#d9534f" points="208.87,-712.4 133.69,-712.4 133.69,-688.2 208.87,-688.2 208.87,-712.4"/>
+<text text-anchor="middle" x="171.28" y="-697.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">syncwrite_log</text>
+</a>
+</g>
+</g>
+<!-- proc~solve_ksp&#45;&gt;proc~syncwrite_log -->
+<g id="proc~~solve_ksp~~CallsGraph_edge2" class="edge">
+<title>proc~solve_ksp:&#45;&gt;proc~syncwrite_log:</title>
+<path fill="none" stroke="#000000" d="M33.58,-368.62C37.73,-421.81 56.56,-631.17 99.35,-678.3 105.84,-685.46 114.62,-690.31 123.78,-693.59"/>
+<polygon fill="#000000" stroke="#000000" points="122.8,-696.95 133.38,-696.47 124.81,-690.25 122.8,-696.95"/>
+</g>
+<!-- pcfactorsetmatorderingtype -->
+<g id="proc~~solve_ksp~~CallsGraph_node3" class="node">
+<title>pcfactorsetmatorderingtype</title>
+<polygon fill="#777777" stroke="#777777" points="240.97,-669.4 101.58,-669.4 101.58,-645.2 240.97,-645.2 240.97,-669.4"/>
+<text text-anchor="middle" x="171.28" y="-654.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pcfactorsetmatorderingtype</text>
+</g>
+<!-- proc~solve_ksp&#45;&gt;pcfactorsetmatorderingtype -->
+<g id="proc~~solve_ksp~~CallsGraph_edge3" class="edge">
+<title>proc~solve_ksp:&#45;&gt;pcfactorsetmatorderingtype:</title>
+<path fill="none" stroke="#000000" d="M34,-368.59C39.48,-417.2 61.83,-595.21 99.35,-635.3 100.74,-636.78 102.22,-638.17 103.79,-639.46"/>
+<polygon fill="#000000" stroke="#000000" points="101.97,-642.45 112.21,-645.17 105.9,-636.66 101.97,-642.45"/>
+</g>
+<!-- kspsetfromoptions -->
+<g id="proc~~solve_ksp~~CallsGraph_node4" class="node">
+<title>kspsetfromoptions</title>
+<polygon fill="#777777" stroke="#777777" points="219.96,-626.4 122.59,-626.4 122.59,-602.2 219.96,-602.2 219.96,-626.4"/>
+<text text-anchor="middle" x="171.28" y="-611.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">kspsetfromoptions</text>
+</g>
+<!-- proc~solve_ksp&#45;&gt;kspsetfromoptions -->
+<g id="proc~~solve_ksp~~CallsGraph_edge14" class="edge">
+<title>proc~solve_ksp:&#45;&gt;kspsetfromoptions:</title>
+<path fill="none" stroke="#000000" d="M32.33,-368.54C31.92,-407.11 36.04,-527.36 99.35,-592.3 103.29,-596.34 107.95,-599.64 112.97,-602.34"/>
+<polygon fill="#000000" stroke="#000000" points="111.78,-605.64 122.33,-606.57 114.66,-599.26 111.78,-605.64"/>
+</g>
+<!-- kspsolve -->
+<g id="proc~~solve_ksp~~CallsGraph_node5" class="node">
+<title>kspsolve</title>
+<polygon fill="#777777" stroke="#777777" points="198.28,-583.4 144.28,-583.4 144.28,-559.2 198.28,-559.2 198.28,-583.4"/>
+<text text-anchor="middle" x="171.28" y="-568.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">kspsolve</text>
+</g>
+<!-- proc~solve_ksp&#45;&gt;kspsolve -->
+<g id="proc~~solve_ksp~~CallsGraph_edge4" class="edge">
+<title>proc~solve_ksp:&#45;&gt;kspsolve:</title>
+<path fill="none" stroke="#000000" d="M33.24,-368.7C35.47,-402.65 46.38,-498 99.35,-549.3 108.68,-558.34 121.66,-563.67 133.96,-566.81"/>
+<polygon fill="#000000" stroke="#000000" points="133.54,-570.3 144.05,-568.97 135,-563.46 133.54,-570.3"/>
+</g>
+<!-- kspcreate -->
+<g id="proc~~solve_ksp~~CallsGraph_node6" class="node">
+<title>kspcreate</title>
+<polygon fill="#777777" stroke="#777777" points="199.79,-540.4 142.76,-540.4 142.76,-516.2 199.79,-516.2 199.79,-540.4"/>
+<text text-anchor="middle" x="171.28" y="-525.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">kspcreate</text>
+</g>
+<!-- proc~solve_ksp&#45;&gt;kspcreate -->
+<g id="proc~~solve_ksp~~CallsGraph_edge5" class="edge">
+<title>proc~solve_ksp:&#45;&gt;kspcreate:</title>
+<path fill="none" stroke="#000000" d="M34.66,-368.83C39.85,-397.48 56.54,-468.24 99.35,-506.3 108.59,-514.51 120.86,-519.66 132.6,-522.89"/>
+<polygon fill="#000000" stroke="#000000" points="132.15,-526.38 142.68,-525.26 133.75,-519.56 132.15,-526.38"/>
+</g>
+<!-- petscviewerandformatcreate -->
+<g id="proc~~solve_ksp~~CallsGraph_node7" class="node">
+<title>petscviewerandformatcreate</title>
+<polygon fill="#777777" stroke="#777777" points="243.13,-497.4 99.42,-497.4 99.42,-473.2 243.13,-473.2 243.13,-497.4"/>
+<text text-anchor="middle" x="171.28" y="-482.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">petscviewerandformatcreate</text>
+</g>
+<!-- proc~solve_ksp&#45;&gt;petscviewerandformatcreate -->
+<g id="proc~~solve_ksp~~CallsGraph_edge6" class="edge">
+<title>proc~solve_ksp:&#45;&gt;petscviewerandformatcreate:</title>
+<path fill="none" stroke="#000000" d="M36.98,-368.55C45.43,-390.77 66.25,-437.76 99.35,-463.3 101.82,-465.21 104.46,-466.95 107.21,-468.54"/>
+<polygon fill="#000000" stroke="#000000" points="105.82,-471.76 116.32,-473.14 108.97,-465.51 105.82,-471.76"/>
+</g>
+<!-- kspsettolerances -->
+<g id="proc~~solve_ksp~~CallsGraph_node8" class="node">
+<title>kspsettolerances</title>
+<polygon fill="#777777" stroke="#777777" points="216.55,-454.4 126.01,-454.4 126.01,-430.2 216.55,-430.2 216.55,-454.4"/>
+<text text-anchor="middle" x="171.28" y="-439.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">kspsettolerances</text>
+</g>
+<!-- proc~solve_ksp&#45;&gt;kspsettolerances -->
+<g id="proc~~solve_ksp~~CallsGraph_edge7" class="edge">
+<title>proc~solve_ksp:&#45;&gt;kspsettolerances:</title>
+<path fill="none" stroke="#000000" d="M42.24,-368.42C54.16,-382.77 75.85,-406.44 99.35,-420.3 104.54,-423.36 110.2,-426.04 115.99,-428.37"/>
+<polygon fill="#000000" stroke="#000000" points="115.2,-431.81 125.79,-431.98 117.61,-425.24 115.2,-431.81"/>
+</g>
+<!-- kspsetup -->
+<g id="proc~~solve_ksp~~CallsGraph_node9" class="node">
+<title>kspsetup</title>
+<polygon fill="#777777" stroke="#777777" points="198.29,-411.4 144.26,-411.4 144.26,-387.2 198.29,-387.2 198.29,-411.4"/>
+<text text-anchor="middle" x="171.28" y="-396.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">kspsetup</text>
+</g>
+<!-- proc~solve_ksp&#45;&gt;kspsetup -->
+<g id="proc~~solve_ksp~~CallsGraph_edge8" class="edge">
+<title>proc~solve_ksp:&#45;&gt;kspsetup:</title>
+<path fill="none" stroke="#000000" d="M63.54,-366.05C74.8,-369.6 87.65,-373.64 99.35,-377.3 110.65,-380.83 122.98,-384.66 134.14,-388.12"/>
+<polygon fill="#000000" stroke="#000000" points="133.41,-391.56 143.99,-391.18 135.48,-384.88 133.41,-391.56"/>
+</g>
+<!-- kspgetpc -->
+<g id="proc~~solve_ksp~~CallsGraph_node10" class="node">
+<title>kspgetpc</title>
+<polygon fill="#777777" stroke="#777777" points="198.29,-368.4 144.26,-368.4 144.26,-344.2 198.29,-344.2 198.29,-368.4"/>
+<text text-anchor="middle" x="171.28" y="-353.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">kspgetpc</text>
+</g>
+<!-- proc~solve_ksp&#45;&gt;kspgetpc -->
+<g id="proc~~solve_ksp~~CallsGraph_edge9" class="edge">
+<title>proc~solve_ksp:&#45;&gt;kspgetpc:</title>
+<path fill="none" stroke="#000000" d="M63.55,-356.3C84.39,-356.3 111.98,-356.3 133.88,-356.3"/>
+<polygon fill="#000000" stroke="#000000" points="134.13,-359.8 144.13,-356.3 134.13,-352.8 134.13,-359.8"/>
+</g>
+<!-- kspgetresidualnorm -->
+<g id="proc~~solve_ksp~~CallsGraph_node11" class="node">
+<title>kspgetresidualnorm</title>
+<polygon fill="#777777" stroke="#777777" points="222.87,-325.4 119.68,-325.4 119.68,-301.2 222.87,-301.2 222.87,-325.4"/>
+<text text-anchor="middle" x="171.28" y="-310.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">kspgetresidualnorm</text>
+</g>
+<!-- proc~solve_ksp&#45;&gt;kspgetresidualnorm -->
+<g id="proc~~solve_ksp~~CallsGraph_edge1" class="edge">
+<title>proc~solve_ksp:&#45;&gt;kspgetresidualnorm:</title>
+<path fill="none" stroke="#000000" d="M63.54,-346.55C74.8,-343 87.65,-338.96 99.35,-335.3 106.37,-333.11 113.79,-330.8 121.07,-328.53"/>
+<polygon fill="#000000" stroke="#000000" points="122.36,-331.8 130.87,-325.49 120.29,-325.11 122.36,-331.8"/>
+</g>
+<!-- kspview -->
+<g id="proc~~solve_ksp~~CallsGraph_node12" class="node">
+<title>kspview</title>
+<polygon fill="#777777" stroke="#777777" points="198.28,-282.4 144.28,-282.4 144.28,-258.2 198.28,-258.2 198.28,-282.4"/>
+<text text-anchor="middle" x="171.28" y="-267.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">kspview</text>
+</g>
+<!-- proc~solve_ksp&#45;&gt;kspview -->
+<g id="proc~~solve_ksp~~CallsGraph_edge11" class="edge">
+<title>proc~solve_ksp:&#45;&gt;kspview:</title>
+<path fill="none" stroke="#000000" d="M42.24,-344.18C54.16,-329.83 75.85,-306.16 99.35,-292.3 110,-286.02 122.62,-281.36 134.25,-277.98"/>
+<polygon fill="#000000" stroke="#000000" points="135.38,-281.3 144.13,-275.34 133.57,-274.54 135.38,-281.3"/>
+</g>
+<!-- kspmonitorset -->
+<g id="proc~~solve_ksp~~CallsGraph_node13" class="node">
+<title>kspmonitorset</title>
+<polygon fill="#777777" stroke="#777777" points="210.12,-239.4 132.43,-239.4 132.43,-215.2 210.12,-215.2 210.12,-239.4"/>
+<text text-anchor="middle" x="171.28" y="-224.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">kspmonitorset</text>
+</g>
+<!-- proc~solve_ksp&#45;&gt;kspmonitorset -->
+<g id="proc~~solve_ksp~~CallsGraph_edge12" class="edge">
+<title>proc~solve_ksp:&#45;&gt;kspmonitorset:</title>
+<path fill="none" stroke="#000000" d="M36.98,-344.05C45.43,-321.83 66.25,-274.84 99.35,-249.3 106.24,-243.98 114.44,-239.93 122.77,-236.86"/>
+<polygon fill="#000000" stroke="#000000" points="124.11,-240.11 132.54,-233.69 121.95,-233.45 124.11,-240.11"/>
+</g>
+<!-- mpi_wtime -->
+<g id="proc~~solve_ksp~~CallsGraph_node14" class="node">
+<title>mpi_wtime</title>
+<polygon fill="#777777" stroke="#777777" points="202.44,-196.4 140.12,-196.4 140.12,-172.2 202.44,-172.2 202.44,-196.4"/>
+<text text-anchor="middle" x="171.28" y="-181.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_wtime</text>
+</g>
+<!-- proc~solve_ksp&#45;&gt;mpi_wtime -->
+<g id="proc~~solve_ksp~~CallsGraph_edge13" class="edge">
+<title>proc~solve_ksp:&#45;&gt;mpi_wtime:</title>
+<path fill="none" stroke="#000000" d="M34.66,-343.77C39.85,-315.12 56.54,-244.36 99.35,-206.3 107.91,-198.69 119.06,-193.72 129.99,-190.46"/>
+<polygon fill="#000000" stroke="#000000" points="131.05,-193.8 139.87,-187.93 129.31,-187.02 131.05,-193.8"/>
+</g>
+<!-- pcsettype -->
+<g id="proc~~solve_ksp~~CallsGraph_node15" class="node">
+<title>pcsettype</title>
+<polygon fill="#777777" stroke="#777777" points="199.71,-153.4 142.84,-153.4 142.84,-129.2 199.71,-129.2 199.71,-153.4"/>
+<text text-anchor="middle" x="171.28" y="-138.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pcsettype</text>
+</g>
+<!-- proc~solve_ksp&#45;&gt;pcsettype -->
+<g id="proc~~solve_ksp~~CallsGraph_edge10" class="edge">
+<title>proc~solve_ksp:&#45;&gt;pcsettype:</title>
+<path fill="none" stroke="#000000" d="M33.24,-343.9C35.47,-309.95 46.38,-214.6 99.35,-163.3 108.39,-154.54 120.86,-149.26 132.82,-146.08"/>
+<polygon fill="#000000" stroke="#000000" points="133.67,-149.48 142.66,-143.88 132.14,-142.65 133.67,-149.48"/>
+</g>
+<!-- kspsettype -->
+<g id="proc~~solve_ksp~~CallsGraph_node16" class="node">
+<title>kspsettype</title>
+<polygon fill="#777777" stroke="#777777" points="202.46,-110.4 140.09,-110.4 140.09,-86.2 202.46,-86.2 202.46,-110.4"/>
+<text text-anchor="middle" x="171.28" y="-95.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">kspsettype</text>
+</g>
+<!-- proc~solve_ksp&#45;&gt;kspsettype -->
+<g id="proc~~solve_ksp~~CallsGraph_edge15" class="edge">
+<title>proc~solve_ksp:&#45;&gt;kspsettype:</title>
+<path fill="none" stroke="#000000" d="M32.33,-344.06C31.92,-305.49 36.04,-185.24 99.35,-120.3 107.56,-111.87 118.93,-106.66 130.17,-103.44"/>
+<polygon fill="#000000" stroke="#000000" points="131.02,-106.83 139.92,-101.09 129.38,-100.03 131.02,-106.83"/>
+</g>
+<!-- kspgetiterationnumber -->
+<g id="proc~~solve_ksp~~CallsGraph_node17" class="node">
+<title>kspgetiterationnumber</title>
+<polygon fill="#777777" stroke="#777777" points="229.13,-67.4 113.42,-67.4 113.42,-43.2 229.13,-43.2 229.13,-67.4"/>
+<text text-anchor="middle" x="171.28" y="-52.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">kspgetiterationnumber</text>
+</g>
+<!-- proc~solve_ksp&#45;&gt;kspgetiterationnumber -->
+<g id="proc~~solve_ksp~~CallsGraph_edge16" class="edge">
+<title>proc~solve_ksp:&#45;&gt;kspgetiterationnumber:</title>
+<path fill="none" stroke="#000000" d="M34,-344.01C39.48,-295.4 61.83,-117.39 99.35,-77.3 100.96,-75.58 102.7,-73.99 104.55,-72.53"/>
+<polygon fill="#000000" stroke="#000000" points="106.77,-75.26 113.23,-66.87 102.94,-69.4 106.77,-75.26"/>
+</g>
+<!-- kspsetoperators -->
+<g id="proc~~solve_ksp~~CallsGraph_node18" class="node">
+<title>kspsetoperators</title>
+<polygon fill="#777777" stroke="#777777" points="214.46,-24.4 128.09,-24.4 128.09,-0.2 214.46,-0.2 214.46,-24.4"/>
+<text text-anchor="middle" x="171.28" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">kspsetoperators</text>
+</g>
+<!-- proc~solve_ksp&#45;&gt;kspsetoperators -->
+<g id="proc~~solve_ksp~~CallsGraph_edge17" class="edge">
+<title>proc~solve_ksp:&#45;&gt;kspsetoperators:</title>
+<path fill="none" stroke="#000000" d="M33.58,-343.98C37.73,-290.79 56.56,-81.43 99.35,-34.3 104.47,-28.66 111.01,-24.45 118.04,-21.31"/>
+<polygon fill="#000000" stroke="#000000" points="119.69,-24.43 127.84,-17.66 117.25,-17.87 119.69,-24.43"/>
+</g>
+<!-- mpi_barrier -->
+<g id="proc~~solve_ksp~~CallsGraph_node19" class="node">
+<title>mpi_barrier</title>
+<polygon fill="#777777" stroke="#777777" points="344.32,-712.4 279.17,-712.4 279.17,-688.2 344.32,-688.2 344.32,-712.4"/>
+<text text-anchor="middle" x="311.74" y="-697.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_barrier</text>
+</g>
+<!-- proc~syncwrite_log&#45;&gt;mpi_barrier -->
+<g id="proc~~solve_ksp~~CallsGraph_edge18" class="edge">
+<title>proc~syncwrite_log:&#45;&gt;mpi_barrier:</title>
+<path fill="none" stroke="#000000" d="M209.02,-700.3C227.41,-700.3 249.75,-700.3 268.81,-700.3"/>
+<polygon fill="#000000" stroke="#000000" points="269.01,-703.8 279.01,-700.3 269.01,-696.8 269.01,-703.8"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="552pt" height="33pt"
+ viewBox="0.00 0.00 552.39 32.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28.6)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28.6 548.39,-28.6 548.39,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="62.65,-24.4 0.12,-24.4 0.12,-0.2 62.65,-0.2 62.65,-24.4"/>
+<text text-anchor="middle" x="31.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="134.38,-24.4 80.38,-24.4 80.38,-0.2 134.38,-0.2 134.38,-24.4"/>
+<text text-anchor="middle" x="107.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="206.38,-24.4 152.38,-24.4 152.38,-0.2 206.38,-0.2 206.38,-24.4"/>
+<text text-anchor="middle" x="179.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="358.24,-24.4 224.52,-24.4 224.52,-0.2 358.24,-0.2 358.24,-24.4"/>
+<text text-anchor="middle" x="291.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="430.38,-24.4 376.38,-24.4 376.38,-0.2 430.38,-0.2 430.38,-24.4"/>
+<text text-anchor="middle" x="403.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="544.39,-24.4 448.38,-24.4 448.38,-0.2 544.39,-0.2 544.39,-24.4"/>
+<text text-anchor="middle" x="496.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a procedure to one which it calls. Dashed 
+    arrows point from an interface to procedures which implement that interface.
+    This could include the module procedures in a generic interface or the
+    implementation in a submodule of an interface in a parent module.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+     
+     
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Called by</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: proc~~solve_ksp~~CalledByGraph Pages: 1 -->
+<svg id="procsolve_kspCalledByGraph" width="185pt" height="162pt"
+ viewBox="0.00 0.00 185.28 161.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~solve_ksp~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 157.6)">
+<title>proc~~solve_ksp~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-157.6 181.28,-157.6 181.28,4 -4,4"/>
+<!-- proc~solve_ksp -->
+<g id="proc~~solve_ksp~~CalledByGraph_node1" class="node">
+<title>proc~solve_ksp</title>
+<polygon fill="none" stroke="black" points="177.45,-88.4 113.76,-88.4 113.76,-64.2 177.45,-64.2 177.45,-88.4"/>
+<text text-anchor="middle" x="145.6" y="-73.15" font-family="Helvetica,sans-Serif" font-size="10.50">solve_KSP</text>
+</g>
+<!-- program~darcy_crkp_2f~2 -->
+<g id="proc~~solve_ksp~~CalledByGraph_node2" class="node">
+<title>program~darcy_crkp_2f~2</title>
+<g id="a_proc~~solve_ksp~~CalledByGraph_node2"><a xlink:href=".././program/darcy_crkp_2f%7E2.html" xlink:title="darcy_crkp_2f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="77.9,-153.4 0.03,-153.4 0.03,-129.2 77.9,-129.2 77.9,-153.4"/>
+<text text-anchor="middle" x="38.97" y="-138.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_2f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_crkp_2f~2&#45;&gt;proc~solve_ksp -->
+<g id="proc~~solve_ksp~~CalledByGraph_edge1" class="edge">
+<title>program~darcy_crkp_2f~2:&#45;&gt;proc~solve_ksp:</title>
+<path fill="none" stroke="#000000" d="M61.36,-129.14C66.79,-125.99 72.6,-122.56 77.93,-119.3 91.04,-111.28 105.38,-102.09 117.4,-94.26"/>
+<polygon fill="#000000" stroke="#000000" points="119.62,-96.99 126.07,-88.59 115.79,-91.13 119.62,-96.99"/>
+</g>
+<!-- program~darcy_1f -->
+<g id="proc~~solve_ksp~~CalledByGraph_node3" class="node">
+<title>program~darcy_1f</title>
+<g id="a_proc~~solve_ksp~~CalledByGraph_node3"><a xlink:href=".././program/darcy_1f.html" xlink:title="darcy_1f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="65.97,-110.4 11.97,-110.4 11.97,-86.2 65.97,-86.2 65.97,-110.4"/>
+<text text-anchor="middle" x="38.97" y="-95.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_1f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_1f&#45;&gt;proc~solve_ksp -->
+<g id="proc~~solve_ksp~~CalledByGraph_edge4" class="edge">
+<title>program~darcy_1f:&#45;&gt;proc~solve_ksp:</title>
+<path fill="none" stroke="#000000" d="M66.1,-92.81C77.47,-90.42 91.06,-87.56 103.71,-84.9"/>
+<polygon fill="#000000" stroke="#000000" points="104.53,-88.3 113.6,-82.82 103.09,-81.45 104.53,-88.3"/>
+</g>
+<!-- program~darcy -->
+<g id="proc~~solve_ksp~~CalledByGraph_node4" class="node">
+<title>program~darcy</title>
+<g id="a_proc~~solve_ksp~~CalledByGraph_node4"><a xlink:href=".././program/darcy.html" xlink:title="darcy">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="65.97,-67.4 11.97,-67.4 11.97,-43.2 65.97,-43.2 65.97,-67.4"/>
+<text text-anchor="middle" x="38.97" y="-52.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy</text>
+</a>
+</g>
+</g>
+<!-- program~darcy&#45;&gt;proc~solve_ksp -->
+<g id="proc~~solve_ksp~~CalledByGraph_edge3" class="edge">
+<title>program~darcy:&#45;&gt;proc~solve_ksp:</title>
+<path fill="none" stroke="#000000" d="M66.1,-60.55C77.47,-62.83 91.06,-65.55 103.71,-68.09"/>
+<polygon fill="#000000" stroke="#000000" points="103.1,-71.54 113.6,-70.08 104.48,-64.68 103.1,-71.54"/>
+</g>
+<!-- program~darcy_crkp_1f -->
+<g id="proc~~solve_ksp~~CalledByGraph_node5" class="node">
+<title>program~darcy_crkp_1f</title>
+<g id="a_proc~~solve_ksp~~CalledByGraph_node5"><a xlink:href=".././program/darcy_crkp_1f.html" xlink:title="darcy_crkp_1f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="77.9,-24.4 0.03,-24.4 0.03,-0.2 77.9,-0.2 77.9,-24.4"/>
+<text text-anchor="middle" x="38.97" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_1f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_crkp_1f&#45;&gt;proc~solve_ksp -->
+<g id="proc~~solve_ksp~~CalledByGraph_edge2" class="edge">
+<title>program~darcy_crkp_1f:&#45;&gt;proc~solve_ksp:</title>
+<path fill="none" stroke="#000000" d="M61.33,-24.5C66.77,-27.65 72.58,-31.07 77.93,-34.3 90.9,-42.14 105.13,-51.06 117.1,-58.65"/>
+<polygon fill="#000000" stroke="#000000" points="115.44,-61.75 125.75,-64.16 119.2,-55.84 115.44,-61.75"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="552pt" height="33pt"
+ viewBox="0.00 0.00 552.39 32.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28.6)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28.6 548.39,-28.6 548.39,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="62.65,-24.4 0.12,-24.4 0.12,-0.2 62.65,-0.2 62.65,-24.4"/>
+<text text-anchor="middle" x="31.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="134.38,-24.4 80.38,-24.4 80.38,-0.2 134.38,-0.2 134.38,-24.4"/>
+<text text-anchor="middle" x="107.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="206.38,-24.4 152.38,-24.4 152.38,-0.2 206.38,-0.2 206.38,-24.4"/>
+<text text-anchor="middle" x="179.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="358.24,-24.4 224.52,-24.4 224.52,-0.2 358.24,-0.2 358.24,-24.4"/>
+<text text-anchor="middle" x="291.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="430.38,-24.4 376.38,-24.4 376.38,-0.2 430.38,-0.2 430.38,-24.4"/>
+<text text-anchor="middle" x="403.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="544.39,-24.4 448.38,-24.4 448.38,-0.2 544.39,-0.2 544.39,-24.4"/>
+<text text-anchor="middle" x="496.38" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a procedure to one which it calls. Dashed 
+    arrows point from an interface to procedures which implement that interface.
+    This could include the module procedures in a generic interface or the
+    implementation in a submodule of an interface in a parent module.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/solve_ksp.html#variable-msg%7E5">msg</a>
+      
+      <a class="list-group-item" href="../proc/solve_ksp.html#variable-iters">iters</a>
+      
+      <a class="list-group-item" href="../proc/solve_ksp.html#variable-rnorm">rnorm</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    <section>    
+      <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-msg%7E5"></span>character(len=slen),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>msg</strong></td><td></td><td></td><td><p>message sting for log file</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-iters"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>iters</strong></td><td></td><td></td><td><p>number of iterations</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-rnorm"></span>real(kind=iwp),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>rnorm</strong></td><td></td><td></td><td><p>final residual norm</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 <a rel="license" href="http://www.freebsd.org/copyright/freebsd-doc-license.html">FreeBSD Documentation License</a>
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> ParaGEMS was developed by Pieter Boom</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

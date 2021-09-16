@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <meta name="description" content="Documentation for ParaGEMS">
+   
+    <meta name="author" content="Pieter Boom" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>partition_mod &ndash; ParaGEMS</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">ParaGEMS </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li><a href='../page/index.html'>README</a></li>
+      
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            <li><a href="../lists/programs.html">Programs</a></li>
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>partition_mod 
+    <small>Module</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     <li><i class="fa fa-pencil"></i> Pieter Boom</li>
+     
+     
+    <li><i class="fa fa-calendar-o"></i> 2020/09/16</li>
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 7.7% of total for modules and submodules.">350 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/partition_mod.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/partition_mod.f90.html'>partition_mod.f90</a></li>
+    
+  
+     <li class="active">partition_mod</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-0">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-0" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/partition_mod.html#proc-exchange_glb_indx">exchange_glb_indx</a>
+      
+      <a class="list-group-item" href="../module/partition_mod.html#proc-exchange_prml_nodes">exchange_prml_nodes</a>
+      
+      <a class="list-group-item" href="../module/partition_mod.html#proc-get_connectivity">get_connectivity</a>
+      
+      <a class="list-group-item" href="../module/partition_mod.html#proc-get_glb_indx">get_glb_indx</a>
+      
+      <a class="list-group-item" href="../module/partition_mod.html#proc-get_glb_indx_dual_vlm">get_glb_indx_dual_vlm</a>
+      
+      <a class="list-group-item" href="../module/partition_mod.html#proc-parallel_setup">parallel_setup</a>
+      
+      <a class="list-group-item" href="../module/partition_mod.html#proc-partition_dual">partition_dual</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <p>Module contains routines for partitioning parallel workload</p>
+      <br>
+    
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
+    
+    <li><a href='../module/common_mod.html'>common_mod</a></li>
+    
+    <li><a href='../module/mpi_mod.html'>mpi_mod</a></li>
+    
+    <li><a href='../module/io_mod.html'>io_mod</a></li>
+    
+    <li><a href='../module/math_mod.html'>math_mod</a></li>
+    
+    <li><a href='../module/dec_mod.html'>dec_mod</a></li>
+    
+  </ul>
+      </li>
+      
+      
+      
+      <li class="list-group-item">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: module~~partition_mod~~UsesGraph Pages: 1 -->
+<svg id="modulepartition_modUsesGraph" width="641pt" height="281pt"
+ viewBox="0.00 0.00 641.00 281.41" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~partition_mod~~UsesGraph" class="graph" transform="scale(0.93 0.93) rotate(0) translate(4 299.75)">
+<title>module~~partition_mod~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-299.75 687.88,-299.75 687.88,4 -4,4"/>
+<!-- module~partition_mod -->
+<g id="module~~partition_mod~~UsesGraph_node1" class="node">
+<title>module~partition_mod</title>
+<polygon fill="none" stroke="black" points="683.68,-225.47 608.49,-225.47 608.49,-201.27 683.68,-201.27 683.68,-225.47"/>
+<text text-anchor="middle" x="646.08" y="-210.22" font-family="Helvetica,sans-Serif" font-size="10.50">partition_mod</text>
+</g>
+<!-- module~dec_mod -->
+<g id="module~~partition_mod~~UsesGraph_node2" class="node">
+<title>module~dec_mod</title>
+<g id="a_module~~partition_mod~~UsesGraph_node2"><a xlink:href=".././module/dec_mod.html" xlink:title="dec_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="476.84,-264.47 421.48,-264.47 421.48,-240.27 476.84,-240.27 476.84,-264.47"/>
+<text text-anchor="middle" x="449.16" y="-249.22" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dec_mod</text>
+</a>
+</g>
+</g>
+<!-- module~partition_mod&#45;&gt;module~dec_mod -->
+<g id="module~~partition_mod~~UsesGraph_edge1" class="edge">
+<title>module~partition_mod:&#45;&gt;module~dec_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M544.28,-252.37C525.66,-255.85 504.6,-256.17 487.13,-255.49"/>
+<polygon fill="#000000" stroke="#000000" points="486.94,-251.98 476.77,-254.96 486.57,-258.97 486.94,-251.98"/>
+</g>
+<!-- module~io_mod -->
+<g id="module~~partition_mod~~UsesGraph_node3" class="node">
+<title>module~io_mod</title>
+<g id="a_module~~partition_mod~~UsesGraph_node3"><a xlink:href=".././module/io_mod.html" xlink:title="io_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="572.28,-186.47 518.28,-186.47 518.28,-162.27 572.28,-162.27 572.28,-186.47"/>
+<text text-anchor="middle" x="545.28" y="-171.22" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">io_mod</text>
+</a>
+</g>
+</g>
+<!-- module~partition_mod&#45;&gt;module~io_mod -->
+<g id="module~~partition_mod~~UsesGraph_edge3" class="edge">
+<title>module~partition_mod:&#45;&gt;module~io_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M614.36,-201.24C604.04,-197.17 592.44,-192.59 581.79,-188.38"/>
+<polygon fill="#000000" stroke="#000000" points="582.91,-185.06 572.33,-184.65 580.34,-191.58 582.91,-185.06"/>
+</g>
+<!-- module~mpi_mod -->
+<g id="module~~partition_mod~~UsesGraph_node4" class="node">
+<title>module~mpi_mod</title>
+<g id="a_module~~partition_mod~~UsesGraph_node4"><a xlink:href=".././module/mpi_mod.html" xlink:title="mpi_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="259.76,-186.47 204.42,-186.47 204.42,-162.27 259.76,-162.27 259.76,-186.47"/>
+<text text-anchor="middle" x="232.09" y="-171.22" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_mod</text>
+</a>
+</g>
+</g>
+<!-- module~partition_mod&#45;&gt;module~mpi_mod -->
+<g id="module~~partition_mod~~UsesGraph_edge5" class="edge">
+<title>module~partition_mod:&#45;&gt;module~mpi_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M544.28,-252.37C532.28,-254.61 351.02,-175.4 338.85,-174.37"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M621.47,-225.54C601.9,-234.91 573.07,-247.13 546.28,-252.37"/>
+</g>
+<!-- module~math_mod -->
+<g id="module~~partition_mod~~UsesGraph_node5" class="node">
+<title>module~math_mod</title>
+<g id="a_module~~partition_mod~~UsesGraph_node5"><a xlink:href=".././module/math_mod.html" xlink:title="math_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="368.45,-264.47 307.26,-264.47 307.26,-240.27 368.45,-240.27 368.45,-264.47"/>
+<text text-anchor="middle" x="337.85" y="-249.22" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">math_mod</text>
+</a>
+</g>
+</g>
+<!-- module~partition_mod&#45;&gt;module~math_mod -->
+<g id="module~~partition_mod~~UsesGraph_edge4" class="edge">
+<title>module~partition_mod:&#45;&gt;module~math_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M544.28,-252.37C499.6,-260.71 495.35,-287.46 450.16,-292.37"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M448.16,-292.37C418.63,-295.58 386.97,-281.91 365.36,-269.69"/>
+<polygon fill="#000000" stroke="#000000" points="367.15,-266.68 356.76,-264.6 363.58,-272.71 367.15,-266.68"/>
+</g>
+<!-- module~common_mod -->
+<g id="module~~partition_mod~~UsesGraph_node6" class="node">
+<title>module~common_mod</title>
+<g id="a_module~~partition_mod~~UsesGraph_node6"><a xlink:href=".././module/common_mod.html" xlink:title="common_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="168.26,-186.47 90.24,-186.47 90.24,-162.27 168.26,-162.27 168.26,-186.47"/>
+<text text-anchor="middle" x="129.25" y="-171.22" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">common_mod</text>
+</a>
+</g>
+</g>
+<!-- module~partition_mod&#45;&gt;module~common_mod -->
+<g id="module~~partition_mod~~UsesGraph_edge2" class="edge">
+<title>module~partition_mod:&#45;&gt;module~common_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M448.16,-292.37C351.5,-302.87 325.24,-283.36 233.09,-252.37"/>
+</g>
+<!-- module~dec_mod&#45;&gt;module~mpi_mod -->
+<g id="module~~partition_mod~~UsesGraph_edge8" class="edge">
+<title>module~dec_mod:&#45;&gt;module~mpi_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M422.83,-240.08C401.13,-230.29 368.74,-217.43 338.85,-212.37"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M336.85,-212.37C312.96,-208.32 287.38,-199.02 267.6,-190.63"/>
+<polygon fill="#000000" stroke="#000000" points="268.95,-187.4 258.38,-186.61 266.15,-193.81 268.95,-187.4"/>
+</g>
+<!-- module~dec_mod&#45;&gt;module~math_mod -->
+<g id="module~~partition_mod~~UsesGraph_edge7" class="edge">
+<title>module~dec_mod:&#45;&gt;module~math_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M421.42,-252.37C408.6,-252.37 392.99,-252.37 378.8,-252.37"/>
+<polygon fill="#000000" stroke="#000000" points="378.78,-248.87 368.78,-252.37 378.78,-255.87 378.78,-248.87"/>
+</g>
+<!-- module~dec_mod&#45;&gt;module~common_mod -->
+<g id="module~~partition_mod~~UsesGraph_edge6" class="edge">
+<title>module~dec_mod:&#45;&gt;module~common_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M231.09,-252.37C197.35,-241.02 166.2,-213.14 147.71,-193.99"/>
+<polygon fill="#000000" stroke="#000000" points="150.2,-191.53 140.81,-186.63 145.1,-196.32 150.2,-191.53"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M336.85,-212.37C288.12,-204.12 279.94,-268.12 233.09,-252.37"/>
+</g>
+<!-- module~io_mod&#45;&gt;module~dec_mod -->
+<g id="module~~partition_mod~~UsesGraph_edge13" class="edge">
+<title>module~io_mod:&#45;&gt;module~dec_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M529.58,-186.56C514.47,-199.08 490.74,-218.74 473.15,-233.32"/>
+<polygon fill="#000000" stroke="#000000" points="470.54,-230.93 465.07,-240.01 475,-236.32 470.54,-230.93"/>
+</g>
+<!-- module~io_mod&#45;&gt;module~mpi_mod -->
+<g id="module~~partition_mod~~UsesGraph_edge12" class="edge">
+<title>module~io_mod:&#45;&gt;module~mpi_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M448.16,-174.37C399.77,-170.06 387.26,-178.47 338.85,-174.37"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M336.85,-174.37C314.79,-172.5 290,-172.43 270.18,-172.85"/>
+<polygon fill="#000000" stroke="#000000" points="269.92,-169.36 260.02,-173.13 270.11,-176.36 269.92,-169.36"/>
+</g>
+<!-- module~io_mod&#45;&gt;module~common_mod -->
+<g id="module~~partition_mod~~UsesGraph_edge9" class="edge">
+<title>module~io_mod:&#45;&gt;module~common_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M448.16,-14.37C385.97,13.85 357.22,-3.77 295.68,-33.37 260.67,-50.2 266.97,-75.36 233.09,-94.37"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M541.96,-162.01C535.02,-129.38 511.09,-41.54 450.16,-14.37"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M231.09,-94.37C200.46,-111.31 169.57,-137.46 150.2,-155.22"/>
+<polygon fill="#000000" stroke="#000000" points="147.57,-152.89 142.63,-162.26 152.34,-158.01 147.57,-152.89"/>
+</g>
+<!-- iso_fortran_env -->
+<g id="module~~partition_mod~~UsesGraph_node8" class="node">
+<title>iso_fortran_env</title>
+<g id="a_module~~partition_mod~~UsesGraph_node8"><a xlink:href="http://fortranwiki.org/fortran/show/ISO_FORTRAN_ENV" xlink:title="iso_fortran_env">
+<polygon fill="#337ab7" stroke="#337ab7" points="380.21,-146.47 295.5,-146.47 295.5,-122.27 380.21,-122.27 380.21,-146.47"/>
+<text text-anchor="middle" x="337.85" y="-131.22" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
+</a>
+</g>
+</g>
+<!-- module~io_mod&#45;&gt;iso_fortran_env -->
+<g id="module~~partition_mod~~UsesGraph_edge10" class="edge">
+<title>module~io_mod:&#45;&gt;iso_fortran_env:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M448.16,-174.37C420.93,-171.94 391.95,-160.91 370.68,-151.05"/>
+<polygon fill="#000000" stroke="#000000" points="372.01,-147.8 361.49,-146.63 368.99,-154.11 372.01,-147.8"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M518.26,-175.61C499.33,-176.21 473.11,-176.41 450.16,-174.37"/>
+</g>
+<!-- ieee_arithmetic -->
+<g id="module~~partition_mod~~UsesGraph_node9" class="node">
+<title>ieee_arithmetic</title>
+<g id="a_module~~partition_mod~~UsesGraph_node9"><a xlink:href="http://fortranwiki.org/fortran/show/IEEE_ARITHMETIC" xlink:title="ieee_arithmetic">
+<polygon fill="#337ab7" stroke="#337ab7" points="379.53,-66.47 296.18,-66.47 296.18,-42.27 379.53,-42.27 379.53,-66.47"/>
+<text text-anchor="middle" x="337.85" y="-51.22" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ieee_arithmetic</text>
+</a>
+</g>
+</g>
+<!-- module~io_mod&#45;&gt;ieee_arithmetic -->
+<g id="module~~partition_mod~~UsesGraph_edge11" class="edge">
+<title>module~io_mod:&#45;&gt;ieee_arithmetic:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M448.16,-14.37C433.92,-7.91 396.95,-23.88 369.94,-37.52"/>
+<polygon fill="#000000" stroke="#000000" points="368.13,-34.51 360.85,-42.2 371.34,-40.73 368.13,-34.51"/>
+</g>
+<!-- module~solver_mod -->
+<g id="module~~partition_mod~~UsesGraph_node10" class="node">
+<title>module~solver_mod</title>
+<g id="a_module~~partition_mod~~UsesGraph_node10"><a xlink:href=".././module/solver_mod.html" xlink:title="solver_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="482.41,-126.47 415.9,-126.47 415.9,-102.27 482.41,-102.27 482.41,-126.47"/>
+<text text-anchor="middle" x="449.16" y="-111.22" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">solver_mod</text>
+</a>
+</g>
+</g>
+<!-- module~io_mod&#45;&gt;module~solver_mod -->
+<g id="module~~partition_mod~~UsesGraph_edge14" class="edge">
+<title>module~io_mod:&#45;&gt;module~solver_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M525.24,-162.23C511.58,-153.53 492.99,-141.67 477.72,-131.94"/>
+<polygon fill="#000000" stroke="#000000" points="479.49,-128.92 469.18,-126.49 475.73,-134.82 479.49,-128.92"/>
+</g>
+<!-- module~mpi_mod&#45;&gt;module~common_mod -->
+<g id="module~~partition_mod~~UsesGraph_edge15" class="edge">
+<title>module~mpi_mod:&#45;&gt;module~common_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M204.33,-174.37C196.45,-174.37 187.57,-174.37 178.76,-174.37"/>
+<polygon fill="#000000" stroke="#000000" points="178.53,-170.87 168.53,-174.37 178.53,-177.87 178.53,-170.87"/>
+</g>
+<!-- module~math_mod&#45;&gt;module~mpi_mod -->
+<g id="module~~partition_mod~~UsesGraph_edge17" class="edge">
+<title>module~math_mod:&#45;&gt;module~mpi_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M316.4,-240.19C309.68,-235.99 302.24,-231.14 295.68,-226.37 281.56,-216.12 266.5,-203.65 254.69,-193.5"/>
+<polygon fill="#000000" stroke="#000000" points="256.93,-190.81 247.09,-186.89 252.34,-196.09 256.93,-190.81"/>
+</g>
+<!-- module~math_mod&#45;&gt;module~common_mod -->
+<g id="module~~partition_mod~~UsesGraph_edge16" class="edge">
+<title>module~math_mod:&#45;&gt;module~common_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M306.97,-257.32C285.79,-259.66 257,-260.41 233.09,-252.37"/>
+</g>
+<!-- petsc -->
+<g id="module~~partition_mod~~UsesGraph_node7" class="node">
+<title>petsc</title>
+<g id="a_module~~partition_mod~~UsesGraph_node7"><a xlink:href="https://www.mcs.anl.gov/petsc/" xlink:title="petsc">
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-186.47 0,-186.47 0,-162.27 54,-162.27 54,-186.47"/>
+<text text-anchor="middle" x="27" y="-171.22" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">petsc</text>
+</a>
+</g>
+</g>
+<!-- module~common_mod&#45;&gt;petsc -->
+<g id="module~~partition_mod~~UsesGraph_edge18" class="edge">
+<title>module~common_mod:&#45;&gt;petsc:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M90.07,-174.37C81.66,-174.37 72.78,-174.37 64.45,-174.37"/>
+<polygon fill="#000000" stroke="#000000" points="64.26,-170.87 54.26,-174.37 64.26,-177.87 64.26,-170.87"/>
+</g>
+<!-- module~solver_mod&#45;&gt;module~mpi_mod -->
+<g id="module~~partition_mod~~UsesGraph_edge22" class="edge">
+<title>module~solver_mod:&#45;&gt;module~mpi_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M336.85,-94.37C298.69,-97.89 265.82,-131.42 247.8,-153.94"/>
+<polygon fill="#000000" stroke="#000000" points="244.97,-151.89 241.64,-161.95 250.52,-156.16 244.97,-151.89"/>
+</g>
+<!-- module~solver_mod&#45;&gt;module~common_mod -->
+<g id="module~~partition_mod~~UsesGraph_edge19" class="edge">
+<title>module~solver_mod:&#45;&gt;module~common_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M336.85,-94.37C290.93,-98.6 273.31,-71.8 233.09,-94.37"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M415.84,-103.72C394.19,-97.76 364.98,-91.96 338.85,-94.37"/>
+</g>
+<!-- module~solver_mod&#45;&gt;iso_fortran_env -->
+<g id="module~~partition_mod~~UsesGraph_edge20" class="edge">
+<title>module~solver_mod:&#45;&gt;iso_fortran_env:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M415.95,-120.26C407.81,-121.75 398.86,-123.39 390.03,-125"/>
+<polygon fill="#000000" stroke="#000000" points="389.37,-121.57 380.17,-126.81 390.63,-128.45 389.37,-121.57"/>
+</g>
+<!-- module~solver_mod&#45;&gt;ieee_arithmetic -->
+<g id="module~~partition_mod~~UsesGraph_edge21" class="edge">
+<title>module~solver_mod:&#45;&gt;ieee_arithmetic:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M426.04,-102.23C409.89,-93.36 387.78,-81.23 369.87,-71.4"/>
+<polygon fill="#000000" stroke="#000000" points="371.39,-68.24 360.94,-66.49 368.02,-74.37 371.39,-68.24"/>
+</g>
+</g>
+</svg>
+</div><script>var panmodulepartition_modUsesGraph = svgPanZoom('#modulepartition_modUsesGraph', {zoomEnabled: true,controlIconsEnabled: true, fit: true, center: true,}); </script><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="484pt" height="33pt"
+ viewBox="0.00 0.00 484.00 32.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28.6)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28.6 480,-28.6 480,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24.4 0,-24.4 0,-0.2 54,-0.2 54,-24.4"/>
+<text text-anchor="middle" x="27" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="137.6,-24.4 72.4,-24.4 72.4,-0.2 137.6,-0.2 137.6,-24.4"/>
+<text text-anchor="middle" x="105" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="218.27,-24.4 155.73,-24.4 155.73,-0.2 218.27,-0.2 218.27,-24.4"/>
+<text text-anchor="middle" x="187" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="290,-24.4 236,-24.4 236,-0.2 290,-0.2 290,-24.4"/>
+<text text-anchor="middle" x="263" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="362,-24.4 308,-24.4 308,-0.2 362,-0.2 362,-24.4"/>
+<text text-anchor="middle" x="335" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="476.01,-24.4 379.99,-24.4 379.99,-0.2 476.01,-0.2 476.01,-24.4"/>
+<text text-anchor="middle" x="428" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a submodule to the (sub)module which it is
+    descended from. Dashed arrows point from a module or program unit to 
+    modules which it uses.
+    </p>
+    </div></div></div></div>
+      </li>
+      
+      </ul>
+    </div>
+    
+
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Used by</h3>
+      </div>
+      <ul class="list-group">
+  
+  
+  <li class="list-group-item">
+    <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: module~~partition_mod~~UsedByGraph Pages: 1 -->
+<svg id="modulepartition_modUsedByGraph" width="218pt" height="291pt"
+ viewBox="0.00 0.00 217.95 290.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~partition_mod~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 286.6)">
+<title>module~~partition_mod~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-286.6 213.95,-286.6 213.95,4 -4,4"/>
+<!-- module~partition_mod -->
+<g id="module~~partition_mod~~UsedByGraph_node1" class="node">
+<title>module~partition_mod</title>
+<polygon fill="none" stroke="black" points="75.39,-153.4 0.2,-153.4 0.2,-129.2 75.39,-129.2 75.39,-153.4"/>
+<text text-anchor="middle" x="37.8" y="-138.15" font-family="Helvetica,sans-Serif" font-size="10.50">partition_mod</text>
+</g>
+<!-- program~darcy_1f -->
+<g id="module~~partition_mod~~UsedByGraph_node2" class="node">
+<title>program~darcy_1f</title>
+<g id="a_module~~partition_mod~~UsedByGraph_node2"><a xlink:href=".././program/darcy_1f.html" xlink:title="darcy_1f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="187.77,-282.4 133.77,-282.4 133.77,-258.2 187.77,-258.2 187.77,-282.4"/>
+<text text-anchor="middle" x="160.77" y="-267.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_1f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_1f&#45;&gt;module~partition_mod -->
+<g id="module~~partition_mod~~UsedByGraph_edge1" class="edge">
+<title>program~darcy_1f:&#45;&gt;module~partition_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M133.75,-261.5C126.1,-258.13 118.06,-253.76 111.6,-248.3 83.05,-224.21 60.88,-186.28 48.84,-162.65"/>
+<polygon fill="#000000" stroke="#000000" points="51.88,-160.9 44.31,-153.48 45.6,-164 51.88,-160.9"/>
+</g>
+<!-- module~test_partition_mod -->
+<g id="module~~partition_mod~~UsedByGraph_node3" class="node">
+<title>module~test_partition_mod</title>
+<g id="a_module~~partition_mod~~UsedByGraph_node3"><a xlink:href=".././module/test_partition_mod.html" xlink:title="test_partition_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="210.13,-239.4 111.42,-239.4 111.42,-215.2 210.13,-215.2 210.13,-239.4"/>
+<text text-anchor="middle" x="160.77" y="-224.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_partition_mod</text>
+</a>
+</g>
+</g>
+<!-- module~test_partition_mod&#45;&gt;module~partition_mod -->
+<g id="module~~partition_mod~~UsedByGraph_edge2" class="edge">
+<title>module~test_partition_mod:&#45;&gt;module~partition_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M129.5,-215.12C123.39,-212.21 117.15,-208.9 111.6,-205.3 91.69,-192.41 71.65,-174.32 57.64,-160.66"/>
+<polygon fill="#000000" stroke="#000000" points="60.08,-158.15 50.52,-153.59 55.15,-163.12 60.08,-158.15"/>
+</g>
+<!-- program~darcy_crkp_2f -->
+<g id="module~~partition_mod~~UsedByGraph_node4" class="node">
+<title>program~darcy_crkp_2f</title>
+<g id="a_module~~partition_mod~~UsedByGraph_node4"><a xlink:href=".././program/darcy_crkp_2f.html" xlink:title="darcy_crkp_2f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="199.7,-196.4 121.84,-196.4 121.84,-172.2 199.7,-172.2 199.7,-196.4"/>
+<text text-anchor="middle" x="160.77" y="-181.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_2f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_crkp_2f&#45;&gt;module~partition_mod -->
+<g id="module~~partition_mod~~UsedByGraph_edge7" class="edge">
+<title>program~darcy_crkp_2f:&#45;&gt;module~partition_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M125.43,-172.09C112.15,-167.37 96.79,-161.91 82.72,-156.91"/>
+<polygon fill="#000000" stroke="#000000" points="83.82,-153.59 73.23,-153.54 81.48,-160.18 83.82,-153.59"/>
+</g>
+<!-- program~darcy -->
+<g id="module~~partition_mod~~UsedByGraph_node5" class="node">
+<title>program~darcy</title>
+<g id="a_module~~partition_mod~~UsedByGraph_node5"><a xlink:href=".././program/darcy.html" xlink:title="darcy">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="187.77,-153.4 133.77,-153.4 133.77,-129.2 187.77,-129.2 187.77,-153.4"/>
+<text text-anchor="middle" x="160.77" y="-138.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy</text>
+</a>
+</g>
+</g>
+<!-- program~darcy&#45;&gt;module~partition_mod -->
+<g id="module~~partition_mod~~UsedByGraph_edge4" class="edge">
+<title>program~darcy:&#45;&gt;module~partition_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M133.52,-141.3C119.61,-141.3 102.1,-141.3 85.93,-141.3"/>
+<polygon fill="#000000" stroke="#000000" points="85.55,-137.8 75.55,-141.3 85.55,-144.8 85.55,-137.8"/>
+</g>
+<!-- program~darcy_crkp_1f -->
+<g id="module~~partition_mod~~UsedByGraph_node6" class="node">
+<title>program~darcy_crkp_1f</title>
+<g id="a_module~~partition_mod~~UsedByGraph_node6"><a xlink:href=".././program/darcy_crkp_1f.html" xlink:title="darcy_crkp_1f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="199.7,-110.4 121.84,-110.4 121.84,-86.2 199.7,-86.2 199.7,-110.4"/>
+<text text-anchor="middle" x="160.77" y="-95.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_1f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_crkp_1f&#45;&gt;module~partition_mod -->
+<g id="module~~partition_mod~~UsedByGraph_edge5" class="edge">
+<title>program~darcy_crkp_1f:&#45;&gt;module~partition_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M125.43,-110.51C112.15,-115.23 96.79,-120.69 82.72,-125.69"/>
+<polygon fill="#000000" stroke="#000000" points="81.48,-122.42 73.23,-129.06 83.82,-129.01 81.48,-122.42"/>
+</g>
+<!-- program~darcy_crkp_2f~2 -->
+<g id="module~~partition_mod~~UsedByGraph_node7" class="node">
+<title>program~darcy_crkp_2f~2</title>
+<g id="a_module~~partition_mod~~UsedByGraph_node7"><a xlink:href=".././program/darcy_crkp_2f%7E2.html" xlink:title="darcy_crkp_2f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="199.7,-67.4 121.84,-67.4 121.84,-43.2 199.7,-43.2 199.7,-67.4"/>
+<text text-anchor="middle" x="160.77" y="-52.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_crkp_2f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_crkp_2f~2&#45;&gt;module~partition_mod -->
+<g id="module~~partition_mod~~UsedByGraph_edge6" class="edge">
+<title>program~darcy_crkp_2f~2:&#45;&gt;module~partition_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M129.5,-67.48C123.39,-70.39 117.15,-73.7 111.6,-77.3 91.69,-90.19 71.65,-108.28 57.64,-121.94"/>
+<polygon fill="#000000" stroke="#000000" points="55.15,-119.48 50.52,-129.01 60.08,-124.45 55.15,-119.48"/>
+</g>
+<!-- program~darcy_2f -->
+<g id="module~~partition_mod~~UsedByGraph_node8" class="node">
+<title>program~darcy_2f</title>
+<g id="a_module~~partition_mod~~UsedByGraph_node8"><a xlink:href=".././program/darcy_2f.html" xlink:title="darcy_2f">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="187.77,-24.4 133.77,-24.4 133.77,-0.2 187.77,-0.2 187.77,-24.4"/>
+<text text-anchor="middle" x="160.77" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">darcy_2f</text>
+</a>
+</g>
+</g>
+<!-- program~darcy_2f&#45;&gt;module~partition_mod -->
+<g id="module~~partition_mod~~UsedByGraph_edge3" class="edge">
+<title>program~darcy_2f:&#45;&gt;module~partition_mod:</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M133.75,-21.1C126.1,-24.47 118.06,-28.84 111.6,-34.3 83.05,-58.39 60.88,-96.32 48.84,-119.95"/>
+<polygon fill="#000000" stroke="#000000" points="45.6,-118.6 44.31,-129.12 51.88,-121.7 45.6,-118.6"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.44.2~dev.20200910.0243 (20200910.0243)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="484pt" height="33pt"
+ viewBox="0.00 0.00 484.00 32.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28.6)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28.6 480,-28.6 480,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24.4 0,-24.4 0,-0.2 54,-0.2 54,-24.4"/>
+<text text-anchor="middle" x="27" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="137.6,-24.4 72.4,-24.4 72.4,-0.2 137.6,-0.2 137.6,-24.4"/>
+<text text-anchor="middle" x="105" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="218.27,-24.4 155.73,-24.4 155.73,-0.2 218.27,-0.2 218.27,-24.4"/>
+<text text-anchor="middle" x="187" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="290,-24.4 236,-24.4 236,-0.2 290,-0.2 290,-24.4"/>
+<text text-anchor="middle" x="263" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="362,-24.4 308,-24.4 308,-0.2 362,-0.2 362,-24.4"/>
+<text text-anchor="middle" x="335" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="476.01,-24.4 379.99,-24.4 379.99,-0.2 476.01,-0.2 476.01,-24.4"/>
+<text text-anchor="middle" x="428" y="-9.15" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a submodule to the (sub)module which it is
+    descended from. Dashed arrows point from a module or program unit to 
+    modules which it uses.
+    </p>
+    </div></div></div></div>
+  </li>
+  
+      </ul>
+    </div>
+    
+
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-1">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-1" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/partition_mod.html#proc-exchange_glb_indx">exchange_glb_indx</a>
+      
+      <a class="list-group-item" href="../module/partition_mod.html#proc-exchange_prml_nodes">exchange_prml_nodes</a>
+      
+      <a class="list-group-item" href="../module/partition_mod.html#proc-get_connectivity">get_connectivity</a>
+      
+      <a class="list-group-item" href="../module/partition_mod.html#proc-get_glb_indx">get_glb_indx</a>
+      
+      <a class="list-group-item" href="../module/partition_mod.html#proc-get_glb_indx_dual_vlm">get_glb_indx_dual_vlm</a>
+      
+      <a class="list-group-item" href="../module/partition_mod.html#proc-parallel_setup">parallel_setup</a>
+      
+      <a class="list-group-item" href="../module/partition_mod.html#proc-partition_dual">partition_dual</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    <section>
+    <h2>Subroutines</h2>
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-exchange_glb_indx"></span><h3>
+public subroutine <a href='../proc/exchange_glb_indx.html'>exchange_glb_indx</a>(k)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Pieter Boom</dd>
+    
+    
+    <dt>Date</dt><dd>2020/09/16</dd>
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Exchange global indices to adjacent process (ghost nodes)</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>k</strong></td><td><p>simplicial order</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-exchange_prml_nodes"></span><h3>
+public subroutine <a href='../proc/exchange_prml_nodes.html'>exchange_prml_nodes</a>()
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Pieter Boom</dd>
+    
+    
+    <dt>Date</dt><dd>2020/09/16</dd>
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Exchange nodal locations to adjacent process (ghost nodes)</p>
+    
+    <h4>Arguments</h4>
+    
+      <em>None</em>
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-get_connectivity"></span><h3>
+public subroutine <a href='../proc/get_connectivity.html'>get_connectivity</a>()
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Pieter Boom</dd>
+    
+    
+    <dt>Date</dt><dd>2020/09/16</dd>
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Determine cross-process entity connections for all geometric orders</p>
+    
+    <h4>Arguments</h4>
+    
+      <em>None</em>
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-get_glb_indx"></span><h3>
+public subroutine <a href='../proc/get_glb_indx.html'>get_glb_indx</a>()
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Pieter Boom</dd>
+    
+    
+    <dt>Date</dt><dd>2020/09/16</dd>
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Get global entity indices from file</p>
+    
+    <h4>Arguments</h4>
+    
+      <em>None</em>
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-get_glb_indx_dual_vlm"></span><h3>
+public subroutine <a href='../proc/get_glb_indx_dual_vlm.html'>get_glb_indx_dual_vlm</a>()
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Pieter Boom</dd>
+    
+    
+    <dt>Date</dt><dd>2020/09/16</dd>
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Set global index of nodes from predetermined node index</p>
+    
+    <h4>Arguments</h4>
+    
+      <em>None</em>
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-parallel_setup"></span><h3>
+public subroutine <a href='../proc/parallel_setup.html'>parallel_setup</a>()
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Pieter Boom</dd>
+    
+    
+    <dt>Date</dt><dd>2020/09/16</dd>
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Sets up partitioning, read mesh and nodal locations, and sets connectivity</p>
+    
+    <h4>Arguments</h4>
+    
+      <em>None</em>
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-partition_dual"></span><h3>
+public subroutine <a href='../proc/partition_dual.html'>partition_dual</a>()
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Pieter Boom</dd>
+    
+    
+    <dt>Date</dt><dd>2020/09/16</dd>
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Partitions dual volumes across available processes
+ Assumption: Mesh is a simplicial complex in TetGen format</p>
+    
+    <h4>Arguments</h4>
+    
+      <em>None</em>
+    
+    
+
+  </div>
+  </div>
+
+    
+    </section>    
+    <br>
+    
+    
+    
+    </div>
+  </div>
+
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 <a rel="license" href="http://www.freebsd.org/copyright/freebsd-doc-license.html">FreeBSD Documentation License</a>
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> ParaGEMS was developed by Pieter Boom</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

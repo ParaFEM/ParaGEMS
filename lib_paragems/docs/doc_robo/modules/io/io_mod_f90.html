@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-type" content="text/html; charset=ISO-8859-1" />
+<link rel="stylesheet" href="../../robodoc.css" type="text/css" />
+<title>./../src/modules/io/io_mod.f90</title>
+<!-- Source: ./../src/modules/io/io_mod.f90 -->
+<!-- Generated with ROBODoc Version 4.99.43 (Sep  9 2020) -->
+</head>
+<body>
+<div id="logo">
+<a name="robo_top_of_doc">ParaGEMS Documentation</a>
+</div> <!-- logo -->
+<div id="navigation">
+<a class="menuitem" href="../../toc_index.html#top">Table of Contents</a>
+<a class="menuitem" href="../../robo_sourcefiles.html#top">Sourcefiles</a>
+<a class="menuitem" href="../../masterindex.html#top">Index</a>
+<a class="menuitem" href="../../robo_functions.html#top">Functions</a>
+<a class="menuitem" href="../../robo_modules.html#top">Modules</a>
+<a class="menuitem" href="../../robo_subroutines.html#top">Subrountines</a>
+</div> <!-- navigation -->
+<div id="content">
+<h3>TABLE OF CONTENTS</h3>
+<ul>
+<li>1. <a href="#robo3">modules|io/io_mod</a></li>
+<ul>
+<li>1.1. <a href="#robo50">io_mod/clean_PETSc_output</a></li>
+<li>1.2. <a href="#robo51">io_mod/init_write_MATLAB</a></li>
+<li>1.3. <a href="#robo52">io_mod/read_bndry_cond</a></li>
+<li>1.4. <a href="#robo53">io_mod/read_bndry_cond2</a></li>
+<li>1.5. <a href="#robo54">io_mod/read_crack_faces</a></li>
+<li>1.6. <a href="#robo55">io_mod/read_glb_indx</a></li>
+<li>1.7. <a href="#robo56">io_mod/read_glb_indx2</a></li>
+<li>1.8. <a href="#robo57">io_mod/read_nodes_prml</a></li>
+<li>1.9. <a href="#robo58">io_mod/read_prml_elms</a></li>
+<li>1.10. <a href="#robo59">io_mod/read_prml_elms2</a></li>
+<li>1.11. <a href="#robo60">io_mod/root_open_file_read</a></li>
+<li>1.12. <a href="#robo61">io_mod/root_open_file_write</a></li>
+<li>1.13. <a href="#robo62">io_mod/write_centers_MATLAB</a></li>
+<li>1.14. <a href="#robo63">io_mod/write_centers_MATLAB2</a></li>
+<li>1.15. <a href="#robo64">io_mod/write_pressure_MATLAB</a></li>
+<li>1.16. <a href="#robo65">io_mod/write_pressure_MATLAB2</a></li>
+<li>1.17. <a href="#robo66">io_mod/write_prml_volumes_MATLAB</a></li>
+<li>1.18. <a href="#robo67">io_mod/write_prml_volumes_MATLAB2</a></li>
+<li>1.19. <a href="#robo68">io_mod/write_solution_D0S</a></li>
+<li>1.20. <a href="#robo69">io_mod/write_solution_D0S</a></li>
+<li>1.21. <a href="#robo70">io_mod/write_solution_D0S2</a></li>
+<li>1.22. <a href="#robo71">io_mod/write_solution_D0S2</a></li>
+<li>1.23. <a href="#robo72">io_mod/write_solution_MATLAB</a></li>
+<li>1.24. <a href="#robo73">io_mod/write_solution_MATLAB2</a></li>
+</ul>
+</ul>
+<hr />
+<a name="modules7cio2fio5fmod"></a>
+<a name="robo3"></a><h2>modules|io/io_mod [ Modules ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="../../robo_modules.html#robo_top_of_doc">Modules</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">MODULE <strong>io_mod</strong>
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Module contains subroutines for reading from and writing to disk
+</pre>
+<p class="item_name">INCLUDES</p>
+<pre>   Name                    Purpose
+   <a href="../common/common_mod_f90.html#robo1">common_mod</a>              variable definitions
+   <a href="../mpi/mpi_mod_f90.html#robo5">mpi_mod</a>                 ???
+   <a href="../dec/dec_mod_f90.html#robo2">dec_mod</a>                 DEC functions
+   ieee_arithmetic
+   iso_fortran_env
+</pre>
+<p class="item_name">CONTAINS</p>
+<pre>   Subroutine              Purpose
+   set_defaults_io()       set default values for io variables
+   <a href="#robo58">read_prml_elms</a>()        read local node indices of highest order primal elements
+   <a href="#robo57">read_nodes_prml</a>()       read the nodal locations of the primal mesh
+   write_solution()        write solution to disk
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/20: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fclean5fPETSc5foutput"></a>
+<a name="robo50"></a><h2>io_mod/clean_PETSc_output [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>clean_PETSc_output</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Clean up PETSc output format
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2finit5fwrite5fMATLAB"></a>
+<a name="robo51"></a><h2>io_mod/init_write_MATLAB [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>init_write_MATLAB</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Setup PETSc for MATLAB output
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fread5fbndry5fcond"></a>
+<a name="robo52"></a><h2>io_mod/read_bndry_cond [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>read_bndry_cond</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Read boundary conditions from file
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fread5fbndry5fcond2"></a>
+<a name="robo53"></a><h2>io_mod/read_bndry_cond2 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>read_bndry_cond2</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Read boundary conditions from file
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fread5fcrack5ffaces"></a>
+<a name="robo54"></a><h2>io_mod/read_crack_faces [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>read_crack_faces</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   read crack faces from file
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fread5fglb5findx"></a>
+<a name="robo55"></a><h2>io_mod/read_glb_indx [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>read_glb_indx</strong>(k)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Read glbal indices of elements of given geometric order
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fread5fglb5findx2"></a>
+<a name="robo56"></a><h2>io_mod/read_glb_indx2 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>read_glb_indx2</strong>(k)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Read global indices of elements of given geometric order
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fread5fnodes5fprml"></a>
+<a name="robo57"></a><h2>io_mod/read_nodes_prml [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>read_nodes_prml</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Root process reads the location of primal nodes
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fread5fprml5felms"></a>
+<a name="robo58"></a><h2>io_mod/read_prml_elms [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>read_prml_elms</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Read local node indices of highest order primal elements
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fread5fprml5felms2"></a>
+<a name="robo59"></a><h2>io_mod/read_prml_elms2 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>read_prml_elms2</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Read local node indices of highest order primal elements
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2froot5fopen5ffile5fread"></a>
+<a name="robo60"></a><h2>io_mod/root_open_file_read [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>root_open_file_read</strong>(fname,unit)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Open given file on root process for reading
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2froot5fopen5ffile5fwrite"></a>
+<a name="robo61"></a><h2>io_mod/root_open_file_write [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>root_open_file_write</strong>(fname,unit)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   Open given file on root process for writing
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fwrite5fcenters5fMATLAB"></a>
+<a name="robo62"></a><h2>io_mod/write_centers_MATLAB [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>write_centers_MATLAB</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   write barycenters to file in MATLAB format
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fwrite5fcenters5fMATLAB2"></a>
+<a name="robo63"></a><h2>io_mod/write_centers_MATLAB2 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>write_centers_MATLAB2</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   write barycenters to file in MATLAB format
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fwrite5fpressure5fMATLAB"></a>
+<a name="robo64"></a><h2>io_mod/write_pressure_MATLAB [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>write_pressure_MATLAB</strong>(iter)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   write scaled pressure solution to file in MATLAB format
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fwrite5fpressure5fMATLAB2"></a>
+<a name="robo65"></a><h2>io_mod/write_pressure_MATLAB2 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>write_pressure_MATLAB2</strong>(iter)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   write scaled pressure solution to file in MATLAB format
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fwrite5fprml5fvolumes5fMATLAB"></a>
+<a name="robo66"></a><h2>io_mod/write_prml_volumes_MATLAB [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>write_prml_volumes_MATLAB</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   write primal volumes to file in MATLAB format
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fwrite5fprml5fvolumes5fMATLAB2"></a>
+<a name="robo67"></a><h2>io_mod/write_prml_volumes_MATLAB2 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>write_prml_volumes_MATLAB2</strong>()
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   write primary volumes to file in MATLAB format
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fwrite5fsolution5fD0S"></a>
+<a name="robo69"></a><h2>io_mod/write_solution_D0S [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>write_solution_D0S</strong>(sclr_name,vctr_name)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   write vtk solution at dual 0-cells
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fwrite5fsolution5fD0S"></a>
+<a name="robo68"></a><h2>io_mod/write_solution_D0S [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE write_unsteady_D0S(sclr_name,vctr_name,iter)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   write vtk solution at dual 0-cells for evolving simulations
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fwrite5fsolution5fD0S2"></a>
+<a name="robo71"></a><h2>io_mod/write_solution_D0S2 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE write_unsteady_D0S2(sclr_name,vctr_name,iter)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   write vtk solution at dual 0-cells for evolving simulations
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fwrite5fsolution5fD0S2"></a>
+<a name="robo70"></a><h2>io_mod/write_solution_D0S2 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>write_solution_D0S2</strong>(sclr_name,vctr_name)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   write vtk solution at dual 0-cells
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fwrite5fsolution5fMATLAB"></a>
+<a name="robo72"></a><h2>io_mod/write_solution_MATLAB [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>write_solution_MATLAB</strong>(iter)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   write solution to file in MATLAB format
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+<hr />
+<a name="io5fmod2fwrite5fsolution5fMATLAB2"></a>
+<a name="robo73"></a><h2>io_mod/write_solution_MATLAB2 [ Subrountines ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="#robo3">io_mod</a> ] [ <a href="../../robo_subroutines.html#robo_top_of_doc">Subrountines</a> ]</p>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">  SUBROUTINE <strong>write_solution_MATLAB2</strong>(iter)
+</pre>
+<p class="item_name">PURPOSE</p>
+<pre>   write solution to file in MATLAB format
+</pre>
+<p class="item_name">INPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">OUTPUTS</p>
+<pre>   Name                    Description
+</pre>
+<p class="item_name">SIDE EFFECTS</p>
+<pre>   -
+</pre>
+<p class="item_name">AUTHOR</p>
+<pre>   Pieter Boom
+</pre>
+<p class="item_name">MODIFICATION HISTORY</p>
+<pre>   2019/08/23: Created (PB)
+</pre>
+<p class="item_name">COPYRIGHT</p>
+<pre>   (c) University of Manchester
+</pre>
+
+</div> <!-- content -->
+<div id="footer">
+<p>Generated from ./../src/modules/io/io_mod.f90 with <a href="http://www.xs4all.nl/~rfsber/Robo/robodoc.html">ROBODoc</a> V4.99.43 on Wed Mar 17 2021 09:16:11
+</p>
+</div> <!-- footer -->
+</body>
+</html>
