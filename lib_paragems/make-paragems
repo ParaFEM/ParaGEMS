@@ -1,0 +1,335 @@
+#!/bin/sh
+
+# ------------------------------------------------------------------------------
+# Script to build and install PARAGEMS
+# Author: P.D. Boom
+# Adapted from ParaFEM (Louise M. Lever)
+# ------------------------------------------------------------------------------
+
+# To log build output, run using something like:
+# ./make-paragems 2>&1 | tee log
+#
+
+# Config vars (change as required)
+# PARAGEMS_HOME is the top level directory under which PARAGEMS is compiled
+if [ -z "$PARAGEMS_HOME" ] ; then PARAGEMS_HOME=`pwd` ; fi
+export PARAGEMS_HOME
+PARAGEMS_LIB=$PARAGEMS_HOME/lib
+PARAGEMS_INC=$PARAGEMS_HOME/include
+PARAGEMS_BIN=$PARAGEMS_HOME/bin
+export PARAGEMS_LIB PARAGEMS_INC PARAGEMS_BIN
+
+mkdir -p $PARAGEMS_BIN
+mkdir -p $PARAGEMS_LIB
+mkdir -p $PARAGEMS_INC
+
+# Check for VERSION in mk_defs.inc file and export VERSION number
+MK_DEFS=$PARAGEMS_HOME/config/mk_defs.inc
+if ! [ -f $MK_DEFS ]; then
+    echo
+    echo "*********************************************************************"
+    echo "ERROR: PARAGEMS MK_DEFS include file does not exist!"
+    echo "*********************************************************************"
+    exit
+fi
+. $MK_DEFS
+export VERSION
+
+# ------------------------------------------------------------------------------
+# These are the default build parameters for the script and are used unless
+# changed by calling the script with specific parameters.
+# ------------------------------------------------------------------------------
+
+# target flags - default release and install
+DO_RELEASE=1
+DO_DEBUG=0
+DO_INSTALL=1
+DO_CLEAN=0
+DO_EXECLEAN=0
+
+# build flags - default all
+BUILD_MODULES=1
+BUILD_LIBRARIES=0
+BUILD_PROGRAMS=1
+BUILD_TESTS_UNIT=1
+FOR_paraFEM=0
+
+# ------------------------------------------------------------------------------
+# Build type GROUPS and FLAGS
+# ------------------------------------------------------------------------------
+# BUILD_*_GIVEN denotes if command line arguments have been provided to specify
+#   what build groups should be processed.
+BUILD_MODULES_GIVEN=0
+BUILD_LIBRARIES_GIVEN=0
+BUILD_PROGRAMS_GIVEN=0
+BUILD_TESTS_UNIT_GIVEN=0
+# BUILD_*_DEFAULTS list all the group that should be built if no command line
+#   arguments are given.
+BUILD_LIBRARIES_DEFAULTS=""
+BUILD_MODULES_DEFAULTS="all"
+BUILD_PROGRAMS_DEFAULTS=""
+BUILD_TESTS_UNIT_DEFAULTS=""
+# BUILD_GROUP_* are the components of each group (if applicable)
+
+# BUILD_*_OPT are the actual groups that will be built. They are initialized to
+#   (null) here and either 1) set via command line arguments, or 2) set as the
+#   defaults above if no arguments are provided.
+BUILD_MODULES_OPT=
+BUILD_LIBRARIES_OPT=
+BUILD_PROGRAMS_OPT=
+BUILD_TESTS_UNIT_OPT=
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Local functions
+# ------------------------------------------------------------------------------
+
+showusage() {
+    echo "To capture a log file, please run the script as:"
+    echo "  ./make-paragems <ARGS> 2>&1 | tee log"
+    echo
+    echo "To use the make-paragems script, please use one or more of the following options on the command line:"
+    echo
+    echo "Specify the architecture:"
+    echo "  MACHINE=arch will set the machine to <arch>, where there exists an <arch.inc> file in config/"
+    echo "  * If MACHINE is set as an environment variable then it will be used to specify the architecture"
+    echo
+    echo "RELEASE or DEBUG build options:"
+    echo "  (-)debug will compile the selected libraries and programs with debugging enabled"
+    echo "  (-)release will compile the selected libraries and programs with the debugging disabled"
+    echo "  * the default mode is -release and does not require explicitly setting"
+    echo
+    echo "CLEAN options:"
+    echo "  clean: will clean all the object files and any other temporary files from the build"
+    echo "  execlean: will remove all compiled libraries, modules and executables"
+    echo "  * both clean and execlean are restricted in their scope by the build options above"
+    echo
+    echo "Limiting build options:"
+    echo "  --only-libs will only build the external libraries"
+    echo "  --only-modules will only build the module libraries"
+    echo "  --only-programs will only build the programs"
+    echo "  --only-test-unit will only build the unit tests"
+    echo "  --no-libs will disable the building of the external libraries"
+    echo "  --no-install will compile the libraries, modules, programs and tools but not install then in bin/"
+    echo "  --for-parafem will compile the core modules without PETSC for parafem integration"
+    echo
+}
+
+error() {
+    echo
+    echo "^^^^^^^^^^ ERROR ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+    echo
+    BUILD_ERRORS="$BUILD_ERRORS\nERROR in $1";
+}
+
+separator() {
+    echo "---------------------------------------------------------------------"
+}
+
+# ------------------------------------------------------------------------------
+# End of local functions
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Process all command line arguments
+# ------------------------------------------------------------------------------
+# LML: Some build options are not implemented yet and are commented out below
+# ------------------------------------------------------------------------------
+
+while [ $# -gt 0 ]; do
+    ARG=`echo $1 | tr "[:upper:]" "[:lower:]"`
+    case $ARG in
+	-usage) showusage; exit;;
+	usage) showusage; exit;;
+	-help) showusage; exit;;
+	help) showusage; exit;;
+
+	debug) DO_RELEASE=0; DO_DEBUG=1;;
+	-debug) DO_RELEASE=0; DO_DEBUG=1;;
+	release) DO_RELEASE=1; DO_DEBUG=0;;
+	-release) DO_RELEASE=1; DO_DEBUG=0;;
+	clean) DO_RELEASE=0; DO_DEBUG=0; DO_CLEAN=1;;
+	execlean) DO_RELEASE=0; DO_DEBUG=0; DO_EXECLEAN=1;;
+
+	# ----------------------------------------------------------------------
+	# build restriction options
+	--only-libs) BUILD_LIBRARIES=1; BUILD_MODULES=0; BUILD_PROGRAMS=0; BUILD_TESTS_UNIT=0;;
+	--only-modules) BUILD_LIBRARIES=0; BUILD_MODULES=1; BUILD_PROGRAMS=0; BUILD_TESTS_UNIT=0;;
+	--only-programs) BUILD_LIBRARIES=0; BUILD_MODULES=0; BUILD_PROGRAMS=1; BUILD_TESTS_UNIT=0;;
+	--only-test-unit) BUILD_LIBRARIES=0; BUILD_MODULES=0; BUILD_PROGRAMS=0; BUILD_TESTS_UNIT=1;;
+	--no-libs) BUILD_LIBRARIES=0;;
+	--no-install) DO_INSTALL=0;;
+	--for-parafem) BUILD_LIBRARIES=0; BUILD_MODULES=1; BUILD_PROGRAMS=0; BUILD_TESTS_UNIT=0; FOR_paraFEM=1;;
+	machine=*) MACHINE=`echo $ARG | sed -e 's/machine=//g'`;;
+    esac
+    shift
+done
+
+echo "Starting make-paragems build script..."
+echo "MACHINE set to $MACHINE";
+
+# If no build options are given, report and set defaults
+echo
+if [ $BUILD_LIBRARIES = 1 ] && [ $BUILD_LIBRARIES_GIVEN = 0 ]; then
+    echo "No build type given for LIBRARIES; defaulting to: $BUILD_LIBRARIES_DEFAULTS"
+    BUILD_LIBRARIES_OPT=$BUILD_LIBRARIES_DEFAULTS
+fi
+
+if [ $BUILD_MODULES = 1 ] && [ $BUILD_MODULES_GIVEN = 0 ]; then
+    echo "No build type given for MODULES; defaulting to: $BUILD_MODULES_DEFAULTS"
+    BUILD_MODULES_OPT=$BUILD_MODULES_DEFAULTS
+fi
+
+if [ $BUILD_PROGRAMS = 1 ] && [ $BUILD_PROGRAMS_GIVEN = 0 ]; then
+    echo "No build type given for PROGRAMS; defaulting to: $BUILD_PROGRAMS_DEFAULTS"
+    BUILD_PROGRAMS_OPT=$BUILD_PROGRAMS_DEFAULTS
+fi
+
+if [ $BUILD_TESTS_UNIT = 1 ] && [ $BUILD_TESTS_UNIT_GIVEN = 0 ]; then
+    echo "No build type given for TESTS_UNIT; defaulting to: $BUILD_TESTS_UNIT_DEFAULTS"
+    BUILD_TESTS_UNIT_OPT=$BUILD_TESTS_UNIT_DEFAULTS
+fi
+
+
+# ------------------------------------------------------------------------------
+# Check that env vars are set
+# ------------------------------------------------------------------------------
+
+if [ -z "$PARAGEMS_HOME" ] ; then
+    echo
+    echo "*********************************************************************"
+    echo "ERROR: PARAGEMS_HOME not set!";
+    echo "*********************************************************************"
+    exit 2
+fi
+
+if [ -z "$MACHINE" ] ; then
+    echo
+    echo "*********************************************************************"
+    echo "ERROR: MACHINE not set!"
+    echo "*********************************************************************"
+    exit 2
+else
+    # convert MACHINE to lower case
+    export MACHINE=`echo $MACHINE | tr "[:upper:]" "[:lower:]"`
+fi
+
+export MK_PARAGEMS_DEFS="$PARAGEMS_HOME"/config/"$MACHINE".inc
+if ! [ -f $MK_PARAGEMS_DEFS ]; then
+    echo
+    echo "*********************************************************************"
+    echo "ERROR: Machine include file $MK_PARAGEMS_DEFS does not exist!"
+    echo "*******************************************************************"
+fi
+
+# ------------------------------------------------------------------------------
+# Setup targets for building MODULES and PROGRAMS
+# ------------------------------------------------------------------------------
+
+LIBRARIES_TARGET=
+MODULES_TARGET=
+TARGET=
+if [ $DO_CLEAN -gt 0 ] || [ $DO_EXECLEAN -gt 0 ]; then
+    if [ $DO_CLEAN -gt 0 ]; then
+	LIBRARIES_TARGET="$LIBRARIES_TARGET clean"
+	MODULES_TARGET="$MODULES_TARGET clean"
+	TARGET="$TARGET clean";
+    fi
+    if [ $DO_EXECLEAN -gt 0 ]; then
+	LIBRARIES_TARGET="$LIBRARIES_TARGET execlean"
+	MODULES_TARGET="$MODULES_TARGET execlean"
+	TARGET="$TARGET execlean";
+    fi
+else
+    # for release/debug prefixes append each MODULES_BUILD_OPT
+    if [ $DO_RELEASE = 1 ]; then
+	for TYPE in $BUILD_LIBRARIES_OPT; do
+	    LIBRARIES_TARGET="$LIBRARIES_TARGET release"
+	done
+	for TYPE in $BUILD_MODULES_OPT; do
+	    MODULES_TARGET="$MODULES_TARGET release"
+	done
+	TARGET=release
+    else
+	if [ $DO_DEBUG = 1 ]; then
+	    for TYPE in $BUILD_LIBRARIES_OPT; do
+		LIBRARIES_TARGET="$LIBRARIES_TARGET debug"
+	    done
+	    for TYPE in $BUILD_MODULES_OPT; do
+		MODULES_TARGET="$MODULES_TARGET debug"
+	    done
+	    TARGET=debug
+	fi
+    fi
+    # append install rule if set
+    if [ $DO_INSTALL = 1 ]; then
+	MODULES_TARGET="$MODULES_TARGET install"
+	TARGET="$TARGET install"
+    fi
+fi
+echo
+echo "LIBRARIES TARGET is $LIBRARIES_TARGET"
+echo "MODULES TARGET is $MODULES_TARGET"
+echo "TARGET is $TARGET for programs: $BUILD_PROGRAMS_OPT"
+
+# ------------------------------------------------------------------------------
+# Perform the requested builds
+# ------------------------------------------------------------------------------
+
+if [ $BUILD_LIBRARIES = 1 ]; then
+    echo
+    echo "---------------------------------------------------------------------"
+    echo "Building LIBRARIES for $MACHINE"
+    echo "---------------------------------------------------------------------"
+    cd $PARAGEMS_HOME
+    cd src/libraries && make $LIBRARIES_TARGET && cd ../..
+    if [ $? = 2 ]; then	error "LIBRARIES/$LIBRARIES_TARGET"; fi
+    echo "Done building LIBRARIES for $MACHINE"
+fi
+
+if [ $BUILD_MODULES = 1 ]; then
+    echo
+    echo "---------------------------------------------------------------------"
+    echo "Building MODULES for $MACHINE"
+    echo "---------------------------------------------------------------------"
+    export FOR_paraFEM
+    cd $PARAGEMS_HOME
+    cd src/modules && make $MODULES_TARGET && cd ../..
+    if [ $? = 2 ]; then	error "MODULES/$MODULES_TARGET"; fi
+    echo "Done building MODULES for $MACHINE"
+fi
+
+if [ $BUILD_PROGRAMS = 1 ]; then
+    echo
+    echo "---------------------------------------------------------------------"
+    echo "Building PROGRAMS for $MACHINE"
+    echo "---------------------------------------------------------------------"
+    cd $PARAGEMS_HOME
+    cd src/programs/diffusion/ && make $TARGET && cd ../..
+    if [ $? = 2 ]; then	error "Diffusion"; fi
+
+fi
+
+if [ $BUILD_TESTS_UNIT = 1 ]; then
+    echo
+    echo "---------------------------------------------------------------------"
+    echo "Building TESTS_UNIT for $MACHINE"
+    echo "---------------------------------------------------------------------"
+    cd $PARAGEMS_HOME
+    cd src/tests/unit/ && make $TARGET && cd ../..
+    if [ $? = 2 ]; then	error "unit tests"; fi
+
+fi
+
+echo
+echo "************************************************************************"
+echo "Build ERRORS encountered:"
+if [ "$BUILD_ERRORS" != "" ]; then
+    echo -e $BUILD_ERRORS
+else
+    echo "  None"
+fi
+echo "************************************************************************"
+echo
+echo "ParaGEMS Build Complete"
+echo

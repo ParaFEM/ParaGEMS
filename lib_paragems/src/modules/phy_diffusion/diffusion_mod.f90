@@ -88,7 +88,7 @@ CONTAINS
   CHARACTER(LEN=SLEN)   :: buffer         !> buffer for command line arguments
   LOGICAL               :: err = .FALSE.  !> error logical
   INTEGER               :: mystat(5)      !> namelist io stat
-  REAL(KIND=iwp)        :: realbuf(42)    !> real MPI buffer
+  REAL(KIND=PGMSiwp)        :: realbuf(42)    !> real MPI buffer
   INTEGER               :: intbuf(8)      !> integer MPI buffer
   LOGICAL               :: logbuf(3)      !> logical MPI buffer
   CHARACTER(LEN=4*SLEN) :: charbuf        !> character MPI buffer
@@ -352,7 +352,7 @@ CONTAINS
   CHARACTER(LEN=slen)   :: fname              !> file name
 
   INTEGER         :: m,n                      !>
-  REAL(KIND=iwp)  :: flx                      !>
+  REAL(KIND=PGMSiwp)  :: flx                      !>
   Vec             :: b1,b2,q1,q2,wrk      !>
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -417,7 +417,7 @@ CONTAINS
   CHARACTER(LEN=slen)   :: fname              !> file name
 
   INTEGER         :: m,n                      !>
-  REAL(KIND=iwp)  :: flx                      !>
+  REAL(KIND=PGMSiwp)  :: flx                      !>
   Vec             :: b1,b2,q1,q2,wrk      !>
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -590,7 +590,7 @@ CONTAINS
   CHARACTER(LEN=slen)   :: fname              !> file name
 
   INTEGER         :: m,n                      !>
-  REAL(KIND=iwp)  :: flx                      !>
+  REAL(KIND=PGMSiwp)  :: flx                      !>
   Vec             :: b1,b2,q1,q2,wrk      !>
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -764,7 +764,7 @@ CONTAINS
   !-- local variables --
   INTEGER         :: m          !> number of rows/columns in global solution variables
   INTEGER         :: i,j,offset !>
-  REAL(KIND=iwp)  :: rnd
+  REAL(KIND=PGMSiwp)  :: rnd
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -802,7 +802,7 @@ CONTAINS
     CALL MatSetValues(Asub(3),1,lcl_complex(dim_cmplx+1)%glb_indx(i)-1,&
       lcl_complex(dim_cmplx+1)%num_bndry(i),&
       lcl_complex(dim_cmplx)%glb_indx(lcl_complex(dim_cmplx+1)%bndry(i)%indx)-1,&
-      -real(lcl_complex(dim_cmplx+1)%bndry(i)%sgn,iwp),INSERT_VALUES,petsc_ier)
+      -real(lcl_complex(dim_cmplx+1)%bndry(i)%sgn,PGMSiwp),INSERT_VALUES,petsc_ier)
   END DO
   CALL MatAssemblyBegin(Asub(3),MAT_FINAL_ASSEMBLY,petsc_ier)
   CALL MatAssemblyEnd(Asub(3),MAT_FINAL_ASSEMBLY,petsc_ier)
@@ -893,7 +893,7 @@ CONTAINS
   CHARACTER(LEN=slen)   :: fname              !> file name
 
   INTEGER         :: m,n                      !>
-  REAL(KIND=iwp)  :: flx                      !>
+  REAL(KIND=PGMSiwp)  :: flx                      !>
   Vec             :: b1,b2,q1,q2,wrk      !>
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -954,7 +954,7 @@ CONTAINS
   CHARACTER(LEN=slen)   :: fname              !> file name
 
   INTEGER         :: m,n                      !>
-  REAL(KIND=iwp)  :: flx                      !>
+  REAL(KIND=PGMSiwp)  :: flx                      !>
   Vec             :: r1,r2      !>
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1178,7 +1178,7 @@ CONTAINS
   !-- local variables --
   INTEGER         :: m          !> number of rows/columns in global solution variables
   INTEGER         :: i,j,offset !>
-  REAL(KIND=iwp)  :: rnd
+  REAL(KIND=PGMSiwp)  :: rnd
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -1222,7 +1222,7 @@ CONTAINS
     CALL MatSetValues(Asub(3),1,lcl_complex(dim_cmplx+1)%glb_indx(i)-1,&
       lcl_complex(dim_cmplx+1)%num_bndry(i),&
       lcl_complex(dim_cmplx)%glb_indx(lcl_complex(dim_cmplx+1)%bndry(i)%indx)-1,&
-      real(lcl_complex(dim_cmplx+1)%bndry(i)%sgn,iwp),INSERT_VALUES,petsc_ier)
+      real(lcl_complex(dim_cmplx+1)%bndry(i)%sgn,PGMSiwp),INSERT_VALUES,petsc_ier)
   END DO
   CALL MatAssemblyBegin(Asub(3),MAT_FINAL_ASSEMBLY,petsc_ier)
   CALL MatAssemblyEnd(Asub(3),MAT_FINAL_ASSEMBLY,petsc_ier)
@@ -1386,10 +1386,10 @@ CONTAINS
 
   !-- local variables --
   INTEGER :: i,junk,max_indx(2)              !> loop and temporary indicies
-  REAL(KIND=iwp) :: glb_max_flx(3)      !>
-  REAL(KIND=iwp) :: max_flx(3)      !>
-  REAL(KIND=iwp) :: flx      !>
-  REAL(KIND=iwp) ::  area      !>
+  REAL(KIND=PGMSiwp) :: glb_max_flx(3)      !>
+  REAL(KIND=PGMSiwp) :: max_flx(3)      !>
+  REAL(KIND=PGMSiwp) :: flx      !>
+  REAL(KIND=PGMSiwp) ::  area      !>
   CHARACTER(LEN=slen) :: msg      !>
   INTEGER        :: status(MPI_STATUS_SIZE)        !> size of MPI comm buffer
   Vec             :: q1,q2      !>
@@ -1506,10 +1506,10 @@ CONTAINS
 
   !-- local variables --
   INTEGER :: i,j,junk,indx             !> loop and temporary indicies
-  REAL(KIND=iwp) ::  area      !>
+  REAL(KIND=PGMSiwp) ::  area      !>
   CHARACTER(LEN=slen) :: msg      !>
   INTEGER        :: status(MPI_STATUS_SIZE)        !> size of MPI comm buffer
-  REAL(KIND=iwp)  :: rnd
+  REAL(KIND=PGMSiwp)  :: rnd
   LOGICAL :: search
   Vec             :: q1,q2      !>
 
@@ -1624,10 +1624,10 @@ CONTAINS
 
   !-- local variables --
   INTEGER :: i,junk,max_indx(2)              !> loop and temporary indicies
-  REAL(KIND=iwp) :: glb_max_flx(3)      !>
-  REAL(KIND=iwp) :: max_flx(3)      !>
-  REAL(KIND=iwp) :: flx      !>
-  REAL(KIND=iwp) ::  area      !>
+  REAL(KIND=PGMSiwp) :: glb_max_flx(3)      !>
+  REAL(KIND=PGMSiwp) :: max_flx(3)      !>
+  REAL(KIND=PGMSiwp) :: flx      !>
+  REAL(KIND=PGMSiwp) ::  area      !>
   CHARACTER(LEN=slen) :: msg      !>
   INTEGER        :: status(MPI_STATUS_SIZE)        !> size of MPI comm buffer
   Vec             :: q1,q2      !>
@@ -1731,7 +1731,7 @@ CONTAINS
 
     !-- local variables --
     INTEGER         :: i
-    REAL(KIND=iwp)  :: rnd
+    REAL(KIND=PGMSiwp)  :: rnd
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -1798,7 +1798,7 @@ CONTAINS
 
     !-- local variables --
     INTEGER         :: i
-    REAL(KIND=iwp)  :: rnd
+    REAL(KIND=PGMSiwp)  :: rnd
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -1869,7 +1869,7 @@ CONTAINS
   CHARACTER(LEN=slen)   :: fname              !> file name
 
   INTEGER         :: m,n                      !>
-  REAL(KIND=iwp)  :: flx                      !>
+  REAL(KIND=PGMSiwp)  :: flx                      !>
   Vec             :: b1,b2,q1,q2,wrk      !>
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1936,7 +1936,7 @@ CONTAINS
   CHARACTER(LEN=slen)   :: fname              !> file name
 
   INTEGER         :: m,n                      !>
-  REAL(KIND=iwp)  :: flx                      !>
+  REAL(KIND=PGMSiwp)  :: flx                      !>
   Vec             :: b1,b2,q1,q2,wrk      !>
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2095,7 +2095,7 @@ CONTAINS
   !-- local variables --
   INTEGER         :: m          !> number of rows/columns in global solution variables
   INTEGER         :: i,j,offset !>
-  REAL(KIND=iwp)  :: rnd
+  REAL(KIND=PGMSiwp)  :: rnd
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -2133,7 +2133,7 @@ CONTAINS
     CALL MatSetValues(Asub(3),1,lcl_complex(1)%glb_indx(i)-1,&
       lcl_complex(1)%num_bndry(i),&
       lcl_complex(2)%glb_indx(lcl_complex(1)%bndry(i)%indx)-1,&
-      -real(lcl_complex(1)%bndry(i)%sgn,iwp),INSERT_VALUES,petsc_ier)
+      -real(lcl_complex(1)%bndry(i)%sgn,PGMSiwp),INSERT_VALUES,petsc_ier)
   END DO
   CALL MatAssemblyBegin(Asub(3),MAT_FINAL_ASSEMBLY,petsc_ier)
   CALL MatAssemblyEnd(Asub(3),MAT_FINAL_ASSEMBLY,petsc_ier)
@@ -2224,7 +2224,7 @@ CONTAINS
   CHARACTER(LEN=slen)   :: fname              !> file name
 
   INTEGER         :: m,n                      !>
-  REAL(KIND=iwp)  :: flx                      !>
+  REAL(KIND=PGMSiwp)  :: flx                      !>
   Vec             :: b1,b2,q1,q2,wrk      !>
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2285,7 +2285,7 @@ CONTAINS
   CHARACTER(LEN=slen)   :: fname              !> file name
 
   INTEGER         :: m,n                      !>
-  REAL(KIND=iwp)  :: flx                      !>
+  REAL(KIND=PGMSiwp)  :: flx                      !>
   Vec             :: r1,r2      !>
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2377,7 +2377,7 @@ CONTAINS
   !-- local variables --
   INTEGER         :: m          !> number of rows/columns in global solution variables
   INTEGER         :: i,j,offset !>
-  REAL(KIND=iwp)  :: rnd
+  REAL(KIND=PGMSiwp)  :: rnd
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -2421,7 +2421,7 @@ CONTAINS
     CALL MatSetValues(Asub(3),1,lcl_complex(1)%glb_indx(i)-1,&
       lcl_complex(1)%num_bndry(i),&
       lcl_complex(2)%glb_indx(lcl_complex(1)%bndry(i)%indx)-1,&
-      real(lcl_complex(1)%bndry(i)%sgn,iwp),INSERT_VALUES,petsc_ier)
+      real(lcl_complex(1)%bndry(i)%sgn,PGMSiwp),INSERT_VALUES,petsc_ier)
   END DO
   CALL MatAssemblyBegin(Asub(3),MAT_FINAL_ASSEMBLY,petsc_ier)
   CALL MatAssemblyEnd(Asub(3),MAT_FINAL_ASSEMBLY,petsc_ier)

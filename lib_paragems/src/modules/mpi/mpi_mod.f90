@@ -489,7 +489,7 @@ CONTAINS
 
     !-- local variables --
     CHARACTER(LEN=slen) :: str    !> message string
-    REAL(KIND=iwp)      :: time   !> time variable
+    REAL(KIND=PGMSiwp)      :: time   !> time variable
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION

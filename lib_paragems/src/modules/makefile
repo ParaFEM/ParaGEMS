@@ -11,26 +11,38 @@
 include $(PARAGEMS_HOME)/config/mk_defs.inc
 include $(PARAGEMS_HOME)/config/$(MACHINE).inc
 
-FOBJS =	\
-	common/common_mod.o \
-	mpi/mpi_mod.o \
-	time_marching/time_marching_mod.o \
-	math/math_mod.o \
-	dec/dec_mod.o \
-	dec/geometry_mod.o \
-	dec/forman_mod.o \
-	solvers/solver_mod.o	\
-	io/io_mod.o \
-	mpi/partition_mod.o \
-	phy_diffusion/diffusion_mod.o	\
-	testing/testing_mod.o	\
-	common/test_common_mod.o \
-	dec/test_dec_mod.o \
-	io/test_io_mod.o \
-	math/test_math_mod.o \
-	mpi/test_mpi_mod.o \
-	phy_diffusion/test_diffusion_mod.o \
-	solvers/test_solver_mod.o
+
+ifeq ($(FOR_paraFEM),0)
+	FOBJS =	\
+		common/common_mod.o \
+		mpi/mpi_mod.o \
+		time_marching/time_marching_mod.o \
+		math/math_mod.o \
+		dec/dec_mod.o \
+		dec/geometry_mod.o \
+		dec/forman_mod.o \
+		solvers/solver_mod.o	\
+		io/io_mod.o \
+		mpi/partition_mod.o \
+		phy_diffusion/diffusion_mod.o	\
+		testing/testing_mod.o	\
+		common/test_common_mod.o \
+		dec/test_dec_mod.o \
+		io/test_io_mod.o \
+		math/test_math_mod.o \
+		mpi/test_mpi_mod.o \
+		phy_diffusion/test_diffusion_mod.o \
+		solvers/test_solver_mod.o
+else
+	FOBJS =	\
+		common/common_mod.o \
+		mpi/mpi_mod.o \
+		math/math_mod.o \
+		dec/dec_mod.o \
+		dec/geometry_mod.o \
+		dec/forman_mod.o
+endif
+
 
 all:	release
 

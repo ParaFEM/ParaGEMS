@@ -1,4 +1,4 @@
-PROGRAM p123
+PROGRAM pg123
 !-------------------------------------------------------------------------
 !      program p12.3 three dimensional analysis of Laplace's equation
 !      using 8-node bricks, DEC, preconditioned conjugate gradient solver
@@ -7,10 +7,11 @@ PROGRAM p123
 !USE mpi_wrapper  !remove comment for serial compilation
  USE precision; USE global_variables; USE mp_interface; USE input
  USE output; USE loading; USE timing; USE maths; USE gather_scatter
- USE new_library; IMPLICIT NONE
+ USE new_library; USE common_mod; USE geometry_mod
+ IMPLICIT NONE
 !neq,ntot  are now global variables - not declared
  INTEGER, PARAMETER::ndim=3,nodof=1
- INTEGER::nod,nn,nr,nip,i,j,k,iters,limit,iel,partitioner,meshgen,       &
+ INTEGER::nod,nn,nr,nip,i,j,k,m,iters,limit,iel,partitioner,meshgen,       &
    node_end,node_start,nodes_pp,loaded_freedoms,fixed_freedoms,          &
    fixed_freedoms_pp,fixed_freedoms_start,nlen,nres,is,it,               &
    loaded_freedoms_pp,loaded_freedoms_start,nels,ndof,npes_pp
@@ -26,6 +27,9 @@ PROGRAM p123
    val_f(:),g_coord_pp(:,:,:),ptl_pp(:)
  INTEGER,ALLOCATABLE::rest(:,:),g_num_pp(:,:),g_g_pp(:,:),no(:),         &
    no_pp(:),no_f_pp(:),no_pp_temp(:),sense(:),node(:)
+
+ INTEGER :: n_smplx
+ INTEGER, ALLOCATABLE :: smplx(:,:)
 !--------------------------input and initialisation-----------------------
  ALLOCATE(timest(20)); timest=zero; timest(1)=elap_time()
  CALL find_pe_procs(numpe,npes); CALL getname(argv,nlen)
@@ -45,6 +49,7 @@ PROGRAM p123
    pmul_pp(ntot,nels_pp),utemp_pp(ntot,nels_pp),col(ntot,1),eld(ntot),   &
    g_g_pp(ntot,nels_pp),kcy(ntot,ntot),row(1,ntot),kcz(ntot,ntot))
 !----------  find the steering array and equations per process -----------
+!----------  (account for restained nodes)                     -----------
  timest(2)=elap_time(); g_g_pp=0; neq=0
  IF(nr>0) THEN; CALL rearrange_2(rest)
    elements_0: DO iel=1, nels_pp
@@ -66,22 +71,61 @@ PROGRAM p123
  ALLOCATE(p_pp(neq_pp),r_pp(neq_pp),x_pp(neq_pp),xnew_pp(neq_pp),        &
    u_pp(neq_pp),diag_precon_pp(neq_pp),d_pp(neq_pp))
  r_pp=zero; p_pp=zero; x_pp=zero; xnew_pp=zero; diag_precon_pp=zero
-!-------------- element stiffness integration and storage ----------------
- CALL sample(element,points,weights); storkc_pp=zero
+!-------------- element stiffness using DEC and storage ----------------
+
+!-------- vvvvv
+ storkc_pp=zero
+
+ dim_cmplx = 3;  dim_embbd = 3;  k=dim_cmplx+1
+ ALLOCATE(num_pelm_pp(1)); num_pelm_pp(1)=nod;  extra_pelm=0;  glb_offset=0
+ glb_num_elm = (/ nod, 19, 18, 6 /);  num_elm=glb_num_elm
+ ALLOCATE(lcl_complex(k));
+ ALLOCATE(lcl_complex(1)%centers(nod,dim_embbd),&
+   lcl_complex(k)%orientation(6),lcl_complex(k)%node_indx(6,k))
+ lcl_complex(k)%orientation=0;  indx_offset = 0
+
  elements_1: DO iel=1,nels_pp
-   kcx=zero; kcy=zero; kcz=zero
-   gauss_pts_1:  DO i=1,nip
-     CALL shape_der (der,points,i); jac=MATMUL(der,g_coord_pp(:,:,iel))
-     det=determinant(jac); CALL invert(jac); deriv=MATMUL(jac,der)
-     row(1,:)=deriv(1,:); eld=deriv(1,:); col(:,1)=eld
-     kcx=kcx+MATMUL(col,row)*det*weights(i); row(1,:)=deriv(2,:)
-     eld=deriv(2,:); col(:,1)=eld
-     kcy=kcy+MATMUL(col,row)*det*weights(i); row(1,:)=deriv(3,:)
-     eld=deriv(3,:); col(:,1)=eld
-     kcz=kcz+MATMUL(col,row)*det*weights(i)
-   END DO gauss_pts_1
-   storkc_pp(:,:,iel)=kcx*kx+kcy*ky+kcz*kz
+   !- split elements into simplices
+   CALL elm2smplx(num_elm(dim_cmplx+1),lcl_complex(dim_cmplx+1)%node_indx,&
+      g_coord_pp(:,:,iel),element,nod)
+
+   !- Recursively compute element (co-)boundaries
+   DO k=dim_cmplx+1,2,-1; CALL calc_bndry_cobndry(k); END DO
+
+   !- setup connectivity
+   DO k=1,dim_cmplx+1; lcl_complex(k)%lcl_node_indx = lcl_complex(k)%node_indx; END DO
+
+   !- calc circumcenter
+   lcl_complex(1)%centers = g_coord_pp(:,:,iel)
+   DO k=2,dim_cmplx+1; CALL calc_circumcenters(k); END DO
+
+   !- calc primal edge and dual area
+   CALL calc_prml_unsgnd_vlm(2); CALL calc_dual_vlm(2)
+
+   kcx=zero
+   DO i=1,nod
+     DO j=1,lcl_complex(1)%num_cobndry(i)
+       k = lcl_complex(1)%cobndry(i)%indx(j)
+       IF (ABS(lcl_complex(2)%dual_volume(k))<small) CYCLE
+       m = lcl_complex(2)%bndry(k)%indx(1)
+       IF (i==m) m = lcl_complex(2)%bndry(k)%indx(2)
+       kcx(i,m) = kcx(i,m) - lcl_complex(2)%dual_volume(k) / max(lcl_complex(2)%prml_volume(k),small)
+       kcx(i,i) = kcx(i,i) + lcl_complex(2)%dual_volume(k) / max(lcl_complex(2)%prml_volume(k),small)
+     END DO
+   END DO
+   storkc_pp(:,:,iel)=kcx*kx
+
+   !- Deallocate variables
+   DO k=1,dim_cmplx+1;
+     IF (ALLOCATED(lcl_complex(k)%recv_indx))   DEALLOCATE(lcl_complex(k)%recv_indx)
+     IF (ALLOCATED(lcl_complex(k)%num_bndry))   DEALLOCATE(lcl_complex(k)%num_bndry)
+     IF (ALLOCATED(lcl_complex(k)%bndry))       DEALLOCATE(lcl_complex(k)%bndry)
+     IF (ALLOCATED(lcl_complex(k)%num_cobndry)) DEALLOCATE(lcl_complex(k)%num_cobndry)
+     IF (ALLOCATED(lcl_complex(k)%cobndry))     DEALLOCATE(lcl_complex(k)%cobndry)
+     IF (ALLOCATED(lcl_complex(k)%node_indx))   DEALLOCATE(lcl_complex(k)%node_indx)
+   END DO
  END DO elements_1
+
 !------------------ build the diagonal preconditioner --------------------
  ALLOCATE(diag_precon_tmp(ntot,nels_pp)); diag_precon_tmp=zero
  elements_1a: DO iel=1,nels_pp
@@ -179,4 +223,4 @@ PROGRAM p123
  IF(numpe==it)                                                           &
    WRITE(11,'(A,F10.4)') "This analysis took ",elap_time()-timest(1)
  IF(numpe==it) CLOSE(11); IF(numpe==1) CLOSE(12); CALL SHUTDOWN()
-END PROGRAM p123
+END PROGRAM pg123

@@ -615,7 +615,7 @@ CONTAINS
 
     !-- local variables --
     INTEGER                 :: i,k               !> loop counters
-    REAL(KIND=iwp)          :: minV,maxV,absminV !> min/max volumes
+    REAL(KIND=PGMSiwp)          :: minV,maxV,absminV !> min/max volumes
     CHARACTER(LEN=slen)     :: str               !> string for writing to log file
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -786,9 +786,9 @@ CONTAINS
     !-- local variables --
     INTEGER                     :: kp               !> simplicial order plus one
     INTEGER                     :: i,j              !> loop indices
-    REAL(KIND=iwp), ALLOCATABLE :: A(:,:),b(:)      !> solution variables
-    REAL(KIND=iwp), ALLOCATABLE :: pts(:,:)         !> bounding points
-    REAL(KIND=iwp), ALLOCATABLE :: ipiv(:),work(:)  !> work arrays
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: A(:,:),b(:)      !> solution variables
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: pts(:,:)         !> bounding points
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: ipiv(:),work(:)  !> work arrays
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -863,8 +863,8 @@ CONTAINS
     !-- local variables --
     INTEGER                     :: i,j          !> loop counters
     INTEGER                     :: fac          !> factorial
-    REAL(KIND=iwp), ALLOCATABLE :: A(:,:)       !> solution variable
-    REAL(KIND=iwp), ALLOCATABLE :: pts(:)       !> bounding points
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: A(:,:)       !> solution variable
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: pts(:)       !> bounding points
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -938,8 +938,8 @@ CONTAINS
     !-- local variables --
     INTEGER                     :: i,j          !> loop counters
     INTEGER                     :: fac          !> factorial
-    REAL(KIND=iwp), ALLOCATABLE :: A(:,:)       !> solution variable
-    REAL(KIND=iwp), ALLOCATABLE :: pts(:)       !> bounding points
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: A(:,:)       !> solution variable
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: pts(:)       !> bounding points
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -1004,8 +1004,8 @@ CONTAINS
     !-- local variables --
     INTEGER                 :: k                !> simplicial order
     INTEGER                 :: i,indx           !> loop counters
-    REAL(KIND=iwp), ALLOCATABLE :: pts(:,:)     !> bounding points
-    REAL(KIND=iwp), ALLOCATABLE :: sgn(:)       !> sign of volume elements
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: pts(:,:)     !> bounding points
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: sgn(:)       !> sign of volume elements
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -1073,8 +1073,8 @@ CONTAINS
     !-- arguments --
     INTEGER, INTENT(IN)           :: k            !> simplicial order
     INTEGER, INTENT(IN)           :: indx,p_indx  !> element and parent index
-    REAL(KIND=iwp), INTENT(INOUT) :: pts(:,:)     !> bounding points
-    REAL(KIND=iwp), INTENT(INOUT) :: sgn(:)       !> sign of volume elements
+    REAL(KIND=PGMSiwp), INTENT(INOUT) :: pts(:,:)     !> bounding points
+    REAL(KIND=PGMSiwp), INTENT(INOUT) :: sgn(:)       !> sign of volume elements
 
     !-- local variables --
     INTEGER                       :: i            !> loop counters
@@ -1152,7 +1152,7 @@ CONTAINS
     !-- arguments --
     INTEGER, INTENT(IN)           :: k          !> simplicial order
     INTEGER, INTENT(IN)           :: indx       !> element index
-    REAL(KIND=iwp), INTENT(INOUT) :: pts(:,:)   !> bounding points
+    REAL(KIND=PGMSiwp), INTENT(INOUT) :: pts(:,:)   !> bounding points
 
     !-- local variables --
     INTEGER                       :: i          !> loop counters
@@ -1206,14 +1206,14 @@ CONTAINS
     IMPLICIT NONE
 
     !-- arguments --
-    REAL(KIND=iwp), INTENT(IN)  :: pts(:,:)         !> bounding points
+    REAL(KIND=PGMSiwp), INTENT(IN)  :: pts(:,:)         !> bounding points
     INTEGER, INTENT(IN)         :: n                !> # points to use
 
     !-- local variables --
     INTEGER                     :: i                !> loop counters
     INTEGER                     :: fac              !> factorial
-    REAL(KIND=iwp), ALLOCATABLE :: A(:,:)           !> solution variable
-    REAL(KIND=iwp)              :: calc_unsgnd_vlm  !> function value
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: A(:,:)           !> solution variable
+    REAL(KIND=PGMSiwp)              :: calc_unsgnd_vlm  !> function value
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -1283,8 +1283,8 @@ CONTAINS
 
     INTEGER               :: junk               !> junk comm variable
     INTEGER               :: buffer_size        !> size of comm buffer
-    REAL(KIND=iwp), ALLOCATABLE  :: sbuffer(:)  !> send buffer
-    REAL(KIND=iwp), ALLOCATABLE  :: rbuffer(:)  !> receive buffer
+    REAL(KIND=PGMSiwp), ALLOCATABLE  :: sbuffer(:)  !> send buffer
+    REAL(KIND=PGMSiwp), ALLOCATABLE  :: rbuffer(:)  !> receive buffer
     INTEGER, ALLOCATABLE  :: req(:)             !> request variable for non-blocking comms
     INTEGER, ALLOCATABLE  :: status(:,:)        !> size of MPI comm buffer
 
@@ -1381,8 +1381,8 @@ CONTAINS
 
     INTEGER               :: junk               !> junk comm variable
     INTEGER               :: buffer_size        !> size of comm buffer
-    REAL(KIND=iwp), ALLOCATABLE  :: sbuffer(:)  !> send buffer
-    REAL(KIND=iwp), ALLOCATABLE  :: rbuffer(:)  !> receive buffer
+    REAL(KIND=PGMSiwp), ALLOCATABLE  :: sbuffer(:)  !> send buffer
+    REAL(KIND=PGMSiwp), ALLOCATABLE  :: rbuffer(:)  !> receive buffer
     INTEGER, ALLOCATABLE  :: req(:)             !> request variable for non-blocking comms
     INTEGER, ALLOCATABLE  :: status(:,:)        !> size of MPI comm buffer
 
@@ -1635,7 +1635,7 @@ CONTAINS
     INTEGER           :: f_vrts(3)  !> face vertex indices
     INTEGER           :: indx       !> face index
     LOGICAL           :: not_found  !> is boundary face index found
-    REAL(KIND=iwp)    :: grads(4,3) !> barycentric gradients
+    REAL(KIND=PGMSiwp)    :: grads(4,3) !> barycentric gradients
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -1738,7 +1738,7 @@ CONTAINS
     IMPLICIT NONE
 
     !-- arguments --
-    REAL(KIND=iwp), INTENT(INOUT) :: pts(:,:) !> vertices of simplex
+    REAL(KIND=PGMSiwp), INTENT(INOUT) :: pts(:,:) !> vertices of simplex
     INTEGER, INTENT(IN)           :: n        !> number of vertices
 
     !-- local variables --

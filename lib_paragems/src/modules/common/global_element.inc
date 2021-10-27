@@ -45,11 +45,11 @@
 
     !> ## boundary information
     INTEGER, ALLOCATABLE  ::  bc_type(:)    !>- boundary type of entity
-    REAL(KIND=iwp), ALLOCATABLE :: &
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: &
                               bc_val(:,:)   !>- boundary value
 
     !> ## Geometric information
-    REAL(KIND=iwp), ALLOCATABLE :: &
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: &
                               centers(:,:), &   !>- location of centers
                               prml_volume(:), & !>- primal volume
                               dual_volume(:), & !>- dual volume
@@ -62,12 +62,12 @@
     TYPE(indx_struct), ALLOCATABLE  :: &
                               bndry(:), &       !>- boundary structure
                               cobndry(:)        !>- co-boundary structure
-    REAL(KIND=iwp), ALLOCATABLE :: &
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: &
                               hdg_star(:), &    !>- hodge star
                               inv_hdg_star(:)   !>- hodge star inverse
 
     !> ## solution information
-    REAL(KIND=iwp), ALLOCATABLE :: &
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: &
                               prml_sol(:,:), &  !>- primal solution
                               dual_sol(:,:), &  !>- dual solution
                               whtny_sol(:,:)    !>- Whitney interp. solution

@@ -28,8 +28,8 @@
 
   !> Global time marching variables
   !> ##
-  REAL(KIND=iwp)            :: time = 0.d0          !>- time (simulation, not walltime)
-  REAL(KIND=iwp)            :: dt = 0.d0            !>- unsteady step size
+  REAL(KIND=PGMSiwp)            :: time = 0.d0          !>- time (simulation, not walltime)
+  REAL(KIND=PGMSiwp)            :: dt = 0.d0            !>- unsteady step size
   INTEGER                   :: initial_step = 1, &
                                final_step = 1
   INTEGER                   :: step=0, &
@@ -47,7 +47,7 @@
     INTEGER                  :: p,q, &               !>- order and stage order
                                 r,s,s_initial        !>- number of steps and stages
     INTEGER, ALLOCATABLE     :: q_step_indx(:)
-    REAL(KIND=iwp), ALLOCATABLE :: &
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: &
                                 A(:,:), &            !>- Coefficient matrix (internal function)
                                 B(:,:), &            !>- Coefficient matrix (internal solution)
                                 U(:,:), &            !>- Coefficient matrix (external function)

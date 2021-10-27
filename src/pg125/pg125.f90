@@ -26,7 +26,7 @@ PROGRAM pg125
 !-------------------------- input and initialisation ---------------------
  ALLOCATE(timest(25)); timest=zero; timest(1)=elap_time()
  CALL find_pe_procs(numpe,npes); CALL getname(argv,nlen)
- CALL read_pg125(argv,numpe,dtim,element,fixed_freedoms,kx,ky,kz,         &
+ CALL read_p125(argv,numpe,dtim,element,fixed_freedoms,kx,ky,kz,         &
    loaded_nodes,meshgen,nels,nip,nn,nod,npri,nr,nres,nstep,partitioner,  &
    val0)
  CALL calc_nels_pp(argv,nels,npes,numpe,partitioner,nels_pp)

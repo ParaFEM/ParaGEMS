@@ -116,7 +116,7 @@ CONTAINS
 
     !-- local variables --
     INTEGER               :: i                      !> counter
-    REAL(KIND=IWP)        :: tmp_time, tmp_time_int !> temporary timing variable
+    REAL(KIND=PGMSiwp)        :: tmp_time, tmp_time_int !> temporary timing variable
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -623,8 +623,8 @@ CONTAINS
 
     INTEGER               :: junk               !> junk comm variable
     INTEGER               :: buffer_size        !> size of comm buffer
-    REAL(KIND=iwp), ALLOCATABLE :: sbuffer(:)   !> send buffer
-    REAL(KIND=iwp), ALLOCATABLE :: rbuffer(:)   !> send buffer
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: sbuffer(:)   !> send buffer
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: rbuffer(:)   !> send buffer
     INTEGER, ALLOCATABLE  :: req(:)             !> request var (non-blking comm)
     INTEGER, ALLOCATABLE  :: status(:,:)        !> size of MPI comm buffer
 

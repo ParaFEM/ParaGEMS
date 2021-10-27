@@ -25,14 +25,14 @@
   !> # constants
   !> general physical constants
   !> ##
-  REAL(KIND=iwp), PARAMETER :: &
+  REAL(KIND=PGMSiwp), PARAMETER :: &
                               pi = 3.14159265358979d0   !>- pi
 
   !> # reference values
   !> general reference values
   !> ##
   INTEGER, PARAMETER      ::  slen = 128    !>- default string length
-  REAL(KIND=iwp), PARAMETER :: &
+  REAL(KIND=PGMSiwp), PARAMETER :: &
                               large = 1.d+15, & !>- large value (dp)
                               larges = 1.d+7, & !>- large value (sp)
                               largeh = 1.d+3, & !>- large value (hp)
@@ -53,8 +53,8 @@
   !> # timing variables
   !> global timing variables
   !> ##
-  REAL(KIND=iwp)          ::  start_time    !>- program start time
-  REAL(KIND=iwp)          ::  curnt_time    !>- current program time
+  REAL(KIND=PGMSiwp)          ::  start_time    !>- program start time
+  REAL(KIND=PGMSiwp)          ::  curnt_time    !>- current program time
 
   !> # error checking variables
   !> error variable

@@ -260,7 +260,7 @@ CONTAINS
   !-- local variables --
   CHARACTER(LEN=slen)   :: msg              !> message sting for log file
   INTEGER               :: iters,m,n        !> number of iterations
-  REAL(KIND=iwp)        :: rnorm            !> final residual norm
+  REAL(KIND=PGMSiwp)        :: rnorm            !> final residual norm
 
   CHARACTER(LEN=slen)   :: fname            !> file name
   KSPConvergedReason :: reason              !>

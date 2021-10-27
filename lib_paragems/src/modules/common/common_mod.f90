@@ -38,8 +38,12 @@ MODULE common_mod
 !===============================================================================
 
   !-- implicit none, and include files for variables and libraries --
+#if FORparaFEM
+  !USE mpi
+#else
 #include <petsc/finclude/petsc.h>
   USE petsc
+#endif
 
   IMPLICIT NONE
 
@@ -49,7 +53,12 @@ MODULE common_mod
 #include "global_io.inc"
 #include "global_mesh.inc"
 #include "global_element.inc"
+
+#if FORparaFEM
+#include "mpif.h"
+#else
 #include "global_petsc.inc"
+#endif
 
 !===============================================================================
 CONTAINS

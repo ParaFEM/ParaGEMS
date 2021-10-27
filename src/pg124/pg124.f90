@@ -31,7 +31,7 @@ PROGRAM pg124
 !--------------------------input and initialisation-----------------------
  ALLOCATE(timest(20)); timest=zero; timest(1)=elap_time()
  CALL find_pe_procs(numpe,npes); CALL getname(argv,nlen)
- CALL read_pg124(argv,numpe,dtim,element,fixed_freedoms,limit,            &
+ CALL read_p124(argv,numpe,dtim,element,fixed_freedoms,limit,            &
    loaded_freedoms,meshgen,nels,nip,nn,nod,npri,nr,nres,nstep,           &
    partitioner,theta,tol,np_types,val0)
  CALL calc_nels_pp(argv,nels,npes,numpe,partitioner,nels_pp)

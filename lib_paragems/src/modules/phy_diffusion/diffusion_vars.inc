@@ -23,10 +23,10 @@
   ! variables
   !-----------------------------------------------------------------------------
   !-- diffusion parameters --
-  REAL(KIND=iwp) :: Dk = 1.d0                           ! diffusion coefficient
-  REAL(KIND=iwp) :: blk_dir(3) = (/ 1.d0, 0.d0, 0.d0 /) ! bulk direction
-  REAL(KIND=iwp) :: ref_val = 1.d0                      ! reference value
-  REAL(KIND=iwp) :: bc_vals(30) = 0.d0                  ! boundary value (max 30)
+  REAL(KIND=PGMSiwp) :: Dk = 1.d0                           ! diffusion coefficient
+  REAL(KIND=PGMSiwp) :: blk_dir(3) = (/ 1.d0, 0.d0, 0.d0 /) ! bulk direction
+  REAL(KIND=PGMSiwp) :: ref_val = 1.d0                      ! reference value
+  REAL(KIND=PGMSiwp) :: bc_vals(30) = 0.d0                  ! boundary value (max 30)
 
   !-- Darcy's Law (fluid) parameters --
   !-- p - pressure; Re*k/mu - Reynolds * permeability / viscosity; q - flow rate
@@ -44,9 +44,9 @@
   INTEGER        :: crck_type = 0                       ! cracking process
   INTEGER        :: max_crcks = 1                       ! max cracks
   INTEGER        :: crcks_pstep = 1                     ! max faces cracked / step
-  REAL(KIND=iwp) :: crck_thrshld = 0.0d0                ! min vel for cracking
-  REAL(KIND=iwp) :: crck_area = 0.0d0                   ! cumulative crack area
-  REAL(KIND=iwp) :: rnd_max = 0.0d0                     ! face variation
+  REAL(KIND=PGMSiwp) :: crck_thrshld = 0.0d0                ! min vel for cracking
+  REAL(KIND=PGMSiwp) :: crck_area = 0.0d0                   ! cumulative crack area
+  REAL(KIND=PGMSiwp) :: rnd_max = 0.0d0                     ! face variation
 
   !-- diffusion namelist --
   NAMELIST /diff_param/ Dk, blk_dir, ref_val, bc_vals

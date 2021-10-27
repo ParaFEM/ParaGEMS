@@ -21,7 +21,7 @@
   !> # real precision
   !> Define real precision
   !> ##
-  INTEGER, PARAMETER      ::  iwp = SELECTED_REAL_KIND(15,300)  !>- real prec.
+  INTEGER, PARAMETER      ::  PGMSiwp = SELECTED_REAL_KIND(15,300)  !>- real prec.
 
 !END MODULE
 ! global_precision

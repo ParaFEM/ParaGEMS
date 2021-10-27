@@ -86,7 +86,7 @@ CONTAINS
 
     !-- local variables --
     INTEGER                 :: i,k               !> loop counters
-    REAL(KIND=iwp)          :: minV,maxV,absminV !> min/max volumes
+    REAL(KIND=PGMSiwp)          :: minV,maxV,absminV !> min/max volumes
     CHARACTER(LEN=slen)     :: str               !> string for writing to log file
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -240,9 +240,9 @@ CONTAINS
     !-- local variables --
     INTEGER                     :: kp               !> simplicial order plus one
     INTEGER                     :: i,j              !> loop indices
-    REAL(KIND=iwp), ALLOCATABLE :: A(:,:),b(:)      !> solution variables
-    REAL(KIND=iwp), ALLOCATABLE :: pts(:,:)         !> bounding points
-    REAL(KIND=iwp), ALLOCATABLE :: ipiv(:),work(:)  !> work arrays
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: A(:,:),b(:)      !> solution variables
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: pts(:,:)         !> bounding points
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: ipiv(:),work(:)  !> work arrays
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -317,8 +317,8 @@ CONTAINS
     !-- local variables --
     INTEGER                     :: i,j          !> loop counters
     INTEGER                     :: fac          !> factorial
-    REAL(KIND=iwp), ALLOCATABLE :: A(:,:)       !> solution variable
-    REAL(KIND=iwp), ALLOCATABLE :: pts(:)       !> bounding points
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: A(:,:)       !> solution variable
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: pts(:)       !> bounding points
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -343,7 +343,7 @@ CONTAINS
       END DO
 
       !-- compute and assign signed volume --
-      lcl_complex(k)%prml_volume(i) = lcl_complex(k)%orientation(i)*determinant(A,dim_embbd)/fac
+      lcl_complex(k)%prml_volume(i) = lcl_complex(k)%orientation(i)*RCSV_determinant(A,dim_embbd)/fac
     END DO
 
     !-- clean up --
@@ -387,8 +387,8 @@ CONTAINS
     !-- local variables --
     INTEGER                     :: i,j          !> loop counters
     INTEGER                     :: fac          !> factorial
-    REAL(KIND=iwp), ALLOCATABLE :: A(:,:)       !> solution variable
-    REAL(KIND=iwp), ALLOCATABLE :: pts(:)       !> bounding points
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: A(:,:)       !> solution variable
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: pts(:)       !> bounding points
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -413,7 +413,7 @@ CONTAINS
       END DO
 
       !-- compute and assign unsigned volume --
-      lcl_complex(k)%prml_volume(i) = SQRT(ABS(determinant(MATMUL(A,TRANSPOSE(A)),k-1)))/fac
+      lcl_complex(k)%prml_volume(i) = SQRT(ABS(RCSV_determinant(MATMUL(A,TRANSPOSE(A)),k-1)))/fac
     END DO
 
     !-- clean up --
@@ -453,8 +453,8 @@ CONTAINS
     !-- local variables --
     INTEGER                 :: k                !> simplicial order
     INTEGER                 :: i,indx           !> loop counters
-    REAL(KIND=iwp), ALLOCATABLE :: pts(:,:)     !> bounding points
-    REAL(KIND=iwp), ALLOCATABLE :: sgn(:)       !> sign of volume elements
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: pts(:,:)     !> bounding points
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: sgn(:)       !> sign of volume elements
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -514,8 +514,8 @@ CONTAINS
     !-- arguments --
     INTEGER, INTENT(IN)           :: k,ki         !> simplicial order
     INTEGER, INTENT(IN)           :: indx,p_indx  !> element and parent index
-    REAL(KIND=iwp), INTENT(INOUT) :: pts(:,:)     !> bounding points
-    REAL(KIND=iwp), INTENT(INOUT) :: sgn(:)       !> sign of volume elements
+    REAL(KIND=PGMSiwp), INTENT(INOUT) :: pts(:,:)     !> bounding points
+    REAL(KIND=PGMSiwp), INTENT(INOUT) :: sgn(:)       !> sign of volume elements
 
     !-- local variables --
     INTEGER                       :: i            !> loop counters
@@ -591,14 +591,14 @@ CONTAINS
     IMPLICIT NONE
 
     !-- arguments --
-    REAL(KIND=iwp), INTENT(IN)  :: pts(:,:)         !> bounding points
+    REAL(KIND=PGMSiwp), INTENT(IN)  :: pts(:,:)         !> bounding points
     INTEGER, INTENT(IN)         :: n                !> # points to use
 
     !-- local variables --
     INTEGER                     :: i                !> loop counters
     INTEGER                     :: fac              !> factorial
-    REAL(KIND=iwp), ALLOCATABLE :: A(:,:)           !> solution variable
-    REAL(KIND=iwp)              :: calc_unsgnd_vlm  !> function value
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: A(:,:)           !> solution variable
+    REAL(KIND=PGMSiwp)              :: calc_unsgnd_vlm  !> function value
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -618,7 +618,7 @@ CONTAINS
       END DO
 
       !-- compute and assign unsigned volume --
-      calc_unsgnd_vlm = SQRT(ABS(determinant(MATMUL(A,TRANSPOSE(A)),n)))/fac
+      calc_unsgnd_vlm = SQRT(ABS(RCSV_determinant(MATMUL(A,TRANSPOSE(A)),n)))/fac
 
       !-- clean up --
       DEALLOCATE(A)
@@ -668,8 +668,8 @@ CONTAINS
 
     INTEGER               :: junk               !> junk comm variable
     INTEGER               :: buffer_size        !> size of comm buffer
-    REAL(KIND=iwp), ALLOCATABLE  :: sbuffer(:)  !> send buffer
-    REAL(KIND=iwp), ALLOCATABLE  :: rbuffer(:)  !> receive buffer
+    REAL(KIND=PGMSiwp), ALLOCATABLE  :: sbuffer(:)  !> send buffer
+    REAL(KIND=PGMSiwp), ALLOCATABLE  :: rbuffer(:)  !> receive buffer
     INTEGER, ALLOCATABLE  :: req(:)             !> request variable for non-blocking comms
     INTEGER, ALLOCATABLE  :: status(:,:)        !> size of MPI comm buffer
 
@@ -766,8 +766,8 @@ CONTAINS
 
     INTEGER               :: junk               !> junk comm variable
     INTEGER               :: buffer_size        !> size of comm buffer
-    REAL(KIND=iwp), ALLOCATABLE  :: sbuffer(:)  !> send buffer
-    REAL(KIND=iwp), ALLOCATABLE  :: rbuffer(:)  !> receive buffer
+    REAL(KIND=PGMSiwp), ALLOCATABLE  :: sbuffer(:)  !> send buffer
+    REAL(KIND=PGMSiwp), ALLOCATABLE  :: rbuffer(:)  !> receive buffer
     INTEGER, ALLOCATABLE  :: req(:)             !> request variable for non-blocking comms
     INTEGER, ALLOCATABLE  :: status(:,:)        !> size of MPI comm buffer
 
@@ -971,7 +971,7 @@ CONTAINS
     IMPLICIT NONE
 
     !-- arguments --
-    REAL(KIND=iwp), INTENT(INOUT) :: pts(:,:) !> vertices of simplex
+    REAL(KIND=PGMSiwp), INTENT(INOUT) :: pts(:,:) !> vertices of simplex
     INTEGER, INTENT(IN)           :: n        !> number of vertices
 
     !-- local variables --
@@ -1002,7 +1002,7 @@ CONTAINS
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 !
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-!/****/s* dec_mod/calc_whitney_C2_BC
+!/****/s* geometry_mod/calc_whitney_C2_BC
 !* SYNOPSIS
   SUBROUTINE calc_whitney_C2_BC()
 !* PURPOSE
@@ -1029,7 +1029,7 @@ CONTAINS
     INTEGER           :: f_vrts(dim_cmplx)  !> face vertex indices
     INTEGER           :: indx       !> face index
     LOGICAL           :: not_found  !> is boundary face index found
-    REAL(KIND=iwp)    :: grads(dim_cmplx+1,dim_embbd) !> barycentric gradients
+    REAL(KIND=PGMSiwp)    :: grads(dim_cmplx+1,dim_embbd) !> barycentric gradients
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -1083,9 +1083,374 @@ CONTAINS
     RETURN
 
   END SUBROUTINE
-! dec_mod/calc_whitney_C2_BC
+! geometry_mod/calc_whitney_C2_BC
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 !
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!/****/s* geometry_mod/elm2smplx
+!* SYNOPSIS
+  SUBROUTINE elm2smplx(n_smplx,smplx,pts,element,nod)
+!* PURPOSE
+!*   Compute the Whitney interpolation of primal faces to primal volume barycentric centers
+!* SIDE EFFECTS
+!*   -
+!* AUTHOR
+!*   Pieter Boom
+!* MODIFICATION HISTORY
+!*   2019/08/23: Created (PB)
+!* COPYRIGHT
+!*   (c) University of Manchester
+!******/
+!> author: Pieter Boom
+!> date: 2019/08/23
+!> Compute the Whitney interpolation of primal faces to primal volume barycentric centers
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    IMPLICIT NONE
+
+    !-- arguments --
+    INTEGER, INTENT(OUT)              :: n_smplx, nod !>
+    INTEGER, ALLOCATABLE, INTENT(OUT) :: smplx(:,:) !>
+    REAL(KIND=PGMSiwp), INTENT(IN)    :: pts(:,:) !> vertices of element
+    CHARACTER(LEN=*), INTENT(IN)      :: element  !> element type
+
+    !-- local variables --
+    INTEGER           :: ori
+    LOGICAL           :: sqr(6), to_split     !> loop indices
+
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+! MAIN EXECUTION
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    !-- zero solution array --
+    IF (ALLOCATED(smplx)) DEALLOCATE(smplx)
+
+    !--
+    SELECT CASE (element)
+    CASE('line')
+      IF (nod /= 2) CALL end_mpi()
+      n_smplx=1;  ALLOCATE(smplx(1,2));  smplx(1,:) = (/ 1, 2 /)
+    CASE('triangle')
+      IF (nod /= 3) CALL end_mpi()
+      n_smplx=1;  ALLOCATE(smplx(1,3));  smplx(1,:) = (/ 1, 2, 3 /)
+    CASE('tetrahedron')
+      IF (nod /= 4) CALL end_mpi()
+      n_smplx=1;  ALLOCATE(smplx(1,4));  smplx(1,:) = (/ 1, 2, 3, 4 /)
+    CASE('quadrilateral')
+      IF (nod /= 4) CALL end_mpi()
+      n_smplx=2; ALLOCATE(smplx(2,3))
+      IF ( dist(pts(1,:),pts(3,:)) < dist(pts(2,:),pts(4,:)) ) THEN
+        smplx(1,:) = (/ 1, 2, 3 /); smplx(2,:) = (/ 1, 3, 4 /)
+      ELSE;  smplx(1,:) = (/ 1, 2, 4 /); smplx(2,:) = (/ 2, 3, 4 /);  END IF
+    CASE('hexahedron')
+      IF (nod /= 8) CALL end_mpi()
+
+      sqr = .FALSE.;  ori = 0
+      CALL get_diag((/1,2,3,4/),pts,sqr,ori,1)      ![1 2 3 4] zeta
+      CALL get_diag((/1,5,6,2/),pts,sqr,ori,2)      ![1 2 6 5] eta
+      CALL get_diag((/1,4,8,5/),pts,sqr,ori,3)      ![4 1 5 8] xi
+      CALL get_diag((/7,6,5,8/),pts,sqr,ori,4)      ![5 6 7 8] zeta
+      CALL get_diag((/7,8,4,3/),pts,sqr,ori,5)      ![3 4 8 7] eta
+      CALL get_diag((/7,3,2,6/),pts,sqr,ori,6)      ![2 3 7 6] xi
+
+      to_split = .TRUE.
+      DO WHILE(to_split)
+        to_split = .FALSE.
+        SELECT CASE(ori)
+        CASE(0);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          1, 2, 3, 7  ,  1, 2, 6, 7  ,  1, 5, 6, 7  , &
+          1, 3, 4, 7  ,  1, 4, 8, 7  ,  1, 5, 8, 7 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(1);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          1, 2, 4, 7  ,  1, 4, 8, 7  ,  2, 3, 4, 7  , &
+          1, 2, 6, 7  ,  1, 5, 6, 7  ,  1, 5, 8, 7 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(2);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          1, 2, 3, 7  ,  1, 2, 5, 7  ,  2, 5, 6, 7  , &
+          1, 3, 4, 7  ,  1, 4, 8, 7  ,  1, 5, 8, 7 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(3);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          1, 2, 4, 7  ,  1, 4, 8, 7  ,  2, 3, 4, 7  , &
+          1, 2, 5, 7  ,  2, 5, 6, 7  ,  1, 5, 8, 7 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(4);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          1, 2, 3, 7  ,  1, 2, 6, 7  ,  1, 5, 6, 7  , &
+          1, 3, 4, 7  ,  1, 4, 5, 7  ,  4, 5, 8, 7 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(5);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          1, 4, 5, 7  ,  1, 5, 6, 7  ,  4, 5, 8, 7  , &
+          1, 2, 4, 7  ,  1, 2, 6, 7  ,  2, 3, 4, 7 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(6);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          1, 2, 3, 7  ,  1, 2, 5, 7  ,  2, 5, 6, 7  , &
+          1, 3, 4, 7  ,  1, 4, 5, 7  ,  4, 5, 8, 7 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(7);  n_smplx=5;  ALLOCATE(smplx(5,4));  smplx = RESHAPE( (/ &
+          1, 2, 4, 5  ,  2, 5, 6, 7  ,  2, 3, 4, 7  , &
+          4, 5, 7, 8  ,  2, 4, 5, 7 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(8);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          1, 3, 4, 7  ,  1, 4, 8, 7  ,  1, 2, 3, 7  , &
+          1, 2, 6, 7  ,  1, 6, 8, 7  ,  1, 5, 6, 8 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(9);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          1, 2, 4, 7  ,  1, 4, 8, 7  ,  2, 3, 4, 7  , &
+          1, 2, 6, 7  ,  1, 5, 6, 8  ,  1, 6, 8, 7 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(10);  to_split = .TRUE.
+          IF (sqr(1)) THEN;      ori = ori + 1;
+          ELSEIF (sqr(2)) THEN;  ori = ori - 2;
+          ELSEIF (sqr(4)) THEN;  ori = ori - 8;
+          ELSEIF (sqr(5)) THEN;  ori = ori + 16;
+          ELSE;  ori = ori + 100;  END IF
+        CASE(11);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          2, 1, 4, 8  ,  2, 4, 7, 8  ,  2, 3, 4, 7  , &
+          2, 1, 5, 8  ,  2, 5, 6, 8  ,  2, 6, 7, 8 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(12);  to_split = .TRUE.
+          IF (sqr(1)) THEN;      ori = ori + 1;
+          ELSEIF (sqr(3)) THEN;  ori = ori - 4;
+          ELSEIF (sqr(4)) THEN;  ori = ori - 8;
+          ELSEIF (sqr(6)) THEN;  ori = ori + 32;
+          ELSE;  ori = ori + 100; END IF
+        CASE(13);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+            4, 5, 8, 6  ,  4, 1, 5, 6  ,  4, 7, 8, 6  , &
+            4, 1, 2, 6  ,  4, 2, 7, 6  ,  4, 2, 3, 7 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(14);  to_split = .TRUE.
+          IF (sqr(1)) THEN;                   ori = ori + 1;
+          ELSEIF (sqr(4)) THEN;               ori = ori - 8;
+          ELSEIF (sqr(2) .AND. sqr(3)) THEN;  ori = ori - 6;
+          ELSEIF (sqr(2) .AND. sqr(6)) THEN;  ori = ori + 30;
+          ELSEIF (sqr(3) .AND. sqr(5)) THEN;  ori = ori + 12;
+          ELSEIF (sqr(5) .AND. sqr(6)) THEN;  ori = ori + 48;
+          ELSE;  ori = ori + 100;  END IF
+        CASE(15);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          4, 5, 8, 6  ,  4, 2, 5, 6  ,  4, 1, 2, 5  , &
+          4, 7, 8, 6  ,  4, 2, 7, 6  ,  4, 2, 3, 7 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(16);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          1, 2, 3, 7  ,  1, 3, 8, 7  ,  1, 3, 4, 8  , &
+          1, 5, 6, 7  ,  1, 2, 6, 7  ,  1, 5, 8, 7 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(17);  to_split = .TRUE.
+          IF (sqr(1)) THEN;      ori = ori - 1;
+          ELSEIF (sqr(2)) THEN;  ori = ori + 2;
+          ELSEIF (sqr(4)) THEN;  ori = ori + 8;
+          ELSEIF (sqr(5)) THEN;  ori = ori - 16;
+          ELSE;  ori = ori + 100;  END IF
+        CASE(18);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          1, 2, 5, 7  ,  1, 2, 3, 7  ,  2, 5, 6, 7  , &
+          1, 5, 8, 7  ,  1, 3, 8, 7  ,  1, 3, 4, 8 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(19);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          2, 3, 7, 8  ,  2, 1, 4, 8  ,  2, 3, 4, 8  , &
+          2, 1, 5, 8  ,  2, 5, 7, 8  ,  2, 5, 6, 7 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(20);  to_split = .TRUE.
+          IF (sqr(2)) THEN;      ori = ori + 2;
+          ELSEIF (sqr(3)) THEN;  ori = ori - 4;
+          ELSEIF (sqr(5)) THEN;  ori = ori - 16;
+          ELSEIF (sqr(6)) THEN;  ori = ori + 32;
+          ELSE;  ori = ori + 100;  END IF
+        CASE(21);  to_split = .TRUE.
+          IF (sqr(2)) THEN;                   ori = ori + 2;
+          ELSEIF (sqr(5)) THEN;               ori = ori - 16;
+          ELSEIF (sqr(1) .AND. sqr(3)) THEN;  ori = ori - 5;
+          ELSEIF (sqr(1) .AND. sqr(6)) THEN;  ori = ori + 31;
+          ELSEIF (sqr(3) .AND. sqr(4)) THEN;  ori = ori + 4;
+          ELSEIF (sqr(4) .AND. sqr(6)) THEN;  ori = ori + 40;
+          ELSE;  ori = ori + 100; END IF
+        CASE(22);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          3, 1, 2, 5  ,  3, 2, 7, 5  ,  2, 6, 7, 5  , &
+          3, 1, 4, 5  ,  3, 4, 8, 5  ,  3, 7, 8, 5 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(23);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          3, 2, 7, 5  ,  3, 7, 8, 5  ,  2, 6, 7, 5  , &
+          3, 2, 4, 5  ,  3, 4, 8, 5  ,  1, 2, 4, 5 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(24);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          1, 2, 3, 7  ,  1, 3, 8, 7  ,  1, 3, 4, 8  , &
+          1, 2, 6, 7  ,  1, 6, 8, 7  ,  1, 5, 6, 8 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(25);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          2, 3, 7, 8  ,  2, 3, 4, 8  ,  2, 1, 4, 8  , &
+          2, 1, 6, 8  ,  2, 6, 7, 8  ,  1, 5, 6, 8 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(26);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          2, 3, 7, 8  ,  2, 1, 3, 8  ,  1, 3, 4, 8  , &
+          2, 5, 6, 8  ,  2, 6, 7, 8  ,  2, 1, 5, 8 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(27);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          2, 3, 7, 8  ,  2, 3, 4, 8  ,  2, 1, 4, 8  , &
+          2, 5, 6, 8  ,  2, 6, 7, 8  ,  2, 1, 5, 8 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(28);  to_split = .TRUE.
+          IF (sqr(3)) THEN;                   ori = ori - 4;
+          ELSEIF (sqr(6)) THEN;               ori = ori + 32;
+          ELSEIF (sqr(1) .AND. sqr(2)) THEN;  ori = ori + 3;
+          ELSEIF (sqr(1) .AND. sqr(4)) THEN;  ori = ori - 15;
+          ELSEIF (sqr(2) .AND. sqr(4)) THEN;  ori = ori - 6;
+          ELSEIF (sqr(4) .AND. sqr(5)) THEN;  ori = ori - 24;
+          ELSE;  ori = ori + 100;  END IF
+        CASE(29);  to_split = .TRUE.
+          IF (sqr(2)) THEN;      ori = ori + 2;
+          ELSEIF (sqr(3)) THEN;  ori = ori - 4;
+          ELSEIF (sqr(5)) THEN;  ori = ori - 16;
+          ELSEIF (sqr(6)) THEN;  ori = ori + 32;
+          ELSE;  ori = ori + 100;  END IF
+        CASE(30);  to_split = .TRUE.
+          IF (sqr(1)) THEN;      ori = ori + 1;
+          ELSEIF (sqr(3)) THEN;  ori = ori - 4;
+          ELSEIF (sqr(4)) THEN;  ori = ori - 8;
+          ELSEIF (sqr(6)) THEN;  ori = ori + 32;
+          ELSE;  ori = ori + 100; END IF
+        CASE(31);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          2, 3, 7, 8  ,  2, 3, 4, 8  ,  2, 6, 7, 8  , &
+          2, 5, 6, 8  ,  2, 4, 5, 8  ,  2, 1, 4, 5 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(32);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          1, 5, 6, 7  ,  1, 3, 6, 7  ,  1, 2, 3, 6  , &
+          1, 3, 4, 7  ,  1, 4, 8, 7  ,  1, 5, 8, 7 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(33);  to_split = .TRUE.
+          IF (sqr(1)) THEN;      ori = ori - 1;
+          ELSEIF (sqr(3)) THEN;  ori = ori + 4;
+          ELSEIF (sqr(4)) THEN;  ori = ori + 8;
+          ELSEIF (sqr(6)) THEN;  ori = ori - 32;
+          ELSE;  ori = ori + 100; END IF
+        CASE(34);  to_split = .TRUE.
+          IF (sqr(2)) THEN;      ori = ori - 2;
+          ELSEIF (sqr(3)) THEN;  ori = ori + 4;
+          ELSEIF (sqr(5)) THEN;  ori = ori + 16;
+          ELSEIF (sqr(6)) THEN;  ori = ori - 32;
+          ELSE;  ori = ori + 100;  END IF
+        CASE(35);  to_split = .TRUE.
+          IF (sqr(3)) THEN;                   ori = ori + 4;
+          ELSEIF (sqr(6)) THEN;               ori = ori - 32;
+          ELSEIF (sqr(1) .AND. sqr(2)) THEN;  ori = ori - 3;
+          ELSEIF (sqr(1) .AND. sqr(5)) THEN;  ori = ori + 15;
+          ELSEIF (sqr(2) .AND. sqr(4)) THEN;  ori = ori + 6;
+          ELSEIF (sqr(4) .AND. sqr(5)) THEN;  ori = ori + 24;
+          ELSE;  ori = ori + 100;  END IF
+        CASE(36);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          3, 6, 7, 5  ,  3, 4, 7, 5  ,  4, 7, 8, 5  , &
+          3, 1, 4, 5  ,  3, 1, 6, 5  ,  3, 1, 2, 6 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(37);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          4, 3, 7, 6  ,  4, 5, 7, 6  ,  4, 5, 7, 8  , &
+          4, 1, 2, 6  ,  4, 2, 3, 6  ,  4, 1, 5, 6 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(38);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          3, 6, 7, 5  ,  3, 4, 7, 5  ,  4, 7, 8, 5  , &
+          3, 1, 2, 5  ,  3, 2, 6, 5  ,  3, 1, 4, 5 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(39);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          4, 3, 7, 6  ,  4, 5, 7, 6  ,  4, 5, 7, 8  , &
+          4, 2, 3, 6  ,  4, 2, 5, 6  ,  4, 1, 2, 5 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(40);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          4, 1, 8, 6  ,  4, 7, 8, 6  ,  1, 5, 8, 6  , &
+          4, 1, 3, 6  ,  4, 3, 7, 6  ,  1, 2, 3, 6 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(41);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          4, 1, 8, 6  ,  4, 7, 8, 6  ,  1, 5, 8, 6  , &
+          4, 3, 7, 6  ,  4, 2, 3, 6  ,  4, 1, 2, 6 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(42);  to_split = .TRUE.
+          IF (sqr(2)) THEN;                   ori = ori - 2;
+          ELSEIF (sqr(5)) THEN;               ori = ori + 16;
+          ELSEIF (sqr(1) .AND. sqr(3)) THEN;  ori = ori + 5;
+          ELSEIF (sqr(1) .AND. sqr(6)) THEN;  ori = ori - 31;
+          ELSEIF (sqr(3) .AND. sqr(4)) THEN;  ori = ori - 4;
+          ELSEIF (sqr(4) .AND. sqr(6)) THEN;  ori = ori - 40;
+          ELSE;  ori = ori + 100;  END IF
+        CASE(43);  to_split = .TRUE.
+          IF (sqr(2)) THEN;      ori = ori - 2;
+          ELSEIF (sqr(3)) THEN;  ori = ori + 4;
+          ELSEIF (sqr(5)) THEN;  ori = ori + 16;
+          ELSEIF (sqr(6)) THEN;  ori = ori - 32;
+          ELSE;  ori = ori + 100;  END IF
+        CASE(44);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          4, 1, 5, 6  ,  4, 5, 8, 6  ,  4, 7, 8, 6  , &
+          4, 1, 3, 6  ,  4, 3, 7, 6  ,  1, 2, 3, 6 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(45);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          4, 3, 7, 6  ,  4, 5, 8, 6  ,  4, 7, 8, 6  , &
+          4, 1, 2, 6  ,  4, 2, 3, 6  ,  4, 1, 5, 6 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(46);  to_split = .TRUE.
+          IF (sqr(2)) THEN;      ori = ori + 2;
+          ELSEIF (sqr(3)) THEN;  ori = ori - 4;
+          ELSEIF (sqr(5)) THEN;  ori = ori - 16;
+          ELSEIF (sqr(6)) THEN;  ori = ori + 32;
+          ELSE;  ori = ori + 100;  END IF
+        CASE(47);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          4, 3, 7, 6  ,  4, 5, 8, 6  ,  4, 7, 8, 6  , &
+          4, 2, 3, 6  ,  4, 2, 5, 6  ,  4, 1, 2, 5 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(48);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          1, 5, 6, 7  ,  1, 3, 6, 7  ,  1, 2, 3, 6  , &
+          1, 5, 8, 7  ,  1, 3, 8, 7  ,  1, 3, 4, 8 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(49);  to_split = .TRUE.
+          IF (sqr(1)) THEN;                   ori = ori - 1;
+          ELSEIF (sqr(4)) THEN;               ori = ori + 8;
+          ELSEIF (sqr(2) .AND. sqr(3)) THEN;  ori = ori + 6;
+          ELSEIF (sqr(2) .AND. sqr(6)) THEN;  ori = ori - 30;
+          ELSEIF (sqr(3) .AND. sqr(5)) THEN;  ori = ori - 12;
+          ELSEIF (sqr(5) .AND. sqr(6)) THEN;  ori = ori - 48;
+          ELSE;  ori = ori + 100;  END IF
+        CASE(50);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          3, 6, 7, 5  ,  3, 2, 6, 5  ,  3, 1, 2, 5  , &
+          3, 7, 8, 5  ,  3, 1, 8, 5  ,  3, 1, 4, 8 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(51);  to_split = .TRUE.
+          IF (sqr(1)) THEN;      ori = ori - 1;
+          ELSEIF (sqr(3)) THEN;  ori = ori + 4;
+          ELSEIF (sqr(4)) THEN;  ori = ori + 8;
+          ELSEIF (sqr(6)) THEN;  ori = ori - 16;
+          ELSE;  ori = ori + 100;  END IF
+        CASE(52);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          3, 1, 6, 5  ,  3, 6, 7, 5  ,  3, 1, 2, 6  , &
+          3, 1, 4, 5  ,  3, 4, 8, 5  ,  3, 7, 8, 5 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(53);  to_split = .TRUE.
+          IF (sqr(1)) THEN;      ori = ori - 1;
+          ELSEIF (sqr(2)) THEN;  ori = ori + 2;
+          ELSEIF (sqr(4)) THEN;  ori = ori + 8;
+          ELSEIF (sqr(5)) THEN;  ori = ori - 32;
+          ELSE;  ori = ori + 100;  END IF
+        CASE(54);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          3, 1, 2, 5  ,  3, 2, 6, 5  ,  3, 6, 7, 5  , &
+          3, 1, 4, 5  ,  3, 4, 8, 5  ,  3, 7, 8, 5 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(55);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          3, 2, 6, 5  ,  3, 2, 4, 5  ,  1, 2, 4, 5  , &
+          3, 4, 8, 5  ,  3, 7, 8, 5  ,  3, 6, 7, 5 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(56);  n_smplx=5;  ALLOCATE(smplx(5,4));  smplx = RESHAPE( (/ &
+          1, 5, 6, 8  ,  1, 2, 3, 6  ,  1, 3, 4, 8  , &
+          3, 6, 7, 8  ,  1, 3, 6, 8 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(57);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          4, 3, 8, 6  ,  4, 2, 3, 6  ,  3, 7, 8, 6  , &
+          4, 1, 2, 6  ,  4, 1, 8, 6  ,  1, 5, 8, 6 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(58);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          3, 2, 6, 5  ,  3, 6, 8, 5  ,  3, 6, 7, 8  , &
+          3, 1, 8, 5  ,  3, 1, 2, 5  ,  3, 1, 4, 8 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(59);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          2, 1, 5, 8  ,  2, 5, 6, 8  ,  2, 1, 4, 8  , &
+          2, 3, 4, 8  ,  2, 3, 6, 8  ,  3, 6, 7, 8 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(60);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          3, 6, 8, 5  ,  3, 4, 8, 5  ,  3, 6, 7, 8  , &
+          3, 1, 4, 5  ,  3, 1, 6, 5  ,  3, 1, 2, 6 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(61);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          4, 3, 8, 6  ,  4, 2, 3, 6  ,  3, 7, 8, 6  , &
+          4, 1, 2, 6  ,  4, 1, 5, 6  ,  4, 5, 8, 6 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(62);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          3, 6, 8, 5  ,  3, 4, 8, 5  ,  3, 6, 7, 8  , &
+          3, 1, 4, 5  ,  3, 1, 2, 5  ,  3, 2, 6, 5 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE(63);  n_smplx=6;  ALLOCATE(smplx(6,4));  smplx = RESHAPE( (/ &
+          3, 6, 8, 5  ,  3, 4, 8, 5  ,  3, 6, 7, 8  , &
+          3, 2, 6, 5  ,  3, 2, 4, 5  ,  1, 2, 4, 5 /) , SHAPE(smplx), ORDER=(/2,1/) )
+        CASE DEFAULT
+          CALL end_mpi();
+        END SELECT
+      END DO
+    CASE DEFAULT
+      CALL end_mpi();
+    END SELECT
+
+    RETURN
+
+  END SUBROUTINE
+! geometry_mod/elm2smplx
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!
+
+SUBROUTINE get_diag(vrts,pts,sqr,ori,ptr)
+  LOGICAL, INTENT(INOUT) :: sqr(:)
+  INTEGER, INTENT(INOUT) :: ori
+  INTEGER, INTENT(IN)    :: vrts(4), ptr
+  REAL(KIND=PGMSiwp), INTENT(IN) :: pts(:,:)
+  REAL(KIND=PGMSiwp) :: d1, d2
+
+  d1 = dist(pts(vrts(1),:),pts(vrts(3),:))
+  d2 = dist(pts(vrts(2),:),pts(vrts(4),:))
+
+  IF ( ABS(d1 - d2) < small ) THEN;  sqr(ptr) = .TRUE.
+  ELSE;  sqr(ptr) = .FALSE.
+    IF ( d1 > d2 ) ori = ori + 2**(ptr-1)
+  END IF
+
+  RETURN
+END SUBROUTINE
+
+FUNCTION dist(pts1,pts2)
+  REAL(KIND=PGMSiwp) :: pts1(:), pts2(:), dist
+  dist = sqrt(sum((pts2-pts1)**2))
+END FUNCTION
 
 END MODULE
 ! geometry_mod

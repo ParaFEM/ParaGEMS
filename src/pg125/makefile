@@ -19,10 +19,10 @@
 # -----------------------------------------------------------------------
 
 include ../../build/parafem/mk_defs.inc
-include ../../build/parafem/$(MACHINE).inc
+include ../../build/$(MACHINE).inc
 
 MODULE	= ../../include/parafem/mpi
-LIB	= ../../lib
+LIB	= ../../lib/parafem
 .SUFFIXES: .o .f90
 
 all:	release

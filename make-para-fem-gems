@@ -1,0 +1,261 @@
+#!/bin/sh
+
+# ------------------------------------------------------------------------------
+# Script to build and install ParaFEM/ParaGEMS integration
+# Author: Louise M. Lever
+# Modified George Leaver (Add -gpu flag for GPU xx prog builds)
+# Modified Pieter Boom for ParaGEMS integration
+# ------------------------------------------------------------------------------
+
+# To log build output, run using something like:
+# ./make-para-fem-gems 2>&1 | tee log
+#
+
+# Config vars (change as required)
+# PARAFEMGEMS_HOME is the top level directory under which ParaFEM is compiled
+
+if [ -z "$PARAFEMGEMS_HOME" ] ; then PARAFEMGEMS_HOME=`pwd` ; fi
+export PARAFEMGEMS_HOME
+
+# Check for VERSION in mk_defs.inc file and export VERSION number
+MK_DEFS=$PARAFEMGEMS_HOME/build/parafem/mk_defs.inc
+if ! [ -f $MK_DEFS ]; then
+    echo
+    echo "*********************************************************************"
+    echo "ERROR: ParaFEM/ParaGEMS MK_DEFS include file does not exist!"
+    echo "*********************************************************************"
+    exit
+fi
+. $MK_DEFS
+export VERSION
+
+# ------------------------------------------------------------------------------
+# These are the default build parameters for the script and are used unless
+# changed by calling the script with specific parameters.
+# ------------------------------------------------------------------------------
+
+# target flags - default release and install
+DO_RELEASE=1
+DO_DEBUG=0
+DO_INSTALL=1
+DO_CLEAN=0
+DO_EXECLEAN=0
+
+# build flags - default all
+BUILD_PROGRAMS=1
+
+# ------------------------------------------------------------------------------
+# Build type GROUPS and FLAGS
+# ------------------------------------------------------------------------------
+# BUILD_*_GIVEN denotes if command line arguments have been provided to specify
+#   what build groups should be processed.
+# BUILD_*_DEFAULTS list all the group that should be built if no command line
+#   arguments are given.
+# BUILD_GROUP_* are the components of each group (if applicable)
+# BUILD_*_OPT are the actual groups that will be built. They are initialized to
+#   (null) here and either 1) set via command line arguments, or 2) set as the
+#   defaults above if no arguments are provided.
+# ------------------------------------------------------------------------------
+BUILD_PROGRAMS_GIVEN=0
+
+# PROGRAM build options
+# options are: gems
+BUILD_PROGRAMS_OPT=
+BUILD_GROUP_GEMS="pg123 pg124 pg125"
+
+# DEFAULT build options for PROGRAMS
+BUILD_PROGRAMS_DEFAULTS="gems"
+
+# ------------------------------------------------------------------------------
+# Local functions
+# ------------------------------------------------------------------------------
+
+showusage() {
+    echo "To capture a log file, please run the script as:"
+    echo "  ./make-para-fem-gems <ARGS> 2>&1 | tee log"
+    echo
+    echo "To use the make-para-fem-gems script, please use one or more of the following options on the command line:"
+    echo
+    echo "Specify the architecture:"
+    echo "  MACHINE=arch will set the machine to <arch>, where there exists an <arch.inc> file in build/"
+    echo "  * If MACHINE is set as an environment variable then it will be used to specify the architecture"
+    echo
+    echo "Building the PROGRAMS:"
+    echo "  -gems will build the programs in the GEMS group: $BUILD_GROUP_GEMS"
+    echo
+    echo "RELEASE or DEBUG build options:"
+    echo "  (-)debug will compile the selected libraries and programs with debugging enabled"
+    echo "  (-)release will compile the selected libraries and programs with the debugging disabled"
+    echo "  * the default mode is -release and does not require explicitly setting"
+    echo
+    echo "CLEAN options:"
+    echo "  clean: will clean all the object files and any other temporary files from the build"
+    echo "  execlean: will remove all compiled libraries, modules and executables"
+    echo "  * both clean and execlean are restricted in their scope by the build options above"
+    echo
+    echo "Limiting build options:"
+    echo "  --only-programs will only build the programs"
+    echo "  --no-install will compile the programs but not install them in bin/"
+    echo
+}
+
+error() {
+    echo
+    echo "^^^^^^^^^^ ERROR ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+    echo
+    BUILD_ERRORS="$BUILD_ERRORS\nERROR in $1";
+}
+
+separator() {
+    echo "---------------------------------------------------------------------"
+}
+
+# ------------------------------------------------------------------------------
+# End of local functions
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Process all command line arguments
+# ------------------------------------------------------------------------------
+# LML: Some build options are not implemented yet and are commented out below
+# ------------------------------------------------------------------------------
+
+while [ $# -gt 0 ]; do
+    ARG=`echo $1 | tr "[:upper:]" "[:lower:]"`
+    case $ARG in
+	-usage) showusage; exit;;
+	usage) showusage; exit;;
+	-help) showusage; exit;;
+	help) showusage; exit;;
+
+	debug) DO_RELEASE=0; DO_DEBUG=1;;
+	-debug) DO_RELEASE=0; DO_DEBUG=1;;
+	release) DO_RELEASE=1; DO_DEBUG=0;;
+	-release) DO_RELEASE=1; DO_DEBUG=0;;
+	clean) DO_RELEASE=0; DO_DEBUG=0; DO_CLEAN=1;;
+	execlean) DO_RELEASE=0; DO_DEBUG=0; DO_EXECLEAN=1;;
+
+	# ----------------------------------------------------------------------
+	# program group options
+	-gems) BUILD_PROGRAMS_OPT="$BUILD_PROGRAMS_OPT gems"; BUILD_PROGRAMS_GIVEN=1;;
+
+	# ----------------------------------------------------------------------
+	# build restriction options
+	--only-programs) BUILD_LIBRARIES=0; BUILD_MODULES=0; BUILD_TOOLS=0;;
+	--no-install) DO_INSTALL=0;;
+	machine=*) MACHINE=`echo $ARG | sed -e 's/machine=//g'`;;
+    esac
+    shift
+done
+
+echo "Starting make-parafem build script..."
+echo "MACHINE set to $MACHINE";
+
+# If no build options are given, report and set defaults
+echo
+
+if [ $BUILD_PROGRAMS = 1 ] && [ $BUILD_PROGRAMS_GIVEN = 0 ]; then
+    echo "No build type given for PROGRAMS; defaulting to: $BUILD_PROGRAMS_DEFAULTS"
+    BUILD_PROGRAMS_OPT=$BUILD_PROGRAMS_DEFAULTS
+fi
+
+# ------------------------------------------------------------------------------
+# Check that env vars are set
+# ------------------------------------------------------------------------------
+
+if [ -z "$PARAFEMGEMS_HOME" ] ; then
+    echo
+    echo "*********************************************************************"
+    echo "ERROR: PARAFEMGEMS_HOME not set!";
+    echo "*********************************************************************"
+    exit 2
+fi
+
+if [ -z "$MACHINE" ] ; then
+    echo
+    echo "*********************************************************************"
+    echo "ERROR: MACHINE not set!"
+    echo "*********************************************************************"
+    exit 2
+else
+    # convert MACHINE to lower case
+    export MACHINE=`echo $MACHINE | tr "[:upper:]" "[:lower:]"`
+fi
+
+export MK_PARAFEM_DEFS="$PARAFEMGEMS_HOME"/build/"$MACHINE".inc
+if ! [ -f $MK_PARAFEM_DEFS ]; then
+    echo
+    echo "*********************************************************************"
+    echo "ERROR: Machine include file $MK_PARAFEM_DEFS does not exist!"
+    echo "*******************************************************************"
+fi
+
+# ------------------------------------------------------------------------------
+# Setup targets for building MODULES and PROGRAMS
+# ------------------------------------------------------------------------------
+
+TARGET=
+if [ $DO_CLEAN -gt 0 ] || [ $DO_EXECLEAN -gt 0 ]; then
+    if [ $DO_CLEAN -gt 0 ]; then
+	     TARGET="$TARGET clean";
+    fi
+    if [ $DO_EXECLEAN -gt 0 ]; then
+	     TARGET="$TARGET execlean";
+    fi
+else
+    # for release/debug prefixes append each MODULES_BUILD_OPT
+    if [ $DO_RELEASE = 1 ]; then
+	     TARGET=release
+    else
+       if [ $DO_DEBUG = 1 ]; then
+	        TARGET=debug
+	     fi
+    fi
+    # append install rule if set
+    if [ $DO_INSTALL = 1 ]; then
+	     TARGET="$TARGET install"
+    fi
+fi
+echo
+echo "TARGET is $TARGET for programs: $BUILD_PROGRAMS_OPT"
+
+# ------------------------------------------------------------------------------
+# Perform the requested builds
+# ------------------------------------------------------------------------------
+
+if [ $BUILD_PROGRAMS = 1 ]; then
+    echo
+    echo "---------------------------------------------------------------------"
+    echo "Building PROGRAMS for $MACHINE"
+    echo "---------------------------------------------------------------------"
+    # build each program group selected
+    for GROUP in $BUILD_PROGRAMS_OPT; do
+	echo
+	echo "-----------------------------------------------------------------"
+	echo "Building GROUP $GROUP"
+	echo "-----------------------------------------------------------------"
+	case $GROUP in
+	    gems)
+		echo "gems: $BUILD_GROUP_GEMS"
+		for PROG in $BUILD_GROUP_GEMS; do
+		    separator
+		    cd $PARAFEMGEMS_HOME
+		    cd src/$PROG && make $TARGET && cd ../..
+		    if [ $? = 2 ]; then	error "BUILD_GROUP_GEMS/$PROG/$TARGET"; fi
+		done;;
+	esac
+    done
+fi
+
+echo
+echo "************************************************************************"
+echo "Build ERRORS encountered:"
+if [ "$BUILD_ERRORS" != "" ]; then
+    echo -e $BUILD_ERRORS
+else
+    echo "  None"
+fi
+echo "************************************************************************"
+echo
+echo "ParaFEM/ParaGEMS Build Complete"
+echo

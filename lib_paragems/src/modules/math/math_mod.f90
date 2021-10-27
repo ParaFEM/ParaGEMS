@@ -413,9 +413,9 @@ CONTAINS
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 !
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-!/****/f*  math_mod/determinant
+!/****/f*  math_mod/RCSV_determinant
 !* SYNOPSIS
-  RECURSIVE FUNCTION determinant(A,n) RESULT(accumulation)
+  RECURSIVE FUNCTION RCSV_determinant(A,n) RESULT(accumulation)
 !* PURPOSE
 !*   Compute determinant
 !* INPUTS
@@ -445,13 +445,13 @@ CONTAINS
     IMPLICIT NONE
 
     !-- arguments --
-    REAL(KIND=iwp), INTENT(IN) :: A(n,n)    !>
+    REAL(KIND=PGMSiwp), INTENT(IN) :: A(n,n)    !>
     INTEGER, INTENT(IN)        :: n         !>
 
     !-- local variables --
     INTEGER               :: i, sgn         !>
-    REAL(KIND=iwp)        :: B(n-1,n-1)     !>
-    REAL(KIND=iwp)        :: accumulation   !>
+    REAL(KIND=PGMSiwp)        :: B(n-1,n-1)     !>
+    REAL(KIND=PGMSiwp)        :: accumulation   !>
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -470,7 +470,7 @@ CONTAINS
       accumulation = 0;   sgn = 1
       DO i=1, n
         B(:, :(i-1)) = A(2:, :i-1);   B(:, i:) = A(2:, i+1:)
-        accumulation = accumulation + sgn * A(1, i) * determinant(B, n-1)
+        accumulation = accumulation + sgn * A(1, i) * RCSV_determinant(B, n-1)
         sgn = -sgn
       END DO
     END SELECT
@@ -478,7 +478,7 @@ CONTAINS
     RETURN
 
   END FUNCTION
-!  math_mod/determinant
+!  math_mod/RCSV_determinant
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 !
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -510,11 +510,11 @@ CONTAINS
     IMPLICIT NONE
 
     !-- arguments --
-    REAL(KIND=iwp), INTENT(IN) :: A(2,2)   !> Matrix
+    REAL(KIND=PGMSiwp), INTENT(IN) :: A(2,2)   !> Matrix
 
     !-- local variables --
-    REAL(KIND=iwp)             :: B(2,2)   !> Inverse matrix
-    REAL(KIND=iwp)             :: detinv   !>
+    REAL(KIND=PGMSiwp)             :: B(2,2)   !> Inverse matrix
+    REAL(KIND=PGMSiwp)             :: detinv   !>
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -563,11 +563,11 @@ CONTAINS
     IMPLICIT NONE
 
     !-- arguments --
-    REAL(KIND=iwp), INTENT(IN) :: A(3,3)   !> Matrix
+    REAL(KIND=PGMSiwp), INTENT(IN) :: A(3,3)   !> Matrix
 
     !-- local variables --
-    REAL(KIND=iwp)             :: B(3,3)   !> Inverse matrix
-    REAL(KIND=iwp)             :: detinv   !>
+    REAL(KIND=PGMSiwp)             :: B(3,3)   !> Inverse matrix
+    REAL(KIND=PGMSiwp)             :: detinv   !>
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -626,10 +626,10 @@ CONTAINS
     IMPLICIT NONE
 
     !-- arguments --
-    REAL(KIND=iwp), INTENT(IN)  :: a(3), b(3)       !> input vectors
+    REAL(KIND=PGMSiwp), INTENT(IN)  :: a(3), b(3)       !> input vectors
 
     !-- local variables --
-    REAL(KIND=iwp)              :: cross_product(3) !> resulting vector
+    REAL(KIND=PGMSiwp)              :: cross_product(3) !> resulting vector
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION

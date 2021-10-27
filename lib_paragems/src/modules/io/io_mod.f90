@@ -66,7 +66,10 @@ MODULE io_mod
   IMPLICIT NONE
 
   !-- include PETSc variables --
+#if FORparaFEM
+#else
 #include <petsc/finclude/petsc.h>
+#endif
 
 !===============================================================================
 CONTAINS
@@ -248,7 +251,7 @@ CONTAINS
     INTEGER                     :: k                !> simplicial order
     INTEGER                     :: ip,ie            !> loop indices (procs,elems)
     INTEGER                     :: buffer_size      !> size of MPI comm buffer
-    REAL(KIND=iwp), ALLOCATABLE :: real_buffer(:)   !> buffer for MPI comms
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: real_buffer(:)   !> buffer for MPI comms
     INTEGER                     :: iib,fib          !> initial/final index for MPI comm buffer
     INTEGER, ALLOCATABLE        :: status(:)        !> size of MPI comm buffer
     INTEGER                     :: ptr, ptrp        !>
@@ -670,8 +673,8 @@ CONTAINS
     INTEGER                       :: extra_comms         !>
     INTEGER,ALLOCATABLE           :: int_buffer(:)       !>
     INTEGER,ALLOCATABLE           :: junk_int_buffer(:)  !>
-    REAL(KIND=iwp),ALLOCATABLE    :: real_buffer(:)      !>
-    REAL(KIND=iwp),ALLOCATABLE    :: junk_real_buffer(:) !>
+    REAL(KIND=PGMSiwp),ALLOCATABLE    :: real_buffer(:)      !>
+    REAL(KIND=PGMSiwp),ALLOCATABLE    :: junk_real_buffer(:) !>
     INTEGER                       :: buffer_size         !>
     INTEGER                       :: junk                !>
     INTEGER, ALLOCATABLE          :: req(:)              !> request variable for non-blocking comms
@@ -974,14 +977,14 @@ CONTAINS
     INTEGER                       :: ptr                 !>
     INTEGER,ALLOCATABLE           :: int_buffer(:)       !>
     INTEGER,ALLOCATABLE           :: junk_int_buffer(:)  !>
-    REAL(KIND=iwp),ALLOCATABLE    :: real_buffer(:)      !>
-    REAL(KIND=iwp),ALLOCATABLE    :: junk_real_buffer(:) !>
+    REAL(KIND=PGMSiwp),ALLOCATABLE    :: real_buffer(:)      !>
+    REAL(KIND=PGMSiwp),ALLOCATABLE    :: junk_real_buffer(:) !>
     INTEGER                       :: buffer_size         !>
     INTEGER                       :: junk                !>
     INTEGER, ALLOCATABLE          :: req(:)              !> request variable for non-blocking comms
     INTEGER, ALLOCATABLE          :: status(:)           !> size of MPI comm buffer
     INTEGER, ALLOCATABLE          :: istatus(:,:)        !> size of MPI comm buffer
-    REAL(KIND=IWP)                :: tmp_time, tmp_time_int !> temporary timing variable
+    REAL(KIND=PGMSiwp)                :: tmp_time, tmp_time_int !> temporary timing variable
     INTEGER                       :: comm_size,max_comm_size,gindx,num_comm_iters, &
                                      strt_indx,resid_comm_size                 !>
 
@@ -1465,14 +1468,14 @@ CONTAINS
     INTEGER                       :: extra_comms         !>
     INTEGER,ALLOCATABLE           :: int_buffer(:)       !>
     INTEGER,ALLOCATABLE           :: junk_int_buffer(:)  !>
-    REAL(KIND=iwp),ALLOCATABLE    :: real_buffer(:)      !>
-    REAL(KIND=iwp),ALLOCATABLE    :: junk_real_buffer(:) !>
+    REAL(KIND=PGMSiwp),ALLOCATABLE    :: real_buffer(:)      !>
+    REAL(KIND=PGMSiwp),ALLOCATABLE    :: junk_real_buffer(:) !>
     INTEGER                       :: buffer_size         !>
     INTEGER                       :: junk                !>
     INTEGER, ALLOCATABLE          :: req(:)              !> request variable for non-blocking comms
     INTEGER, ALLOCATABLE          :: status(:)           !> size of MPI comm buffer
     INTEGER, ALLOCATABLE          :: istatus(:,:)        !> size of MPI comm buffer
-    REAL(KIND=IWP)        :: tmp_time, tmp_time_int !> temporary timing variable
+    REAL(KIND=PGMSiwp)        :: tmp_time, tmp_time_int !> temporary timing variable
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ! MAIN EXECUTION
@@ -1809,14 +1812,14 @@ CONTAINS
     INTEGER                       :: extra_comms         !>
     INTEGER,ALLOCATABLE           :: int_buffer(:)       !>
     INTEGER,ALLOCATABLE           :: junk_int_buffer(:)  !>
-    REAL(KIND=iwp),ALLOCATABLE    :: real_buffer(:)      !>
-    REAL(KIND=iwp),ALLOCATABLE    :: junk_real_buffer(:) !>
+    REAL(KIND=PGMSiwp),ALLOCATABLE    :: real_buffer(:)      !>
+    REAL(KIND=PGMSiwp),ALLOCATABLE    :: junk_real_buffer(:) !>
     INTEGER                       :: buffer_size         !>
     INTEGER                       :: junk                !>
     INTEGER, ALLOCATABLE          :: req(:)              !> request variable for non-blocking comms
     INTEGER, ALLOCATABLE          :: status(:)           !> size of MPI comm buffer
     INTEGER, ALLOCATABLE          :: istatus(:,:)        !> size of MPI comm buffer
-    REAL(KIND=IWP)                :: tmp_time, tmp_time_int !> temporary timing variable
+    REAL(KIND=PGMSiwp)                :: tmp_time, tmp_time_int !> temporary timing variable
     INTEGER                       :: comm_size,max_comm_size,gindx,num_comm_iters, &
                                      strt_indx,resid_comm_size                 !>
 
@@ -2604,7 +2607,7 @@ CONTAINS
     INTEGER               :: buffer_size, &
                              r_buffer_size    !> size of MPI comm buffer
     INTEGER, ALLOCATABLE  :: int_buffer(:)    !> integer buffer for MPI comms
-    REAL(KIND=iwp), ALLOCATABLE  :: &
+    REAL(KIND=PGMSiwp), ALLOCATABLE  :: &
                              real_buffer(:)   !> integer buffer for MPI comms
     INTEGER, ALLOCATABLE  :: req(:)           !> request variable for non-blocking comms
     INTEGER, ALLOCATABLE  :: status(:)        !> size of MPI comm buffer
@@ -3045,10 +3048,10 @@ END SUBROUTINE
     INTEGER               :: prelen           !> string pointer
     CHARACTER(LEN=slen)   :: fname            !> file name
     INTEGER               :: i,j              !> loop index
-    REAL(KIND=iwp),ALLOCATABLE :: sol_edge(:) !> solution variable for MATLAB output
-    REAL(KIND=iwp),ALLOCATABLE :: cnt(:)      !> counter
-    REAL(KIND=iwp)        :: dxyz             !> extrapolation variable
-    REAL(KIND=iwp)        :: nan              !> nan variable
+    REAL(KIND=PGMSiwp),ALLOCATABLE :: sol_edge(:) !> solution variable for MATLAB output
+    REAL(KIND=PGMSiwp),ALLOCATABLE :: cnt(:)      !> counter
+    REAL(KIND=PGMSiwp)        :: dxyz             !> extrapolation variable
+    REAL(KIND=PGMSiwp)        :: nan              !> nan variable
     INTEGER               :: indx             !> face index
     Vec                   :: work             !> PETSc work array
 
@@ -3351,10 +3354,10 @@ END SUBROUTINE
     INTEGER               :: prelen           !> string pointer
     CHARACTER(LEN=slen)   :: fname            !> file name
     INTEGER               :: i,j              !> loop index
-    REAL(KIND=iwp),ALLOCATABLE :: sol_edge(:) !> solution variable for MATLAB output
-    REAL(KIND=iwp),ALLOCATABLE :: cnt(:)      !> counter
-    REAL(KIND=iwp)        :: dxyz             !> extrapolation variable
-    REAL(KIND=iwp)        :: nan              !> nan variable
+    REAL(KIND=PGMSiwp),ALLOCATABLE :: sol_edge(:) !> solution variable for MATLAB output
+    REAL(KIND=PGMSiwp),ALLOCATABLE :: cnt(:)      !> counter
+    REAL(KIND=PGMSiwp)        :: dxyz             !> extrapolation variable
+    REAL(KIND=PGMSiwp)        :: nan              !> nan variable
     INTEGER               :: indx             !> face index
     Vec                   :: work             !> PETSc work array
     Vec                   :: wrk1, wrk2       !> sub arrays
