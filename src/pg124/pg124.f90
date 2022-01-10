@@ -7,10 +7,11 @@ PROGRAM pg124
 !USE mpi_wrapper  !remove comment for serial compilation
  USE precision; USE global_variables; USE mp_interface; USE input
  USE output; USE loading; USE timing; USE maths; USE gather_scatter
- USE geometry; USE new_library; IMPLICIT NONE
+ USE geometry; USE new_library; USE common_mod; USE geometry_mod
+ IMPLICIT NONE
 !neq,ntot are now global variables - not declared
  INTEGER, PARAMETER::ndim=3,nodof=1,nprops=5
- INTEGER::nod,nn,nr,nip,i,j,k,l,iters,limit,iel,nstep,npri,nres,it,prog, &
+ INTEGER::nod,nn,nr,nip,i,j,k,l,m,iters,limit,iel,nstep,npri,nres,it,prog, &
    nlen,node_end,node_start,nodes_pp,loaded_freedoms,fixed_freedoms,is,  &
    fixed_freedoms_pp,fixed_freedoms_start,loaded_freedoms_pp,np_types,   &
    loaded_freedoms_start,nels,ndof,npes_pp,meshgen,partitioner,tz
@@ -19,7 +20,7 @@ PROGRAM pg124
  REAL(iwp),PARAMETER::zero=0.0_iwp,penalty=1.e20_iwp,t0=0.0_iwp
  CHARACTER(LEN=15)::element; CHARACTER(LEN=50)::argv,fname
  CHARACTER(LEN=6)::ch; LOGICAL::converged=.false.
- REAL(iwp),ALLOCATABLE::loads_pp(:),u_pp(:),p_pp(:),points(:,:),kay(:,:),&
+ REAL(iwp),ALLOCATABLE::loads_pp(:),u_pp(:),p_pp(:),points(:,:),kay(:),&
    fun(:),jac(:,:),der(:,:),deriv(:,:),weights(:),d_pp(:),col(:,:),      &
    kc(:,:),pm(:,:),funny(:,:),storka_pp(:,:,:),row(:,:),prop(:,:),       &
    storkb_pp(:,:,:),x_pp(:),xnew_pp(:),pmul_pp(:,:),utemp_pp(:,:),       &
@@ -28,6 +29,10 @@ PROGRAM pg124
    kcx(:,:),kcy(:,:),kcz(:,:),eld(:)
  INTEGER,ALLOCATABLE::rest(:,:),g_num_pp(:,:),g_g_pp(:,:),no(:),         &
    no_pp(:),no_f_pp(:),no_pp_temp(:),sense(:),node(:),etype_pp(:)
+
+ INTEGER :: n_smplx
+ INTEGER, ALLOCATABLE :: smplx(:,:)
+ REAL(iwp):: ka
 !--------------------------input and initialisation-----------------------
  ALLOCATE(timest(20)); timest=zero; timest(1)=elap_time()
  CALL find_pe_procs(numpe,npes); CALL getname(argv,nlen)
@@ -45,7 +50,7 @@ PROGRAM pg124
  CALL read_g_coord_pp(argv,g_num_pp,nn,npes,numpe,g_coord_pp)
  IF (nr>0) CALL read_rest(argv,numpe,rest)
  CALL read_material(argv,prop,numpe,npes)
- ALLOCATE (points(nip,ndim),weights(nip),kay(ndim,ndim),fun(nod),        &
+ ALLOCATE (points(nip,ndim),weights(nip),kay(ndim),fun(nod),        &
    jac(ndim,ndim),der(ndim,nod),deriv(ndim,nod),pm(ntot,ntot),           &
    kc(ntot,ntot),funny(1,nod),g_g_pp(ntot,nels_pp),                      &
    storka_pp(ntot,ntot,nels_pp),eld(ntot),col(ntot,1),row(1,ntot),       &
@@ -74,21 +79,66 @@ PROGRAM pg124
    d_pp(neq_pp),p_pp(neq_pp),x_pp(neq_pp),xnew_pp(neq_pp),r_pp(neq_pp))
  loads_pp=zero; diag_precon_pp=zero; u_pp=zero; r_pp=zero; d_pp=zero
  p_pp=zero; x_pp=zero; xnew_pp=zero
-!-------------- element stiffness integration and storage ----------------
- CALL sample(element,points,weights); storka_pp=zero; storkb_pp=zero
+!-------------- element stiffness using DEC and storage ----------------
+ storka_pp=zero; storkb_pp=zero
+
+ dim_cmplx = 3;  dim_embbd = 3;  k=dim_cmplx+1
+ ALLOCATE(num_pelm_pp(1)); num_pelm_pp(1)=nod;  extra_pelm=0;  glb_offset=0
+ glb_num_elm = (/ nod, 19, 18, 6 /);  num_elm=glb_num_elm
+ ALLOCATE(lcl_complex(k));
+ ALLOCATE(lcl_complex(1)%centers(nod,dim_embbd),&
+   lcl_complex(k)%orientation(6),lcl_complex(k)%node_indx(6,k))
+ lcl_complex(k)%orientation=0;  indx_offset = 0
  elements_3: DO iel=1,nels_pp
-   kay=zero; kc=zero; pm=zero; kay(1,1)=prop(1,etype_pp(iel))
-   kay(2,2)=prop(2,etype_pp(iel)); kay(3,3)=prop(3,etype_pp(iel))
-   rho=prop(4,etype_pp(iel)); cp=prop(5,etype_pp(iel))
-   gauss_pts: DO i=1,nip
-     CALL shape_der(der,points,i); CALL shape_fun(fun,points,i)
-     funny(1,:)=fun(:); jac=MATMUL(der,g_coord_pp(:,:,iel))
-     det=determinant(jac); CALL invert(jac); deriv=MATMUL(jac,der)
-     kc=kc+MATMUL(MATMUL(TRANSPOSE(deriv),kay),deriv)*det*weights(i)
-     pm=pm+MATMUL(TRANSPOSE(funny),funny)*det*weights(i)*rho*cp
-   END DO gauss_pts
+    kc=zero; pm=zero;
+    kay(1)=prop(1,etype_pp(iel)); kay(2)=prop(2,etype_pp(iel));
+    kay(3)=prop(3,etype_pp(iel)); rho=prop(4,etype_pp(iel))
+    cp=prop(5,etype_pp(iel))
+
+   !- split elements into simplices
+   CALL elm2smplx(num_elm(dim_cmplx+1),lcl_complex(dim_cmplx+1)%node_indx,&
+      g_coord_pp(:,:,iel),element,nod)
+
+   !- Recursively compute element (co-)boundaries
+   DO k=dim_cmplx+1,2,-1; CALL calc_bndry_cobndry(k); END DO
+
+   !- setup connectivity
+   DO k=1,dim_cmplx+1; lcl_complex(k)%lcl_node_indx = lcl_complex(k)%node_indx; END DO
+
+   !- calc circumcenter
+   lcl_complex(1)%centers = g_coord_pp(:,:,iel)
+   DO k=2,dim_cmplx+1; CALL calc_circumcenters(k); END DO
+
+   !- calc primal edge and dual area and primal direction
+   CALL calc_prml_unsgnd_vlm(2); CALL calc_dual_vlm(1)
+   CALL calc_prml_dir()
+
+   kcx=zero
+   DO i=1,nod
+     DO j=1,lcl_complex(1)%num_cobndry(i)
+       k = lcl_complex(1)%cobndry(i)%indx(j)
+       IF (ABS(lcl_complex(2)%dual_volume(k) / &
+          max(lcl_complex(2)%prml_volume(k),small))<smalls) CYCLE
+       m = lcl_complex(2)%bndry(k)%indx(1)
+       IF (i==m) m = lcl_complex(2)%bndry(k)%indx(2)
+       ka = DOT_PRODUCT(kay,abs(lcl_complex(2)%prml_dir(k,:)))
+       kc(i,m) = kc(i,m) - ka*lcl_complex(2)%dual_volume(k) / max(lcl_complex(2)%prml_volume(k),small)
+       kc(i,i) = kc(i,i) + ka*lcl_complex(2)%dual_volume(k) / max(lcl_complex(2)%prml_volume(k),small)
+     END DO
+     pm(i,i) = pm(i,i) + lcl_complex(1)%dual_volume(i)*rho*cp
+   END DO
    storka_pp(:,:,iel)=pm+kc*theta*dtim
    storkb_pp(:,:,iel)=pm-kc*(1._iwp-theta)*dtim
+
+   !- Deallocate variables
+   DO k=1,dim_cmplx+1;
+     IF (ALLOCATED(lcl_complex(k)%recv_indx))   DEALLOCATE(lcl_complex(k)%recv_indx)
+     IF (ALLOCATED(lcl_complex(k)%num_bndry))   DEALLOCATE(lcl_complex(k)%num_bndry)
+     IF (ALLOCATED(lcl_complex(k)%bndry))       DEALLOCATE(lcl_complex(k)%bndry)
+     IF (ALLOCATED(lcl_complex(k)%num_cobndry)) DEALLOCATE(lcl_complex(k)%num_cobndry)
+     IF (ALLOCATED(lcl_complex(k)%cobndry))     DEALLOCATE(lcl_complex(k)%cobndry)
+     IF (ALLOCATED(lcl_complex(k)%node_indx))   DEALLOCATE(lcl_complex(k)%node_indx)
+   END DO
  END DO elements_3
 !------------------ build the diagonal preconditioner --------------------
  ALLOCATE(diag_precon_tmp(ntot,nels_pp)); diag_precon_tmp = zero

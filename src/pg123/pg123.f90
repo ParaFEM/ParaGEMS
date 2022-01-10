@@ -19,7 +19,7 @@ PROGRAM pg123
  REAL(iwp)::kx,ky,kz,det,tol,up,alpha,beta,q; CHARACTER(LEN=6)::ch
  CHARACTER(LEN=15)::element; CHARACTER(LEN=50)::argv
  LOGICAL::converged=.false.
- REAL(iwp),ALLOCATABLE::points(:,:),weights(:),eld_pp(:,:),kay(:,:),     &
+ REAL(iwp),ALLOCATABLE::points(:,:),weights(:),eld_pp(:,:),kay(:),     &
    fun(:),jac(:,:),der(:,:),deriv(:,:),col(:,:),row(:,:),                &
    kcx(:,:),kcy(:,:),kcz(:,:),diag_precon_pp(:),p_pp(:),r_pp(:),x_pp(:), &
    xnew_pp(:),u_pp(:),pmul_pp(:,:),utemp_pp(:,:),d_pp(:),val(:,:),       &
@@ -28,8 +28,9 @@ PROGRAM pg123
  INTEGER,ALLOCATABLE::rest(:,:),g_num_pp(:,:),g_g_pp(:,:),no(:),         &
    no_pp(:),no_f_pp(:),no_pp_temp(:),sense(:),node(:)
 
- INTEGER :: n_smplx
+ INTEGER :: n_smplx, ne
  INTEGER, ALLOCATABLE :: smplx(:,:)
+ REAL(iwp):: ka
 !--------------------------input and initialisation-----------------------
  ALLOCATE(timest(20)); timest=zero; timest(1)=elap_time()
  CALL find_pe_procs(numpe,npes); CALL getname(argv,nlen)
@@ -45,7 +46,7 @@ PROGRAM pg123
  IF (nr>0) THEN; ALLOCATE(rest(nr,nodof+1)); rest=0
  CALL read_rest(argv,numpe,rest); END IF
  ALLOCATE (points(nip,ndim),jac(ndim,ndim),storkc_pp(ntot,ntot,nels_pp), &
-   deriv(ndim,nod),kcx(ntot,ntot),weights(nip),der(ndim,nod),            &
+   deriv(ndim,nod),kcx(ntot,ntot),weights(nip),der(ndim,nod),kay(ndim),  &
    pmul_pp(ntot,nels_pp),utemp_pp(ntot,nels_pp),col(ntot,1),eld(ntot),   &
    g_g_pp(ntot,nels_pp),kcy(ntot,ntot),row(1,ntot),kcz(ntot,ntot))
 !----------  find the steering array and equations per process -----------
@@ -72,18 +73,25 @@ PROGRAM pg123
    u_pp(neq_pp),diag_precon_pp(neq_pp),d_pp(neq_pp))
  r_pp=zero; p_pp=zero; x_pp=zero; xnew_pp=zero; diag_precon_pp=zero
 !-------------- element stiffness using DEC and storage ----------------
-
-!-------- vvvvv
  storkc_pp=zero
 
  dim_cmplx = 3;  dim_embbd = 3;  k=dim_cmplx+1
  ALLOCATE(num_pelm_pp(1)); num_pelm_pp(1)=nod;  extra_pelm=0;  glb_offset=0
- glb_num_elm = (/ nod, 19, 18, 6 /);  num_elm=glb_num_elm
+ selectcase(element)
+ case('hexahedron')
+   ne = 6;
+   glb_num_elm = (/ nod, 19, 18, ne /);
+ case('tetrahedron')
+   ne = 1;
+   glb_num_elm = (/ nod, 19, 18, ne /);
+ end SELECT
+ num_elm=glb_num_elm
  ALLOCATE(lcl_complex(k));
  ALLOCATE(lcl_complex(1)%centers(nod,dim_embbd),&
-   lcl_complex(k)%orientation(6),lcl_complex(k)%node_indx(6,k))
+   lcl_complex(k)%orientation(ne),lcl_complex(k)%node_indx(ne,k))
  lcl_complex(k)%orientation=0;  indx_offset = 0
 
+ kay(1)=kx; kay(2)=ky; kay(3)=kz;
  elements_1: DO iel=1,nels_pp
    !- split elements into simplices
    CALL elm2smplx(num_elm(dim_cmplx+1),lcl_complex(dim_cmplx+1)%node_indx,&
@@ -101,19 +109,22 @@ PROGRAM pg123
 
    !- calc primal edge and dual area
    CALL calc_prml_unsgnd_vlm(2); CALL calc_dual_vlm(2)
+   CALL calc_prml_dir()
 
    kcx=zero
    DO i=1,nod
      DO j=1,lcl_complex(1)%num_cobndry(i)
        k = lcl_complex(1)%cobndry(i)%indx(j)
-       IF (ABS(lcl_complex(2)%dual_volume(k))<small) CYCLE
+       IF (ABS(lcl_complex(2)%dual_volume(k) / &
+          max(lcl_complex(2)%prml_volume(k),small))<smalls) CYCLE
        m = lcl_complex(2)%bndry(k)%indx(1)
        IF (i==m) m = lcl_complex(2)%bndry(k)%indx(2)
-       kcx(i,m) = kcx(i,m) - lcl_complex(2)%dual_volume(k) / max(lcl_complex(2)%prml_volume(k),small)
-       kcx(i,i) = kcx(i,i) + lcl_complex(2)%dual_volume(k) / max(lcl_complex(2)%prml_volume(k),small)
+       ka = DOT_PRODUCT(kay,abs(lcl_complex(2)%prml_dir(k,:)))
+       kcx(i,m) = kcx(i,m) - ka*lcl_complex(2)%dual_volume(k) / max(lcl_complex(2)%prml_volume(k),small)
+       kcx(i,i) = kcx(i,i) + ka*lcl_complex(2)%dual_volume(k) / max(lcl_complex(2)%prml_volume(k),small)
      END DO
    END DO
-   storkc_pp(:,:,iel)=kcx*kx
+   storkc_pp(:,:,iel)=kcx
 
    !- Deallocate variables
    DO k=1,dim_cmplx+1;

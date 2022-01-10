@@ -97,7 +97,7 @@ PROGRAM simpleLoadBalance
   WRITE(unit,*) num_node, kn, 0, 0
   !-- write data --
   DO ie=1,num_node
-    write(*,*) ie, nodes(ie,2:kn+1)
+    !write(*,*) ie, nodes(ie,2:kn+1)
     WRITE(unit,*) ie, nodes(ie,2:kn+1)
   END DO
 
@@ -486,17 +486,23 @@ CONTAINS
       !-- sort directly if there are two elements --
       !-- NOTE: if there is only one row, then it is already sorted! --
       IF (length==2) THEN
-        !-- if out of order, then swap
-        DO ir = irow, frow
-          IF (A(1,ir) > A(2,ir)) THEN
-            work(1,:) = A(1,:)
-            A(1,:) = A(2,:)
-            A(2,:) = work(1,:)
-            EXIT
-          ELSEIF (A(1,ir) < A(2,ir)) THEN
-            EXIT
-          END IF
-        END DO
+        IF (minval(A(1,:)) > minval(A(2,:))) THEN
+          work(1,:) = A(1,:)
+          A(1,:) = A(2,:)
+          A(2,:) = work(1,:)
+        ELSEIF (minval(A(1,:)) == minval(A(2,:))) THEN
+          !-- if out of order, then swap
+          DO ir = irow, frow
+            IF (A(1,ir) > A(2,ir)) THEN
+              work(1,:) = A(1,:)
+              A(1,:) = A(2,:)
+              A(2,:) = work(1,:)
+              EXIT
+            ELSEIF (A(1,ir) < A(2,ir)) THEN
+              EXIT
+            END IF
+          END DO
+        END IF
 
       !-- for more than two rows, split the array and call merge sort on each half --
       ELSEIF (length>2) THEN
@@ -508,15 +514,20 @@ CONTAINS
         CALL merge_sort_rows_int(A(half+1 :,:),length-half,irow,frow,work)
 
         !-- merge sorted half arrays --
-        DO ir = irow, frow
-          IF (A(half,ir) > A(half+1,ir)) THEN
-            work(1 : half,:) = A(1 : half,:)
-            CALL merge_rows_int(work(1 : half,:),A(half+1 : length,:),A,irow,frow)
-            EXIT
-          ELSEIF (A(half,ir) < A(half+1,ir)) THEN
-            EXIT
-          END IF
-        END DO
+        IF (minval(A(half,:)) > minval(A(half+1,:))) THEN
+          work(1 : half,:) = A(1 : half,:)
+          CALL merge_rows_int(work(1 : half,:),A(half+1 : length,:),A,irow,frow)
+        ELSEIF (minval(A(half,:)) == minval(A(half+1,:))) THEN
+          DO ir = irow, frow
+            IF (A(half,ir) > A(half+1,ir)) THEN
+              work(1 : half,:) = A(1 : half,:)
+              CALL merge_rows_int(work(1 : half,:),A(half+1 : length,:),A,irow,frow)
+              EXIT
+            ELSEIF (A(half,ir) < A(half+1,ir)) THEN
+              EXIT
+            END IF
+          END DO
+        END IF
       END IF
     END SUBROUTINE
     ! math_mod|int_merge_sort_rows
@@ -562,14 +573,18 @@ CONTAINS
         IF (i <= SIZE(A,DIM=1) .and. j <= SIZE(B,DIM=1)) THEN
           is_le = .TRUE.
 
-          DO ir = irow, frow
-            IF (A(i,ir) < B(j,ir)) THEN
-              EXIT
-            ELSEIF (A(i,ir) > B(j,ir)) THEN
-              is_le = .FALSE.
-              EXIT
-            END IF
-          END DO
+          IF (minval(A(i,:)) > minval(B(j,:))) THEN
+            is_le = .FALSE.
+          ELSEIF (minval(A(i,:)) == minval(B(j,:))) THEN
+            DO ir = irow, frow
+              IF (A(i,ir) < B(j,ir)) THEN
+                EXIT
+              ELSEIF (A(i,ir) > B(j,ir)) THEN
+                is_le = .FALSE.
+                EXIT
+              END IF
+            END DO
+          END IF
 
           IF (is_le) THEN
             C(k,:) = A(i,:)

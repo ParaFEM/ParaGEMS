@@ -21,8 +21,10 @@
 include ../../build/parafem/mk_defs.inc
 include ../../build/$(MACHINE).inc
 
-MODULE	= ../../include/parafem/mpi
-LIB	= ../../lib/parafem
+MODULE_FEM	= ../../include/parafem/mpi
+LIB_FEM	= ../../lib/parafem
+MODULE_GEMS	= ../../include/paragems
+LIB_GEMS	= ../../lib/paragems
 .SUFFIXES: .o .f90
 
 all:	release
@@ -31,16 +33,16 @@ release:
 	@echo
 	@echo "Building PG125 RELEASE"
 	$(MAKE) pg125 \
-	FFLAGS="-c -I$(MODULE) $(PG125_MPI_REL_FFLAGS)" \
-	LDFLAGS="-L$(LIB) -lParaFEM_mpi.$(VERSION) $(PG125_MPI_REL_LDFLAGS)"
+	FFLAGS="-c -I$(MODULE_FEM) -I$(MODULE_GEMS) $(PG125_MPI_REL_FFLAGS)" \
+	LDFLAGS="-lblas -llapack -L$(LIB_FEM) -lParaFEM_mpi.$(VERSION) -L$(LIB_GEMS) -lParaGEMS.2021.03.16 $(PG125_MPI_REL_LDFLAGS)"
 	@echo "Done pg125 RELEASE"
 
 debug:
 	@echo
 	@echo "Building pg125 DEBUG"
 	$(MAKE) pg125 \
-	FFLAGS="-c -I$(MODULE) $(PG125_MPI_DBG_FFLAGS)" \
-	LDFLAGS="-L$(LIB) -lParaFEM_mpi_D.$(VERSION) $(PG125_MPI_DBG_LDFLAGS)"
+	FFLAGS="-c -I$(MODULE_FEM) -I$(MODULE_GEMS) $(PG125_MPI_DBG_FFLAGS)" \
+	LDFLAGS="-lblas -llapack -L$(LIB_FEM) -lParaFEM_mpi_D.$(VERSION) -L$(LIB_GEMS) -lParaGEMS_D.2021.03.16  $(PG125_MPI_DBG_LDFLAGS)"
 	@echo "Done pg125 DEBUG"
 
 pg125: pg125.o
