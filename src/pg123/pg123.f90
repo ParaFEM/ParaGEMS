@@ -7,30 +7,25 @@ PROGRAM pg123
 !USE mpi_wrapper  !remove comment for serial compilation
  USE precision; USE global_variables; USE mp_interface; USE input
  USE output; USE loading; USE timing; USE maths; USE gather_scatter
- USE new_library; USE common_mod; USE geometry_mod
- IMPLICIT NONE
+ USE new_library; USE common_mod; USE geometry_mod; IMPLICIT NONE
 !neq,ntot  are now global variables - not declared
  INTEGER, PARAMETER::ndim=3,nodof=1
- INTEGER::nod,nn,nr,nip,i,j,k,m,iters,limit,iel,partitioner,meshgen,       &
+ INTEGER::nod,nn,nr,nip,i,j,k,m,iters,limit,iel,partitioner,meshgen,     &
    node_end,node_start,nodes_pp,loaded_freedoms,fixed_freedoms,          &
    fixed_freedoms_pp,fixed_freedoms_start,nlen,nres,is,it,               &
-   loaded_freedoms_pp,loaded_freedoms_start,nels,ndof,npes_pp
+   loaded_freedoms_pp,loaded_freedoms_start,nels,ndof,npes_pp,n_smplx,ne
  REAL(iwp),PARAMETER::zero=0.0_iwp,penalty=1.e20_iwp
- REAL(iwp)::kx,ky,kz,det,tol,up,alpha,beta,q; CHARACTER(LEN=6)::ch
+ REAL(iwp)::kx,ky,kz,ka,det,tol,up,alpha,beta,q; CHARACTER(LEN=6)::ch
  CHARACTER(LEN=15)::element; CHARACTER(LEN=50)::argv
  LOGICAL::converged=.false.
- REAL(iwp),ALLOCATABLE::points(:,:),weights(:),eld_pp(:,:),kay(:),     &
+ REAL(iwp),ALLOCATABLE::points(:,:),weights(:),eld_pp(:,:),kay(:),       &
    fun(:),jac(:,:),der(:,:),deriv(:,:),col(:,:),row(:,:),                &
    kcx(:,:),kcy(:,:),kcz(:,:),diag_precon_pp(:),p_pp(:),r_pp(:),x_pp(:), &
    xnew_pp(:),u_pp(:),pmul_pp(:,:),utemp_pp(:,:),d_pp(:),val(:,:),       &
    diag_precon_tmp(:,:),store_pp(:),storkc_pp(:,:,:),eld(:),timest(:),   &
    val_f(:),g_coord_pp(:,:,:),ptl_pp(:)
  INTEGER,ALLOCATABLE::rest(:,:),g_num_pp(:,:),g_g_pp(:,:),no(:),         &
-   no_pp(:),no_f_pp(:),no_pp_temp(:),sense(:),node(:)
-
- INTEGER :: n_smplx, ne
- INTEGER, ALLOCATABLE :: smplx(:,:)
- REAL(iwp):: ka
+   no_pp(:),no_f_pp(:),no_pp_temp(:),sense(:),node(:),smplx(:,:)
 !--------------------------input and initialisation-----------------------
  ALLOCATE(timest(20)); timest=zero; timest(1)=elap_time()
  CALL find_pe_procs(numpe,npes); CALL getname(argv,nlen)
@@ -50,7 +45,6 @@ PROGRAM pg123
    pmul_pp(ntot,nels_pp),utemp_pp(ntot,nels_pp),col(ntot,1),eld(ntot),   &
    g_g_pp(ntot,nels_pp),kcy(ntot,ntot),row(1,ntot),kcz(ntot,ntot))
 !----------  find the steering array and equations per process -----------
-!----------  (account for restained nodes)                     -----------
  timest(2)=elap_time(); g_g_pp=0; neq=0
  IF(nr>0) THEN; CALL rearrange_2(rest)
    elements_0: DO iel=1, nels_pp
@@ -73,22 +67,17 @@ PROGRAM pg123
    u_pp(neq_pp),diag_precon_pp(neq_pp),d_pp(neq_pp))
  r_pp=zero; p_pp=zero; x_pp=zero; xnew_pp=zero; diag_precon_pp=zero
 !-------------- element stiffness using DEC and storage ----------------
- storkc_pp=zero
-
- dim_cmplx = 3;  dim_embbd = 3;  k=dim_cmplx+1
+ storkc_pp=zero;  dim_cmplx = 3;  dim_embbd = 3;  k=dim_cmplx+1
  ALLOCATE(num_pelm_pp(1)); num_pelm_pp(1)=nod;  extra_pelm=0;  glb_offset=0
  selectcase(element)
- case('hexahedron')
-   ne = 6;
-   glb_num_elm = (/ nod, 19, 18, ne /);
- case('tetrahedron')
-   ne = 1;
-   glb_num_elm = (/ nod, 19, 18, ne /);
+ case('hexahedron');   ne = 6;  glb_num_elm = (/ nod, 19, 18, ne /);
+ case('tetrahedron');  ne = 1;  glb_num_elm = (/ nod, 19, 18, ne /);
  end SELECT
- num_elm=glb_num_elm
- ALLOCATE(lcl_complex(k));
- ALLOCATE(lcl_complex(1)%centers(nod,dim_embbd),&
-   lcl_complex(k)%orientation(ne),lcl_complex(k)%node_indx(ne,k))
+ num_elm=glb_num_elm;  ALLOCATE(lcl_complex(k));
+ ALLOCATE(&
+   lcl_complex(1)%centers(nod,dim_embbd),&
+   lcl_complex(k)%orientation(ne),&
+   lcl_complex(k)%node_indx(ne,k))
  lcl_complex(k)%orientation=0;  indx_offset = 0
 
  kay(1)=kx; kay(2)=ky; kay(3)=kz;
@@ -98,18 +87,19 @@ PROGRAM pg123
       g_coord_pp(:,:,iel),element,nod)
 
    !- Recursively compute element (co-)boundaries
-   DO k=dim_cmplx+1,2,-1; CALL calc_bndry_cobndry(k); END DO
+   DO k=dim_cmplx+1,2,-1;  CALL calc_bndry_cobndry(k);  END DO
 
    !- setup connectivity
-   DO k=1,dim_cmplx+1; lcl_complex(k)%lcl_node_indx = lcl_complex(k)%node_indx; END DO
+   DO k=1,dim_cmplx+1
+     lcl_complex(k)%lcl_node_indx = lcl_complex(k)%node_indx
+   END DO
 
    !- calc circumcenter
    lcl_complex(1)%centers = g_coord_pp(:,:,iel)
    DO k=2,dim_cmplx+1; CALL calc_circumcenters(k); END DO
 
    !- calc primal edge and dual area
-   CALL calc_prml_unsgnd_vlm(2); CALL calc_dual_vlm(2)
-   CALL calc_prml_dir()
+   CALL calc_prml_unsgnd_vlm(2); CALL calc_dual_vlm(2);  CALL calc_prml_dir()
 
    kcx=zero
    DO i=1,nod
@@ -120,11 +110,12 @@ PROGRAM pg123
        m = lcl_complex(2)%bndry(k)%indx(1)
        IF (i==m) m = lcl_complex(2)%bndry(k)%indx(2)
        ka = DOT_PRODUCT(kay,abs(lcl_complex(2)%prml_dir(k,:)))
-       kcx(i,m) = kcx(i,m) - ka*lcl_complex(2)%dual_volume(k) / max(lcl_complex(2)%prml_volume(k),small)
-       kcx(i,i) = kcx(i,i) + ka*lcl_complex(2)%dual_volume(k) / max(lcl_complex(2)%prml_volume(k),small)
+       kcx(i,m) = kcx(i,m) - ka*lcl_complex(2)%dual_volume(k) / &
+          max(lcl_complex(2)%prml_volume(k),small)
+       kcx(i,i) = kcx(i,i) + ka*lcl_complex(2)%dual_volume(k) / &
+          max(lcl_complex(2)%prml_volume(k),small)
      END DO
-   END DO
-   storkc_pp(:,:,iel)=kcx
+   END DO;  storkc_pp(:,:,iel)=kcx
 
    !- Deallocate variables
    DO k=1,dim_cmplx+1;
@@ -136,7 +127,6 @@ PROGRAM pg123
      IF (ALLOCATED(lcl_complex(k)%node_indx))   DEALLOCATE(lcl_complex(k)%node_indx)
    END DO
  END DO elements_1
-
 !------------------ build the diagonal preconditioner --------------------
  ALLOCATE(diag_precon_tmp(ntot,nels_pp)); diag_precon_tmp=zero
  elements_1a: DO iel=1,nels_pp

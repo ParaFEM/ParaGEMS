@@ -80,9 +80,7 @@ PROGRAM pg124
  loads_pp=zero; diag_precon_pp=zero; u_pp=zero; r_pp=zero; d_pp=zero
  p_pp=zero; x_pp=zero; xnew_pp=zero
 !-------------- element stiffness using DEC and storage ----------------
- storka_pp=zero; storkb_pp=zero
-
- dim_cmplx = 3;  dim_embbd = 3;  k=dim_cmplx+1
+ storka_pp=zero; storkb_pp=zero;  dim_cmplx = 3;  dim_embbd = 3;  k=dim_cmplx+1
  ALLOCATE(num_pelm_pp(1)); num_pelm_pp(1)=nod;  extra_pelm=0;  glb_offset=0
  glb_num_elm = (/ nod, 19, 18, 6 /);  num_elm=glb_num_elm
  ALLOCATE(lcl_complex(k));
@@ -103,15 +101,16 @@ PROGRAM pg124
    DO k=dim_cmplx+1,2,-1; CALL calc_bndry_cobndry(k); END DO
 
    !- setup connectivity
-   DO k=1,dim_cmplx+1; lcl_complex(k)%lcl_node_indx = lcl_complex(k)%node_indx; END DO
+   DO k=1,dim_cmplx+1
+     lcl_complex(k)%lcl_node_indx = lcl_complex(k)%node_indx
+   END DO
 
    !- calc circumcenter
    lcl_complex(1)%centers = g_coord_pp(:,:,iel)
    DO k=2,dim_cmplx+1; CALL calc_circumcenters(k); END DO
 
    !- calc primal edge and dual area and primal direction
-   CALL calc_prml_unsgnd_vlm(2); CALL calc_dual_vlm(1)
-   CALL calc_prml_dir()
+   CALL calc_prml_unsgnd_vlm(2);  CALL calc_dual_vlm(1);  CALL calc_prml_dir()
 
    kcx=zero
    DO i=1,nod
@@ -122,8 +121,10 @@ PROGRAM pg124
        m = lcl_complex(2)%bndry(k)%indx(1)
        IF (i==m) m = lcl_complex(2)%bndry(k)%indx(2)
        ka = DOT_PRODUCT(kay,abs(lcl_complex(2)%prml_dir(k,:)))
-       kc(i,m) = kc(i,m) - ka*lcl_complex(2)%dual_volume(k) / max(lcl_complex(2)%prml_volume(k),small)
-       kc(i,i) = kc(i,i) + ka*lcl_complex(2)%dual_volume(k) / max(lcl_complex(2)%prml_volume(k),small)
+       kc(i,m) = kc(i,m) - ka*lcl_complex(2)%dual_volume(k) / &
+          max(lcl_complex(2)%prml_volume(k),small)
+       kc(i,i) = kc(i,i) + ka*lcl_complex(2)%dual_volume(k) / &
+          max(lcl_complex(2)%prml_volume(k),small)
      END DO
      pm(i,i) = pm(i,i) + lcl_complex(1)%dual_volume(i)*rho*cp
    END DO
