@@ -4,11 +4,6 @@
 # Include file for standard MacOS workstation compilation using gfortran
 # and OpenMPI. Tested using MacOS 10.14 and gfortran 10
 # ------------------------------------------------------------------------------
-ifeq ($(FOR_paraFEM),0)
-  export PETSC_DIR=$(PARAGEMS_HOME)/src/libraries/PETSC
-  export PETSC_ARCH=arch-darwin-c-debug
-  include ${PETSC_DIR}/lib/petsc/conf/variables
-endif
 
 # ------------------------------------------------------------------------------
 # Generic settings for compilation
@@ -22,13 +17,8 @@ INSTALL_CMD=mv
 # ------------------------------------------------------------------------------
 # These flags are directly used by the module makefiles
 # ------------------------------------------------------------------------------
-ifeq ($(FOR_paraFEM),0)
-  LIB_REL_FFLAGS=-O2 -cpp -fallow-argument-mismatch $(PETSC_FC_INCLUDES)
-  LIB_DBG_FFLAGS=-g -fbounds-check -cpp -fallow-argument-mismatch $(PETSC_FC_INCLUDES)
-else
-  LIB_REL_FFLAGS=-O2 -cpp -fallow-argument-mismatch -DFORparaFEM
-  LIB_DBG_FFLAGS=-g -fbounds-check -cpp -fallow-argument-mismatch -DFORparaFEM
-endif
+LIB_REL_FFLAGS=-O2 -cpp -fallow-argument-mismatch -DFORparaFEM
+LIB_DBG_FFLAGS=-g -fbounds-check -cpp -fallow-argument-mismatch -DFORparaFEM
 
 # ------------------------------------------------------------------------------
 # DEFAULT FLAGS for all program groups
@@ -39,8 +29,8 @@ endif
 # generic darcy group FFLAGS and LDFLAGS
 DEFAULT_darcy_REL_FFLAGS=-O2 -fallow-argument-mismatch
 DEFAULT_darcy_DBG_FFLAGS=-g -fbounds-check -fallow-argument-mismatch
-DEFAULT_darcy_REL_LDFLAGS=-lblas -llapack $(PETSC_LIB)
-DEFAULT_darcy_DBG_LDFLAGS=-lblas -llapack $(PETSC_LIB)
+DEFAULT_darcy_REL_LDFLAGS=-lblas -llapack
+DEFAULT_darcy_DBG_LDFLAGS=-lblas -llapack
 
 # ------------------------------------------------------------------------------
 # PROGRAM FLAGS for all programs.

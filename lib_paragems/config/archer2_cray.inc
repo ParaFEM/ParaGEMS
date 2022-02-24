@@ -3,10 +3,6 @@
 # ------------------------------------------------------------------------------
 # Include file for ARCHER2 with default Cray compilers
 # ------------------------------------------------------------------------------
-export PETSC_DIR=/work/ecseaa12/ecseaa12/pboom
-export PETSC_ARCH=""
-include ${PETSC_DIR}/lib/petsc/conf/variables
-
 export PARAGEMS_LIB=/work/ecseaa12/ecseaa12/pboom/codes/paragems_cray/lib
 export PARAGEMS_INC=/work/ecseaa12/ecseaa12/pboom/codes/paragems_cray/include
 export PARAGEMS_BIN=/work/ecseaa12/ecseaa12/pboom/codes/paragems_cray/bin
@@ -24,8 +20,8 @@ INSTALL_CMD=mv
 # Form is LIB_(MPI|SERIAL|OPENMP|GPU)_(REL|DBG)_(FFLAGS|LDFLAGS)
 # These flags are directly used by the module makefiles
 # ------------------------------------------------------------------------------
-LIB_REL_FFLAGS=-O2 -e Z $(PETSC_FC_INCLUDES)
-LIB_DBG_FFLAGS=-g -fbounds-check -e Z $(PETSC_FC_INCLUDES)
+LIB_REL_FFLAGS=-O2 -e Z
+LIB_DBG_FFLAGS=-g -fbounds-check -e Z
 
 # ------------------------------------------------------------------------------
 # DEFAULT FLAGS for all program groups
@@ -36,10 +32,10 @@ LIB_DBG_FFLAGS=-g -fbounds-check -e Z $(PETSC_FC_INCLUDES)
 # assigned these defaults below and may be overridden.
 # ------------------------------------------------------------------------------
 # generic darcy group FFLAGS and LDFLAGS
-DEFAULT_darcy_REL_FFLAGS=-O2 -e Z $(PETSC_FC_INCLUDES)
-DEFAULT_darcy_DBG_FFLAGS=-g -fbounds-check -e Z $(PETSC_FC_INCLUDES)
-DEFAULT_darcy_REL_LDFLAGS=$(PETSC_LIB)
-DEFAULT_darcy_DBG_LDFLAGS=$(PETSC_LIB)
+DEFAULT_darcy_REL_FFLAGS=-O2 -e Z
+DEFAULT_darcy_DBG_FFLAGS=-g -fbounds-check -e Z
+DEFAULT_darcy_REL_LDFLAGS=
+DEFAULT_darcy_DBG_LDFLAGS=
 
 # ------------------------------------------------------------------------------
 # DEFAULT FLAGS for all test groups
@@ -51,10 +47,10 @@ DEFAULT_darcy_DBG_LDFLAGS=$(PETSC_LIB)
 # ------------------------------------------------------------------------------
 
 # generic paragems_unit group FFLAGS and LDFLAGS
-DEFAULT_paragems_unit_REL_FFLAGS=-O2 -e Z $(PETSC_FC_INCLUDES)
-DEFAULT_paragems_unit_DBG_FFLAGS=-g -fbounds-check -e Z $(PETSC_FC_INCLUDES)
-DEFAULT_paragems_unit_REL_LDFLAGS=$(PETSC_LIB)
-DEFAULT_paragems_unit_DBG_LDFLAGS=$(PETSC_LIB)
+DEFAULT_paragems_unit_REL_FFLAGS=-O2 -e Z
+DEFAULT_paragems_unit_DBG_FFLAGS=-g -fbounds-check -e Z
+DEFAULT_paragems_unit_REL_LDFLAGS=
+DEFAULT_paragems_unit_DBG_LDFLAGS=
 
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------

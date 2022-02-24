@@ -3,12 +3,6 @@
 # ------------------------------------------------------------------------------
 # Include file for ARCHER2 with GNU compilers
 # ------------------------------------------------------------------------------
-export PETSC_DIR=/work/ecseaa12/ecseaa12/pboom
-export PETSC_ARCH=""
-#export PETSC_DIR=$(PARAGEMS_HOME)/src/libraries/PETSC
-#export PETSC_ARCH=arch-linux-c-debug
-include ${PETSC_DIR}/lib/petsc/conf/variables
-
 export PARAGEMS_LIB=/work/ecseaa12/ecseaa12/pboom/codes/paragems_gnu/lib
 export PARAGEMS_INC=/work/ecseaa12/ecseaa12/pboom/codes/paragems_gnu/include
 export PARAGEMS_BIN=/work/ecseaa12/ecseaa12/pboom/codes/paragems_gnu/bin
@@ -26,8 +20,8 @@ INSTALL_CMD=mv
 # Form is LIB_(MPI|SERIAL|OPENMP|GPU)_(REL|DBG)_(FFLAGS|LDFLAGS)
 # These flags are directly used by the module makefiles
 # ------------------------------------------------------------------------------
-LIB_REL_FFLAGS=-O2 -cpp $(PETSC_FC_INCLUDES) -fallow-argument-mismatch
-LIB_DBG_FFLAGS=-g -fbounds-check -cpp $(PETSC_FC_INCLUDES) -fallow-argument-mismatch
+LIB_REL_FFLAGS=-O2 -cpp -fallow-argument-mismatch
+LIB_DBG_FFLAGS=-g -fbounds-check -cpp -fallow-argument-mismatch
 
 # ------------------------------------------------------------------------------
 # DEFAULT FLAGS for all program groups
@@ -38,10 +32,10 @@ LIB_DBG_FFLAGS=-g -fbounds-check -cpp $(PETSC_FC_INCLUDES) -fallow-argument-mism
 # assigned these defaults below and may be overridden.
 # ------------------------------------------------------------------------------
 # generic darcy group FFLAGS and LDFLAGS
-DEFAULT_darcy_REL_FFLAGS=-O2 -cpp $(PETSC_FC_INCLUDES)
-DEFAULT_darcy_DBG_FFLAGS=-g -fbounds-check -cpp $(PETSC_FC_INCLUDES)
-DEFAULT_darcy_REL_LDFLAGS=$(PETSC_LIB)
-DEFAULT_darcy_DBG_LDFLAGS=$(PETSC_LIB)
+DEFAULT_darcy_REL_FFLAGS=-O2 -cpp
+DEFAULT_darcy_DBG_FFLAGS=-g -fbounds-check -cpp
+DEFAULT_darcy_REL_LDFLAGS=
+DEFAULT_darcy_DBG_LDFLAGS=
 
 # ------------------------------------------------------------------------------
 # DEFAULT FLAGS for all test groups
@@ -53,10 +47,10 @@ DEFAULT_darcy_DBG_LDFLAGS=$(PETSC_LIB)
 # ------------------------------------------------------------------------------
 
 # generic paragems_unit group FFLAGS and LDFLAGS
-DEFAULT_paragems_unit_REL_FFLAGS=-O2 -cpp $(PETSC_FC_INCLUDES)
-DEFAULT_paragems_unit_DBG_FFLAGS=-g -fbounds-check -cpp $(PETSC_FC_INCLUDES)
-DEFAULT_paragems_unit_REL_LDFLAGS=$(PETSC_LIB)
-DEFAULT_paragems_unit_DBG_LDFLAGS=$(PETSC_LIB)
+DEFAULT_paragems_unit_REL_FFLAGS=-O2 -cpp
+DEFAULT_paragems_unit_DBG_FFLAGS=-g -fbounds-check -cpp
+DEFAULT_paragems_unit_REL_LDFLAGS=
+DEFAULT_paragems_unit_DBG_LDFLAGS=
 
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
