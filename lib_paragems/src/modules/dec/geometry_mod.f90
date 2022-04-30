@@ -282,6 +282,85 @@ CONTAINS
   END SUBROUTINE
 ! geometry_mod/calc_circumcenters
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!/****/s* geometry_mod/calc_circumcenters_WBC
+!* SYNOPSIS
+  SUBROUTINE calc_circumcenters_WBC(k)
+!* PURPOSE
+!*   Compute circumcenter of given elements and store associated barycentric
+!*   coordinates
+!* INPUTS
+!*   Name                    Description
+!*
+!* OUTPUTS
+!*   Name                    Description
+!*
+!* SIDE EFFECTS
+!*   -
+!* AUTHOR
+!*   Pieter Boom
+!* MODIFICATION HISTORY
+!*   2019/08/23: Created (PB)
+!* COPYRIGHT
+!*   (c) University of Manchester
+!******/
+!> author: Pieter Boom
+!> date: 2019/08/23
+!> Compute circumcenter of given elements and store associated barycentric
+!>   coordinates
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    IMPLICIT NONE
+
+    !-- arguments --
+    INTEGER                     :: k                !> simplicial order
+
+    !-- local variables --
+    INTEGER                     :: kp               !> simplicial order plus one
+    INTEGER                     :: i,j              !> loop indices
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: A(:,:),b(:)      !> solution variables
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: pts(:,:)         !> bounding points
+    REAL(KIND=PGMSiwp), ALLOCATABLE :: ipiv(:),work(:)  !> work arrays
+
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+! MAIN EXECUTION
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    !-- allocate centers and temp. variables --
+    kp=k+1
+    IF (.NOT. ALLOCATED(lcl_complex(k)%centers)) &
+      ALLOCATE(lcl_complex(k)%centers(num_elm(k),dim_embbd), &
+               lcl_complex(k)%b_coord(num_elm(k),k))
+    ALLOCATE(pts(k,dim_embbd),A(kp,kp),b(kp),ipiv(kp),work(kp))
+
+    !-- compute circumcenters for all elements --
+    !-- loop through all elements of this order --
+    DO i = 1, num_elm(k)
+      !-- get bounding points of the element --
+      DO j = 1,k
+        pts(j,:) = lcl_complex(1)%centers(lcl_complex(k)%lcl_node_indx(i,j),:)
+      END DO
+
+      !-- setup system to compute circumcenter --
+      A(1:k,1:k) = 2*MATMUL(pts,TRANSPOSE(pts))
+      A(1:k,kp) = 1;  A(kp,1:k) = 1;  A(kp,kp) = 0
+      b(1:k) = sum(pts*pts,DIM=2)
+      b(kp) = 1
+
+      !-- solve system to compute circumcenter --
+      CALL DSYSV('L',kp,1,A,kp,ipiv,b,kp,work,kp,ier)
+
+      !-- assign circumcenter --
+      lcl_complex(k)%centers(i,:) = MATMUL(b(1:k),pts)
+      lcl_complex(k)%b_coord(i,:) = b(1:k)
+    END DO
+
+    !-- clean up --
+    DEALLOCATE(pts,A,b,ipiv,work)
+
+    RETURN
+
+  END SUBROUTINE
+! geometry_mod/calc_circumcenters_WBC
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 !
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 !/****/s* geometry_mod/calc_prml_sgnd_vlm

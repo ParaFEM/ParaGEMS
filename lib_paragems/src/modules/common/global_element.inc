@@ -51,6 +51,7 @@
     !> ## Geometric information
     REAL(KIND=PGMSiwp), ALLOCATABLE :: &
                               centers(:,:), &   !>- location of centers
+                              b_coord(:,:), &   !>- barycentric coord of centers
                               prml_volume(:), & !>- primal volume
                               dual_volume(:), & !>- dual volume
                               prml_dir(:,:), &  !>- prml unit direction

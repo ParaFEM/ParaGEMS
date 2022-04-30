@@ -25,13 +25,14 @@ ifeq ($(FOR_paraFEM),0)
 		io/io_mod.o \
 		mpi/partition_mod.o \
 		phy_diffusion/diffusion_mod.o	\
+		phy_elasticity/elasticity_mod.o	\
 		testing/testing_mod.o	\
 		common/test_common_mod.o \
 		dec/test_dec_mod.o \
 		io/test_io_mod.o \
 		math/test_math_mod.o \
 		mpi/test_mpi_mod.o \
-		phy_diffusion/test_diffusion_mod.o \
+		phy_elasticity/test_elasticity_mod.o	\
 		solvers/test_solver_mod.o
 else
 	FOBJS =	\
@@ -40,7 +41,8 @@ else
 		math/math_mod.o \
 		dec/dec_mod.o \
 		dec/geometry_mod.o \
-		dec/forman_mod.o
+		dec/forman_mod.o	\
+		phy_elasticity/elasticity_mod.o
 endif
 
 

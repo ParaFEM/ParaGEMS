@@ -645,6 +645,230 @@ CONTAINS
 !  math_mod/cross_product
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 !
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!/****/f*  math_mod/kron_eye
+!* SYNOPSIS
+  FUNCTION kron_eye(A, n)
+!* PURPOSE
+!*   Performs a direct calculation of the kronnecker product
+!* INPUTS
+!*   Name                    Description
+!*
+!* OUTPUTS
+!*   Name                    Description
+!*
+!* SIDE EFFECTS
+!*   -
+!* AUTHOR
+!*   Pieter Boom
+!* MODIFICATION HISTORY
+!*   2019/08/29: Created (PB)
+!* COPYRIGHT
+!*   (c) University of Manchester
+!* NOTES
+!*   Adapted from: https://rosettacode.org/wiki/Vector_products#Fortran
+!******/
+!> author: Pieter Boom
+!> date: 2019/08/29
+!> Performs a direct calculation of the kronnecker product
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    IMPLICIT NONE
+
+    !-- arguments --
+    REAL(KIND=PGMSiwp), INTENT(IN)  :: A(:,:)             !> input matrices
+    INTEGER, INTENT(IN)             :: n                  !> input eye size
+
+    !-- local variables --
+    REAL(KIND=PGMSiwp)              :: kron_eye(n*size(A,1),n*size(A,2))  !> resulting matrix
+    INTEGER                         :: i,j,k,ii,jj        !> counters
+
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+! MAIN EXECUTION
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    !-- compute the kronnecker product --
+    kron_eye = 0.d0
+    DO j = 1,size(A,dim=2)
+      jj = n*(j-1)
+      DO i = 1,size(A,dim=1)
+        IF (A(i,j)==0) CYCLE
+        ii = n*(i-1)
+        DO k = 1,n
+          kron_eye(ii+k,jj+k) = A(i,j)
+        END DO
+      END DO
+    END DO
+
+    RETURN
+
+  END FUNCTION
+!  math_mod/kron_eye
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!/****/f*  math_mod/eye_kron
+!* SYNOPSIS
+  FUNCTION eye_kron(A, n)
+!* PURPOSE
+!*   Performs a direct calculation of the kronnecker product
+!* INPUTS
+!*   Name                    Description
+!*
+!* OUTPUTS
+!*   Name                    Description
+!*
+!* SIDE EFFECTS
+!*   -
+!* AUTHOR
+!*   Pieter Boom
+!* MODIFICATION HISTORY
+!*   2019/08/29: Created (PB)
+!* COPYRIGHT
+!*   (c) University of Manchester
+!* NOTES
+!*   Adapted from: https://rosettacode.org/wiki/Vector_products#Fortran
+!******/
+!> author: Pieter Boom
+!> date: 2019/08/29
+!> Performs a direct calculation of the kronnecker product
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    IMPLICIT NONE
+
+    !-- arguments --
+    REAL(KIND=PGMSiwp), INTENT(IN)  :: A(:,:)             !> input matrices
+    INTEGER, INTENT(IN)             :: n                  !> input eye size
+
+    !-- local variables --
+    REAL(KIND=PGMSiwp)              :: eye_kron(n*size(A,1),n*size(A,2))  !> resulting matrix
+    INTEGER                         :: i,j,k,m,ii,jj        !> counters
+
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+! MAIN EXECUTION
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    !-- compute the kronnecker product --
+    eye_kron = 0.d0
+    DO j = 1,n
+      jj = size(A,dim=2)*(j-1)
+      ii = size(A,dim=1)*(j-1)
+      DO m = 1,size(A,dim=2)
+        DO k = 1,size(A,dim=1)
+          eye_kron(ii+k,jj+m) = A(k,m)
+        END DO
+      END DO
+    END DO
+
+    RETURN
+
+  END FUNCTION
+!  math_mod/eye_kron
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!/****/f*  math_mod/kron_product
+!* SYNOPSIS
+  FUNCTION norm(v)
+!* PURPOSE
+!*   calculates norm of vector
+!* INPUTS
+!*   Name                    Description
+!*
+!* OUTPUTS
+!*   Name                    Description
+!*
+!* SIDE EFFECTS
+!*   -
+!* AUTHOR
+!*   Pieter Boom
+!* MODIFICATION HISTORY
+!*   2019/08/29: Created (PB)
+!* COPYRIGHT
+!*   (c) University of Manchester
+!* NOTES
+!*   Adapted from: https://rosettacode.org/wiki/Vector_products#Fortran
+!******/
+!> author: Pieter Boom
+!> date: 2019/08/29
+!> calculates norm of vector
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    IMPLICIT NONE
+
+    !-- arguments --
+    REAL(KIND=PGMSiwp), INTENT(IN)  :: v(:)             !> input vector
+
+    !-- local variables --
+    REAL(KIND=PGMSiwp)              :: norm  !> resulting norm
+    INTEGER                         :: i        !> counters
+
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+! MAIN EXECUTION
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    !-- compute the kronnecker product --
+    norm = 0.d0
+    DO i = 1,size(v)
+      norm = norm + v(i)**2
+    END DO
+    norm = sqrt(norm)
+
+    RETURN
+
+  END FUNCTION
+!  math_mod/norm
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!/****/f*  math_mod/kron_product
+!* SYNOPSIS
+  FUNCTION diagM(v)
+!* PURPOSE
+!*   creates diagonal matrix
+!* INPUTS
+!*   Name                    Description
+!*
+!* OUTPUTS
+!*   Name                    Description
+!*
+!* SIDE EFFECTS
+!*   -
+!* AUTHOR
+!*   Pieter Boom
+!* MODIFICATION HISTORY
+!*   2019/08/29: Created (PB)
+!* COPYRIGHT
+!*   (c) University of Manchester
+!* NOTES
+!*   Adapted from: https://rosettacode.org/wiki/Vector_products#Fortran
+!******/
+!> author: Pieter Boom
+!> date: 2019/08/29
+!> creates diagonal matrix
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    IMPLICIT NONE
+
+    !-- arguments --
+    REAL(KIND=PGMSiwp), INTENT(IN)  :: v(:)             !> input vector
+
+    !-- local variables --
+    REAL(KIND=PGMSiwp)              :: diagM(size(v),size(v))  !> resulting matrix
+    INTEGER                         :: i        !> counters
+
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+! MAIN EXECUTION
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    !-- compute the kronnecker product --
+    diagM = 0.d0
+    DO i = 1,size(v)
+      diagM(i,i) = v(i)
+    END DO
+
+    RETURN
+
+  END FUNCTION
+!  math_mod/diagM
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!
 
 END MODULE
 ! math_mod
