@@ -218,3 +218,116 @@ Directory with source code (mini apps):
 make-para-fem-gems
 ------------------
 Script to compile ParaFEM+GEMS code
+
+Execution (ParaFEM+GEMS integration)
+==================================
+
+>In this section [PARAFEMGEMS_HOME] is used as a placeholder for your root ParaFEM+GEMS directory. If following on from the installation instructions where it is assumed that ParaGEMS is cloned into your home directory, this would be ~/parafem/paragems
+
+Test case: Program 12.1 three dimensional analysis of an elastic solid using 8-node brick elements, DEC, preconditioned conjugate gradient solver; diagonal preconditioner diag_precon; parallel version loaded_nodes only (note that ParaFEM's p121 uses 20-node bricks)
+
+Directory: [PARAFEMGEMS_HOME]/examples/pg121
+
+Subdirectories and Files:  
+
+- book/             example from textbook
+- demo/             basic example file
+- mg/               additional mesh files
+- demo/readme.txt   description of simulation input and output files
+
+Execution:  
+
+    cd [PARAFEMGEMS_HOME]/examples/pg121/demo  
+    mpirun -np 2 [PARAFEMGEMS_HOME]/bin/pg121 pg121_demo  
+
+> **or** if [PARAFEMGEMS_HOME]/bin/ is in your PATH environment variable:  
+
+    mpirun -np 2 pg121 pg121_demo
+
+----
+
+Test case: program p12.3 three dimensional analysis of Laplace's equation using 8-node bricks, DEC, preconditioned conjugate gradient solver diagonal preconditioner; parallel; externally generated model
+
+Directory: [PARAFEMGEMS_HOME]/examples/pg123
+
+Subdirectories and Files:  
+
+- book/             example from textbook
+- demo/             basic example file
+- mg/               additional mesh files
+- book/readme.txt   description of simulation input and output files
+
+Execution:  
+
+    cd [PARAFEMGEMS_HOME]/examples/pg123/demo  
+    mpirun -np 2 [PARAFEMGEMS_HOME]/bin/pg123 pg123_demo
+
+> **or** if [PARAFEMGEMS_HOME]/bin/ is in your PATH environment variable:  
+
+    mpirun -np 2 pg123 pg123_demo
+
+----
+
+Test case: program p12.3 three dimensional analysis of Laplace's equation using 8-node bricks, DEC, preconditioned conjugate gradient solver diagonal preconditioner; parallel; externally generated model; evolution of faces with zero diffusivity
+
+Directory: [PARAFEMGEMS_HOME]/examples/pg123x
+
+Subdirectories and Files:  
+
+- book/             example from textbook
+- demo/             basic example file
+- mg/               additional mesh files
+- book/readme.txt   description of simulation input and output files
+
+Execution:  
+
+    cd [PARAFEMGEMS_HOME]/examples/pg123x/demo  
+    mpirun -np 2 [PARAFEMGEMS_HOME]/bin/pg123x pg123_demo
+
+> **or** if [PARAFEMGEMS_HOME]/bin/ is in your PATH environment variable:  
+
+    mpirun -np 2 pg123x pg123_demo
+
+----
+
+Test case: program 12.4 three dimensional transient analysis of heat conduction equation using 8-node hexahedral elements; DEC, parallel pcg version implicit; integration in time using 'theta' method
+
+Directory: [PARAFEMGEMS_HOME]/examples/pg124
+
+Subdirectories and Files:  
+
+- book/             example from textbook
+- demo/             basic example file
+- mg/               additional mesh files
+- demo/readme.txt   description of simulation input and output files
+
+Execution:  
+
+    cd [PARAFEMGEMS_HOME]/examples/pg124/demo  
+    mpirun -np 2 [PARAFEMGEMS_HOME]/bin/pg124 pg124_demo  
+
+> **or** if [PARAFEMGEMS_HOME]/bin/ is in your PATH environment variable:  
+
+    mpirun -np 2 pg124 pg124_demo
+
+----
+
+Test case: Program 12.5 conduction equation on a 3-d box volume using 8-node hexahedral elements and a simple explicit algorithm: DEC, parallel version write on processor it at freedom nres
+
+Directory: [PARAFEMGEMS_HOME]/examples/pg125
+
+Subdirectories and Files:  
+
+- book/             example from textbook
+- demo/             basic example file
+- mg/               additional mesh files
+- demo/readme.txt   description of simulation input and output files
+
+Execution:  
+
+    cd [PARAFEMGEMS_HOME]/examples/pg125/demo  
+    mpirun -np 2 [PARAFEMGEMS_HOME]/bin/pg125 pg125_demo  
+
+> **or** if [PARAFEMGEMS_HOME]/bin/ is in your PATH environment variable:  
+
+    mpirun -np 2 pg125 pg125_demo

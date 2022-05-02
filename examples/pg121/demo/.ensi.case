@@ -1,0 +1,12 @@
+#
+# ParaFEM pf2ensi generated post-process file
+# Ensight Gold Format
+#
+# Problem name:	
+#
+FORMAT
+type:	ensight gold
+GEOMETRY
+model:	1	.ensi.geo
+VARIABLE
+scalar per element:		Material	.ensi.MATID
