@@ -259,11 +259,13 @@ Subdirectories and Files:
 
 Execution:  
 
-    cd [PARAFEMGEMS_HOME]/examples/pg123/demo  
+    cd [PARAFEMGEMS_HOME]/examples/pg123/demo
+    [PARAFEMGEMS_HOME]/bin/parafem/p12meshgen pg123_demo
     mpirun -np 2 [PARAFEMGEMS_HOME]/bin/pg123 pg123_demo
 
-> **or** if [PARAFEMGEMS_HOME]/bin/ is in your PATH environment variable:  
+> **or** if [PARAFEMGEMS_HOME]/bin/ and [PARAFEM_HOME]/bin/ is in your PATH environment variable:  
 
+    p12meshgen pg123_demo
     mpirun -np 2 pg123 pg123_demo
 
 ----
@@ -281,11 +283,13 @@ Subdirectories and Files:
 
 Execution:  
 
-    cd [PARAFEMGEMS_HOME]/examples/pg123x/demo  
+    cd [PARAFEMGEMS_HOME]/examples/pg123x/demo
+    [PARAFEMGEMS_HOME]/bin/parafem/p12meshgen pg123_demo
     mpirun -np 2 [PARAFEMGEMS_HOME]/bin/pg123x pg123_demo
 
-> **or** if [PARAFEMGEMS_HOME]/bin/ is in your PATH environment variable:  
+> **or** if [PARAFEMGEMS_HOME]/bin/ and [PARAFEM_HOME]/bin/ is in your PATH environment variable:  
 
+    p12meshgen pg123_demo
     mpirun -np 2 pg123x pg123_demo
 
 ----
@@ -303,7 +307,7 @@ Subdirectories and Files:
 
 Execution:  
 
-    cd [PARAFEMGEMS_HOME]/examples/pg124/demo  
+    cd [PARAFEMGEMS_HOME]/examples/pg124/demo
     mpirun -np 2 [PARAFEMGEMS_HOME]/bin/pg124 pg124_demo  
 
 > **or** if [PARAFEMGEMS_HOME]/bin/ is in your PATH environment variable:  
