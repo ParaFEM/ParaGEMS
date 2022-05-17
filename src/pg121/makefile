@@ -34,7 +34,7 @@ release:
 	@echo "Building PG121 RELEASE"
 	$(MAKE) pg121 \
 	FFLAGS="-c -I$(MODULE_FEM) -I$(MODULE_GEMS) $(PG121_MPI_REL_FFLAGS)" \
-	LDFLAGS="-L$(LIB_FEM) -lParaFEM_mpi.$(VERSION) -L$(LIB_GEMS) -lParaGEMS.2022.02.28 $(PG121_MPI_REL_LDFLAGS)-lblas -llapack"
+	LDFLAGS="-L$(LIB_FEM) -lParaFEM_mpi.$(VERSION) -L$(LIB_GEMS) -lParaGEMS.2022.02.28 $(PG121_MPI_REL_LDFLAGS) -lblas -llapack"
 	@echo "Done pg121 RELEASE"
 
 debug:
