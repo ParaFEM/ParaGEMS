@@ -34,7 +34,7 @@ release:
 	@echo "Building PG124 RELEASE"
 	$(MAKE) pg124 \
 	FFLAGS="-c -I$(MODULE_FEM) -I$(MODULE_GEMS) $(PG124_MPI_REL_FFLAGS)" \
-	LDFLAGS="-lblas -llapack -L$(LIB_FEM) -lParaFEM_mpi.$(VERSION) -L$(LIB_GEMS) -lParaGEMS.2022.02.28 $(PG124_MPI_REL_LDFLAGS)"
+	LDFLAGS="-L$(LIB_FEM) -lParaFEM_mpi.$(VERSION) -L$(LIB_GEMS) -lParaGEMS.2022.02.28 $(PG124_MPI_REL_LDFLAGS) -lblas -llapack"
 	@echo "Done pg124 RELEASE"
 
 debug:
@@ -42,7 +42,7 @@ debug:
 	@echo "Building pg124 DEBUG"
 	$(MAKE) pg124 \
 	FFLAGS="-c -I$(MODULE_FEM) -I$(MODULE_GEMS) $(PG124_MPI_DBG_FFLAGS)" \
-	LDFLAGS="-lblas -llapack -L$(LIB_FEM) -lParaFEM_mpi_D.$(VERSION) -L$(LIB_GEMS) -lParaGEMS_D.2022.02.28  $(PG124_MPI_DBG_LDFLAGS)"
+	LDFLAGS="-L$(LIB_FEM) -lParaFEM_mpi_D.$(VERSION) -L$(LIB_GEMS) -lParaGEMS_D.2022.02.28  $(PG124_MPI_DBG_LDFLAGS) -lblas -llapack"
 	@echo "Done pg124 DEBUG"
 
 pg124: pg124.o
